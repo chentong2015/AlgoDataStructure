@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class BaseArray {
+public class BaseArray1 {
 
     // Remove duplicates from sorted array
     // 1. The input array is passed in by reference
@@ -119,7 +119,7 @@ public class BaseArray {
         //         1. 使用嵌套for循环 Time complexity: O(n2), Space complexity: O(1)
 
         // 正确解法: 1. 先对数组进行排序，然后之间判断相邻的两个值 Arrays.sort(nums) 排序复杂度O(nlog(n)) > O(n), Space complexity: O(1)
-        //          2. 借助别的数组
+        //          2. 借助别的数组来辅助运算
         //          3. 借助HashSet<>, 通过求和来计算: 2∗(a+b+c)−(a+a+b+b+c)=c
         //          4. Bit Manipulation 比特位运算: a⊕b⊕a=(a⊕a)⊕b=0⊕b=b 将0和所有的值求XOR异或运算(相同的消去)，结果就是最中的单列的值 !!
         int result = 0;
