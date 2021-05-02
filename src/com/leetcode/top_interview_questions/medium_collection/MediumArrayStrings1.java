@@ -9,13 +9,15 @@ public class MediumArrayStrings1 {
     // Such that i!=j, i!=k, and j!=k, and nums[i]+nums[j]+nums[k] == 0
     // solution set must not contain duplicate triplets 不能出现重复的结果集
     public List<List<Integer>> threeSum(int[] nums) {
-        // 测试理解: 在复杂度最低的情况下，找到所有的可能 !!
-
+        // 测试理解: 1. 移动3个指针, 在复杂度最低的情况下，找到所有的可能 !!
+        //
+        
         List<List<Integer>> result = new ArrayList<>();
+        List<Integer> item = new ArrayList<>(); // 判断是否已经存在这样的组合
         if (nums == null || nums.length < 3) {
             return result;
         } else {
-            
+
         }
         return result;
     }

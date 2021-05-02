@@ -96,7 +96,7 @@ public class BaseLinkedList1 {
             return head;
         } else {
             ListNode newHead = reverseLinkedListRecursively(head.next);
-            head.next.next = head; // 递归方法结束之后，往后执行 !!
+            head.next.next = head; // 反向: 递归方法结束之后，往后执行 !!
             head.next = null;
             return newHead;
         }
@@ -169,5 +169,4 @@ public class BaseLinkedList1 {
         node.value = node.next.value;
         node.next = node.next.next;
     }
-
 }
