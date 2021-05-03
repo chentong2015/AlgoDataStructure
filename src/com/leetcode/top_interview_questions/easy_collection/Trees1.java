@@ -2,6 +2,7 @@ package com.leetcode.top_interview_questions.easy_collection;
 
 import com.leetcode.top_interview_questions.easy_collection.model.TreeNode;
 
+import java.lang.Math;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
@@ -70,22 +71,7 @@ public class Trees1 {
         return false;
     }
 
-    // 1 2 3 2 3
-    public void preOrderStackTraverse(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode node = root;
-        while (node != null || !stack.isEmpty()) {
-            if (node != null) {
-                stack.push(node);
-                node = node.getLeft();
-            } else {
-                TreeNode popNode = stack.pop();
-                System.out.println(popNode.getVal());
-                node = popNode.getRight();
-            }
-        }
-    }
-
+    // TODO: 实现非递归的前序和后续遍历
     // 正确理解：1. 递归中序遍历，将所有的节点取出来，然后判断数字的大小是否按照顺序排列 !!
     //         2. 非递归中序遍历，使用Stack栈来暂存节点, 先进后出
     //            O(n) O(n) 最糟糕的情况是所有的node都排在root左边，栈中需要压入全部的node

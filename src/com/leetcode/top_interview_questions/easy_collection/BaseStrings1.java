@@ -67,7 +67,7 @@ public class BaseStrings1 {
 
         // 正确理解: 1. 利用HashMap的put方法来统计指定的Key出现的次数
         //          2. 使用定长字符数组int[26], 小写字母位置计算s.charAt(i)-'a', 计算每一个字符出现的次数
-        //          3. TODO: Space complexity : O(1) because English alphabet contains 26 letters.
+        //          3. Space complexity : O(1) because English alphabet contains 26 letters.
         Map<Character, Integer> maps = new HashMap<>();
         for (int i = 0; i < s.length(); i++) { // 直接遍历字符串的每一个char字符 !!
             char keyChar = s.charAt(i);
