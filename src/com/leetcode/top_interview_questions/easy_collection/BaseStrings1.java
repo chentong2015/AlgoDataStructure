@@ -84,15 +84,16 @@ public class BaseStrings1 {
 
     // Valid Anagram 字符中包含同样多的字符
     // Sorting both strings will result in two identical strings
-    public boolean isAnagram(String s, String t) {
-        // 正确理解: 1. String -> CharArray 通过调用Array的静态方法来实现 !!  Time complexity: O(nlogn)  Space complexity: O(1)
-        //          2. 使用定长字符数组int[26], 统计每个出现字符的数量 !! 由于这的数组是定长的，所以额外开出来的空间复杂度是O(1)
+    public static boolean isAnagram(String s, String t) {
+        // 正确理解: 1. 使用定长字符数组int[26], 统计每个出现字符的数量 !! 由于这的数组是定长的，所以额外开出来的空间复杂度是O(1)
         int[] counter = new int[26];
         for (int i = 0; i < s.length(); i++) {
             counter[s.charAt(i) - 'a']++;
             counter[t.charAt(i) - 'a']--;
         }
-        //
+
+        // 正确理解: 2. String -> CharArray 通过调用Array的静态方法来实现 !!
+        //             Time complexity: O(nlogn)  Space complexity: O(1)
         if (s.length() != t.length()) {
             return false;
         }
