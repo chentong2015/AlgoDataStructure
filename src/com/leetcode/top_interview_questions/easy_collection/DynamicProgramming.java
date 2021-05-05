@@ -53,32 +53,50 @@ public class DynamicProgramming {
     }
 
     // TODO: Maximum Subarray 找到连续的一组和最大的数字
-    // find the contiguous subarray (containing at least one number) which has the largest sum
+    // Find the contiguous subarray (containing at least one number) which has the largest sum
     public int maxSubArray(int[] nums) {
-        // 测试理解:[-2,1,-3]  当读到第三个值的时候，判断是否需要将第一个值加入进来 !!
-        //         [-2,1,-3,4,-1,2,1,-5,4] 找到这组数字的起点和结尾点, 如果是负数，会降低总和的值
-        if (nums.length == 1) {
-            return nums[0];
+        // 测试理解: 1. "动态编程": 每次记录前面累计的结果，提取最大值 O(n*n) O(n)
+        int maxSum = nums[0];
+        int[] temps = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            temps[i] = nums[i];
+            for (int j = 0; j < i; j++) {
+                temps[j] += nums[i];
+                maxSum = Math.max(maxSum, temps[j]);
+            }
+            maxSum = Math.max(maxSum, temps[i]);
         }
-        if (nums.length == 2) {
-            int max = Math.max(nums[0], nums[1]);
-            return Math.max(max, nums[0] + nums[1]);
-        }
+        return maxSum;
+    }
+
+    // 正确理解: 1. 如果存储? 可以去掉内部的嵌套循环，导致的时间复杂度过高
+    //            在index位置，无论是什么值，如果它的前面是负数，则去掉，如果前面有和为非0的数据，则加上
+    // [-1,1,3,4,-1,2,1,-5,4]
+    // -2 1 3
+    // -2 + 1 + 3
+    public int maxSubarray(int[] nums) {
         int left = 0;
-        int right = nums.length - 1;
-        int sum = 0;
-        while (left < right) {
+        int right = 1;
+        int maxSum = nums[left];
+        while (right < nums.length) {
+            if (maxSum < 0) {
+                left++;
+                maxSum += nums[right];
+            } else {
+
+            }
+            right++;
         }
         return 0;
     }
 
+    // TODO: House Robber
+    // nums = [1,2,3,1] -> 1 + 3 = 4 找到一组数中能够获得的最大值，不能取相邻的两个值
+    // nums = [2,1,1,2] -> 2 + 2 = 4
     public int rob(int[] nums) {
         return robNums(nums, 0);
     }
 
-    // TODO: House Robber
-    // nums = [1,2,3,1] -> 1 + 3 = 4 找到一组数中能够获得的最大值，不能取相邻的两个值
-    // nums = [2,1,1,2] -> 2 + 2 = 4 
     public int robNums(int[] nums, int n) {
         // 测试理解："相邻"不能取, 可以间隔一个，也可以间隔两个不取，不能间隔三个不取，否则得不到最大值 !!
         if (n == nums.length - 1) {

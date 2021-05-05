@@ -85,7 +85,8 @@ public class BaseStrings1 {
     // Valid Anagram 字符中包含同样多的字符
     // Sorting both strings will result in two identical strings
     public static boolean isAnagram(String s, String t) {
-        // 正确理解: 1. 使用定长字符数组int[26], 统计每个出现字符的数量 !! 由于这的数组是定长的，所以额外开出来的空间复杂度是O(1)
+        // 正确理解: 1. 使用定长字符数组int[26], 统计每个出现字符的数量
+        //             O(n)  O(1) 定长的数组，额外开辟出来的空间是一定的
         int[] counter = new int[26];
         for (int i = 0; i < s.length(); i++) {
             counter[s.charAt(i) - 'a']++;
@@ -97,9 +98,9 @@ public class BaseStrings1 {
         if (s.length() != t.length()) {
             return false;
         }
-        char[] sChars = s.toCharArray(); // 这里会将string复制一份出来，时间复制度O(n)
-        char[] tChars = t.toCharArray(); // 这和语言的实现有关，将提供的参数改成char[]便可以去掉这个复杂度
-        Arrays.sort(sChars);             // 时间复杂度决定于这里的实现方法
+        char[] sChars = s.toCharArray(); // 将string复制一份出来, 时间复制度O(n), 和语言的实现有关，可将提供的参数改成char[]取消复杂度
+        char[] tChars = t.toCharArray();
+        Arrays.sort(sChars);             // 排序方法的时间复杂度 O(nlog(n)) > O(n)
         Arrays.sort(tChars);
         return Arrays.equals(sChars, tChars);
     }

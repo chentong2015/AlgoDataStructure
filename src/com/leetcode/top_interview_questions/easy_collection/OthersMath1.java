@@ -1,6 +1,6 @@
 package com.leetcode.top_interview_questions.easy_collection;
 
-public class Math1 {
+public class OthersMath1 {
 
     // Count Primes
     // 核心算法是，数字从底到高，依次标记所有不是质数的位置  ===> 方法可以重构成多个子方法 !! 只有一个抽象逻辑层

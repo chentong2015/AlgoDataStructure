@@ -3,7 +3,7 @@ package com.leetcode.top_interview_questions.easy_collection;
 /**
  * 位运算的4大操作：与，或，异或，位移动
  */
-public class Bits {
+public class OthersBits {
 
     // Number of 1 bits
     // 统计一个int类型的值中有多少个bit 1，由于Java的int类型都是带有符号的，所以需要注意最高位的处理

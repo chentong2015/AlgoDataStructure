@@ -5,7 +5,7 @@ import com.leetcode.top_interview_questions.easy_collection.model.TreeNode;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-public class Trees2 {
+public class BaseTrees2 {
 
     // 要是对称树，则每一层的数字必须是中心对称的
     //   ===> BFS广度优先遍历

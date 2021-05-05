@@ -2,12 +2,12 @@ package com.leetcode.top_interview_questions.easy_collection;
 
 import java.util.Random;
 
-public class Design {
+public class OthersDesign {
 
     private int[] array;
     private int[] original; // 可以设计Immutable Class不可变的类型, field的值保持不变
 
-    public Design(int[] nums) {
+    public OthersDesign(int[] nums) {
         this.array = nums;  // 这里的array和外面的nums公用的一个数据(数组), array的变化会引起外部nums中值的改变
         this.original = nums.clone(); // clone出来，存储原始的数据，相互独立
     }

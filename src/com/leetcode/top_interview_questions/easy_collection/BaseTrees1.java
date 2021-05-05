@@ -2,12 +2,11 @@ package com.leetcode.top_interview_questions.easy_collection;
 
 import com.leetcode.top_interview_questions.easy_collection.model.TreeNode;
 
-import java.lang.Math;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
 
-public class Trees1 {
+public class BaseTrees1 {
 
     // 1 + 2 + 4 + 8 ... n = a1(2^n -1) => 2^n
     // Maximum Depth of Binary Tree 2叉树的深度

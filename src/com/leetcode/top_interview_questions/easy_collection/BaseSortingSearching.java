@@ -1,7 +1,7 @@
 package com.leetcode.top_interview_questions.easy_collection;
 
 // 排序和搜索算法
-public class SortingSearching {
+public class BaseSortingSearching {
 
     // Merge Sorted Array
     // Merge nums2 into nums1 as one sorted array
