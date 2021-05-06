@@ -19,9 +19,9 @@ public class DynamicProgramming {
         }
     }
 
-    //  正确理解: 1. Dynamic Programming: 利用前面已有的(保留的)值，得出下面的结果
-    //              本质上, 到达第n个位置有两种可能, 从n-1位置+1过来，或者从n-2位置+2过来  dp[i]=dp[i−1]+dp[i−2]
-    //              O(n) O(n)
+    // 正确理解: 1. Dynamic Programming: 利用前面已有的(保留的)值，得出下面的结果
+    //          本质上, 到达第n个位置有两种可能, n-1位置+1或n-2位置+2过来: dp[i]=dp[i−1]+dp[i−2]
+    //          O(n) O(n)
     public int climbStairsDynamicProgramming(int n) {
         if (n == 1) {
             return 1;

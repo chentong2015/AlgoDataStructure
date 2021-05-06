@@ -61,11 +61,11 @@ public class Backtracking {
         //            O(n+n*2^n)*n)=O(n*2^n) 空间复杂度用来存储所有的可能结果, 一共有2^n中可能，其中最大存储空间是全部的n个数
         List<List<Integer>> results = new ArrayList<>();
         int[] list = new int[nums.length];
-        test(-1, list, nums, results);
+        getSubsets(-1, list, nums, results);
         return results;
     }
 
-    private void test(int index, int[] list, int[] nums, List<List<Integer>> results) {
+    private void getSubsets(int index, int[] list, int[] nums, List<List<Integer>> results) {
         index++;
         int[] cloneList = list.clone(); // 使用clone出来的列表，不会造成数据的共享差错 !!
         if (index == nums.length) {
@@ -78,9 +78,9 @@ public class Backtracking {
             results.add(result);
         } else {
             cloneList[index] = 0;
-            test(index, cloneList, nums, results);    // 改变不同的设置，递归出不同的结果
+            getSubsets(index, cloneList, nums, results);    // 改变不同的设置，递归出不同的结果
             cloneList[index] = 1;
-            test(index, cloneList, nums, results);
+            getSubsets(index, cloneList, nums, results);
         }
     }
 }

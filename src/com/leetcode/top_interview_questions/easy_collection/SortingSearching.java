@@ -1,7 +1,6 @@
 package com.leetcode.top_interview_questions.easy_collection;
 
-// 排序和搜索算法
-public class BaseSortingSearching {
+public class SortingSearching {
 
     // Merge Sorted Array
     // Merge nums2 into nums1 as one sorted array
@@ -39,12 +38,11 @@ public class BaseSortingSearching {
     // First Bad Version 用最小的次数找到指定的目标
     // 标准的BinarySearch是while(low < high), 计算中间值，然后移动低段或者高段
     public int firstBadVersion(int n) {
-        // 测试理解：第一个次品, 等效于找到前一个是正品，接着的后一个是次品 n=false, n+1=true
+        // 测试理解：1. 第一个次品, 等效于找到前一个是正品，接着的后一个是次品 n=false, n+1=true
 
-        // 正确理解："当找到次品后，判断前一个是否是正品"，如果是则退出
-        //         O(log2) 如果是8个值，则最多需要3次就能找到  O(1) 只开辟了常量数量的内存空间
-        //         TODO: 注意overflow: 因为两个int值的和可能超出int的最大值，造成值的溢出，导致计算出错 !!!
-        //         Unless you are using a language that does not overflow such as Python
+        // 正确理解：1. "当找到次品后，判断前一个是否是正品"，如果是则退出
+        //            O(log2) 如果是8个值，则最多需要3次就能找到  O(1) 只开辟了常量数量的内存空间
+        //         2. TODO: 注意overflow溢出, 两个int值的和可能超出int的最大值，导致计算出错, 除非使用python这种动态类型的语言 !!!
         int low = 1;
         int high = n;
         while (low < high) {     // 当low=high，说明就是第一次品的位置
