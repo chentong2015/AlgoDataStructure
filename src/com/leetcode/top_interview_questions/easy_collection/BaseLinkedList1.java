@@ -1,6 +1,6 @@
 package com.leetcode.top_interview_questions.easy_collection;
 
-import com.leetcode.top_interview_questions.easy_collection.model.ListNode;
+import com.leetcode.top_interview_questions.base.ListNode;
 
 /**
  * Linked List 链表的优缺点：

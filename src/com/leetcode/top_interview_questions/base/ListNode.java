@@ -1,4 +1,4 @@
-package com.leetcode.top_interview_questions.easy_collection.model;
+package com.leetcode.top_interview_questions.base;
 
 // Definition for singly-linked list
 public class ListNode {

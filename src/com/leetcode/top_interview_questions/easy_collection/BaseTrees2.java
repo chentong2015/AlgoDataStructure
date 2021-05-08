@@ -1,6 +1,6 @@
 package com.leetcode.top_interview_questions.easy_collection;
 
-import com.leetcode.top_interview_questions.easy_collection.model.TreeNode;
+import com.leetcode.top_interview_questions.base.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

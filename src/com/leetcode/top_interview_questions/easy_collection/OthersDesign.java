@@ -19,9 +19,8 @@ public class OthersDesign {
     }
 
     // Shuffle an Array 随机洗牌一个数组，然后恢复成原来的顺序
+    // 算法思路：Fisher-Yates Algorithm 循环遍历数组中的每一个值，随机生成一个值(要和后面第几个位置交换)
     public int[] shuffle() {
-        // 设计思路：Fisher-Yates Algorithm
-        //         循环遍历数组中的每一个值，随机生成一个值(要和后面第几个位置交换)
         for (int i = 0; i < array.length; i++) {
             int swapIndex = getRandomIndex(i, array.length);
             swapValuesByIndex(i, swapIndex);

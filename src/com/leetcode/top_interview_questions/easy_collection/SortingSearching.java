@@ -36,21 +36,19 @@ public class SortingSearching {
     }
 
     // First Bad Version 用最小的次数找到指定的目标
-    // 标准的BinarySearch是while(low < high), 计算中间值，然后移动低段或者高段
     public int firstBadVersion(int n) {
         // 测试理解：1. 第一个次品, 等效于找到前一个是正品，接着的后一个是次品 n=false, n+1=true
 
-        // 正确理解：1. "当找到次品后，判断前一个是否是正品"，如果是则退出
-        //            O(log2) 如果是8个值，则最多需要3次就能找到  O(1) 只开辟了常量数量的内存空间
+        // 正确理解：1. 标准二分法查找: 每次取剩下部分的一半，"当找到次品后，判断前一个是否是正品"，如果是则退出
         //         2. TODO: 注意overflow溢出, 两个int值的和可能超出int的最大值，导致计算出错, 除非使用python这种动态类型的语言 !!!
         int low = 1;
         int high = n;
-        while (low < high) {     // 当low=high，说明就是第一次品的位置
+        while (low < high) {                    // 当low=high，说明就是第一次品的位置
             int index = low + (high - low) / 2; // 改计算的结果一定小于high，所以不会溢出 !!
             if (isBadVersion(index)) {
-                high = index;    // 如果index是次品，那么有可能是第一个次品，所以不能减1
+                high = index;                   // 如果index是次品，那么有可能是第一个次品，所以不能减1
             } else {
-                low = index + 1; // 如果index位置是正品，那么第一个次品出现的位置一定在index后面
+                low = index + 1;                // 如果index位置是正品，那么第一个次品出现的位置一定在index后面
             }
         }
         return low;

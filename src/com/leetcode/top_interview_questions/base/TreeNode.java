@@ -1,7 +1,7 @@
-package com.leetcode.top_interview_questions.easy_collection.model;
+package com.leetcode.top_interview_questions.base;
 
 public class TreeNode {
-    
+
     private int val;
     private TreeNode left;
     private TreeNode right;

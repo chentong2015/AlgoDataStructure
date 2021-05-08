@@ -1,6 +1,6 @@
 package com.leetcode.top_interview_questions.medium_collection;
 
-import com.leetcode.top_interview_questions.easy_collection.model.IndexMark;
+import com.leetcode.top_interview_questions.base.IndexMark;
 
 import java.util.Arrays;
 
