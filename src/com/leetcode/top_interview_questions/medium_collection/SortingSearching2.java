@@ -26,11 +26,7 @@ public class SortingSearching2 {
     // 正确理解：1. "Recursive Binary Search" 递归2分法查找: Log级别的复杂度, 始终需要左右两个标识符做计算 !!
     //            递归的算法逻辑是每一次只取剩下长度的二分之一, 如果是上升趋势，则peak在后面，反之在前面
     //            O(log2(n))  O(log2(n)) 递归调用方法的深度，额外开辟的内存空间
-    public int findPeakElementRecursive(int[] nums) {
-        return findPeakElementRecursive2(nums, 0, nums.length - 1);
-    }
-
-    public int findPeakElementRecursive2(int[] nums, int left, int right) {
+    public int findPeakElementRecursive2(int[] nums, int left, int right) { // left = 0; right = nums.length - 1;
         if (left == right) {
             return left;
         }

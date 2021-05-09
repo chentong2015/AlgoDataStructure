@@ -109,5 +109,18 @@ public class DynamicProgramming {
         return count[rem - 1];
     }
 
+    // Longest Increasing Subsequence
+    // An integer array nums, return the length of the longest strictly increasing subsequence
+    // nums = [10,9,2,5,3,7,101,18] -> [2,3,7,101] 最长连续增长子序列
+    public int lengthOfLIS(int[] nums) {
+        // 测试理解：1. 普通解法，嵌套循环，对每一个位置的点往后数，计算出最长的增长序列的数目
+        //            O(n²)  O(1)
+
+        // 正确理解：1. 找到最远距离的波峰和波谷之间的有效距离(排除掉一些数字)
+        //            O(nlog(n)) time complexity
+        
+
+        return 0;
+    }
 
 }
