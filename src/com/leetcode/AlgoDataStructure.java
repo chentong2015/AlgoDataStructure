@@ -13,6 +13,14 @@ public class AlgoDataStructure {
     /**
      * 1. 关于递归法的时间复杂度   ：O(n), O(2^n), O(n^n) ...都有可能
      * 2. 关于递归法的用法与场景   ：数列，二叉树的遍历，动态编程，回溯算法 ...
-     * 3. "Dynamic Programming": 动态编程的核心在于保留每一步的信息，通过前后进行推导，找到唯一解
+     * 3. "Dynamic Programming": 动态编程的核心在于保留每一步迭代信息
      */
+
+    // 金典算法的使用
+    // 1. 二分法查找：常用在搜索和动态编程
+    //    Arrays.binarySearch(array, item)
+    //    Collections.binarySearch(list, item)
+    //    自定义使用left, right -> middle两个标识符
+
+
 }

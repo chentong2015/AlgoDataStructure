@@ -39,7 +39,7 @@ public class DynamicProgramming {
         return memo[0] == IndexMark.Good; // 最后从0出发到[memo.length - 1]有一条通路 !!
     }
 
-    // 正确理解：2. 保留一个位置前面能跳到的最大步数，如果能够到达最后则成功  O(n) O(1)
+    // 正确理解：2. 保留一个位置前面能跳到的最大步数，如果能够到达最后则成功 O(n) O(1)
     public static boolean canJumpTrick1(int[] nums) {
         int index = 1;
         int maxSteps = nums[0];
@@ -111,16 +111,50 @@ public class DynamicProgramming {
 
     // Longest Increasing Subsequence
     // An integer array nums, return the length of the longest strictly increasing subsequence
-    // nums = [10,9,2,5,3,7,101,18] -> [2,3,7,101] 最长连续增长子序列
+    // nums  = [10,9,2,5,3,7,101,18] -> [2,3,7,101] 最长连续增长子序列
+    // steps = [1, 1,1,2,2,3,4  ,4]
     public int lengthOfLIS(int[] nums) {
-        // 测试理解：1. 普通解法，嵌套循环，对每一个位置的点往后数，计算出最长的增长序列的数目
-        //            O(n²)  O(1)
-
-        // 正确理解：1. 找到最远距离的波峰和波谷之间的有效距离(排除掉一些数字)
-        //            O(nlog(n)) time complexity
-        
-
-        return 0;
+        // 正确理解：1. Dynamic Programming 使用一个同等长度的数组来保存"每一步所积累的'它前面的'最长的到达步数" !!!
+        //            O(n²) O(n)
+        if (nums.length == 0) return 0;
+        int[] steps = new int[nums.length];
+        steps[0] = 1;
+        int maxAnswer = 1;
+        for (int i = 1; i < steps.length; i++) {
+            int maxValue = 0;
+            for (int j = 0; j < i; j++) {                    // 检测在前面有比该位置小的地方的基础上继续
+                if (nums[j] < nums[i]) {
+                    maxValue = Math.max(maxValue, steps[j]); // 在前面的任意位置中，找到"前面子序列最长的"那个点 !!
+                }
+            }
+            steps[i] = maxValue + 1;                         // 在"前面子序列最长的"那个点的基础上再移动一步
+            maxAnswer = Math.max(maxAnswer, steps[i]);
+        }
+        return maxAnswer;
     }
 
+    // 正确理解：2. Dynamic Programming with Binary Search
+    //            O(nlog(n)) 最优时间复杂度  O(n)
+    public int lengthOfLIS2(int[] nums) {
+        // input: [0, 8, 4, 12, 2]
+        //    dp: [0]
+        //    dp: [0, 8]
+        //    dp: [0, 4]
+        //    dp: [0, 4, 12]
+        //    dp: [0, 2, 12] 这里存储的不是正确的排序值，但是数组的长度是最终的答案
+        int[] dp = new int[nums.length]; // Store increasing subsequence formed by including currently encountered element
+        int length = 0;
+        for (int num : nums) {
+            // Returns index of the search key, if it is contained in the array, else it returns (-(insertion point) - 1)
+            int index = Arrays.binarySearch(dp, 0, length, num);
+            if (index < 0) {
+                index = -(index + 1);// 拿到key键插入数组的点
+            }
+            dp[index] = num;         // 将读取的每一个值添加到dp数组中指定的位置"insertion point"
+            if (index == length) {   // 如果加入位置是在最后，则增加dp存储的length长度 !!
+                length++;
+            }
+        }
+        return length;
+    }
 }

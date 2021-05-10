@@ -19,6 +19,11 @@ public class TreeNode {
         this.right = right;
     }
 
+    // 判断是否是叶子节点
+    public boolean isLeaf() {
+        return left == null && right == null;
+    }
+
     public int getVal() {
         return val;
     }

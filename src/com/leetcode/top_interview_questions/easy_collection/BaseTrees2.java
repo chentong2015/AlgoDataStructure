@@ -7,9 +7,6 @@ import java.util.Queue;
 
 public class BaseTrees2 {
 
-    // 要是对称树，则每一层的数字必须是中心对称的
-    //   ===> BFS广度优先遍历
-
     // Symmetric Tree 判断是否是对称树，左右镜像
     // Given the root of a binary tree, check whether it is a mirror of itself
     public boolean isSymmetricIteratively(TreeNode root) {
@@ -58,8 +55,6 @@ public class BaseTrees2 {
         if (t1 == null || t2 == null) {
             return false;
         }
-        return (t1.getVal() == t2.getVal())
-                && isMirror(t1.getRight(), t2.getLeft())
-                && isMirror(t1.getLeft(), t2.getRight());
+        return (t1.getVal() == t2.getVal()) && isMirror(t1.getRight(), t2.getLeft()) && isMirror(t1.getLeft(), t2.getRight());
     }
 }

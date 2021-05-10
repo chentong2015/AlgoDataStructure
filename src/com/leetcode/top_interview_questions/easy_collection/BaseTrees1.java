@@ -70,27 +70,65 @@ public class BaseTrees1 {
         return false;
     }
 
-    // TODO: 实现非递归的前序和后续遍历
-    // 正确理解：1. 递归中序遍历，将所有的节点取出来，然后判断数字的大小是否按照顺序排列 !!
-    //         2. 非递归中序遍历，使用Stack栈来暂存节点, 先进后出
-    //            O(n) O(n) 最糟糕的情况是所有的node都排在root左边，栈中需要压入全部的node
+    // Binary Tree Traversal 三种遍历: preOrder前序, inorder中序, postOrder后续   ===> DFS深度优先遍历 !!
+    // 1. 使用递归方式：O(n) O(n)
+    // 2. 使用非递归方式, Stack栈暂存节点
+    public void preOrderStackTraverse(TreeNode root) {
+        // 测试复杂度：O(n) O(1) 最多只有两个节点在栈中
+        Stack<TreeNode> nodes = new Stack<>();
+        nodes.push(root);
+        while (!nodes.isEmpty()) {
+            TreeNode current = nodes.pop();
+            System.out.println(current.getVal());
+            if (current.getRight() != null) {
+                nodes.push(current.getRight());
+            }
+            if (current.getLeft() != null) {
+                nodes.push(current.getLeft());
+            }
+        }
+    }
+
+    // 测试复杂度: O(n) O(n) 最糟糕的情况是所有的node都排在root左边，栈中需要压入全部的node
     public void inOrderStackTraverse(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode node = root;
         TreeNode popNode;
         while (node != null || !stack.isEmpty()) {
             if (node != null) {
-                stack.push(node);      // 先将root压栈，然后左边压栈，然后访问右边 !
+                stack.push(node);       // 先压root栈，然后持续压左边子树，直到压到叶子节点
                 node = node.getLeft();
             } else {
-                popNode = stack.pop();
+                popNode = stack.pop();  // 从最后压入的左边子树的叶子节点开始出栈，如果该节点有右边的子树，将有节点压入，作为root之后出栈的node
                 System.out.println(popNode.getVal());
                 node = popNode.getRight();
             }
         }
     }
 
-    // 补充理解：3. 非递归层次遍历, 使用queue队列一层一层遍历, 先入队列的先出来, 类似排队 ===> 也叫BFS广度优先遍历 !!
+    // 测试复杂度:
+    public void postOrderStackTraverse(TreeNode root) {
+        Stack<TreeNode> nodes = new Stack<>();
+        nodes.push(root);
+        while (!nodes.isEmpty()) {
+            TreeNode current = nodes.peek(); // Looks at the object at the top of this stack without removing it from the stack.
+            if (current.isLeaf()) {
+                TreeNode node = nodes.pop();
+                System.out.println(node.getVal());
+            } else {
+                if (current.getRight() != null) {
+                    nodes.push(current.getRight());
+                    current.setRight(null);
+                }
+                if (current.getLeft() != null) {
+                    nodes.push(current.getLeft());
+                    current.setLeft(null);
+                }
+            }
+        }
+    }
+
+    // 补充理解：3. 非递归层次遍历, 使用queue队列一层一层遍历, 先入队列的先出来, 类似排队 ===> BFS广度优先遍历 !!
     //            O(n) O(n) 所有的node被会被添加到队列中，然后再出来
     public void levelTraverse(TreeNode root) {
         if (root == null) {
