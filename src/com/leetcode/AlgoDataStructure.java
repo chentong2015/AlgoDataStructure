@@ -22,5 +22,9 @@ public class AlgoDataStructure {
     //    Collections.binarySearch(list, item)
     //    自定义使用left, right -> middle两个标识符
 
-
+    // 关于Tree的认识:
+    // N-Ary Tree
+    // Binary Tree
+    // Binary Search Tree => Balanced & Unbalanced BTS有平衡之分
+    // Complete Binary Tree 完全二叉树，一定是BTS，也叫做堆(Heap)
 }

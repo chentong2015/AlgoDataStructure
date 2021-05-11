@@ -7,6 +7,68 @@ import java.util.Queue;
 
 public class BaseTrees2 {
 
+    // 1 + 2 + 4 + 8 ... n = a1(2^n -1) => 2^n
+    // Maximum Depth of Binary Tree 2叉树的深度
+    // Given the root of a binary tree, return its maximum depth
+    public int maxDepth(TreeNode root) {
+        // 测试理解：1. 使用递归算法(1 + 左右子树的深度的最大值), 和具体的节点的值没有关系
+        //            O(n) O(n) 递归方法造成栈空间的开销, 最差的情况是n个节点排在n层 !!
+        if (root == null) {
+            return 0;
+        } else if (root.getLeft() == null) { // 叶子节点
+            return 1 + maxDepth(root.getRight());
+        } else if (root.getRight() == null) {
+            return 1 + maxDepth(root.getLeft());
+        } else {
+            return 1 + Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight()));
+        }
+    }
+
+    // Validate "Binary Search Tree" 判断是否是标准的"二叉搜索树"
+    // Given the root of a binary tree, determine if it is a valid binary search tree (BST)
+    // 左边nodes都比key小，右边的所有nodes都比key大，同时左右都都各自满足BST
+    public boolean isValidBST(TreeNode root) {
+        // 测试理解：1. 使用递归算法, "左边子树的最大值小于key，右边子树的最小值大于key"
+        //            O(n) O(n) 递归方法造成栈空间的开销, 最差的情况是n个节点排在n层 !!
+        TreeNode node;
+        TreeNode leftMaxNode;
+        TreeNode rightMinNode;
+        if (root == null) {
+            return true;
+        } else {
+            node = root.getLeft(); // 拿到左边子树的最大值
+            leftMaxNode = node;
+            while (node != null) {
+                leftMaxNode = node;
+                node = node.getRight();
+            }
+
+            node = root.getRight(); // 拿到右边子树的最小值
+            rightMinNode = node;
+            while (node != null) {
+                rightMinNode = node;
+                node = node.getLeft();
+            }
+
+            if (leftMaxNode == null && rightMinNode == null) { // 说明只有一个节点
+                return true;
+            } else if (leftMaxNode == null) {
+                if (root.getVal() < rightMinNode.getVal()) {
+                    return isValidBST(root.getRight());
+                }
+            } else if (rightMinNode == null) {
+                if (root.getVal() > leftMaxNode.getVal()) {
+                    return isValidBST(root.getLeft());
+                }
+            } else {
+                if (root.getVal() > leftMaxNode.getVal() && root.getVal() < rightMinNode.getVal()) {
+                    return isValidBST(root.getLeft()) && isValidBST(root.getRight());
+                }
+            }
+        }
+        return false;
+    }
+
     // Symmetric Tree 判断是否是对称树，左右镜像
     // Given the root of a binary tree, check whether it is a mirror of itself
     public boolean isSymmetricIteratively(TreeNode root) {
