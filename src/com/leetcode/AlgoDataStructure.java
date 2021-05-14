@@ -27,4 +27,14 @@ public class AlgoDataStructure {
     // Binary Tree
     // Binary Search Tree => Balanced & Unbalanced BTS有平衡之分
     // Complete Binary Tree 完全二叉树，一定是BTS，也叫做堆(Heap)
+
+    // 金典排序算法:
+    // 1. 插入排序  O(n²)      O(1)       每读取一个值, 将它插入到前面有序的序列中
+    // 2. 选择排序  O(n²)      O(1)       每次遍历找最大或者最小值, 放到开头或者末尾
+    // 3. 冒泡排序  O(n²)      O(1)       两两比较交换, 依次交换
+    // 4. 快速排序  O(nlog(n)) O(nlog(n)) Quick Sort, 设置pivot基准, 然后进行partition分区
+    // 5. 归并排序  O(nlog(n)) O(n)       分治法(Divide and Conquer),将长度切分成n/2个子序列,两两进行归并,最后合并,缺点是空间复杂度高
+    // 6. 用堆排序  O(nlog(n)) O(1)       Heap完全二叉(搜索)树
+    // 7. 计数排序  O(n+k)     O(n+k)
+
 }
