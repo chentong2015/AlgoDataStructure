@@ -6,9 +6,10 @@ import java.util.*;
 
 /**
  * Binary Tree 三大遍历方式
- * 1. DFS：递归 + Stack
- * 2. BFS：Queue
- * 3. Morris Traversal: 非递归,非Stack,具有最佳的复杂度 O(n) O(1)
+ * 1. DFS(Depth first search)  ：递归 + Stack
+ * 2. BFS(Breadth First Search)：Queue & Deque 双端队列
+ * .  BBFS(Bidirectional BFS)  : 双向广度优先遍历, 从顶向下，从底向上，同时开始遍历，如果在同一个Level层面有交集则是联通的
+ * 3. Morris Traversal         : 非递归, 非Stack, 最佳复杂度 O(n) O(1)
  */
 public class BaseTrees1 {
 

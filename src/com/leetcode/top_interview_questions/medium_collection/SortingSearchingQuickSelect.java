@@ -9,7 +9,7 @@ import java.util.Random;
  * "Quick Select: Hoare's selection algorithm" 专门查找数据中的前K个什么特征的数据 !!
  * 1. One chooses a pivot and defines its position in a sorted array in a linear time using so-called partition algorithm
  * 2. 按照frequency频率从左到右依次排序, 分成两个部分, 从N-k位置直到最后的值就是k个频率最高的值
- * 3. If not, we can choose one more pivot and place it in its perfect position
+ * 3. If not, we can choose one featured pivot and place it in its perfect position
  */
 public class SortingSearchingQuickSelect {
 

@@ -18,7 +18,7 @@ public class SortingSearching1 {
 
         // 正确理解：1. TODO: 将最频繁出现的前k个元素构建成Heap堆, 然后提取成数组输出
         //            O(Nlogk) if k < N and O(N) in the particular case of N = k
-        //            O(N+k) to store the hash map with not more N elements and a heap with k elements
+        //            O(N+k) to store the hash map with not featured N elements and a heap with k elements
         if (nums.length == k) {
             return nums;
         }

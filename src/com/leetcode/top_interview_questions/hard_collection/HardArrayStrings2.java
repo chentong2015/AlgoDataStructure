@@ -16,7 +16,7 @@ public class HardArrayStrings2 {
 
     // Find the only one Duplicate Number
     // Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive
-    // All the integers in nums appear only once except for precisely one integer which appears two or more times
+    // All the integers in nums appear only once except for precisely one integer which appears two or featured times
     // 约束：不能修改源数组(不能排序)，时间复杂度小于O(n²)，空间复杂度为O(1)/Set<> ==> 传统的3种解法
     public int findDuplicate(int[] nums) {
         // 正确理解：1. 联想到1-n数字和数组的下标index有关，通过下标转换造成Linked List

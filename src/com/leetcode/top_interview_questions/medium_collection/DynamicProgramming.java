@@ -7,7 +7,9 @@ import java.util.Arrays;
 /**
  * 动态编程的理解步骤：从回溯到递归算法，应用追踪的方式减少时间空间复杂度 !!
  * 1. Start with the recursive backtracking solution
- * 2. Optimize by using a memoization table (top-down 自顶向下)
+ * 2. Optimize by using a memoization table (top-down 自顶向下)  ===> Divide and Conquer 分而治之 + 归并算法
+ * .    > 2.1 先将复杂问题差发成若干个小问题SubProblems              ===> Recursion 采用递归进行分解
+ * .    > 2.2 重复且独立的解决每个小问题，最后再汇总结果取解决原始问题
  * 3. Remove the need for recursion (bottom-up 自底向上)
  * 4. Apply final tricks to reduce the time / memory complexity
  */
@@ -84,8 +86,7 @@ public class DynamicProgramming {
         // 测试理解：1. 先从币值最大的开始取, 从大到小, 如果没有结果则从第二小开始取, 可以使用递归算法一层一层的取 !!
         //            n1*1+n2*2+n3*3...=X   n1 + n2 + n3  ...=Min
 
-        // 正确理解：1. TODO: Dynamic programming (Top down) 所有的可能性最终会构成一个递归树, 答案是这个递归树的最低高度层级 !!
-        //            理解和测试具有明显错误的Test Case
+        // 正确理解：1. TODO: Dynamic programming (Top down)所有的可能性最终会构成一个递归树, 答案是这个递归树的最低高度层级 !!
         // coins = {2, 5}       target = 6   ->  Answer: -1          Expected: 3 (2)
         // coins = {1, 3, 4, 5} target = 7   ->  Answer: 3 (5, 1, 1) Expected: 2 (3, 4)
         if (amount < 1) return 0;
