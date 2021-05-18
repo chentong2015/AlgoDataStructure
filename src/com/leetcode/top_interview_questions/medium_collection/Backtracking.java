@@ -3,7 +3,7 @@ package com.leetcode.top_interview_questions.medium_collection;
 import java.util.ArrayList;
 import java.util.List;
 
-// 关于回溯的算法
+// Backtracking 回溯算法
 public class Backtracking {
 
     // Generate Parentheses
@@ -42,9 +42,7 @@ public class Backtracking {
             } else {
                 balance--;
             }
-            if (balance < 0) {
-                return false;
-            }
+            if (balance < 0) return false;
         }
         return (balance == 0);
     }
@@ -67,7 +65,7 @@ public class Backtracking {
 
     private void getSubsets(int index, int[] list, int[] nums, List<List<Integer>> results) {
         index++;
-        int[] cloneList = list.clone(); // 使用clone出来的列表，不会造成数据的共享差错 !!
+        int[] cloneList = list.clone();               // 使用clone出来的列表，不会造成数据的共享差错 !!
         if (index == nums.length) {
             List<Integer> result = new ArrayList<>();
             for (int i = 0; i < nums.length; i++) {   // 递归的最后，还需要遍历N来取出所有的结果，增加时间复杂度
@@ -77,8 +75,8 @@ public class Backtracking {
             }
             results.add(result);
         } else {
-            cloneList[index] = 0;
-            getSubsets(index, cloneList, nums, results);    // 改变不同的设置，递归出不同的结果
+            cloneList[index] = 0;                     // 改变不同的设置, 递归出不同的结果, 0表示不出现, 1表示出现
+            getSubsets(index, cloneList, nums, results);
             cloneList[index] = 1;
             getSubsets(index, cloneList, nums, results);
         }

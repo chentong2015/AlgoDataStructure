@@ -4,7 +4,7 @@ import com.leetcode.top_interview_questions.base.TreeNode;
 
 import java.util.*;
 
-public class HardTreesGraphs {
+public class HardTrees1 {
 
     // Word Ladder
     // Given two words, beginWord and endWord, and a dictionary wordList, 
@@ -103,9 +103,4 @@ public class HardTreesGraphs {
         }
         return q; // 最终停止的位置就是共同点
     }
-
-    // Course Schedule II
-
-
-    // Count of Smaller Numbers After Self
 }

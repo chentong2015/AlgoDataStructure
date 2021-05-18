@@ -28,6 +28,10 @@ public class AlgoDataStructure {
     // Binary Search Tree => Balanced & Unbalanced BTS有平衡之分
     // Complete Binary Tree 完全二叉树，一定是BTS，也叫做堆(Heap)
 
+    // 两种关于Tree的高级数据结构
+    // 1. Segment Tree 片段树
+    // 2. Binary Indexed Tree 二叉索引树
+
     // 金典排序算法:
     // 1. 插入排序  O(n²)      O(1)       每读取一个值, 将它插入到前面有序的序列中
     // 2. 选择排序  O(n²)      O(1)       每次遍历找最大或者最小值, 放到开头或者末尾

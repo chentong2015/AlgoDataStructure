@@ -86,7 +86,7 @@ public class DynamicProgramming {
         // 测试理解：1. 先从币值最大的开始取, 从大到小, 如果没有结果则从第二小开始取, 可以使用递归算法一层一层的取 !!
         //            n1*1+n2*2+n3*3...=X   n1 + n2 + n3  ...=Min
 
-        // 正确理解：1. TODO: Dynamic programming (Top down)所有的可能性最终会构成一个递归树, 答案是这个递归树的最低高度层级 !!
+        // 正确理解：1. TODO: Dynamic programming(Top down) 所有可能最终构成一个递归树, 答案是这个递归树的最低高度层级 !!
         // coins = {2, 5}       target = 6   ->  Answer: -1          Expected: 3 (2)
         // coins = {1, 3, 4, 5} target = 7   ->  Answer: 3 (5, 1, 1) Expected: 2 (3, 4)
         if (amount < 1) return 0;
@@ -129,13 +129,13 @@ public class DynamicProgramming {
                 }
             }
             steps[i] = maxValue + 1;                         // 在"前面子序列最长的"那个点的基础上再移动一步
-            maxAnswer = Math.max(maxAnswer, steps[i]);
+            maxAnswer = Math.max(maxAnswer, steps[i]);       // 更新记录的最大值
         }
         return maxAnswer;
     }
 
     // 正确理解：2. Dynamic Programming with Binary Search
-    //            O(nlog(n)) 最优时间复杂度  O(n)
+    //            O(nlog(n)) 最优时间复杂度 O(n)
     public int lengthOfLIS2(int[] nums) {
         // input: [0, 8, 4, 12, 2]
         //    dp: [0]
