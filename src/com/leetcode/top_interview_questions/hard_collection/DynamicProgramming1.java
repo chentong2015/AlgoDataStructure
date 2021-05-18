@@ -13,7 +13,7 @@ import com.leetcode.top_interview_questions.base.ResultPatternMatch;
 // The matching should cover the entire input string (not partial)
 // s = "ab", p = ".*"      -> true
 // s = "aab", p = "c*a*b"  -> true 第一个c字符有可能重复0次
-public class DynamicProgramming {
+public class DynamicProgramming1 {
 
     public boolean isMatchRecursive(String text, String pattern) {
         // 测试理解：1. 根据pattern列举出所有的字符串的可能，找到其中匹配的目标字符串
@@ -35,12 +35,15 @@ public class DynamicProgramming {
     }
 
     // Up-Bottom Variation 自定向下 ///////////////////////////////////////////////////////////////
+    // 算法逻辑：dp(i, j): does text[i:] and pattern[j:] match
+    //         和上面的递归一致，这里使用二维数组来存储判断的结果值
+    //         O(TP) O(TP)
     public boolean isMatchUpBottom(String text, String pattern) {
         boolean[][] dp = new boolean[text.length() + 1][pattern.length() + 1];
         dp[text.length()][pattern.length()] = true;
         for (int i = text.length(); i >= 0; i--) {
             for (int j = pattern.length() - 1; j >= 0; j--) {
-                boolean first_match = (i < text.length() && (pattern.charAt(j) == text.charAt(i) || pattern.charAt(j) == '.'));
+                boolean first_match = (i < text.length() && (text.charAt(i) == pattern.charAt(j) || pattern.charAt(j) == '.'));
                 if (j + 1 < pattern.length() && pattern.charAt(j + 1) == '*') {
                     dp[i][j] = dp[i][j + 2] || first_match && dp[i + 1][j];
                 } else {
