@@ -17,10 +17,9 @@ public class DynamicProgramming1 {
 
     public boolean isMatchRecursive(String text, String pattern) {
         // 测试理解：1. 根据pattern列举出所有的字符串的可能，找到其中匹配的目标字符串
-        text.matches(pattern);
 
         // 正确理解: 1. 从第一个字符和第二个字符开始递归，每次往后截取text的子字符串，并且带上前一轮判断的结果
-        //            复杂度和text & pattern字符串长度均有关
+        //            <复杂度和text & pattern字符串长度均有关>
         if (pattern.isEmpty()) {
             return text.isEmpty();
         }

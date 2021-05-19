@@ -22,15 +22,16 @@ public class AlgoDataStructure {
     //    Collections.binarySearch(list, item)
     //    自定义使用left, right -> middle两个标识符
 
-    // 关于Tree的认识:
+    // About Tree:
     // N-Ary Tree
     // Binary Tree
     // Binary Search Tree => Balanced & Unbalanced BTS有平衡之分
-    // Complete Binary Tree 完全二叉树，一定是BTS，也叫做堆(Heap)
+    // Complete Binary Tree 完全二叉树 / BTS / 堆(Heap)
 
-    // 两种关于Tree的高级数据结构
+    // 关于Tree的高级数据结构
     // 1. Segment Tree 片段树
     // 2. Binary Indexed Tree 二叉索引树
+    // 3. Prefix Tree 前缀树(含有多个子节点的树数据结构)
 
     // 金典排序算法:
     // 1. 插入排序  O(n²)      O(1)       每读取一个值, 将它插入到前面有序的序列中
@@ -40,5 +41,4 @@ public class AlgoDataStructure {
     // 5. 归并排序  O(nlog(n)) O(n)       Divide and Conquer分治法, 将长度切分成n/2个子序列, 两两进行归并, 最后合并,缺点是空间复杂度高
     // 6. 用堆排序  O(nlog(n)) O(1)       Heap完全二叉树, 先构建堆, 然后依次将root节点和最后一个元素Rn交换, 剩下R1-Rn-1个无序区, 再找第二大的
     // 7. 计数排序  O(n+k)     O(n+k)     n个0到k之间整数, 当k不是很大并且序列比较集中时, 考虑使用计数排序, 先统计再依次输出
-
 }
