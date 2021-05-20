@@ -104,4 +104,33 @@ public class BaseStrings1 {
         Arrays.sort(tChars);
         return Arrays.equals(sChars, tChars);
     }
+
+    // Longest Common Prefix  ===> 高阶解法：Prefix Tree数据结构
+    // Write a function to find the longest common prefix string amongst an array of strings
+    // If there is no common prefix, return an empty string ""
+    // strs = ["flower","flow","flight"] -> "fl"
+    public String longestCommonPrefix(String[] strs) {
+        // 测试理解：1.依次判断每个单词的指定位置字符是否相同，提供公共prefix
+        //           O(m*n) O(1)
+
+        // 正确理解：1.
+        String result = "";
+        String str = strs[0];
+        for (int i = 0; i < str.length(); i++) {
+            String temp = result + str.charAt(i);
+            boolean isCommonPrefix = true;
+            for (int j = 1; j < strs.length; j++) {
+                if (!strs[j].startsWith(temp)) {
+                    isCommonPrefix = false;
+                    break;
+                }
+            }
+            if (isCommonPrefix) {
+                result = temp;
+            } else {
+                break;
+            }
+        }
+        return result;
+    }
 }

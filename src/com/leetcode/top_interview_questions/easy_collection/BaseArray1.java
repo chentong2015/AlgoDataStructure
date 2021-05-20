@@ -17,7 +17,9 @@ public class BaseArray1 {
 
         // 正确理解：由于是排序排列的，因此只需要找到所有不同的item，从开始位置依次往后排即可
         //         从第二个位置开始，只在有不同的值出现的时候才交换一次位置 !!
-        if (nums.length == 0) return 0;
+        if (nums.length == 0) {
+            return 0;
+        }
         int i = 0;
         for (int j = 1; j < nums.length; j++) {
             if (nums[j] != nums[i]) {
@@ -61,19 +63,32 @@ public class BaseArray1 {
     }
 
     // Rotate the array to the right by k steps, where k is non-negative.
-    // Input: nums = [1,2,3,4,5,6,7], k = 3
-    // Output: [5,6,7,1,2,3,4]
+    // Input: nums = [1,2,3,4,5,6,7], k = 3 -> [5,6,7,1,2,3,4]
     public void rotateArray(int[] nums, int k) {
         // 测试理解：从后往前将顺序进行移位交换, 如何用最少的步骤实现交换 ?
         //         1. 将后面的子数组颠倒，然后拼接到原始数组的前面
-        //         2. 循环k，一次处理一个，循环换值的位置        Time complexity: O(n×k), Space complexity: O(1)
+        //         2. 循环k，一次处理一个，循环换值的位置 O(n×k), O(1)
 
-        // 标准解法: 1. 使用额外的数组, 交换item后赋值回原来的数组 Time complexity: O(n), Space complexity: O(n)
-        //          2. TODO 循环替换: 前后的会移动到后面，后面的超过数组的长度，求余数之后再移动到前面 ??
-        //          3. Reverse完全颠倒数组，然后再颠倒部分 !! OK
-        k = k % nums.length; // 求余：超过length的移动将回到原点
-        for (int i = 0; i < nums.length; i++) {
+        // 正确理解: 1. 使用额外的数组, 交换item后赋值回原来的数组    O(n), O(n)
+        //          2. TODO: 循环替换, 前面往后，后面的超过长度往移动到开头 O(n), O(1)
+        k = k % nums.length;
+        int count = 0;
+        for (int start = 0; count < nums.length; start++) {
+            int current = start;
+            int prev = nums[start];
+            do {
+                int next = (current + k) % nums.length;
+                int temp = nums[next];
+                nums[next] = prev;
+                prev = temp;
+                current = next;
+                count++;
+            } while (current != start); // current循环回到start位置点的时候结束
         }
+    }
+
+    // 正确理解: 3. Reverse完全颠倒数组，然后再颠倒部分 O(n) O(1)
+    public void rotateArray2(int[] nums, int k) {
         reverse(nums, 0, nums.length - 1);
         reverse(nums, 0, k - 1);
         reverse(nums, k, nums.length - 1);
@@ -112,27 +127,27 @@ public class BaseArray1 {
 
     // Single Number
     // Non-empty array of integers nums, every element appears twice except for one. Find that single one.
-    // 不能使用额外的内存空间，空间复杂度必须是O(1)
     // Input: nums = [4,1,2,1,2] -> 4  1 1 2 2 4
     public static int findSingleNumber(int[] nums) {
         // 测试理解: 乱序的数组，如何判断前面已经出现过的item值 ?
         //         1. 使用嵌套for循环 Time complexity: O(n2), Space complexity: O(1)
 
-        // 正确解法: 1. 先对数组进行排序，然后之间判断相邻的两个值 Arrays.sort(nums) 排序复杂度O(nlog(n)) > O(n), Space complexity: O(1)
-        //          2. 借助别的数组来辅助运算
+        // 正确解法: 1. 先对数组进行排序, 然后之间判断相邻的两个值 Arrays.sort(nums) 排序复杂度O(nlog(n)) > O(n), Space complexity: O(1)
+        //          2. 借助别的数组来辅助运算, 空间复杂度并不满足
         //          3. 借助HashSet<>, 通过求和来计算: 2∗(a+b+c)−(a+a+b+b+c)=c
         //          4. Bit Manipulation 比特位运算: a⊕b⊕a=(a⊕a)⊕b=0⊕b=b 将0和所有的值求XOR异或运算(相同的消去)，结果就是最中的单列的值 !!
-        int result = 0;
-        for (int i : nums) {
-            result ^= i;
-        }
-
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 1; i += 2) {
             if (nums[i] != nums[i + 1]) {
                 return nums[i];
             }
         }
-        return nums[nums.length - 1]; // 如果前面都没有找出来，那么最后一个值就是单独的值
+        // return nums[nums.length - 1]; 如果前面都没有找出来，那么最后一个值就是单独的值
+
+        int result = 0;
+        for (int i : nums) {
+            result ^= i;
+        }
+        return result;
     }
 }
