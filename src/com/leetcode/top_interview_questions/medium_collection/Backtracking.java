@@ -2,9 +2,52 @@ package com.leetcode.top_interview_questions.medium_collection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 // Backtracking 回溯算法
 public class Backtracking {
+
+    // 使用"平衡法则"判断是否满足括号的原则: 确保第一个添加的符号是"("
+    // O(n) O(1)
+    private boolean isValidParenthesis(char[] chars) {
+        int balance = 0;
+        for (char c : chars) {
+            if (c == '(') {
+                balance++;
+            } else {
+                balance--;
+            }
+            if (balance < 0) return false; // 如果抵消掉左括号后，右括号多了，则必然是无效的 ==> 因为消除后，左括号必须是起始!!
+        }
+        return (balance == 0); // 最后确定左括号被完全抵消掉了 !!
+    }
+
+    // Valid Parentheses 典型的Stack应用场景：带有"平衡原则"的逻辑
+    // s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid
+    // { { } [ ] [ [ [ ] ] ] } VALID expression
+    //           [ [ [ ] ] ]   VALID sub-expression
+    //   { } [ ]               VALID sub-expression
+    public boolean isValid(String str) {
+        // 测试理解：1. 使用栈进行迭代判断，如果是一组对应的符号则出栈，否则入栈等待
+        //            O(n) O(n)
+        Stack<Character> stack = new Stack<>(); // 不需要在stack中存储String类型，避免类型转换造成的"装箱和拆箱"
+        for (int i = 0; i < str.length(); i++) {
+            if (stack.isEmpty()) {
+                stack.push(str.charAt(i));
+            } else {
+                char temp = stack.peek();
+                char c = str.charAt(i);
+                if ((temp == '{' && c == '}') || (temp == '[' && c == ']') || (temp == '(' && c == ')')) {
+                    stack.pop();
+                } else {
+                    stack.push(c);
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    // 以上为基础测试 ----------------------------------------------------------------------------------------------------
 
     // Generate Parentheses
     // Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses
@@ -31,20 +74,6 @@ public class Backtracking {
             backtrack(ans, cur, open, close + 1, max);
             cur.deleteCharAt(cur.length() - 1);
         }
-    }
-
-    // 使用"平衡法则"判断是否满足括号的原则: 确保第一个添加的符号是"("
-    private boolean isValidParenthesis(char[] chars) {
-        int balance = 0;
-        for (char c : chars) {
-            if (c == '(') {
-                balance++;
-            } else {
-                balance--;
-            }
-            if (balance < 0) return false;
-        }
-        return (balance == 0);
     }
 
     // Subsets

@@ -1,6 +1,6 @@
 package com.leetcode.code_top_entreprise;
 
-public class Interview {
+public class DemoInterview {
 
     // Murex在线测试题
     // 道路连接的问题 ==> 找出所有可能的通路，有且只有一条可能的通路

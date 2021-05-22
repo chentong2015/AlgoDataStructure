@@ -6,9 +6,10 @@ import com.leetcode.top_interview_questions.base.ListNode;
  * Linked List 链表的优缺点：
  * 1. 数据查询比较慢
  * 2. 增删中间节点的数据很快 ==> 时间复杂度最优 !
+ * .
+ * 操作和遍历链表的时候，判断的是Node是否为null，而不是Node.next是否为空 !!
  */
-// ** 在操作和遍历链表的时候，判断的是Node是否为null，而不是Node.next是否为空 **
-public class BaseLinkedList1 {
+public class BaseLinkedList {
 
     // Remove Nth Node From End of List
     // Given the head of a linked list, remove the nth node from the end of the list and return its head.
@@ -159,14 +160,21 @@ public class BaseLinkedList1 {
         return head;
     }
 
-
-    // 删除链表中中间位置的指定值的节点
-    // The value of each node in the list is unique. 都是的单一的值
-    // The node to be deleted is in the list and is not a tail node 确定之后有节点可以使用
-    public void deleteNode(ListNode node) {
-        // 正确理解: 1. 这里没有办法拿到前节点, 只能将当前节点的后一个节点往前移动，然后去掉后一个节点 !!
-        // ListNode beforeNode;
-        node.value = node.next.value;
-        node.next = node.next.next;
+    // Linked List Cycle
+    // Given the head of a linked list, determine if the linked list has a cycle in it
+    // pos is -1 or a valid index in the linked-list 使用pos表示链表尾部节点的下一个节点指向的位置(0-indexed)!!
+    // head = [3,2,0,-4], pos = 1 -> true
+    public boolean hasCycle(ListNode head) { // pos并不是参数
+        // 正确理解: 1. "龟兔赛跑原理"，如果链表中出现循环，则必然跑得快的，会追上跑得慢的，完成套圈 !!
+        //            O(n) O(1)
+        ListNode node = head;
+        while (head != null && head.next != null) { // 判断前面有node可以遍历
+            node = node.next;
+            head = head.next.next;
+            if (head != null && head.equals(node)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

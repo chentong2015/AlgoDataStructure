@@ -26,7 +26,9 @@ public class AlgoDataStructure {
     // About Tree:
     // N-Ary Tree
     // Binary Tree
-    // Binary Search Tree => Balanced & Unbalanced BTS有平衡之分
+    // Binary Search Tree
+    //      Balanced & Unbalanced BTS
+    //      Red–black Tree 自平衡二叉查找树, (对称, 降低树的深度, 节点有红黑之分) https://zh.wikipedia.org/wiki/红黑树
     // Complete Binary Tree 完全二叉树 / BTS / 堆(Heap)
 
     // 关于Tree的高级数据结构

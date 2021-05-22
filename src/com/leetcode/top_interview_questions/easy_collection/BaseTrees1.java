@@ -49,6 +49,7 @@ public class BaseTrees1 {
         }
     }
 
+    // TODO: 不使用递归的后续遍历
     // 正确理解: Keep track of the previously printed node in pre. Only print a node if its right child is null or equal to pre
     //          记录始终记录前一个输出的节点，当且仅当node的右边节点为null，或者右边节点是前一个输出，则最后才输出该node ==> 后继输出 !!
     //          Using 1 Stack. O(n) Time & O(n) Space
@@ -65,17 +66,17 @@ public class BaseTrees1 {
         Stack<TreeNode> stack = new Stack();
         while (root != null || !stack.empty()) {
             if (root != null) {
-                stack.push(root);
-                root = root.getLeft();    // 先压左边node
+                stack.push(root);               // 0. root最先进栈
+                root = root.getLeft();          // 1. 先压左边node
             } else {
-                root = stack.peek();      // 检测stack顶部的node，使用root来引用
+                root = stack.peek();            // 查看stack顶部的node，使用root来引用
                 if (root.getRight() == null || preRoot == root.getRight()) {
-                    results.add(root.getVal());
+                    results.add(root.getVal()); // 直接取查看node的值
                     stack.pop();
-                    preRoot = root;       // 纪录前面一个输出的节点
-                    root = null;          // 设置null，防止再次进入root = root.getLeft();左侧的子树中
+                    preRoot = root;             // 纪录前面一个输出的节点，把遍历过的位置路径做标记 !!
+                    root = null;                // 设置null，防止再次进入root = root.getLeft();左侧的子树中
                 } else {
-                    root = root.getRight(); // 在移动到右边，循环再压入右边节点
+                    root = root.getRight();     // 2. 在移动到右边，循环再压入右边节点
                 }
             }
         }

@@ -129,21 +129,21 @@ public class BaseArray1 {
     // Non-empty array of integers nums, every element appears twice except for one. Find that single one.
     // Input: nums = [4,1,2,1,2] -> 4  1 1 2 2 4
     public static int findSingleNumber(int[] nums) {
-        // 测试理解: 乱序的数组，如何判断前面已经出现过的item值 ?
-        //         1. 使用嵌套for循环 Time complexity: O(n2), Space complexity: O(1)
+        // 测试理解: 1. 使用嵌套for循环 O(n2), O(1)
+        //         2. 先对数组进行排序, 然后之间判断相邻的两个值 Arrays.sort(nums) O(nlog(n)) > O(n), O(1)
 
-        // 正确解法: 1. 先对数组进行排序, 然后之间判断相邻的两个值 Arrays.sort(nums) 排序复杂度O(nlog(n)) > O(n), Space complexity: O(1)
-        //          2. 借助别的数组来辅助运算, 空间复杂度并不满足
-        //          3. 借助HashSet<>, 通过求和来计算: 2∗(a+b+c)−(a+a+b+b+c)=c
-        //          4. Bit Manipulation 比特位运算: a⊕b⊕a=(a⊕a)⊕b=0⊕b=b 将0和所有的值求XOR异或运算(相同的消去)，结果就是最中的单列的值 !!
+        // 正确解法: 1. 借助HashSet<>, 通过求和来计算: 2∗(a+b+c)−(a+a+b+b+c)=c
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 1; i += 2) {
             if (nums[i] != nums[i + 1]) {
                 return nums[i];
             }
         }
-        // return nums[nums.length - 1]; 如果前面都没有找出来，那么最后一个值就是单独的值
+        return nums[nums.length - 1]; // 如果前面都没有找出来，那么最后一个值就是单独的值
+    }
 
+    // 正确解法: 2. Bit Manipulation 比特位运算: a⊕b⊕a=(a⊕a)⊕b=0⊕b=b 将0和所有的值求XOR异或运算(相同的消去)，结果就是最中的单列的值 !!
+    public static int findSingleNumber2(int[] nums) {
         int result = 0;
         for (int i : nums) {
             result ^= i;
