@@ -1,16 +1,17 @@
 package com.leetcode.learn_introduction;
 
+import java.util.HashSet;
+
 /**
  * Array 数组的认识
  * 1. 充分利用数组的位置和存储空间，通过一次遍历(或两次遍历)将需要判断的信息进行提取
- * 2. 常见技术:
+ * 2. 常见技术 + 特殊情况...
  * > 直接利用位置下标进行计算，将问题转换成和index相关
  * > 使用两端遍历，或者二分法优化元素的判断
- * > 将数组中的元素读取到别的数据结构中，HashMap<>能够在O(1)的时间复杂度下面找到key值
- * > 利用已经排序的数组的特征
- * > 特殊情况...
+ * > 充分利用HashMap<>和HashSet<>数据结构，判断key值的存在或者统计出现的次数
+ * > Arrays.sort() 利用已经排序的数组的特征
  */
-public class LearnArray {
+public class LearnArray1 {
 
     // Max Consecutive Ones
     // Given a binary array nums, return the maximum number of consecutive 1's in the array
@@ -115,6 +116,23 @@ public class LearnArray {
         }
     }
 
-    // Remove Element
-    
+    // TODO: 数组HashSet数据结构的金典使用，边读取边判断指定的条件 !!
+    // Check If N and Its Double Exist
+    // Check if there exists two integers N and M such that N is the double of M(N = 2*M), arr[i]==2*arr[j]
+    // arr = [7,1,14,11]            -> true, 14=2*7
+    // arr = [-2,0,10,-19,4,6,-8]   -> false
+    public boolean checkIfExist(int[] arr) {
+        // 测试理解：1. 直接使用HashSet<>, 判断key和2*key是否同时存在 O(2*n)=O(n) O(n)                           ===> 比使用Map<>快1ms
+        HashSet<Integer> set = new HashSet<>();
+        for (int a : arr) {
+            if (a == 0 && set.contains(0)) {  // 0是特殊的值，如果有两个以上，则直接返回true !!
+                return true;
+            } else if (set.contains(2 * a) || (a % 2 == 0 && set.contains(a / 2))) { // 边读取值边判断是否包含 ==> 比重复判断快1ms
+                return true;
+            } else {
+                set.add(a);
+            }
+        }
+        return false;
+    }
 }

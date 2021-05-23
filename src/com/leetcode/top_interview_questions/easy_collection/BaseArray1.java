@@ -6,12 +6,54 @@ import java.util.Set;
 
 public class BaseArray1 {
 
+    // Remove Element
+    // Given an array nums and a value val, remove all instances of that value in-place and return the new length
+    // The order of elements can be changed. It doesn't matter what you leave beyond the new length
+    // nums = [0,1,2,2,3,0,4,2], val = 2 -> 5, nums = [0,1,4,0,3]
+    public int removeElement(int[] nums, int val) {
+        // 测试理解：1. 从两侧读取，左边遇到指定的值时，从右边取出非val值来填写 ==> 判断所有的边缘条件，和特殊情况 !!
+        //           O(n) O(1)
+
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        if (nums.length == 1) {
+            return nums[0] == val ? 0 : 1;
+        }
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            if (nums[left] == val) {
+                while (nums[right] == val) {
+                    right--;
+                    if (left == right) return left; // 同一个位置碰到的值，就是nums[left]位置需要删除的值
+                }
+                nums[left] = nums[right];
+                right--;
+                if (left == right) return left + 1; // 将非val值移动到left位置，减right之后如果遇到则说明总数需要+1
+            }
+            left++;
+        }
+        // 如果left直接移动到最后一个位置(nums.length - 1)，跳出while循环之后，需要判断最后一个位置的值
+        return nums[left + 1] == val ? left : left + 1;
+    }
+
+    // TODO: 数组基础典型问题 
+    // 正确理解: 1. 只需要把不是val的值提取到前面，共开始起排列  ===> 上面测试算法的反面，避免多次比较val !!
+    public int removeElement1(int[] nums, int val) {
+        int i = 0;
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != val) {
+                nums[i] = nums[j];
+                i++;
+            }
+        }
+        return i;
+    }
+
     // Remove duplicates from sorted array
-    // 1. The input array is passed in by reference
-    // 2. It doesn't matter what you leave beyond the returned length
-    // 2. Modifying the input array in-place with O(1) extra memory 空间复杂度 !!
-    // 3. 时间复杂度上面O(n)
-    // 4. For example: [0,0,1,1,1,2,2,3,3,4] -> [0,1,2,3,4]
+    // The input array is passed in by reference, it doesn't matter what you leave beyond the returned length
+    // For example: [0,0,1,1,1,2,2,3,3,4] -> [0,1,2,3,4]
     public int removeDuplicates(int[] nums) {
         // 测试理解：当出现重复的item时，不能将后面所有的items都往前面移动，复杂度不正确 !!
 
