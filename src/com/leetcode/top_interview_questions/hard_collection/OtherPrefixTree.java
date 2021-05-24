@@ -22,7 +22,7 @@ import com.leetcode.top_interview_questions.hard_collection.model.TrieNode;
 // 3. Longest prefix matching algorithm in IP routing to select an entry from a forwarding table
 // 4. Solving word games
 // 5. Text on key9 predictive text 手机9宫格输入器预测单词
-class OtherPrefixTree {
+public class OtherPrefixTree {
 
     private TrieNode root = new TrieNode();
 

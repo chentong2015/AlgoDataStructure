@@ -46,9 +46,7 @@ public class HardLinkedList {
         if (pre == null) after.next = addNode;// 如果移动到最后，则直接将新的节点添加到最后
         return root;
     }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     // Sort List 自定义排序一个链表
     // Given the head of a linked list, return the list after sorting it in ascending order
     // head = [-1,5,3,4,0] -> [-1,0,3,4,5]

@@ -4,13 +4,6 @@ import com.leetcode.top_interview_questions.base.TreeNode;
 
 import java.util.*;
 
-/**
- * Binary Tree 三大遍历方式
- * 1. DFS(Depth first search)  ：递归 + Stack
- * 2. BFS(Breadth First Search)：Queue & Deque 双端队列
- * .  BBFS(Bidirectional BFS)  : 双向广度优先遍历, 从顶向下，从底向上，同时开始遍历，如果在同一个Level层面有交集则是联通的
- * 3. Morris Traversal         : 非递归, 非Stack, 最佳复杂度 O(n) O(1)
- */
 public class BaseTrees1 {
 
     // Binary Tree Traversal 三种遍历: preOrder前序, inorder中序, postOrder后续   ===> DFS深度优先遍历 !!
@@ -42,7 +35,8 @@ public class BaseTrees1 {
                 stack.push(node);       // 先压root栈，然后持续压左边子树，直到压到叶子节点
                 node = node.getLeft();
             } else {
-                TreeNode popNode = stack.pop();  // 从最后压入的左边子树的叶子节点开始出栈，如果该节点有右边的子树，将有节点压入，作为root之后出栈的node
+                // 从最后压入的左边子树的叶子节点开始出栈，如果该节点有右边的子树，将有节点压入，作为root之后出栈的node
+                TreeNode popNode = stack.pop();
                 System.out.println(popNode.getVal());
                 node = popNode.getRight();
             }
@@ -60,8 +54,7 @@ public class BaseTrees1 {
     // => out: 2 1
     public List<Integer> postOrderStackTraverse(TreeNode root) {
         List<Integer> results = new ArrayList<>();
-        if (root == null)
-            return results;
+        if (root == null) return results;
         TreeNode preRoot = null;
         Stack<TreeNode> stack = new Stack();
         while (root != null || !stack.empty()) {
@@ -86,9 +79,7 @@ public class BaseTrees1 {
     // 补充理解：3. 非递归层次遍历, 使用queue队列一层一层遍历, 先入队列的先出来, 类似排队 ===> BFS广度优先遍历 !!
     //            O(n) O(n) 所有的node被会被添加到队列中，然后再出来
     public void levelTraverse(TreeNode root) {
-        if (root == null) {
-            return;
-        }
+        if (root == null) return;
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
         while (!queue.isEmpty()) {

@@ -1,17 +1,19 @@
-package com.leetcode.code_top_entreprise;
+package com.leetcode.code_test_interview;
 
+/**
+ * 如何面试答题：
+ * 1. 面试的问题不一定有标准答案，有的甚至没有正确答案，把面试官当做客户
+ * 2. 沟通好问题是什么，问题的边界，假设条件，边缘场景，异常场景，技术架构、如何测试、技术限制等 ===> 和平时工作一致，明确需求
+ * 3. 动手答题前，请留两分钟思考，抽象逻辑
+ * 4. 如果题目特殊，可以请求一定的提示，思考后解决
+ * 5. Ask the right question 提正确的问题，make decision在多种解法中找到最优化的解法
+ */
 public class DemoInterview {
 
-    // Murex在线测试题
-    // 道路连接的问题 ==> 找出所有可能的通路，有且只有一条可能的通路
-    // (0, 0)
-    // A   E   A   E "3 * 3"
-    // A   A   A   E
-    // A   A   E   E
-    // E   A   A   D
-    public void testPath() {
-
-    }
+    // Microsoft实战题目
+    // http://microsoft-hire.me/pages/problems/leetcode.html
+    // https://www.careercup.com/page?pid=microsoft-interview-questions
+    // 补充实战题库 https://codetop.cc/#/home
 
     // Twitter算法面试题: 计算每个位置的柱子上方还能储水的量，和该柱子的前后柱子没有关系，只和它前后元素中的最大高度柱子有关系 !!
     // 解法1: 暴力破解

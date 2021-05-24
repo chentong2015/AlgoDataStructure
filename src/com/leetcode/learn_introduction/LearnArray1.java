@@ -4,12 +4,12 @@ import java.util.HashSet;
 
 /**
  * Array 数组的认识
- * 1. 充分利用数组的位置和存储空间，通过一次遍历(或两次遍历)将需要判断的信息进行提取
- * 2. 常见技术 + 特殊情况...
- * > 直接利用位置下标进行计算，将问题转换成和index相关
- * > 使用两端遍历，或者二分法优化元素的判断
- * > 充分利用HashMap<>和HashSet<>数据结构，判断key值的存在或者统计出现的次数
- * > Arrays.sort() 利用已经排序的数组的特征
+ * 1. 充分利用数组的位置和存储空间，通过一次遍历(或两次遍历)将提取信息
+ * 2. 常见技术 + 特殊情况
+ * >  直接利用位置下标进行计算，将问题转换成和index相关
+ * >  使用两端遍历，或者二分法优化元素判断
+ * >  利用HashMap<>统计频率和HashSet<>判断key值存在
+ * >  排序数组Arrays.sort(), 优化处理
  */
 public class LearnArray1 {
 
@@ -84,7 +84,7 @@ public class LearnArray1 {
         return result;
     }
 
-    // TODO: Duplicate Zeros 对数组中添加元素的典型优化, 两遍遍历 !!
+    // TODO: Duplicate Zeros 对数组中添加元素的典型优化, 两遍遍历(每次的操作和意义都不同) !!
     // Given a fixed length array arr of integers, duplicate each occurrence of zero, shifting the remaining elements to the right
     // Note that elements beyond the length of the original array are not written
     // arr = [1,0,2,3,0,4,5,0] -> [1,0,0,2,3,0,0,4] 只能在数组内操作，舍弃超过数组长度的数据
@@ -98,7 +98,7 @@ public class LearnArray1 {
         for (int left = 0; left <= length - countZero; left++) {
             if (arr[left] == 0) {
                 if (left == length - countZero) {   // 边界条件: [1,2,3,0,0?,0] ?位置的0没有办法被扩展2次，则直接保留一次即可
-                    arr[length--] = 0;              // 将数组的最后一个位置确定为0，然后下降一位
+                    arr[length--] = 0;              // 将数组的最后一个位置确定为0，然后下降一位 !!
                     break;                          // break 退出，不考虑对该0的统计
                 }
                 countZero++;

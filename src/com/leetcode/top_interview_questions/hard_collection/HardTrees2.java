@@ -16,8 +16,9 @@ import java.util.List;
 // 1 <= nums.length <= 10^5
 // -10^4 <= nums[i] <= 10^4
 public class HardTrees2 {
-    
-    // Array [2,4,5,7] 以某一个区间的和构建Segment Tree
+
+    //    以某一个区间和构建Segment Tree
+    //         Array [2,4,5,7]
     //            18[0,3]
     //     6[0,1]         12[2,3]
     // 2[0]    4[1]    5[2]      7[3]

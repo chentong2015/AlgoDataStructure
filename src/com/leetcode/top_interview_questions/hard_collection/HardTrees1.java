@@ -6,6 +6,7 @@ import java.util.*;
 
 public class HardTrees1 {
 
+    // TODO: BBFS(Bidirectional BFS) https://leetcode.com/problems/word-ladder/solution/
     // Word Ladder
     // Given two words, beginWord and endWord, and a dictionary wordList, 
     // return the number of words in the shortest transformation sequence from beginWord to endWord, 
@@ -15,8 +16,7 @@ public class HardTrees1 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         // 测试理解: 如何判断两个字符串只有一个字符不同? 如何选择下一个字符串? 如何排序取出最短的路径?
 
-        // 正确理解：使用Graph图(结构)来解决最短线路和路径问题，最短的路径是构成图的levels中间的距离(在能够联通的情况下)
-        //         TODO: BFS, BBFS https://leetcode.com/problems/word-ladder/solution/
+        // 正确理解：1. 使用Graph图(结构)来解决最短线路和路径问题，最短的路径是构成图的levels中间的距离(在能够联通的情况下)
         Set<String> set = new HashSet<>(wordList); // 从List转成HashSet, 去除重复单词并快速查找
         Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
