@@ -24,7 +24,7 @@ public class DynamicProgramming {
         // 测试理解：1. 使用递归，逐步判断每一步的跳法，优先从最大步数开始跳
         //            O(2^n) "数学推导复杂度"  O(n) Recursion requires additional memory for the stack frames.
 
-        // 正确理解：1. 自底向上的算法
+        // 正确理解：1. Bottom-UP 自底向上的算法
         IndexMark[] memo = new IndexMark[nums.length];
         Arrays.fill(memo, IndexMark.Unknown);  // O(n) memo table 初始化暂存信息的表
         memo[memo.length - 1] = IndexMark.Good;
@@ -46,47 +46,40 @@ public class DynamicProgramming {
         int index = 1;
         int maxSteps = nums[0];
         while (index < nums.length) {
-            if (maxSteps < 1) {   // 在index位置，它前面的剩余的最大步数，至少要有1步，才能到当前这个位置
-                return false;
-            } else {
-                if (nums[index] == 0) {
-                    if (maxSteps < 2) {
-                        return index == nums.length - 1; // 前面能到达最后一步，即使最后一个位置是0也是OK的
-                    } else {
-                        maxSteps--;
-                    }
-                } else {
-                    maxSteps--;   // 动态编程，交换比较前面剩余的最大步数
-                    if (nums[index] > maxSteps) {
-                        maxSteps = nums[index];
-                    }
+            if (maxSteps < 1) return false;          // 在index位置，它前面的剩余的最大步数，至少要有1步，才能到当前这个位置
+            if (nums[index] == 0) {
+                if (maxSteps < 2) {
+                    return index == nums.length - 1; // 前面能到达最后一步，即使最后一个位置是0也是OK的
                 }
+                maxSteps--;                      // 在0这个位置对于maxStep所跳的最大步数没有帮助
+            } else {
+                maxSteps--;                          // 动态编程，交换比较前面剩余的最大步数
+                maxSteps = Math.max(nums[index], maxSteps);
             }
             index++;
         }
         return index == nums.length;
     }
 
-    // 正确理解：3. Greedy 贪心算法, 从后往前, 从index位置加上它移动的步数能到到达后面标记的位置，则切换后面记录的位置  ===> 理解1的反向推导
-    //            只要前面有一个点能够到达(或者越过)后面的标记点，最终判断是否是出发的起使点(index=0)，只需要有一种可能性即可 !!
+    // 正确理解：3. Greedy 贪心算法: 从后往前, 如果从index位置加上它移动步数能到到达后面标记位置，则切换后面记录的位置
     public boolean canJumpTrick2(int[] nums) {
         int lastPos = nums.length - 1;
         for (int i = nums.length - 1; i >= 0; i--) {
-            if (i + nums[i] >= lastPos) {
+            if (i + nums[i] >= lastPos) { // 在index位置上面，要到达或者是越过后面的标记点
                 lastPos = i;
             }
         }
-        return lastPos == 0;
+        return lastPos == 0; // 最终判断是否是出发的起使点(index=0)，只需要有一种可能性即可
     }
 
     // Coin Change 只用最少的零钱数目来凑出指定的值, 假设每种零钱的数目是足够的
     // An integer array coins representing coins, an integer amount representing a total amount of money
     // Return the fewest number of coins that you need to make up that amount
     public int coinChange(int[] coins, int amount) {
-        // 测试理解：1. 先从币值最大的开始取, 从大到小, 如果没有结果则从第二小开始取, 可以使用递归算法一层一层的取 !!
+        // 测试理解：1. 先从币值最大的开始取, 从大到小, 如果没有结果则从第二小开始取, 可以使用递归算法一层一层的取
         //            n1*1+n2*2+n3*3...=X   n1 + n2 + n3  ...=Min
 
-        // 正确理解：1. TODO: Dynamic programming(Top down) 所有可能最终构成一个递归树, 答案是这个递归树的最低高度层级 !!
+        // 正确理解：1. Dynamic programming(Top down) 所有可能最终构成一个递归树, 答案是这个递归树的最低高度层级
         // coins = {2, 5}       target = 6   ->  Answer: -1          Expected: 3 (2)
         // coins = {1, 3, 4, 5} target = 7   ->  Answer: 3 (5, 1, 1) Expected: 2 (3, 4)
         if (amount < 1) return 0;
@@ -110,6 +103,7 @@ public class DynamicProgramming {
         return count[rem - 1];
     }
 
+    // TODO: 典型的DP算法
     // Longest Increasing Subsequence
     // An integer array nums, return the length of the longest strictly increasing subsequence
     // nums  = [10,9,2,5,3,7,101,18] -> [2,3,7,101] 最长连续增长子序列
@@ -134,8 +128,7 @@ public class DynamicProgramming {
         return maxAnswer;
     }
 
-    // 正确理解：2. Dynamic Programming with Binary Search
-    //            O(nlog(n)) 最优时间复杂度 O(n)
+    // 正确理解：2. Dynamic Programming with Binary Search  O(nlog(n)) O(n)
     public int lengthOfLIS2(int[] nums) {
         // input: [0, 8, 4, 12, 2]
         //    dp: [0]
@@ -143,16 +136,18 @@ public class DynamicProgramming {
         //    dp: [0, 4]
         //    dp: [0, 4, 12]
         //    dp: [0, 2, 12] 这里存储的不是正确的排序值，但是数组的长度是最终的答案
-        int[] dp = new int[nums.length]; // Store increasing subsequence formed by including currently encountered element
+        // Store increasing subsequence formed by including currently encountered element 这个数组需要预留足够的长度
+        int[] dp = new int[nums.length];
         int length = 0;
         for (int num : nums) {
-            // Returns index of the search key, if it is contained in the array, else it returns (-(insertion point) - 1)
-            int index = Arrays.binarySearch(dp, 0, length, num);
+            // Returns index of the search key, if it is contained in the array
+            // Else it returns (-(insertion point) - 1)
+            int index = Arrays.binarySearch(dp, 0, length, num); // 根据查找出来的index位置，确定插入点
             if (index < 0) {
-                index = -(index + 1);// 拿到key键插入数组的点
+                index = -(index + 1);
             }
-            dp[index] = num;         // 将读取的每一个值添加到dp数组中指定的位置"insertion point"
-            if (index == length) {   // 如果加入位置是在最后，则增加dp存储的length长度 !!
+            dp[index] = num;         // 将读取的每个值添加到dp数组中指定的位置"insertion point"
+            if (index == length) {   // 使用length来统计插入到的位置长度
                 length++;
             }
         }

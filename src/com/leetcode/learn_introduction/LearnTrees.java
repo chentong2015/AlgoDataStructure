@@ -1,6 +1,7 @@
 package com.leetcode.learn_introduction;
 
 import com.leetcode.learn_introduction.model.TreeLinkNode;
+import com.leetcode.top_interview_questions.base.TreeNode;
 
 // 1. N-Ary Tree
 // 2. Binary Tree
@@ -21,6 +22,24 @@ public class LearnTrees {
      * 3. BBFS(Bidirectional BFS)  : 从顶向下和从底向上同时遍历，如果在同一个Level层面有交集则是联通的
      * 4. Morris Traversal         : 非递归, 非Stack, 最佳复杂度 O(n) O(1)
      */
+
+    // Search in a Binary Search Tree
+    // Find the node in the BST that the node's value equals val and return the subtree rooted with that node
+    // If such a node does not exist, return null.
+    // root = [4,2,7,1,3], val = 2 -> [2,1,3]
+    public TreeNode searchBST(TreeNode root, int val) {
+        // 测试理解：1. BST树的递归查找法, 代码少且清晰，同时复杂度也比较优化
+        //            O(n) O(1)
+        if (root == null) return null;
+        if (root.getVal() == val) {
+            return root;
+        }
+        TreeNode leftNode = searchBST(root.getLeft(), val);
+        if (leftNode == null) {
+            return searchBST(root.getRight(), val);
+        }
+        return leftNode;
+    }
 
     // TODO: 不使用队列实现广度优先遍历，同时设定node的.next指向 !!
     // Populating Next Right Pointers in Each Node II

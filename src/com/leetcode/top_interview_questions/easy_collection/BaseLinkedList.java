@@ -43,7 +43,7 @@ public class BaseLinkedList {
         while (current != null) {
             next = current.next; // 保留后一个节点，以便于往后移动
             current.next = pre;
-            pre = current;
+            pre = current;       // 使用pre每次记录最后出来的新head节点
             current = next;
         }
         return pre; // 因为current节点为null
