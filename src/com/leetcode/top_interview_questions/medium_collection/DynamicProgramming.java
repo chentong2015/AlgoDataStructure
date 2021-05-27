@@ -103,13 +103,13 @@ public class DynamicProgramming {
         return count[rem - 1];
     }
 
-    // TODO: 典型的DP算法
+    // TODO: DP编程典型实例，连续增长的子序列
     // Longest Increasing Subsequence
     // An integer array nums, return the length of the longest strictly increasing subsequence
     // nums  = [10,9,2,5,3,7,101,18] -> [2,3,7,101] 最长连续增长子序列
     // steps = [1, 1,1,2,2,3,4  ,4]
     public int lengthOfLIS(int[] nums) {
-        // 正确理解：1. Dynamic Programming 使用一个同等长度的数组来保存"每一步所积累的'它前面的'最长的到达步数" !!!
+        // 正确理解：1. Dynamic Programming 使用等长数组保存"每一步所积累的'它前面的'最长的到达步数"
         //            O(n²) O(n)
         if (nums.length == 0) return 0;
         int[] steps = new int[nums.length];
@@ -117,13 +117,13 @@ public class DynamicProgramming {
         int maxAnswer = 1;
         for (int i = 1; i < steps.length; i++) {
             int maxValue = 0;
-            for (int j = 0; j < i; j++) {                    // 检测在前面有比该位置小的地方的基础上继续
-                if (nums[j] < nums[i]) {
-                    maxValue = Math.max(maxValue, steps[j]); // 在前面的任意位置中，找到"前面子序列最长的"那个点 !!
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i]) {                     // 在前面位置低的基础上增加, 判断其中最大值步数
+                    maxValue = Math.max(maxValue, steps[j]);
                 }
             }
             steps[i] = maxValue + 1;                         // 在"前面子序列最长的"那个点的基础上再移动一步
-            maxAnswer = Math.max(maxAnswer, steps[i]);       // 更新记录的最大值
+            maxAnswer = Math.max(maxAnswer, steps[i]);       // 更新记录的最大值, 因为可能出现几个不同的增长序列, 需要求总的
         }
         return maxAnswer;
     }
@@ -140,8 +140,7 @@ public class DynamicProgramming {
         int[] dp = new int[nums.length];
         int length = 0;
         for (int num : nums) {
-            // Returns index of the search key, if it is contained in the array
-            // Else it returns (-(insertion point) - 1)
+            // Returns index of the search key if found, else return (-(insertion point) - 1)
             int index = Arrays.binarySearch(dp, 0, length, num); // 根据查找出来的index位置，确定插入点
             if (index < 0) {
                 index = -(index + 1);

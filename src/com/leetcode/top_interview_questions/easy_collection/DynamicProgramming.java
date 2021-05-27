@@ -20,12 +20,10 @@ public class DynamicProgramming {
     }
 
     // 正确理解: 1. Dynamic Programming: 利用前面已有的(保留的)值，得出下面的结果
-    //          本质上, 到达第n个位置有两种可能, (n-1)位置+1或(n-2)位置+2过来: dp[i]=dp[i−1]+dp[i−2]
-    //          O(n) O(n)
+    //            本质上, 到达第n个位置有两种可能, (n-1)位置+1或(n-2)位置+2过来: dp[i]=dp[i−1]+dp[i−2]
+    //            O(n) O(n)
     public int climbStairsDynamicProgramming(int n) {
-        if (n == 1) {
-            return 1;
-        }
+        if (n == 1) return 1;
         int[] dp = new int[n + 1];
         dp[1] = 1;
         dp[2] = 2;
@@ -35,13 +33,11 @@ public class DynamicProgramming {
         return dp[n];
     }
 
-    //  正确理解: 2. Fibonacci数列: Fib(n)=Fib(n−1)+Fib(n−2)
-    //           前两个值分别是1和2, 递归每走一步的两种可能           ==> 区别在于没有保存前面每一步计算出来的值 !!!
-    //           Time complexity : O(n)  Space complexity : O(1)
+    // TODO: Fibonacci数列 Fib(n)=Fib(n−1)+Fib(n−2)，借助动态编程思想，所实现的最优解
+    // 正确理解: 2. 前两个值分别是1和2, 递归每走一步的两种可能  ==> 无需保存前面每一步(历史)计算出来的值 !!!
+    //           O(n) O(1)
     public int climbStairsFib(int n) {
-        if (n == 1) {
-            return 1;
-        }
+        if (n == 1) return 1;
         int first = 1;
         int second = 2;
         for (int i = 3; i <= n; i++) {
@@ -52,10 +48,12 @@ public class DynamicProgramming {
         return second;
     }
 
-    // TODO: Maximum Subarray 找到连续的一组和最大的数字
+    // Maximum Subarray
     // Find the contiguous subarray (containing at least one number) which has the largest sum
+    // nums = [-2,1,-3,4,-1,2,1,-5,4] -> [4,-1,2,1] -> max = 6
     public int maxSubArray(int[] nums) {
-        // 测试理解: 1. "动态编程": 每次记录前面累计的结果，提取最大值 O(n*n) O(n)
+        // 测试理解：1. 常规理解：每个位置都累计追加一个新的值来求和，判断这些求和片段中最大的那个值 !!
+        //            O(n*n) O(n)
         int maxSum = nums[0];
         int[] temps = new int[nums.length];
         for (int i = 0; i < nums.length; i++) {
@@ -69,36 +67,31 @@ public class DynamicProgramming {
         return maxSum;
     }
 
-    // 正确理解: 1. 如果存储? 可以去掉内部的嵌套循环，导致的时间复杂度过高
-    //            在index位置，无论是什么值，如果它的前面是负数，则去掉，如果前面有和为非0的数据，则加上
-    // [-1,1,3,4,-1,2,1,-5,4]
-    // -2 1 3
-    // -2 + 1 + 3
-    public int maxSubarray(int[] nums) {
-        int left = 0;
-        int right = 1;
-        int maxSum = nums[left];
-        while (right < nums.length) {
-            if (maxSum < 0) {
-                left++;
-                maxSum += nums[right];
+    // TODO: DP编程典型实例，使用运算过程中的临时存储值来得出最终结果 !!
+    // 正确理解：1. 循环的核心在于"始终有一个中间存储的值，判断是否累计，还是直接用index位置值更新"
+    //            如果在"累计片段"的过程中，加出来的结果是负数，则这个片段直接舍弃
+    //            只有正数的"片断累计"才是有效值，才有可能是和最大的子数组 !!
+    public int maxSubArray2(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int max = nums[0];
+        int sum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (sum < 0) {
+                sum = nums[i];
             } else {
-
+                sum += nums[i];
             }
-            right++;
+            max = Math.max(max, sum);
         }
-        return 0;
+        return max;
     }
 
-    // TODO: House Robber
+    // House Robber
     // nums = [1,2,3,1] -> 1 + 3 = 4 找到一组数中能够获得的最大值，不能取相邻的两个值
     // nums = [2,1,1,2] -> 2 + 2 = 4
-    public int rob(int[] nums) {
-        return robNums(nums, 0);
-    }
-
     public int robNums(int[] nums, int n) {
-        // 测试理解："相邻"不能取, 可以间隔一个，也可以间隔两个不取，不能间隔三个不取，否则得不到最大值 !!
+        // 测试理解：1. 递归逻辑, 相邻不能取, 可以间隔一个或者两个，不能间隔三个不取，否则得不到最大值 !!
+        //            O(n^3) 递归调用造成的栈内存空间的开销 O(1)
         if (n == nums.length - 1) {
             return nums[n];
         } else if (n == nums.length - 2) {
@@ -112,5 +105,19 @@ public class DynamicProgramming {
             int max = Math.max(firstRob, secondRob);
             return Math.max(max, thirdRob);
         }
+    }
+
+    // 正确理解：1. 增加空间复杂度，保存遍历过程中累计的最大值
+    // nums = [2,7,9,3,1]
+    public int rob(int[] nums) {
+        if (nums == null && nums.length == 0) {
+            return 0;
+        }
+        int[] temp = new int[nums.length];
+        for (int index = 0; index < nums.length; index++) {
+
+        }
+
+        return 0;
     }
 }
