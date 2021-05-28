@@ -1,6 +1,5 @@
 package com.leetcode.top_interview_questions.easy_collection;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -147,47 +146,16 @@ public class BaseArray1 {
     // Return true if any value appears at least twice in the array
     // nums = [1,2,3,1] -> true
     public boolean containsDuplicate(int[] nums) {
-        // 测试理解: 乱序的数组，如何判断前面已经出现过的item值 ?
-        //         1. 使用嵌套for循环 Time complexity: O(n2), Space complexity: O(1)
-        //         2. 使用另外一个数组 Time complexity: O(n), Space complexity: O(n)
-
-        // 正确解法: 1. 先对数组进行排序，然后之间判断相邻的两个值 Arrays.sort(nums) 排序复杂度O(nlog(n)) > O(n), Space complexity: O(1)
-        //          2. Hash Tables使用Hash表 Time complexity: O(n), Space complexity: O(n)
+        // 正确解法: 1. 先对数组进行排序，判断相邻两个值 Arrays.sort(nums) O(nlog(n)), O(1)
+        //          2. 使用HashSet<>保存出现过的值，Set中不包含重复的值   O(n) 最差情况是读完全部的值 O(n)
         if (nums.length == 0) return false;
-        Set<Integer> setNums = new HashSet<>(); // Set集中不包含相同的元素
+        Set<Integer> setNums = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
-            // search() and insert() for n times and each operation takes constant time.
-            if (setNums.contains(nums[i])) {
+            if (setNums.contains(nums[i])) {    // 优化算法，在边读取的时候边判断，而不是读完后，再进行二次遍历 !!
                 return true;
             }
             setNums.add(nums[i]);
         }
         return false;
-    }
-
-    // Single Number
-    // Non-empty array of integers nums, every element appears twice except for one. Find that single one.
-    // Input: nums = [4,1,2,1,2] -> 4  1 1 2 2 4
-    public static int findSingleNumber(int[] nums) {
-        // 测试理解: 1. 使用嵌套for循环 O(n2), O(1)
-        //         2. 先对数组进行排序, 然后之间判断相邻的两个值 Arrays.sort(nums) O(nlog(n)) > O(n), O(1)
-
-        // 正确解法: 1. 借助HashSet<>, 通过求和来计算: 2∗(a+b+c)−(a+a+b+b+c)=c
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length - 1; i += 2) {
-            if (nums[i] != nums[i + 1]) {
-                return nums[i];
-            }
-        }
-        return nums[nums.length - 1]; // 如果前面都没有找出来，那么最后一个值就是单独的值
-    }
-
-    // 正确解法: 2. Bit Manipulation 比特位运算: a⊕b⊕a=(a⊕a)⊕b=0⊕b=b 将0和所有的值求XOR异或运算(相同的消去)，结果就是最中的单列的值 !!
-    public static int findSingleNumber2(int[] nums) {
-        int result = 0;
-        for (int i : nums) {
-            result ^= i;
-        }
-        return result;
     }
 }

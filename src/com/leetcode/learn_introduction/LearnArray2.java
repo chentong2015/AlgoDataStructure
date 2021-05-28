@@ -82,5 +82,4 @@ public class LearnArray2 {
         }
         return nums;
     }
-
 }

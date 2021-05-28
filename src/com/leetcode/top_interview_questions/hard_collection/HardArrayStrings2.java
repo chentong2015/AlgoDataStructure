@@ -14,31 +14,6 @@ public class HardArrayStrings2 {
         return 1;
     }
 
-    // Find the only one Duplicate Number
-    // Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive
-    // All the integers in nums appear only once except for precisely one integer which appears two or featured times
-    // 约束：不能修改源数组(不能排序)，时间复杂度小于O(n²)，空间复杂度为O(1)/Set<> ==> 传统的3种解法
-    public int findDuplicate(int[] nums) {
-        // 正确理解：1. 联想到1-n数字和数组的下标index有关，通过下标转换造成Linked List
-        //            > 为什么会有Cycle出现 ? 通过f(x)=nums[x],x=nums[x]构建的Linked List链表可以看到重复的值是循环入口点
-        //            > 约束条件：数组中值的范围必须是[1,n],不能是[0,n-1],否则第一个位置如果是0,则算法无法往后查找
-        //            如何找到循环的起使节点位置? 采用前后追赶的方式，直到相遇节点
-        //            O(n) O(1)
-        int tortoise = nums[0];
-        int hare = nums[0];
-        do {
-            hare = nums[nums[hare]];
-            tortoise = nums[tortoise]; // 一个超前一倍前进，当两者相遇说明(跑前面的已经在循环中将后者套圈了，此时为第一次相遇的点)
-        } while (tortoise != hare);
-
-        tortoise = nums[0];            // 将其中一个退回到起使点，然后一步一步开始
-        while (tortoise != hare) {     // 直到两者第一次遇到，则为循环圈的入口点
-            tortoise = nums[tortoise];
-            hare = nums[hare];
-        }
-        return hare;
-    }
-
     // Basic Calculator II
     // Given a string s which represents an expression, evaluate this expression and return its value
     // s represents a valid expression: integers and operators('+','-','*','/') 都是正数，且保证值的范围不会溢出 !!
