@@ -4,15 +4,6 @@ import com.leetcode.top_interview_questions.base.IndexMark;
 
 import java.util.Arrays;
 
-/**
- * 动态编程的理解步骤：从回溯到递归算法，应用追踪的方式减少时间空间复杂度 !!
- * 1. Start with the recursive backtracking solution
- * 2. Optimize by using a memoization table (top-down 自顶向下)  ===> Divide and Conquer 分而治之 + 归并算法
- * .    > 2.1 先将复杂问题差发成若干个小问题SubProblems              ===> Recursion 采用递归进行分解
- * .    > 2.2 重复且独立的解决每个小问题，最后再汇总结果取解决原始问题
- * 3. Remove the need for recursion (bottom-up 自底向上)
- * 4. Apply final tricks to reduce the time / memory complexity
- */
 public class DynamicProgramming {
 
     // Jump Game 判断是否能够从开始跳到结尾

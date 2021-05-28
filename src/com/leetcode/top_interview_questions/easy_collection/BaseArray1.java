@@ -107,12 +107,10 @@ public class BaseArray1 {
     // Rotate the array to the right by k steps, where k is non-negative.
     // Input: nums = [1,2,3,4,5,6,7], k = 3 -> [5,6,7,1,2,3,4]
     public void rotateArray(int[] nums, int k) {
-        // 测试理解：从后往前将顺序进行移位交换, 如何用最少的步骤实现交换 ?
-        //         1. 将后面的子数组颠倒，然后拼接到原始数组的前面
-        //         2. 循环k，一次处理一个，循环换值的位置 O(n×k), O(1)
+        // 测试理解：1. 常规解法，每次移动一个位置的值，将数组中全部的值都移动 O(n×k), O(1)
+        //         2. 使用额外的数组, 交换item后赋值回原来的数组          O(n), O(n)
 
-        // 正确理解: 1. 使用额外的数组, 交换item后赋值回原来的数组    O(n), O(n)
-        //          2. TODO: 循环替换, 前面往后，后面的超过长度往移动到开头 O(n), O(1)
+        // 正确理解: 1. 循环替换, 前面往后，后面的超过长度往移动到开头 O(n), O(1)
         k = k % nums.length;
         int count = 0;
         for (int start = 0; count < nums.length; start++) {
@@ -129,7 +127,7 @@ public class BaseArray1 {
         }
     }
 
-    // 正确理解: 3. Reverse完全颠倒数组，然后再颠倒部分 O(n) O(1)
+    // 正确理解: 2. Reverse完全颠倒数组，然后再颠倒部分 O(n) O(1)
     public void rotateArray2(int[] nums, int k) {
         reverse(nums, 0, nums.length - 1);
         reverse(nums, 0, k - 1);

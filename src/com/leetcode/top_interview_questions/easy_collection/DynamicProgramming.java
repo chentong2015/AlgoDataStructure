@@ -8,8 +8,8 @@ public class DynamicProgramming {
     public int climbStairs(int n) {
         // 测试理解：每走一步，都对后面有联动的影响，每一步都有两种选择，穷举所有的可能值 !!
         //          将n步划分成多少个一步和多少个两步的和, 但是和顺序严格相关
-        //          Time complexity : O(2^n). Size of recursion tree will be 2^n 栈开的嵌套方法的调用  !!
-        //          Space complexity : O(n). The depth of the recursion tree can go upto n 递归造成分配给参数的栈空间，为二叉树的深度 !!
+        //          O(2^n) Size of recursion tree will be 2^n 栈开的嵌套方法的调用  !!
+        //          O(n)   The depth of the recursion tree can go upto n 递归造成分配给参数的栈空间，为二叉树的深度 !!
         if (n == 1) {
             return 1;
         } else if (n == 2) {
@@ -90,8 +90,8 @@ public class DynamicProgramming {
     // nums = [1,2,3,1] -> 1 + 3 = 4 找到一组数中能够获得的最大值，不能取相邻的两个值
     // nums = [2,1,1,2] -> 2 + 2 = 4
     public int robNums(int[] nums, int n) {
-        // 测试理解：1. 递归逻辑, 相邻不能取, 可以间隔一个或者两个，不能间隔三个不取，否则得不到最大值 !!
-        //            O(n^3) 递归调用造成的栈内存空间的开销 O(1)
+        // 测试理解：1. "递归逻辑", 相邻不能取, 可以间隔一个或者两个，不能间隔三个不取，否则得不到最大值 !!
+        //            O(n^3) 递归调用造成的栈内存空间的开销, 理论上时间复杂度太高 O(1)
         if (n == nums.length - 1) {
             return nums[n];
         } else if (n == nums.length - 2) {
@@ -107,17 +107,31 @@ public class DynamicProgramming {
         }
     }
 
-    // 正确理解：1. 增加空间复杂度，保存遍历过程中累计的最大值
+    // TODO: DP编程典型实例，累计记录前面每一步的有效结果
+    // 正确理解：1. 利用增加的空间复杂度, 依次以用前面已有的累计结果, 得出新的判断结果 O(n) O(n)
     // nums = [2,7,9,3,1]
+    // 2
+    // 2 7
+    // 2 7 11
+    // 2 7 11 (2+3)?(7+3)=10
+    // 2 7 11 10 (7+1)?(11+1)=12 比较这个位置和前面2个3个位置和的大小
     public int rob(int[] nums) {
-        if (nums == null && nums.length == 0) {
-            return 0;
-        }
+        if (nums == null && nums.length == 0) return 0;
         int[] temp = new int[nums.length];
+        int max = nums[0];
         for (int index = 0; index < nums.length; index++) {
-
+            if (index == 0) {
+                temp[0] = nums[0];
+            } else if (index == 1) {
+                temp[1] = Math.max(temp[0], nums[1]);
+            } else if (index == 2) {
+                temp[2] = Math.max(temp[0] + nums[2], temp[1]);
+            } else {
+                // 核心比较：结合当前的位置和前面位置，共同决定取较大的结果值
+                temp[index] = Math.max(temp[index - 3] + nums[index], temp[index - 2] + nums[index]);
+            }
+            max = Math.max(temp[index], max); // 记录下累计数组中的最大值
         }
-
-        return 0;
+        return max;
     }
 }

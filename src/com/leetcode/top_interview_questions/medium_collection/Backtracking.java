@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-// Backtracking 回溯算法
 public class Backtracking {
 
     // 使用"平衡法则"判断是否满足括号的原则: 确保第一个添加的符号是"("
@@ -64,12 +63,12 @@ public class Backtracking {
             ans.add(cur.toString());
             return;
         }
-        if (open < max) {
+        if (open < max) {   // 左侧括号
             cur.append("(");
             backtrack(ans, cur, open + 1, close, max);
-            cur.deleteCharAt(cur.length() - 1);  // 递归完成之后，取出尾部的字符
+            cur.deleteCharAt(cur.length() - 1);              // 回溯的核心：递归完成之后，取出尾部的字符 !!
         }
-        if (close < open) {
+        if (close < open) { // 右侧括号如果比左侧括号少，则可添加
             cur.append(")");
             backtrack(ans, cur, open, close + 1, max);
             cur.deleteCharAt(cur.length() - 1);
@@ -94,17 +93,17 @@ public class Backtracking {
 
     private void getSubsets(int index, int[] list, int[] nums, List<List<Integer>> results) {
         index++;
-        int[] cloneList = list.clone();               // 使用clone出来的列表，不会造成数据的共享差错 !!
+        int[] cloneList = list.clone();                 // 使用clone出来的列表，不会造成数据的共享差错 !!
         if (index == nums.length) {
             List<Integer> result = new ArrayList<>();
-            for (int i = 0; i < nums.length; i++) {   // 递归的最后，还需要遍历N来取出所有的结果，增加时间复杂度
+            for (int i = 0; i < nums.length; i++) {     // 递归的最后，还需要遍历N来取出所有的结果，增加时间复杂度
                 if (list[i] == 1) {
                     result.add(nums[i]);
                 }
             }
             results.add(result);
         } else {
-            cloneList[index] = 0;                     // 改变不同的设置, 递归出不同的结果, 0表示不出现, 1表示出现
+            cloneList[index] = 0;                       // 回溯的核心：改变设置递归出不同的结果, 0表示不出现, 1表示出现 !!
             getSubsets(index, cloneList, nums, results);
             cloneList[index] = 1;
             getSubsets(index, cloneList, nums, results);

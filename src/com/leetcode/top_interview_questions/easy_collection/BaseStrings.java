@@ -156,8 +156,8 @@ public class BaseStrings {
         }
         for (int i = 0; i < strs[0].length(); i++) { // 遍历第一个位置的字符串的所有字符 ==> 避免重复检查前面已经比较过的index位置 !!
             char c = strs[0].charAt(i);
-            for (int j = 1; j < strs.length; j++) {
-                if (i == strs[j].length() || strs[j].charAt(i) != c) // 当index到了一个字符串的完整长度时，或者第一次index位置已经不同时 !!
+            for (int j = 1; j < strs.length; j++) {  // 当index到了一个字符串的完整长度时，或者第一次index位置已经不同时 !!
+                if (i == strs[j].length() || strs[j].charAt(i) != c)
                     return strs[0].substring(0, i);  // 截取前面的prefix作为返回值
             }
         }

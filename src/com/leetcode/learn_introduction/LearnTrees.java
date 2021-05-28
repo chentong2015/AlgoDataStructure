@@ -3,7 +3,7 @@ package com.leetcode.learn_introduction;
 import com.leetcode.learn_introduction.model.TreeLinkNode;
 import com.leetcode.top_interview_questions.base.TreeNode;
 
-// 1. N-Ary Tree
+// 1. N-Ary Tree (n个子节点的任意树)
 // 2. Binary Tree
 // 3. Binary Search Tree
 //      Balanced & Unbalanced BTS
@@ -12,7 +12,9 @@ import com.leetcode.top_interview_questions.base.TreeNode;
 
 // 高级数据结构
 // 1. Segment Tree 片段树 / Binary Indexed Tree 二叉索引树
-// 2. Prefix Tree 前缀树(含有多个子节点的树数据结构)
+// 2. Prefix Tree 前缀树(含有多个子节点的树)
+// 3. Quad Tree 四叉树(固定有4个子节点的树)
+// 4. K-d Tree(k-dimensional tree) 一种(k维)空间分割的数据结构
 public class LearnTrees {
 
     /**
@@ -72,5 +74,28 @@ public class LearnTrees {
                 dummyHead.next = null; // 避免在最后一层出现循环, 因为root始终不会为null, 导致无法跳出循环 !!!
             }
         }
+    }
+
+    // Same Tree
+    // Given the roots of two binary trees p and q, write a function to check if they are the same or not
+    // They are structurally identical, and the nodes have the same value
+    //  1      1     -> false
+    // 2  1   1  2
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        // 测试理解：1. 直接递归每个节点，比较判断
+        //            O(n+m) 所有的节点都会判断 O(max(L1, L2)) -> O(max(n,m))空间复杂度取决于最大的递归深度 !!
+        if (p == null) return q == null;
+        if (q == null) return false;
+        if (p.getVal() != q.getVal()) {
+            return false;
+        }
+        // if (isLeafNode(p) && isLeafNode(q)) { // 如果是叶子节点，则无需在判断左右子树的情况
+        //    return true;                       // 可以不需要，因为最终递归到null时，会判断是否为true !!
+        // }
+        return isSameTree(p.getLeft(), q.getLeft()) && isSameTree(p.getRight(), q.getRight());
+    }
+
+    private boolean isLeafNode(TreeNode node) {
+        return node.getLeft() == null && node.getRight() == null;
     }
 }

@@ -2,12 +2,6 @@ package com.leetcode.top_interview_questions.hard_collection;
 
 import com.leetcode.top_interview_questions.base.ResultPatternMatch;
 
-/**
- * Dynamic Programming 动态编程，核心解析
- * 1. Recursive backtracking
- * 2. Top-down 自顶向下
- * 3. Bottom-up 自底向上
- */
 // Regular Expression Matching ==> Java底层正则表达式的实现
 // Implement regular expression matching with support for '.' 任意多个字符 and '*' 前字符重复0到n次
 // The matching should cover the entire input string (not partial)
@@ -15,28 +9,30 @@ import com.leetcode.top_interview_questions.base.ResultPatternMatch;
 // s = "aab", p = "c*a*b"  -> true 第一个c字符有可能重复0次
 public class DynamicProgramming1 {
 
+    // 1. Recursive backtracking
+    // 从第一个字符和第二个字符开始递归，每次往后截取text的子字符串，并且带上前一轮判断的结果
+    // <复杂度和text & pattern字符串长度均有关>
     public boolean isMatchRecursive(String text, String pattern) {
-        // 测试理解：1. 根据pattern列举出所有的字符串的可能，找到其中匹配的目标字符串
-
-        // 正确理解: 1. 从第一个字符和第二个字符开始递归，每次往后截取text的子字符串，并且带上前一轮判断的结果
-        //            <复杂度和text & pattern字符串长度均有关>
         if (pattern.isEmpty()) {
             return text.isEmpty();
         }
-        boolean firstMatch = !text.isEmpty() && (text.charAt(0) == pattern.charAt(0) || pattern.charAt(0) == '.');
+        // 先确定第一步开头是匹配的，再在此基础上列举出递归的匹配条件
+        boolean firstMatch = false;
+        if (!text.isEmpty()) {
+            firstMatch = text.charAt(0) == pattern.charAt(0) || pattern.charAt(0) == '.';
+        }
+
+        // text比较完第一个字符之后，需要往后截取     (*>0, *将会继续作用在开头的字符，一直匹配到不能再匹配为止)
+        // 或者不截取text, 从第3个字符开始截取pattern(*==0)
         if (pattern.length() >= 2 && pattern.charAt(1) == '*') {
-            // text比较完第一个字符之后，需要往后截取(*将会继续作用在开头的字符，一直匹配到不能再匹配为止)
-            // 或者不截取text, 从第3个字符开始截取pattern(相当于*取0次)
             return firstMatch && isMatchRecursive(text.substring(1), pattern) || isMatchRecursive(text, pattern.substring(2));
         } else {
             return firstMatch && isMatchRecursive(text.substring(1), pattern.substring(1));
         }
     }
 
-    // Up-Bottom Variation 自定向下 ///////////////////////////////////////////////////////////////
-    // 算法逻辑：dp(i, j): does text[i:] and pattern[j:] match
-    //         和上面的递归一致，这里使用二维数组来存储判断的结果值
-    //         O(TP) O(TP)
+    // 2. Up-Bottom Variation 自顶向下 //////////////////////////////////////////////////////////////////////////////////
+    //    分而治之，拆分问题，使用二维数组来存储判断的结果值，避免递归 O(TP) O(TP)
     public boolean isMatchUpBottom(String text, String pattern) {
         boolean[][] dp = new boolean[text.length() + 1][pattern.length() + 1];
         dp[text.length()][pattern.length()] = true;
@@ -53,7 +49,7 @@ public class DynamicProgramming1 {
         return dp[0][0];
     }
 
-    // Bottom-Up Variation 自底向上 ///////////////////////////////////////////////////////////////
+    // 3. Bottom-Up Variation 自底向上 //////////////////////////////////////////////////////////////////////////////////
     private ResultPatternMatch[][] memo;
 
     public boolean isMatchBottomUp(String text, String pattern) {
