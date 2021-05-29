@@ -46,7 +46,7 @@ public class BaseTrees1 {
     // TODO: 不使用递归的后续遍历
     // 正确理解: Keep track of the previously printed node in pre. Only print a node if its right child is null or equal to pre
     //          记录始终记录前一个输出的节点，当且仅当node的右边节点为null，或者右边节点是前一个输出，则最后才输出该node ==> 后继输出 !!
-    //          Using 1 Stack. O(n) Time & O(n) Space
+    //          Using 1 Stack. O(n), O(n)
     //          3
     //    1          5
     // null 2pre   4   6
@@ -76,10 +76,10 @@ public class BaseTrees1 {
         return results;
     }
 
-    // 补充理解：3. 非递归层次遍历, 使用queue队列一层一层遍历, 先入队列的先出来, 类似排队 ===> BFS广度优先遍历 !!
-    //            O(n) O(n) 所有的node被会被添加到队列中，然后再出来
+    // TODO: BFS广度优先遍历, 非递归模式
+    // 使用queue队列一层一层遍历, 先入队列的先出来, 类似排队
+    // O(n) O(n) 如果是完全二叉树，队列中对多存储的node是最下面一层，具有和O(n/2)相当的空间复杂度
     public void levelTraverse(TreeNode root) {
-        if (root == null) return;
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
         while (!queue.isEmpty()) {
@@ -92,6 +92,31 @@ public class BaseTrees1 {
                 queue.add(node.getRight()); // 后添加右边node到队列
             }
         }
+    }
+
+    // BFS遍历强化：每轮Queue队列中存储的是一层node的信息，利用levelSize可以通过size统一批次读取
+    //            O(n) O(n)
+    public List<List<Integer>> levelTraverse2(TreeNode root) {
+        List<List<Integer>> results = new ArrayList<>();
+        Queue<TreeNode> queue2 = new ArrayDeque<>();
+        queue2.add(root);
+        while (!queue2.isEmpty()) {
+            int levelSize = queue2.size();      // 充分利用队列的长度.size()
+            List<Integer> levelValues = new ArrayList<>();
+            while (levelSize > 0) {             // 每一轮处理完整的一层节点信息 !!
+                TreeNode node = queue2.poll();
+                levelValues.add(node.getVal());
+                if (node.getLeft() != null) {
+                    queue2.add(node.getLeft());
+                }
+                if (node.getRight() != null) {
+                    queue2.add(node.getRight());
+                }
+                levelSize--;
+            }
+            results.add(levelValues);
+        }
+        return results;
     }
 
     // TODO: Morris Traversal: Using No Stacks, O(n) Time & O(1) Space

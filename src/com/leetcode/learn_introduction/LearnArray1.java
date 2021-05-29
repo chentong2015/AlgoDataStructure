@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 /**
  * Array 数组的认识
- * 1. 充分利用数组的位置和存储空间，通过一次遍历(或两次遍历)将提取信息
+ * 1. 充分利用数组的位置和存储空间，通过一次遍历(或两次遍历)提取信息 ===> 数组的前端和尾部是可以定位存放特征值信息的，覆盖值或者进行加工 !!
  * 2. 常见技术 + 特殊情况
  * >  直接利用位置下标进行计算，将问题转换成和index相关
  * >  使用两端遍历，或者二分法优化元素判断
@@ -47,8 +47,8 @@ public class LearnArray1 {
         int sum = 0;
         for (int i = 0; i < nums.length; i++) {
             int length = 1;
-            int value = nums[i];
-            while (value / 10 != 0) {  // 取消数字范围带来的限制，同时支持对负数的统计
+            int value = nums[i];       // 直接统计一个int数字有多少位，同时支持对负数的统计
+            while (value / 10 != 0) {
                 length++;
                 value = value / 10;
             }

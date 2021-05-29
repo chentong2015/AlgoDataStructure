@@ -24,7 +24,7 @@ public class LearnDynamicProgramming {
     // 1  5  3  2  8  7  6  4  将大问题拆分成单元的小问题
     //  15  23    78   46      逐步解决小问题
     //    1235      4678       使用同样的逻辑，直到最终问题解决
-    //      12345678
+    //       12345678
     // O(nlog(n)) 时间复杂度看成是log(n)层 * 每一层merge的时间复杂度O(n) !!
     // O(n)       空间复杂度来自于每一层排序时的sublist, 最大情况时O(n)的临时存储空间 ==> 在递归divide Single Element过程中，总O(n)
     public int[] merge_sort(int[] input) {

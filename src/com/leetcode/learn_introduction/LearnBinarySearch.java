@@ -6,5 +6,5 @@ package com.leetcode.learn_introduction;
  * Collections.binarySearch(list, item)
  */
 public class LearnBinarySearch {
-
+   
 }
