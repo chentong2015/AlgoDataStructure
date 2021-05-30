@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction;
+package com.leetcode.learn_introduction.array_string;
 
 import java.util.Arrays;
 

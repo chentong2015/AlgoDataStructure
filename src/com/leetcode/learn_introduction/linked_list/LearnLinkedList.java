@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction;
+package com.leetcode.learn_introduction.linked_list;
 
 import com.leetcode.top_interview_questions.base.ListNode;
 

@@ -1,6 +1,6 @@
-package com.leetcode.learn_introduction;
+package com.leetcode.learn_introduction.tree;
 
-import com.leetcode.learn_introduction.model.TreeLinkNode;
+import com.leetcode.learn_introduction.tree.model.TreeLinkNode;
 import com.leetcode.top_interview_questions.base.TreeNode;
 
 // 1. N-Ary Tree (n个子节点的任意树)

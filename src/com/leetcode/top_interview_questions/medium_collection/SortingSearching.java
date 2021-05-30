@@ -1,14 +1,11 @@
 package com.leetcode.top_interview_questions.medium_collection;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 算法1：找一組数据中前K个数的算法
  */
-public class SortingSearching1 {
+public class SortingSearching {
 
     // Top K Frequent Elements
     // Given an integer array nums and an integer k, return the k most frequent elements
@@ -49,6 +46,27 @@ public class SortingSearching1 {
         return 0;
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
+
+    // Merge Intervals 合并特征区间所使用的数据结构
+    // Given an array of intervals where intervals[i] = [start, end], start <= end 整合区间
+    // intervals = [[1,3],[2,6],[8,10],[15,18]] -> [[1,6],[8,10],[15,18]]
+    public int[][] merge(int[][] intervals) {
+        // 测试理解：1. 每添加一个新区间，就更新前面所存储的区间段 O(n²)  O(n)
+
+        // 正确理解：1. 将所有区间按照start值排序，然后按照下面的处理方式运算 O(nlog(n)) < O(n²) ===> 优先考虑使用排序 !!
+        //            使用LinkedList保证添加的区间从低到高，没有交叉
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+        LinkedList<int[]> merged = new LinkedList<>();
+        for (int[] interval : intervals) {
+            if (merged.isEmpty() || merged.getLast()[1] < interval[0]) {  // 如果不需要合并区间，则直接添加
+                merged.add(interval);
+            } else {
+                merged.getLast()[1] = Math.max(merged.getLast()[1], interval[1]); // 判断是否更新区间的上边界
+            }
+        }
+        return merged.toArray(new int[merged.size()][]);  // 直接从LinkedList到Array转换，提供数组的声明，不需要从List中逐个提取
+    }
 }
 
 

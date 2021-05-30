@@ -58,29 +58,4 @@ public class SortingSearching {
             }
         }
     }
-
-    // First Bad Version 用最小的次数找到指定的目标
-    // TODO: 注意二分法计算的overflow溢出, 两个int值和可能超出MAX_VALUE，除非使用python这种动态类型的语言 !!!
-    public int firstBadVersion(int n) {
-        // 测试理解：1. 第一个次品, 等效于找到前一个是正品，接着的后一个是次品 n=false, n+1=true
-
-        // 正确理解：1. 标准二分法查找: 每次取剩下部分的一半，"当找到次品后，判断前一个是否是正品"，如果是则退出
-        //         2.
-        int low = 1;
-        int high = n;
-        while (low < high) {                    // 当low=high，说明就是第一次品的位置
-            int index = low + (high - low) / 2; // 改计算的结果一定小于high，所以不会溢出 !!
-            if (isBadVersion(index)) {
-                high = index;                   // 如果index是次品，那么有可能是第一个次品，所以不能减1
-            } else {
-                low = index + 1;                // 如果index位置是正品，那么第一个次品出现的位置一定在index后面
-            }
-        }
-        return low;
-    }
-
-    private boolean isBadVersion(int n) {
-        return n >= 4;
-    }
-
 }
