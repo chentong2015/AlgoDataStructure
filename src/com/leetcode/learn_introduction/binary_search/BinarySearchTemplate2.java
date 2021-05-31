@@ -3,7 +3,7 @@ package com.leetcode.learn_introduction.binary_search;
 // TODO: Binary Search Template II 模板
 // Search for an element or condition which requires accessing the current index and
 // its immediate right neighbor's index in the array
-// 需要访问index和它的(前后)相邻index来确定，通过while (left < right)循环来逼近最终的值 !!
+// 需要访问index和它前或后index(或相关的index/right)，通过while(left<right)循环来逼近最终的值 !!
 public class BinarySearchTemplate2 {
 
     // Template 模板 02
@@ -70,7 +70,7 @@ public class BinarySearchTemplate2 {
         return findPeakElementRecursive(nums, middle + 1, right);
     }
 
-    // 正确理解：2. "Iterative Binary Search"
+    // 正确理解：2. Iterative Binary Search
     // nums = [1,2,1,3,5,6,4] -> index = 5
     public int findPeakElementBinarySearch(int[] nums) {
         int left = 0;
@@ -87,4 +87,20 @@ public class BinarySearchTemplate2 {
     }
 
     // Find Minimum in Rotated Sorted Array
+    // nums = [0,1,2,4,5,6,7] -> [4,5,6,7,0,1,2] if it was rotated 4 times
+    // Given the sorted rotated array nums of unique elements, return the minimum element of this array
+    // nums = [4,5,6,7,0,1,2] -> 0
+    public static int findMinIndex(int[] nums) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            int middle = left + (right - left) / 2;
+            if (nums[middle] > nums[right]) {
+                left = middle + 1;
+            } else {
+                right = middle;
+            }
+        }
+        return nums[left]; // 出循环条件: left=right当两个位置坐标相遇, 说明前面一个位置是大值，后面一个位置也是大值 !!
+    }
 }

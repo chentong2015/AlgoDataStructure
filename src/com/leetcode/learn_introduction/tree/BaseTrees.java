@@ -7,15 +7,16 @@ import com.leetcode.top_interview_questions.base.TreeNode;
 // 2. Binary Tree
 // 3. Binary Search Tree
 //      Balanced & Unbalanced BTS
-//      Red–black Tree 自平衡二叉查找树, (对称, 降低树的深度, 节点有红黑之分) https://zh.wikipedia.org/wiki/红黑树
+//      Red–black Tree 自平衡二叉查找树,(对称,降低树深度,节点红黑) https://zh.wikipedia.org/wiki/红黑树
 // 4. Complete Binary Tree 完全二叉树 / BTS / 堆(Heap)
 
 // 高级数据结构
 // 1. Segment Tree 片段树 / Binary Indexed Tree 二叉索引树
-// 2. Prefix Tree 前缀树(含有多个子节点的树)
-// 3. Quad Tree 四叉树(固定有4个子节点的树)
-// 4. K-d Tree(k-dimensional tree) 一种(k维)空间分割的数据结构
-public class LearnTrees {
+// 2. Decision Tree 决策树
+// 3. Prefix Tree 前缀树(含有多个子节点的树)
+// 4. Quad Tree 四叉树(固定有4个子节点的树)
+// 5. K-d Tree(k-dimensional tree) 一种(k维)空间分割的数据结构
+public class BaseTrees {
 
     /**
      * Binary Tree 遍历方式(测试)

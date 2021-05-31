@@ -3,7 +3,7 @@ package com.leetcode.learn_introduction.binary_search;
 // TODO: Binary Search Template I 模板
 // Standard Binary Search Template
 // Search for an element or condition which can be determined by accessing a single index
-// 标准二分法，只需要访问单一的index就能确定
+// 标准二分法, 只需要访问单一的index就能确定, 不需要考虑相邻或者相关的index
 public class BinarySearchTemplate1 {
 
     // Template 模板 01
@@ -29,28 +29,6 @@ public class BinarySearchTemplate1 {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // Sqrt(x)  0<=x<=2^31-1
-    // Given a non-negative integer x, compute and return the square root of x
-    // 通过二分法求平方根，只保留正数的部分
-    // 1. x = 8 -> 2.82842 -> 2     必须去掉正数后面的小数
-    // 2. 2147395599       -> 46339 对于大数, 需要考虑乘积是否会出现值的溢出, 直接比较会出现值的截取, 判断不准 !!
-    public static int mySqrt(int x) {
-        if (x <= 1) return x;
-        int low = 1;
-        int high = x;
-        while (low + 1 < high) {                  // 注意这里的边界条件，需要间隔一个位置
-            int middle = low + (high - low) / 2;
-            if (middle == x / middle) {           // 先算除法，再来比较，避免乘法造成的值溢出 !!
-                return middle;
-            } else if (middle > x / middle) {
-                high = middle;                    // 这里不需要浮动+1和-1，浮动之后很有可能错过要中的值 !!
-            } else {
-                low = middle;
-            }
-        }
-        return low; // 出循环条件: low+1=high, 说明平方根在low和high之间
-    }
 
     // Guess Number Higher or Lower
     // I pick a number from 1 to n. You have to guess which number I picked
@@ -87,11 +65,9 @@ public class BinarySearchTemplate1 {
     // Given the array nums after the rotation and an integer target,return the index , or -1 if it is not in nums
     // nums = [4,5,6,7, 0,1,2], target = 0 -> 4
     // nums = [4,5,6,7, 0,1,2], target = 3 -> -1
-    // [1,3]  3
-    //  0 1
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
-        int minIndex = findMinIndex(nums);
+        int minIndex = BinarySearchTemplate2.findMinIndex(nums);
         if (nums[minIndex] == target) return minIndex;
         int low = nums[minIndex] < target ? minIndex : 0; // 只有两种可能区间[0, minIndex-1] & [minIndex, length-1]
         int high = nums[minIndex] < target ? nums.length - 1 : minIndex - 1; // 中间minIndex作为划分的分水岭，左边一个是最大值 !
@@ -107,17 +83,55 @@ public class BinarySearchTemplate1 {
         return -1;
     }
 
-    private int findMinIndex(int[] nums) {
+    // TODO: 如果需要找两个位置"起点和结尾"，左右分开找，使用两次二分搜索将区间位置找出来 !!
+    // Search for a Range
+    // Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+    // If target is not found in the array, return [-1, -1]
+    // nums = [5,7,7,8,8,10], target = 8  -> [3,4] 如果找到，则开始index和结束index一定是相邻连续的，可能连续有好几个值 !!
+    // nums = [1,4], target = 4           -> [1,1] 开始和结束的位置可能重合
+    // nums = [1,2,3], target = 2         -> [1,1]
+    public int[] searchRange(int[] nums, int target) {
+        int[] result = {-1, -1};
+        if (nums == null || nums.length == 0)
+            return result;
+        result[0] = findStartPosition(nums, target);
+        result[1] = findEndPosition(nums, target);
+        return result;
+    }
+
+    public int findStartPosition(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
-        while (left < right) {
-            int middle = left + (right - left) / 2;
-            if (nums[middle] > nums[right]) {            // 当中间的值大于最右边的值，说明前面一段都是大数，最小值出现在后面
-                left = middle + 1;
+        int start = -1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                start = mid;     // 标记start位置
+                right = mid - 1; // 查看start位置左边时候还有target，把right设置在左边，下一轮计算middle的时候会下移动一个位置 !!
+            } else if (target > nums[mid]) {
+                left = mid + 1;
             } else {
-                right = middle;
+                right = mid - 1;
             }
         }
-        return left;  // 出循环条件: low=high, 则该位置必然是最小值
+        return start; // 只有在找到target的时候，start值才会倍修改，否则为初始值
+    }
+
+    public int findEndPosition(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        int end = -1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                end = mid;      // 标记结尾位置
+                left = mid + 1; // 查看end位置右边的位置，把left右移，下一轮计算middle的时候会上移动一个位置 !!
+            } else if (target > nums[mid]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return end; // 只有在找到target的时候，end值才会倍修改，否则为初始值
     }
 }
