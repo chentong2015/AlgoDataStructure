@@ -6,11 +6,11 @@ import com.leetcode.top_interview_questions.hard_collection.model.TrieNode;
  * Prefix Tree(Implement Trie): 在String集中存储和从中检索key的一种数据结构
  * 1. store and retrieve keys in a dataset of strings / tree data structure
  * 2. 在存储相同的key with the same prefix, Trie比Hash table占用更小的Space, 它会将具有公共prefix的字符串进行整合 !!
- * /
- * Balance Tree 区别：------------------------------------------------------------------------------
+ * .
+ * Balance Tree 区别
  * 1. 在平衡树中搜索key的时间复杂度是O(mlog(n)) m为key的长度，n为key的数目
- * /
- * Hash Table 区别：------------------------------------------------------------------------------
+ * .
+ * Hash Table 区别
  * 1. Hash table has O(1) time complexity for looking for a key: Hash表在查找key的时间复杂度上面是O(1)
  * 2. Hash table 查找具有相同前缀的key不够高效
  * 3. Hash table 在按照词典顺序枚举字符串集时不够高效

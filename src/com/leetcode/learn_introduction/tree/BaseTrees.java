@@ -6,7 +6,7 @@ import com.leetcode.top_interview_questions.base.TreeNode;
 // 1. N-Ary Tree (n个子节点的任意树)
 // 2. Binary Tree
 // 3. Binary Search Tree
-//      Balanced & Unbalanced BTS
+//      Balanced & Unbalanced BTS 左右子树平衡, 保证树的高度最低
 //      Red–black Tree 自平衡二叉查找树,(对称,降低树深度,节点红黑) https://zh.wikipedia.org/wiki/红黑树
 // 4. Complete Binary Tree 完全二叉树 / BTS / 堆(Heap)
 

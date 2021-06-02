@@ -17,7 +17,7 @@ public class TrieNode {
         links = new TrieNode[26];
     }
 
-    // 在对应的node children位置上添加结点
+    // char-'a'转换index位置，对应的node children位置上添加结点
     public void put(char ch, TrieNode node) {
         links[ch - 'a'] = node;
     }

@@ -10,6 +10,9 @@ import java.util.HashSet;
  * >  使用两端遍历，或者二分法优化元素判断
  * >  利用HashMap<>统计频率和HashSet<>判断key值存在
  * >  排序数组Arrays.sort(), 优化处理
+ * .
+ * >  return new int[] {item1, item2, item3, ...} 直接在创建对象的时候初始化, []中无需表明具体数目
+ * >  return Arrays.copyOfRange(results, 0, count); 定位截取指定区间的数据
  */
 public class LearnArray1 {
 
