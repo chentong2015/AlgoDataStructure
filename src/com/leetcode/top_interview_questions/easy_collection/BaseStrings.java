@@ -58,21 +58,15 @@ public class BaseStrings {
 
     // First Unique Character in a String
     // Return the first non-repeating character in it and return its index
-    // s都是小写字符，返回其中第一个非重复字符的位置
-    // Input: s = "loveleetcode"  ->  2
+    // Input: "loveleetcode" 都是小写字符 ->  2 返回其中第一个非重复字符的位置
     public static int firstUniqueChar(String s) {
-        // 测试理解：取出第一个位置上的具有指定特征的字符
-        //          1. 使用Map来辅助判断, 依次存储然后删除前面已经重复的添加，最后剩的第一个pair.value位置就是结果
-        //             Map添加和输出的顺序不一致，同时可以多次添加同一个key值的Pair
-
-        // 正确理解: 1. 利用HashMap的put方法来统计指定的Key出现的次数
-        //          2. 使用定长字符数组int[26], 小写字母位置计算s.charAt(i)-'a', 计算每一个字符出现的次数
-        //          3. Space complexity : O(1) because English alphabet contains 26 letters.
+        // 正确理解: 1. 利用HashMap的put方法来统计指定的Key出现的次数               O(1)
+        //          2. 使用定长字符数组int[26], 计算s.charAt(i)-'a', 统计字符次数 O(1)
         Map<Character, Integer> maps = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) { // 直接遍历字符串的每一个char字符 !!
+        for (int i = 0; i < s.length(); i++) {
             char keyChar = s.charAt(i);
             int oldCount = maps.getOrDefault(keyChar, 0);
-            maps.put(keyChar, oldCount + 1);   // put可以直接堆原来的value进行修改, 不需要设置特定的值 !!
+            maps.put(keyChar, oldCount + 1);
         }
         for (int j = 0; j < s.length(); j++) {
             if (maps.get(s.charAt(j)) == 1) {

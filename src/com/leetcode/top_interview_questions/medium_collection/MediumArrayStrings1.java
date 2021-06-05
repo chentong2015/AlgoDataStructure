@@ -66,6 +66,7 @@ public class MediumArrayStrings1 {
         }
     }
 
+    // TODO: Hash Table "Aggregate by Key" 通过键值来聚合同类数据
     // Group Anagrams
     // Given an array of strings strs, group the anagrams together. can return answer in any order
     // strs = ["eat","tea","tan","ate","nat","bat"] -> [["bat"],["nat","tan"],["ate","eat","tea"]]
@@ -105,7 +106,7 @@ public class MediumArrayStrings1 {
         for (String str : strs) {
             // 通过统计字符的数量，生成指定的Map的Key=#1#2#1...
             Arrays.fill(count, 0);
-            for (char c : str.toCharArray()) {       // 循环内的复杂度是O(m) < O(mlog(m))
+            for (char c : str.toCharArray()) {  // 循环内的复杂度是O(m) < O(mlog(m))
                 count[c - 'a']++;
             }
             StringBuilder sb = new StringBuilder("");
@@ -114,6 +115,7 @@ public class MediumArrayStrings1 {
                 sb.append(count[i]);
             }
             String key = sb.toString();
+            // ....
         }
         return new ArrayList(results.values());
     }

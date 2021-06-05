@@ -17,11 +17,11 @@ import java.util.*;
 // Keys to Design a Hash Table 哈希表的设计原则 ===> 测试没有标准答案 !!
 // 1. Hash Function: depend on the range of key values and the number of buckets 理想情况是one-one mapping
 // 2. Collision Resolution: 当无法做到一一对应的时候，则需要处理冲突
-//    2.1 如何在bucket中存储相同的值
+//    2.1 如何在bucket中存储相同的值 ?
 //        2.1.1 如何key键值的数目是Constant, 可以使用array数组来作为bucket
 //        2.1.2 如果key键值是变量或很大，则使用height-balanced binary search tree高度平衡的BST作为bucket
-//    2.2 当一个bucket中值过多怎么办
-//    2.3 如何搜索一个bucket中的指定值
+//    2.2 当一个bucket中值过多怎么办 ?
+//    2.3 如何搜索某bucket中的指定值 ?
 public class LearnHashTable1 {
 
     // TODO: HashSet<>实战, 一般用在判断重复元素 & 记录出现过的数据, 但是会开辟额外的空间复杂度 !!
@@ -131,23 +131,23 @@ public class LearnHashTable1 {
     }
 
     // TODO: 同时借助HashMap<>, ArrayList<>, 边读取边判断特征, 取最后的结果
-    // 正确理解：1. 借助ArrayList<>，在读取list2中的数据时，便开始判断并提取最后的结果   -> 第一次加速
-    //            在读取list2中数据的时候，如果index2明显的超过了minSumIndex，则往后的数据可以不用判断，因为和一定会更大 !!
+    // 正确理解：1. 借助ArrayList<>，在读取list2中的数据时，便开始判断并提取最后的结果
+    //            在读取list2中数据的时候，如果index2明显的超过了minSumIndex，则往后的数据可以不用判断(和一定更大)
     public String[] findRestaurant2(String[] list1, String[] list2) {
         HashMap<String, Integer> map = new HashMap<>();
         for (int i = 0; i < list1.length; i++) {
             map.put(list1[i], i);
         }
-        List<String> res = new ArrayList<>();     // 动态列表的优势：长度是变化的，同时可以.clear()方便清空数据 !!
+        List<String> res = new ArrayList<>();         // 动态列表的优势：长度是变化的，同时可以.clear()方便清空数据 !!
         int minSumIndex = Integer.MAX_VALUE;
         for (int j = 0; j < list2.length && j <= minSumIndex; j++) {
             if (map.containsKey(list2[j])) {
                 int sumIndex = j + map.get(list2[j]);
-                if (sumIndex < minSumIndex) {
+                if (sumIndex < minSumIndex) {         // 添加第一次最小值的结果
                     res.clear();
                     res.add(list2[j]);
                     minSumIndex = sumIndex;
-                } else if (sumIndex == minSumIndex) {
+                } else if (sumIndex == minSumIndex) { // 或者添加相同结果的一组值 !!
                     res.add(list2[j]);
                 }
             }
