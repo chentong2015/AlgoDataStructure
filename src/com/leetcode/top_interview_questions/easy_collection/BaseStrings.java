@@ -76,6 +76,7 @@ public class BaseStrings {
         return -1;
     }
 
+    // TODO: 利用字符串中的字符来做运算 s.charAt(i) - 'a'，将字符转换成int有效数值 !!
     // Valid Anagram 字符中包含同样多的字符
     // Sorting both strings will result in two identical strings
     public static boolean isAnagram(String s, String t) {

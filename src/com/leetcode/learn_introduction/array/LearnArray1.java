@@ -1,11 +1,12 @@
-package com.leetcode.learn_introduction.array_string;
+package com.leetcode.learn_introduction.array;
 
 import java.util.HashSet;
 
 /**
  * Array 数组的认识
- * 1. 充分利用数组的位置和存储空间，通过一次遍历(或两次遍历)提取信息 ===> 数组的前端和尾部是可以定位存放特征值信息的，覆盖值或者进行加工 !!
- * 2. 常见技术 + 特殊情况
+ * 1. Change In-place 充分利用数组，通过一次遍历(或两次遍历)提取信息  ===> 数组的前端和尾部是可以定位存放特征值信息的，覆盖值或者进行加工 !!
+ * 2. Constraints 约束条件：值的长度，值的范围，值的特点             ===> 可以利用约束条件简化算法的复杂度 !!
+ * 3. 特殊技术
  * >  直接利用位置下标进行计算，将问题转换成和index相关
  * >  使用两端遍历，或者二分法优化元素判断
  * >  利用HashMap<>统计频率和HashSet<>判断key值存在
@@ -14,6 +15,7 @@ import java.util.HashSet;
  * >  return new int[] {item1, item2, item3, ...}   直接在创建对象的时候初始化, []中无需表明具体数目
  * >  return Arrays.copyOf(results, count);         从起始点截取指定的长度
  * >  return Arrays.copyOfRange(results, 0, count); 定位截取指定区间的数据
+ * >  System.arraycopy(digits, 0, results, 1, digits.length); 直接copy源数组的数据到目标数组中
  */
 public class LearnArray1 {
 

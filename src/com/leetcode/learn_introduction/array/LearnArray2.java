@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.array_string;
+package com.leetcode.learn_introduction.array;
 
 public class LearnArray2 {
 
