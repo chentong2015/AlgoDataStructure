@@ -6,7 +6,7 @@ package com.leetcode.learn_introduction.array_string;
  * each of which is an array of N integers. 第一维M个元素，每个定位到第二维存储空间的起使点位置，通过M & N偏移定位到指定内存
  * 2. Dynamic 2D Array 同样具有二位的动态数组，类似二维列表 !!
  */
-public class LearnArrayString {
+public class Learn2DArray {
 
     // Diagonal Traverse 
     // Given an m x n matrix mat, return an array of all the elements of the array in a diagonal order

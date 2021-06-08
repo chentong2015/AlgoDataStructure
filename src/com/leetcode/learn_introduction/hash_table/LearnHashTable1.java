@@ -25,6 +25,7 @@ import java.util.*;
 public class LearnHashTable1 {
 
     // TODO: HashSet<>实战, 一般用在判断重复元素 & 记录出现过的数据, 但是会开辟额外的空间复杂度 !!
+    //       牺牲掉的空间复杂度完全值得，因为在大多时候，在循环的过程中间便出会出结果
     // Happy Number
     // Starting with any positive integer, replace the number by the sum of the squares of its digits
     // Input: n = 19  -> true
@@ -55,8 +56,9 @@ public class LearnHashTable1 {
 
     // TODO: HashMap<>实战, 需要快速判断特征条件的Key值 & 具备Map准确映射关系的特征(比如index坐标) !! 直接在读数的过程中判断
     // Two Sum
-    // Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-    // nums = [3,2,4], target = 9 -> [1,2]  数组中的元素只能使用一次，有且仅有一个解
+    // Given an array of integers nums and an integer target
+    // Return indices of the two numbers such that they add up to target
+    // nums = [3,2,4], target = 6 -> [1,2]  数组中的元素只能使用一次，有且仅有一个解
     // nums = [3,3],   target = 6 -> [0,1]
     public int[] twoSum(int[] nums, int target) {
         // 正确理解：使用HashMap<value, index>存储值和index位置，判断key和target-key同时存在，One Pass一遍读取 !!
