@@ -32,9 +32,9 @@ public class LearnDynamicProgramming {
             return input;
         }
         int pivot = input.length / 2;
-        int[] left_list = merge_sort(Arrays.copyOfRange(input, 0, pivot));
+        int[] left_list = merge_sort(Arrays.copyOfRange(input, 0, pivot));  // Arrays复制片段的时候，复制到最后一个位置前 !!
         int[] right_list = merge_sort(Arrays.copyOfRange(input, pivot, input.length));
-        return merge(left_list, right_list);
+        return merge(left_list, right_list);  // 最后回退到第一层的调用，则merge左右两个半的子数组
     }
 
     // 标准解法：合并两个排序的数组，使用两个index位置游标 + 结果表的index

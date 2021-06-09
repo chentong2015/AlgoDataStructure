@@ -6,11 +6,12 @@ package com.leetcode.learn_introduction.array_string;
  * 2. Use "==" to compares whether these two objects are the same object 只是比较是否是同一个对象
  * 3. TODO: 使用.equals()不仅比较是否是同于个对象，如果不是相同对象，则比较对象包含的值(每个字符)
  * 4. Immutable String 字符串具有不可变性, 如果要改变, 则需要创建一个新的String --> Java/C#不可变, C++可变
- * 5. 比Array多出的操作  --> 都会造成O(n)的时间复杂度, 不可以忽略
+ * 5. 比Array多出的操作
  * >  s1.indexOf('o')
  * >  s1.lastIndexOf('o')
- * >  s1.substring(6, 11)
+ * >  s1.substring(6, 11)        --> 都会造成O(n)的时间复杂度, 不可以忽略
  * >  String.copyValueOf(result)
+ * >  new String(charArray)      --> 直接通过字符数组构建String
  */
 public class LearnString1 {
 

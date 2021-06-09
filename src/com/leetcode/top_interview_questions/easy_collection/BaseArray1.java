@@ -103,6 +103,7 @@ public class BaseArray1 {
         return maxProfit;
     }
 
+    // Rotate Array
     // Rotate the array to the right by k steps, where k is non-negative.
     // Input: nums = [1,2,3,4,5,6,7], k = 3 -> [5,6,7,1,2,3,4]
     public void rotateArray(int[] nums, int k) {
@@ -143,6 +144,7 @@ public class BaseArray1 {
         }
     }
 
+    // Contains Duplicate
     // Return true if any value appears at least twice in the array
     // nums = [1,2,3,1] -> true
     public boolean containsDuplicate(int[] nums) {
