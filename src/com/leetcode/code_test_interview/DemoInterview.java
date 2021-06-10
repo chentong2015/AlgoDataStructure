@@ -1,5 +1,7 @@
 package com.leetcode.code_test_interview;
 
+import java.util.HashMap;
+
 /**
  * 如何面试答题 ===> 和平时工作一致，明确需求
  * 1. 面试的问题不一定有标准答案，有的甚至没有正确答案，把面试官当做客户 !!
@@ -41,5 +43,24 @@ public class DemoInterview {
             }
         }
         return sum;
+    }
+
+    // Alibaba Interview Question
+    // Find elements with more than half the frequency, suppose there is only one answer
+    // nums = [1,2,2,3,3,2,6,2]  ->  2
+    public int findMostFrequencyElement(int[] nums) {
+        // 测试理解：1. 是否能够在不使用别的数据结构的情况下，通过依次遍历将结果判断出来 !!
+        //         2. 排序之后判断每个元素所占的长度区间  O(nlog(n)) O(1)
+        //         3. 使用HashMap<>来存储每个元素的频率 O(n) O(n)
+        if (nums == null || nums.length == 0) return -1;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            int count = map.getOrDefault(num, 0);
+            if (count > nums.length / 2) {
+                return num;
+            }
+            map.put(num, count);
+        }
+        return -1;
     }
 }
