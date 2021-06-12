@@ -9,6 +9,7 @@ import java.util.HashMap;
  * 3. 动手答题前，请留两分钟思考，抽象算法和逻辑
  * 4. 如果题目特殊，可以请求一定的提示，思考后解决
  * 5. Ask the right question 提正确的问题，make decision在多种解法中找到最优化的解法
+ * 6. 如果测试的题目需要写的代码量过大，则考虑换一种思路，寻找最优解 !!
  */
 public class DemoInterview {
 

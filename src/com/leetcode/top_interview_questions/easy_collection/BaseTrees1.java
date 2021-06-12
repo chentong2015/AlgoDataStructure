@@ -76,7 +76,7 @@ public class BaseTrees1 {
         return results;
     }
 
-    // TODO: BFS广度优先遍历, 非递归模式
+    // TODO: BFS广度优先遍历, 非递归模式 ==> 树的遍历，一定没有循环出现，使用"BFS - Template I"
     // 使用queue队列一层一层遍历, 先入队列的先出来, 类似排队
     // O(n) O(n) 如果是完全二叉树，队列中对多存储的node是最下面一层，具有和O(n/2)相当的空间复杂度
     public void levelTraverse(TreeNode root) {

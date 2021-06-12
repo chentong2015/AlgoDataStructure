@@ -1,10 +1,10 @@
-package com.leetcode.top_interview_questions.hard_collection;
+package com.leetcode.learn_introduction.graph;
 
 import java.util.*;
 
 /**
  * 标准图形问题的解决算法:
- * 1. Depth First Search 深度优先遍历
+ * 1. Depth First Search 深度优先遍历，能够在满足前后约束条件下，遍历所有的节点
  * 2. Node InDegree 根据到结点的指向数目，依次从低到高，遍历节点之后更新相关节点的计数 !!
  */
 // Course Schedule II
@@ -14,7 +14,7 @@ import java.util.*;
 // numCourses = 2, prerequisites = [[0,1],[1,0]]             -> 无解循环
 // numCourses = 3, prerequisites = []                        -> [2, 1, 0] 直接输出没有约束的课程
 // numCourses = 3, prerequisites = [[1,0]]                   -> [2, 0, 1] 先输出没有约束的课程，后输出有约束的
-public class HardGraphs {
+public class TraverseGraph2 {
 
     private static final int WHITE = 1;
     private static final int GRAY = 2;
