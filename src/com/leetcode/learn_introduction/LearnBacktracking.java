@@ -2,6 +2,7 @@ package com.leetcode.learn_introduction;
 
 /**
  * Backtracking 回溯算法: 构建问题的所有可能的解决方案，推翻其中一些方案，从而从所有备选可能中找到答案
+ * TODO: 算法推导出满足需求的(所有)答案，但是没有办法在众多的答案中再挑选出最优化的那一个 !!
  * Backtracking is a general algorithm for finding all (or some) solutions to some computational problems
  * which incrementally builds candidates to the solution and abandons a candidate ("backtracks")
  * as soon as it determines that the candidate cannot lead to a valid solution
@@ -24,9 +25,9 @@ public class LearnBacktracking {
     // 0 1 0 0    0 0 1 0 -> 给出n*n的方格中有几种不同的放置n个Queen的可能情况 ?
 
     // 1 0 0 0
-    // 0 0 1 0 -> (1,2)位置对应出来的反斜对角位置为2-1+4=5, 正斜对角对应的位置是1+2=3
+    // 0 0 1 0    -> (1,2)位置对应出来的反斜对角位置为2-1+4=5, 正斜对角对应的位置是1+2=3
     // 0 0 0 0
-    // 0 1 0 0 -> 左侧最多只能放置3个Queen
+    // 0 1 0 0    -> 左侧最多只能放置3个Queen
     private int count = 0;
 
     // O(n!) 递归n层，每一层中再递归(n-1)... !!
@@ -44,12 +45,10 @@ public class LearnBacktracking {
     // 3. 当递归回溯判断row==n; 则说明将n个queen完整填入其中
     public void backtracking(int row, boolean[] cols, boolean[] diag1, boolean[] diag2, int n) {
         if (row == n) count++;
-        for (int col = 0; col < n; col++) {
+        for (int col = 0; col < n; col++) {     // 在不同的row行，填充在每个列的位置，直到推导到row=n最后一层，则记成一个有效的答案 !!
             int id1 = col - row + n;
             int id2 = col + row;
-            if (cols[col] || diag1[id1] || diag2[id2]) {
-                continue;
-            }
+            if (cols[col] || diag1[id1] || diag2[id2]) continue;
             cols[col] = true;  // 这3个位置的确定，标明了在n*n的位置中唯一确定了一个位置
             diag1[id1] = true;
             diag2[id2] = true;

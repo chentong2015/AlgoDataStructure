@@ -1,4 +1,4 @@
-package com.leetcode.code_test_interview.microsoft;
+package com.leetcode.code_test_interview;
 
 import com.leetcode.top_interview_questions.base.TreeNode;
 
@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-public class Test01 {
-    
+public class MicrosoftCode01 {
+
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> results = new ArrayList<>();
         Queue<TreeNode> queue = new ArrayDeque<>();

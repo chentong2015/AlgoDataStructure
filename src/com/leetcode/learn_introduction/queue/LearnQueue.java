@@ -24,6 +24,4 @@ public class LearnQueue {
         }
         int size = q.size();
     }
-
-
 }

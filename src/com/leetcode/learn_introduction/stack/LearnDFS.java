@@ -1,7 +1,7 @@
 package com.leetcode.learn_introduction.stack;
 
-// TODO: DFS深度解析
-// 使用递归算法代替DFS深度优先遍历的展开  ==> 不需要使用stack数据结构  ==> 同时也可以使用BFS实现
+// TODO: DFS深度解析 ==> 可以使用等效的BFS来实现
+// 使用递归算法代替DFS深度优先遍历的展开，不需要使用stack数据结构
 // 同时对于遍历过的位置，更新值作为"标记"
 public class LearnDFS {
 
@@ -30,6 +30,7 @@ public class LearnDFS {
         return count;
     }
 
+    // grid[i][j] = '0'; 如果这里的值没有被修改和标记，则需要使用Hash Table来存储并做好标记 !!
     private void DFSMarking(char[][] grid, int i, int j) {
         if (i < 0 || j < 0 || i >= row || j >= col || grid[i][j] != '1') return;
         grid[i][j] = '0';
