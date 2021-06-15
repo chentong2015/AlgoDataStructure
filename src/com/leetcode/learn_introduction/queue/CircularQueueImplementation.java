@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.queue.model;
+package com.leetcode.learn_introduction.queue;
 
 // TODO: 使用常规方法实现的队列会造成出栈后空间没有释放，从而没有办法在指定的长度范围下再添加新的item
 //                     head = 1

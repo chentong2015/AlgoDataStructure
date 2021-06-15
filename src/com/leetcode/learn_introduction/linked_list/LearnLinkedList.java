@@ -20,13 +20,14 @@ public class LearnLinkedList {
     // Solve the problem without modifying the values in the list's nodes 不能通过修改值来交换
     // head = [1,2,3,4] -> [2,1,4,3]
     public ListNode swapPairs(ListNode head) {
-        // 测试理解: 1. 没交换两个节点之后，后面的节点由递归去实现交换  O(n) 递归调用造成栈空间的开销 O(1)
+        // 测试理解: 1. 每交换两个节点之后，后面的节点由递归去实现交换，每调用一次交换两个位置的前后
+        //             O(n) 递归调用造成栈空间的开销 O(1)
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode newHead = head.next;
-        head.next = swapPairs(newHead.next);
-        newHead.next = head;
-        return newHead;
+        ListNode nextNode = head.next;
+        head.next = swapPairs(nextNode.next);
+        nextNode.next = head;
+        return nextNode;
     }
 }

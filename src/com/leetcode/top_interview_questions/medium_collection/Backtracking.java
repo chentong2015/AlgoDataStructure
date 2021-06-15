@@ -28,14 +28,16 @@ public class Backtracking {
     //   { } [ ]               VALID sub-expression
     public boolean isValid(String str) {
         // 测试理解：1. 使用栈进行迭代判断，如果是一组对应的符号则出栈，否则入栈等待
+        //            不需要在stack中存储String类型，避免类型转换造成的"装箱和拆箱"
         //            O(n) O(n)
-        Stack<Character> stack = new Stack<>(); // 不需要在stack中存储String类型，避免类型转换造成的"装箱和拆箱"
+        Stack<Character> stack = new Stack<>();
         for (int i = 0; i < str.length(); i++) {
             if (stack.isEmpty()) {
                 stack.push(str.charAt(i));
             } else {
                 char temp = stack.peek();
                 char c = str.charAt(i);
+                // 直接列举出3中对应的可能，满足条件的一对，则可以相互消掉 !!
                 if ((temp == '{' && c == '}') || (temp == '[' && c == ']') || (temp == '(' && c == ')')) {
                     stack.pop();
                 } else {
