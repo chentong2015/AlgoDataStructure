@@ -48,7 +48,7 @@ public class Backtracking {
         return stack.isEmpty();
     }
 
-    // 以上为基础测试 ----------------------------------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------------------------------
 
     // Generate Parentheses
     // Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses

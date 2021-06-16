@@ -37,7 +37,7 @@ public class LearnDynamicProgramming {
         return merge(left_list, right_list);  // 最后回退到第一层的调用，则merge左右两个半的子数组
     }
 
-    // 标准解法：合并两个排序的数组，使用两个index位置游标 + 结果表的index
+    // 标准解法：合并两个排序的数组，使用两个index位置游标 + 结果表的index(ret_cursor)
     //         当一个游标结束后，直接添加另一个剩下的结果
     public int[] merge(int[] left_list, int[] right_list) {
         int[] ret = new int[left_list.length + right_list.length];

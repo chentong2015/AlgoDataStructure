@@ -52,7 +52,8 @@ public class DynamicProgramming {
         return index == nums.length;
     }
 
-    // 正确理解：3. Greedy 贪心算法: 从后往前, 如果从index位置加上它移动步数能到到达后面标记位置，则切换后面记录的位置
+    // 正确理解：3. Greedy 贪心算法
+    //            从后往前, 如果从index位置加上它移动步数能到到达后面标记位置，则切换后面记录的位置
     public boolean canJumpTrick2(int[] nums) {
         int lastPos = nums.length - 1;
         for (int i = nums.length - 1; i >= 0; i--) {

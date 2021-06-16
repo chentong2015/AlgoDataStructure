@@ -3,11 +3,11 @@ package com.leetcode.learn_introduction;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Recursion 递归法
- * 1. 时间复杂度：O(n), O(2^n), O(n^n) ...
- * 2. 用法与场景：数列，二叉树的遍历，动态编程，回溯算法 ...
- */
+// TODO: Recursion递归法的本质是无法在一层方法中完整的实现逻辑
+//       因此将后续或者部分的逻辑通过调用自身来一步一步实现
+// 1. 判断和排除特殊情况，以便直接返回
+// 2. 正常执行一个(单元)逻辑的基本操作步骤
+// 3. 调用自身，剩下的交给该方法再做一次
 public class LearnRecursion {
 
     // Pascal's Triangle "Recurrence 循环"

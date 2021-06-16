@@ -1,5 +1,7 @@
 package com.leetcode.learn_introduction.stack;
 
+import java.util.Stack;
+
 /**
  * Stack栈：严格按照指定的访问顺序来process data
  * 1. Stack: First-in-last-out
@@ -38,8 +40,27 @@ public class LearnStack {
 
     // TODO: Stack典型运用，数学四则公式的运算 + - * /
     // Evaluate Reverse Polish Notation
-    public int evalRPN(String[] tokens) {
-
-        return 0;
+    // Evaluate the value of an arithmetic expression in Reverse Polish Notation
+    // Valid operators are +, -, *, and /. Each operand may be an integer or another expression
+    // It is guaranteed that the given RPN expression is always valid, always evaluate to result
+    // tokens = ["2","1","+","3","*"]  ->  ((2 + 1) * 3) = 9
+    public static int evalRPN(String[] tokens) {
+        // 测试理解：1. 在没有特殊条件的情况下，注意约束和标准解法  O(n) O(n) 运算的符号和运算数相差为1，大概为整个tokens长度的一半 !!
+        Stack<Integer> stack = new Stack<>();
+        for (String token : tokens) {
+            if (stack.isEmpty()) {
+                stack.push(Integer.parseInt(token));
+            } else if (token.equals("+") || token.equals("-") || token.equals("*") || token.equals("/")) {
+                int value = stack.pop();    // 如果是运算符号，则栈中一定有两个运算数据可以使用 !!
+                int newValue = stack.pop();
+                if (token.equals("+")) stack.push(value + newValue);
+                if (token.equals("-")) stack.push(newValue - value); // 注意运算符的计算顺序
+                if (token.equals("*")) stack.push(value * newValue);
+                if (token.equals("/")) stack.push(newValue / value); // 前面的值除以后面的值
+            } else {
+                stack.push(Integer.parseInt(token));
+            }
+        }
+        return stack.peek();
     }
 }

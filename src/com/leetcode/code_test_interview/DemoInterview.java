@@ -13,6 +13,17 @@ import java.util.HashMap;
  */
 public class DemoInterview {
 
+    // Google 工程师岗测试题目：三轮算法 + 一个系统设计 + 一个behavioral行为态度
+    // Coding：用熟悉的编程语言(不限)实现给定的题目，会重点关注解题目过程中的"理解"和"沟通能力";
+    // 算法：   涉及到 排序/搜索/分治/动态规划/贪心/递归，具体数据结构，
+    //         可能涉及Dijkstra, A*搜索算法，需要会算法复杂度的分析;
+    // 排序：   常见的排序算法，时间/空间复杂度，例如 快排/归并/堆排序/插入/基数排序等等;
+    // 数据结构：数组/链表/堆/栈/hash/树/二叉树等;
+    // 数学：   可能会涉及到离散数学，组合数学，例如N个中选k个的方法等;
+    // 图：     图的表达(例如矩阵/邻接表)，bfs/dfs 等;
+    // 递归：   递归和迭代的转换;
+    // 其他：   系统设计和操作系统等;
+
     // Microsoft实战题目
     // http://microsoft-hire.me/pages/problems/leetcode.html
     // https://www.careercup.com/page?pid=microsoft-interview-questions

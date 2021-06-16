@@ -19,7 +19,7 @@ import java.util.Queue;
 //         遍历的时，如果遇到1，这将这个1进行展开遍历，直到完全遍历
 //         O(n*m) 确保每一个位置值被访问一次，不管是0还是1  ==> 每一个位置都需要唯一的定位 !!
 //         O(n*m) 考虑到使用HashSet<>的复杂度           ==> 同一个陆地只能被遍历一次，需要进行记录 !!
-public class TraverseGraph1 {
+public class LearnGraphBFS2 {
 
     private int count;
     private int height;
