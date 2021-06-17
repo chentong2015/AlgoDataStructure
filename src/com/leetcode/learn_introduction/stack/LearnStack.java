@@ -10,6 +10,8 @@ import java.util.Stack;
  */
 public class LearnStack {
 
+    // TODO: Stack类型 new Stack<>() + push() + peek() + pop();
+
     // TODO: 使用特殊的stack栈，同数组的下标index来存储和读取，始终在top前端位置添加和删除 !!
     // Daily Temperatures
     // Array of integers temperatures represents the daily temperatures

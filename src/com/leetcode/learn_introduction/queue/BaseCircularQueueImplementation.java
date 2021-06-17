@@ -6,14 +6,14 @@ package com.leetcode.learn_introduction.queue;
 //                                      tail = 5 循环的队列可以有效的节省长度，从开头再开始入新的元素到队列
 // 1. 使用定长的数组，可能处于满队列的情况
 // 2. 使用双指针来标记起使位置和结束位置
-public class CircularQueueImplementation {
+public class BaseCircularQueueImplementation {
 
     private int[] queue;
     private int head;  // 通过head & tail没有办法严格的判断是否是空和满的状态 !!
     private int tail;
     private int count; // 使用count来统计数组中的数目，用于判断空和满的状态
 
-    public CircularQueueImplementation(int length) {
+    public BaseCircularQueueImplementation(int length) {
         queue = new int[length];
         head = 0; // 一开始一定是从0出发的, 从头开始取
         tail = -1;// tail标识的始终是新值的左边位置

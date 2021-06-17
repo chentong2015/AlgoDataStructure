@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class BaseHashMap {
 
+    // TODO: Hash Table类型 new HashMap<>() + put(,) + get() + .entrySet()
     public void testHashMap() {
         Map<Integer, Integer> hashmap = new HashMap<>();
         hashmap.putIfAbsent(0, 0);

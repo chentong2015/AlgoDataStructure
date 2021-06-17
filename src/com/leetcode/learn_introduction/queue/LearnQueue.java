@@ -11,6 +11,7 @@ import java.util.Queue;
  */
 public class LearnQueue {
 
+    // TODO: Queue接口的实现类型是ArrayDeque<>() + add() + peek() + poll();
     public void testQueue() {
         Queue<Integer> q = new ArrayDeque<>();
         q.add(10);
