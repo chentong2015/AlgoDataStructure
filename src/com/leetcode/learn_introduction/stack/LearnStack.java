@@ -65,4 +65,51 @@ public class LearnStack {
         }
         return stack.peek();
     }
+
+    // TODO: 当一个栈无法实现的时候，考虑使用两个栈同步存储，单独入栈，同时出栈
+    // Decode String
+    // Given an encoded string, return its decoded string
+    // k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times
+    // Assume that the input string is always valid; No extra white spaces, square brackets are well-formed
+    // s长度>1，其中的字符只有方括号和小写英文字符和数字，s一定是有效的编码字符串，其中数字的范围
+    // s = "3[a]2[bc]" -> "aaabcbc"    假设输入的encode的字符串都是有效的
+    // s = "3[a2[c]]"  -> "accaccacc"  可能包含嵌套的[[]]需要从内向外依次展开
+
+    // 使用一个栈能够实现 ?
+    // c  当遇到一个右方括号的时候，处理一个数字，出栈的如果是字符则直接拼接到一起
+    // 2  cc
+    // a  acc
+    // 3  accaccacc
+    public String decodeString(String s) {
+        int idx = 0;
+        String res = "";
+        Stack<Integer> countStack = new Stack<>();
+        Stack<String> resStack = new Stack<>();
+        while (idx < s.length()) {                              // 使用while在内部控制index的移动
+            if (Character.isDigit(s.charAt(idx))) {
+                int count = 0;
+                while (Character.isDigit(s.charAt(idx))) {      // 将数字从高位向低位整合起来
+                    count = 10 * count + (s.charAt(idx) - '0');
+                    idx++;
+                }
+                countStack.push(count);
+            } else if (s.charAt(idx) == '[') {
+                resStack.push(res);
+                res = "";
+                idx++;
+            } else if (s.charAt(idx) == ']') {
+                StringBuilder temp = new StringBuilder(resStack.pop());
+                int repeatTimes = countStack.pop();
+                for (int i = 0; i < repeatTimes; i++) {
+                    temp.append(res);
+                }
+                res = temp.toString();
+                idx++;
+            } else {
+                res += s.charAt(idx++);  // []普通方括号中需要重复的字符，集中在一起
+            }
+        }
+        return res;
+    }
+
 }

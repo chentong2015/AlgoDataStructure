@@ -29,11 +29,11 @@ public class LearnString1 {
             s += "hello"; // 每次追加的新的字符串，都会造成额外的内存空间开辟，然后造成Copy的操作
         }
 
-        StringBuilder str = new StringBuilder();
+        StringBuilder str = new StringBuilder(s); // 用String来构建StringBuilder
         for (int i = 0; i < n; i++) {
             str.append("hello");
         }
-        String result = str.toString();
+        String result = str.toString();           // 将StringBuilder转换成String
     }
 
     // TODO：充分使用字符串中字符直接的运算 .charAt(index)-'0' 从char转换到int来计算 !!
