@@ -52,29 +52,4 @@ public class LearnString2 {
         }
         return null;
     }
-
-    // TODO: Sliding window technique 滑动窗口算法技术 !!
-    // Minimum Size Subarray Sum
-    // Given an array of positive integers nums and a positive integer target
-    // Return the minimal length of a "contiguous subarray" [nums l, nums l+1, ..., nums r-1, nums r]
-    // The sum is greater than or equal to target. If there is no such subarray, return 0
-    // target = 7, nums = [2,3,1,2,4,3]  ->  2
-    public int minSubArrayLen(int target, int[] nums) {
-        // 测试理解：1. 一般解法，先对数组进行排序，然后先取大值，再取第二大值，直到满足>=的条件 O(nlog(n)) O(1)
-
-        // 正确理解：1. 由于必须是连续的子数组，可以使用滑动的窗口依次移动，从而不断的缩小区间
-        if (nums == null || nums.length == 0) return 0;
-        int i = 0;
-        int j = 0;
-        int sum = 0;
-        int min = Integer.MAX_VALUE;
-        while (j < nums.length) {
-            sum += nums[j++];
-            while (sum >= target) {         // 从头开始减少，通过[j-i]来缩小区间
-                min = Math.min(min, j - i); // 保留利用过程中，有效的最小窗口的宽度大小 !!
-                sum -= nums[i++];
-            }
-        }
-        return min == Integer.MAX_VALUE ? 0 : min;
-    }
 }

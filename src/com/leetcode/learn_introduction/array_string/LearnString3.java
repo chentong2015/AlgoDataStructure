@@ -1,70 +1,79 @@
 package com.leetcode.learn_introduction.array_string;
 
+// TODO: Sliding window technique 关于数组和字符串的滑动窗口算法 
 public class LearnString3 {
 
-    // Reverse Words in a String
-    // Given an input string s, reverse the order of the words
-    // s may contain leading or trailing spaces or multiple spaces between two words 字符串的首尾和中间可能包含多个空格
-    // Return a string of the words in reverse order concatenated by a single space
-    // s = "the sky is blue" -> "blue is sky the"
-    // s = "  hello world  " -> "world hello"
-    public String reverseWords(String s) {
-        // 测试理解：1. 常规解法，从后往前取每个单词，然后依次通过StringBuilder来构造最后的结果  O(n) O(n)
-        //            TODO: 一般不能直接使用基础类库的方法 .split() .trim() !!
-        if (!s.contains(" ")) return s;
-        String[] arr = s.split(" ");
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int index = arr.length - 1; index >= 0; index--) {
-            if (!arr[index].equals("")) {
-                stringBuilder.append(arr[index]).append(" ");
+    // Minimum Size Subarray Sum
+    // Given an array of positive integers nums and a positive integer target
+    // Return the minimal length of a "contiguous subarray" [nums l, nums l+1, ..., nums r-1, nums r]
+    // The sum is greater than or equal to target. If there is no such subarray, return 0
+    // target = 7, nums = [2,3,1,2,4,3]  ->  2
+    public int minSubArrayLen(int target, int[] nums) {
+        // 测试理解：1. 一般解法，先对数组进行排序，然后先取大值，再取第二大值，直到满足>=的条件 O(nlog(n)) O(1)
+        // 正确理解：1. 由于必须是连续的子数组，可以使用滑动的窗口依次移动，从而不断的缩小区间
+        if (nums == null || nums.length == 0) return 0;
+        int left = 0;
+        int right = 0;
+        int sum = 0;
+        int min = Integer.MAX_VALUE;
+        while (right < nums.length) {
+            sum += nums[right];
+            while (sum >= target) {                    // 从头开始减少，通过[j-i]来缩小区间
+                min = Math.min(min, right - left + 1); // 保留利用过程中，有效的最小窗口的宽度大小，注意长度 +1
+                sum -= nums[left];
+                left++;
             }
+            right++;
         }
-        return stringBuilder.toString().trim();
+        return min == Integer.MAX_VALUE ? 0 : min;
     }
 
-    // TODO: 数组的操作划分到每一个小步，逐步实现
-    // 测试理解：1. 转变成字符数组进行处理，通过3个小步和小运算生成最后的结果，保持O(n)的时间复杂度
-    public String reverseWords2(String s) {
-        if (s == null) return null;
-        char[] chars = s.toCharArray();
-        int length = chars.length;
-        reverse(chars, 0, length - 1);
-        reverseWords(chars, length);
-        return cleanSpaces(chars, length);
+    // Longest Substring
+    // Given a string s, find the length of the longest substring without repeating characters
+    // s consists of English letters, digits, symbols and spaces.
+    // s = "abcabcbb" -> "abc" -> 3
+    // int[128] for ASCII (该码值为8个bit位置), int[256] for Extended ASCII
+    public int lengthOfLongestSubstring(String s) {
+        int left = 0;
+        int right = 0;
+        int res = 0;
+        int[] chars = new int[128];
+        while (right < s.length()) {
+            char r = s.charAt(right);
+            chars[r]++;
+            while (chars[r] > 1) {       // 一步一步的移动，直到windows窗口的区间中，没有重复的char字符 !!
+                char l = s.charAt(left);
+                chars[l]--;
+                left++;
+            }
+            res = Math.max(res, right - left + 1);
+            right++;
+        }
+        return res;
     }
 
-    // 先整个字符数组颠倒，使用双标识 O(n) O(1)
-    private void reverse(char[] a, int i, int j) {
-        while (i < j) {
-            char t = a[i];
-            a[i++] = a[j];
-            a[j--] = t;
+    // TODO: 滑动窗口算法的优化版本, left坐标位置不需要逐步移动，而是一步跳跃式的移动到指定位置
+    // "abcdeafbdgcbb"
+    // a: 6    字符始终记录出现的最后一个位置的index，每次更新位置     chars[r] = right;
+    // b: 12   当发现字符出现，取出它的位置，并从它的下一个位置开始截断  left = index + 1;
+    // c: 11   同时每一步更新结果                                 res = Math.max(,)
+    // d: 9
+    // ...
+    public int lengthOfLongestSubstring2(String s) {
+        int left = 0;
+        int right = 0;
+        int res = 0;
+        Integer[] chars = new Integer[128]; // char -> int 根据ASCII码值表对应十进制的值，作为数组的下标
+        while (right < s.length()) {
+            char r = s.charAt(right);
+            Integer index = chars[r];       // 使用引用类型来做null空的判断，避免之间判断index的范围 !!
+            if (index != null && left <= index && index < right) {
+                left = index + 1;
+            }
+            res = Math.max(res, right - left + 1);
+            chars[r] = right;
+            right++;
         }
-    }
-
-    // 在字符串内部的指定区间颠倒单词，遍历出来的时间复杂度不会超过O(n)
-    // 使用双指针定位单词的首尾位置，[i, j-1]单词的区间 O(n) O(1)
-    void reverseWords(char[] a, int length) {
-        int i = 0;
-        int j = 0;
-        while (i < length) {
-            while (i < j || i < length && a[i] == ' ') i++;  // 第一个非空的位置就是起使点
-            while (j < i || j < length && a[j] != ' ') j++;  // 单词结尾处后一个为空，或者是到了数组的最后
-            reverse(a, i, j - 1);
-        }
-    }
-
-    // 利用数组的前端存储空间，将后面的单词移位 !!
-    // 将每个单词转移到从起使点index=0开始的位置，依次往后填充每一个单词，最后再截取处理好的长度index O(n)+O(n) O(1)
-    String cleanSpaces(char[] a, int n) {
-        int index = 0;
-        int j = 0;
-        while (j < n) {
-            while (j < n && a[j] == ' ') j++;
-            while (j < n && a[j] != ' ') a[index++] = a[j++];
-            while (j < n && a[j] == ' ') j++;
-            if (j < n) a[index++] = ' ';
-        }
-        return new String(a).substring(0, index); // 这里需要花费时间复制度
+        return res;
     }
 }

@@ -2,12 +2,6 @@ package com.leetcode.learn_introduction.hash_table;
 
 import java.util.*;
 
-/**
- * Hash Table 使用Hash方法快速的插入和检索      ===> 直接使用Standard Template Libraries
- * 1. Data structure which organizes data using "hash functions" in order to support quick insertion and search
- * 2. HashSet<>  对Set数据类型的实现，不包含重复的值
- * 3. HashMap<,> 对Map数据类型的实现，包含<key, value>键值对
- */
 public class LearnHashTable1 {
 
     // TODO: HashSet<>实战, 一般用在判断重复元素 & 记录出现过的数据, 但是会开辟额外的空间复杂度 !!

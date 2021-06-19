@@ -3,7 +3,9 @@ package com.leetcode.code_test_interview;
 import java.util.HashMap;
 
 /**
- * 如何面试答题 ===> 和平时工作一致，明确需求
+ * 如何面试答题
+ * ===> 和平时工作一致，明确需求
+ * ===> 白板写代码，如何思考和解决问题
  * 1. 面试的问题不一定有标准答案，有的甚至没有正确答案，把面试官当做客户 !!
  * 2. 沟通好问题是什么，问题的边界，假设条件，边缘场景，异常场景，技术架构、如何测试、技术限制等
  * 3. 动手答题前，请留两分钟思考，抽象算法和逻辑
@@ -17,7 +19,9 @@ public class DemoInterview {
     // http://microsoft-hire.me/pages/problems/leetcode.html
     // https://www.careercup.com/page?pid=microsoft-interview-questions
 
-    // Google 工程师岗测试题目：三轮算法 + 一个系统设计 + 一个behavioral行为态度
+    // Google 工程师岗测试题目：
+    // 1. 至少保证有一门语言不被问倒
+    // 2. 三轮算法 + 一个系统设计 + 一个behavioral行为态度
     // Coding：用熟悉的编程语言(不限)实现给定的题目，会重点关注解题目过程中的"理解"和"沟通能力";
     // 算法：   涉及到 排序/搜索/分治/动态规划/贪心/递归，具体数据结构，
     //         可能涉及Dijkstra, A*搜索算法，需要会算法复杂度的分析;
