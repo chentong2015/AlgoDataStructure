@@ -1,6 +1,6 @@
 package com.leetcode.learn_introduction.graph;
 
-public class LearnGraphDFS2 {
+public class LearnGraphDFS3 {
 
     // TODO: 模板二，显式使用stack栈数据结构来实现DFS深度优先遍历
     // DFS - Template II

@@ -81,35 +81,28 @@ public class LearnStack {
     // a  acc
     // 3  accaccacc
     public String decodeString(String s) {
-        int idx = 0;
-        String res = "";
-        Stack<Integer> countStack = new Stack<>();
-        Stack<String> resStack = new Stack<>();
-        while (idx < s.length()) {                              // 使用while在内部控制index的移动
-            if (Character.isDigit(s.charAt(idx))) {
-                int count = 0;
-                while (Character.isDigit(s.charAt(idx))) {      // 将数字从高位向低位整合起来
-                    count = 10 * count + (s.charAt(idx) - '0');
-                    idx++;
+        Stack<Integer> intStack = new Stack<>();
+        Stack<StringBuilder> strStack = new Stack<>();
+        StringBuilder cur = new StringBuilder();
+        int k = 0;
+        for (char ch : s.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                k = k * 10 + ch - '0';   // 将数字从高位向低位整合起来
+            } else if (ch == '[') {      // 将统计出来的数字入栈，将[后面积累的cur字符串入栈 !!
+                intStack.push(k);
+                strStack.push(cur);
+                cur = new StringBuilder();
+                k = 0;
+            } else if (ch == ']') {      // ]  出现的时候需要decode字符，重复指定的次数
+                StringBuilder tmp = cur; // c  cur中存储的是需要重复的
+                cur = strStack.pop();    // a+ 再拿到前面入strStack中的存储的字符，进行拼接
+                for (k = intStack.pop(); k > 0; k--) {
+                    cur.append(tmp);
                 }
-                countStack.push(count);
-            } else if (s.charAt(idx) == '[') {
-                resStack.push(res);
-                res = "";
-                idx++;
-            } else if (s.charAt(idx) == ']') {
-                StringBuilder temp = new StringBuilder(resStack.pop());
-                int repeatTimes = countStack.pop();
-                for (int i = 0; i < repeatTimes; i++) {
-                    temp.append(res);
-                }
-                res = temp.toString();
-                idx++;
             } else {
-                res += s.charAt(idx++);  // []普通方括号中需要重复的字符，集中在一起
+                cur.append(ch);
             }
         }
-        return res;
+        return cur.toString();
     }
-
 }

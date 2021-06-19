@@ -15,7 +15,7 @@ public class BaseTrees2 {
         //            O(n) O(n) 递归方法造成栈空间的开销, 最差的情况是n个节点排在n层 !!
         if (root == null) {
             return 0;
-        } else if (root.getLeft() == null) { // 叶子节点
+        } else if (root.getLeft() == null) {
             return 1 + maxDepth(root.getRight());
         } else if (root.getRight() == null) {
             return 1 + maxDepth(root.getLeft());

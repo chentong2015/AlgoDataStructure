@@ -81,7 +81,7 @@ public class BaseTrees {
     // Given the roots of two binary trees p and q, write a function to check if they are the same or not
     // They are structurally identical, and the nodes have the same value
     //  1      1     -> false
-    // 2  1   1  2
+    // 2  1   1  2   -> 往下层递归到左右子树
     public boolean isSameTree(TreeNode p, TreeNode q) {
         // 测试理解：1. 直接递归每个节点，比较判断
         //            O(n+m) 所有的节点都会判断 O(max(L1, L2)) -> O(max(n,m))空间复杂度取决于最大的递归深度 !!

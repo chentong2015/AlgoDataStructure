@@ -14,5 +14,19 @@ package com.leetcode.learn_introduction.hash_table;
 //        2.1.2 如果key键值是变量或很大，则使用height-balanced binary search tree高度平衡的BST作为bucket
 //    2.2 当一个bucket中值过多怎么办 ?
 //    2.3 如何搜索某bucket中的指定值 ?
+
+// Hash Table key的基本设计原则：在原始的信息(一组信息)和hash table key之间构建映射关系
+// 1. All values belong to the same group will be mapped in the same group
+// 2. Values which needed to be separated into different groups will not be mapped into the same group
+//    Function可能多值映射到同一个bucket
+// 3. 设计实战
+//    sorted string/array as the key            排序字符串之后作为key       (x0,x3,x1,x2) -> (x0,x1,x2,x3)
+//    use offset of the first value             通过偏移量来构建key        (x0,x1,x2,x3) -> (x0,x1-x0,x2-x0,x3-x0)
+//    use the TreeNode as key sometimes         直接使用树的结点作为key
+//    use serialization of the subtree          使用子树的序列化值          3(2(4,1),6)
+//    use row or column index as key            数组中使用index坐标位
+//    combine row and column index              结合行列坐标确定位置block    (i,j) -> (i/3)*3 + j/3 确定9*9中3*3的区域
+//    aggregate values in same diagonal line    级联所有对角线的index        (i,j) -> (i+j) )斜对角  (i,j) -> (i-j)反斜对角
 public class BashHashTableImplementation {
+
 }

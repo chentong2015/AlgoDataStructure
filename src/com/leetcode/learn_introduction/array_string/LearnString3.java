@@ -42,17 +42,19 @@ public class LearnString3 {
         }
     }
 
+    // 在字符串内部的指定区间颠倒单词，遍历出来的时间复杂度不会超过O(n)
     // 使用双指针定位单词的首尾位置，[i, j-1]单词的区间 O(n) O(1)
-    void reverseWords(char[] a, int n) {
+    void reverseWords(char[] a, int length) {
         int i = 0;
         int j = 0;
-        while (i < n) {
-            while (i < j || i < n && a[i] == ' ') i++;  // 第一个非空的位置就是起使点
-            while (j < i || j < n && a[j] != ' ') j++;  // 单词结尾处后一个为空，或者是到了数组的最后
+        while (i < length) {
+            while (i < j || i < length && a[i] == ' ') i++;  // 第一个非空的位置就是起使点
+            while (j < i || j < length && a[j] != ' ') j++;  // 单词结尾处后一个为空，或者是到了数组的最后
             reverse(a, i, j - 1);
         }
     }
 
+    // 利用数组的前端存储空间，将后面的单词移位 !!
     // 将每个单词转移到从起使点index=0开始的位置，依次往后填充每一个单词，最后再截取处理好的长度index O(n)+O(n) O(1)
     String cleanSpaces(char[] a, int n) {
         int index = 0;
