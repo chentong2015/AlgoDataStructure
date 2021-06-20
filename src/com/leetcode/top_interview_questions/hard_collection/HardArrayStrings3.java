@@ -46,9 +46,8 @@ public class HardArrayStrings3 {
         return "";
     }
 
-    // 正确理解: 1.
-    //  S = "ABCDDDDDDEEAFFBC" T = "ABC"
-    //  filtered_S = [(0, 'A'), (1, 'B'), (2, 'C'), (11, 'A'), (14, 'B'), (15, 'C')]
+    // 正确理解: 1. S = "ABCDDDDDDEEAFFBC" T = "ABC"
+    // filtered_S = [(0, 'A'), (1, 'B'), (2, 'C'), (11, 'A'), (14, 'B'), (15, 'C')]
     public static String minWindow2(String s, String t) {
         if (s.length() == 0 || t.length() == 0) return "";
         Map<Character, Integer> dictT = new HashMap<>();
