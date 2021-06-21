@@ -3,7 +3,7 @@ package com.leetcode.learn_introduction.hash_table;
 // 衡量Hash表优劣的两个维度
 // 1. 性能高，接近O(1)的查询复杂度
 // 2. 良好的分布性
-public class BashHashTableImplementation {
+public class BaseHashTableImplementation {
 
     // The Principle of Hash Table 哈希表的核心和实现原理
     // 1. Use a hash function to map keys to buckets 核心原理是使用hash方法映射key到buckets

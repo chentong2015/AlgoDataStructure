@@ -61,4 +61,23 @@ public class Others {
         }
         return count;
     }
+
+    // Generate Random Number
+    // Design a algo to generate a int number between 0 and bound
+    // 0 <= ? < bound 什么样的逻辑能够使得数字均匀的生成 ??
+    public int getRandomNumber(int bound) {
+        if (bound <= 0) {
+            throw new IllegalArgumentException("bound must be positive");
+        }
+        if ((bound & -bound) == bound)  // i.e., bound is a power of 2
+            return bound / 2;
+        // return (int)((bound * (long)next(31)) >> 31);
+        int bits, val;
+        do {
+            // bits = next(31);
+            bits = 10;
+            val = bits % bound;
+        } while (bits - val + (bound - 1) < 0);
+        return val;
+    }
 }
