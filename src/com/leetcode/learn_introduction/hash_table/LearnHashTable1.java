@@ -4,7 +4,8 @@ import java.util.*;
 
 public class LearnHashTable1 {
 
-    // TODO: HashSet<>实战, 一般用在判断重复元素 & 记录出现过的数据, 但是会开辟额外的空间复杂度 !!
+    // TODO: HashSet<,>实战
+    //       一般用在判断重复元素 & 记录出现过的数据, 但是会开辟额外的空间复杂度 !!
     //       牺牲掉的空间复杂度完全值得，因为在大多时候，在循环的过程中间便出会出结果
     // Happy Number
     // Starting with any positive integer, replace the number by the sum of the squares of its digits
@@ -34,7 +35,9 @@ public class LearnHashTable1 {
         return sum;
     }
 
-    // TODO: HashMap<>实战, 需要快速判断特征条件的Key值 & 具备Map准确映射关系的特征(比如index坐标) !! 直接在读数的过程中判断
+    // TODO: HashMap<>实战
+    //       需要快速判断特征条件的Key值
+    //       具备Map准确映射关系的特征(比如index坐标位置)
     // Two Sum
     // Given an array of integers nums and an integer target
     // Return indices of the two numbers such that they add up to target

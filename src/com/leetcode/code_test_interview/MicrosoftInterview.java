@@ -2,10 +2,7 @@ package com.leetcode.code_test_interview;
 
 import com.leetcode.top_interview_questions.base.TreeNode;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 /**
  * 和平时工作一致，明确需求
@@ -24,22 +21,8 @@ public class MicrosoftInterview {
     // 2. Teams 视频面试, 共享桌面，运行测试
     // http://microsoft-hire.me/pages/problems/leetcode.html
     // https://www.careercup.com/page?pid=microsoft-interview-questions
-    
+
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> results = new ArrayList<>();
-        Queue<TreeNode> queue = new ArrayDeque<>();
-        queue.add(root);
-        int depth = 0;
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
-            System.out.println(node.getVal());
-            if (node.getLeft() != null) {
-                queue.add(node.getLeft());
-            }
-            if (node.getRight() != null) {
-                queue.add(node.getRight());
-            }
-        }
-        return results;
+        return null;
     }
 }

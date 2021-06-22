@@ -1,19 +1,14 @@
-package com.leetcode.learn_introduction.linked_list;
+package com.leetcode.learn_introduction.array_list_linked;
 
 import com.leetcode.top_interview_questions.base.ListNode;
 
 /**
- * TODO: List可以直接根据index的位置来增删数据，list.add(index, element); list.remove(index);
- * 1. 链表特点: 数据查询比较慢, 增删中间节点的数据很快 !!
- * 2. 链表类型: 单向链表, 双向链表, 循环链表(Cycle Linked List)
- * 3. 常见技术:
- * >  迭代法 & 递归法
- * >  在链表前面添加DummyHead作为依托
- * >  充分利用节点值做判断，按顺序插入节点
- * >  操作和遍历链表的时候，直接判断Node是否为null
- * >  Collections.swap(list, i, j) 交换list中指定两个位置的值
+ * Linked List高级解法：
+ * 1. 两种常规解法：迭代法 & 递归法(简单直接)
+ * 2. 之间判断node是否为null，而不是node.next !!
+ * 3. 构建dummyHead作用head的前面结点，作为保留
  */
-public class LearnLinkedList {
+public class LearnLinkedList2 {
 
     // TODO: 典型链表递归算法
     // Swap Nodes in Pairs

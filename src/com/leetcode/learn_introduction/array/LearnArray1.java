@@ -3,7 +3,10 @@ package com.leetcode.learn_introduction.array;
 import java.util.HashSet;
 
 /**
- * Array 数组的认识
+ * Array 数组: 存储量(长度)固定
+ * 1. 查找元素速度快，根据下标index访问
+ * 2. 在中间插入元素慢，需要移动后面的元素
+ * .
  * 1. Change In-place 充分利用数组，通过一次遍历(或两次遍历)提取信息  ===> 数组的前端和尾部是可以定位存放特征值信息的，覆盖值或者进行加工 !!
  * 2. Constraints 约束条件：值的长度，值的范围，值的特点             ===> 可以利用约束条件简化算法的复杂度 !!
  * 3. 特殊技术

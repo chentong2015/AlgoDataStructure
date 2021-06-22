@@ -46,7 +46,7 @@ public class HardLinkedList {
         if (pre == null) after.next = addNode;// 如果移动到最后，则直接将新的节点添加到最后
         return root;
     }
-    
+
     // Sort List 自定义排序一个链表
     // Given the head of a linked list, return the list after sorting it in ascending order
     // head = [-1,5,3,4,0] -> [-1,0,3,4,5]
@@ -63,10 +63,11 @@ public class HardLinkedList {
         return merge(leftHead, rightHead);
     }
 
+    // TODO: 链表的排序合成，构造一个dummyHead作为结果链表head结点的指引 !!
     // 将原始问题简化成合成两个有序链表的问题, 这里的算法将进行比较排序 !!
     // leftHead : -1 -> 5
     // rightHead:  0 -> 3 -> 4
-    // node: -1 -> 0 -> 3 -> 4 -> 5
+    // node:      -1 -> 0 -> 3 -> 4 -> 5
     private ListNode merge(ListNode list1, ListNode list2) {
         ListNode dummyHead = new ListNode();
         ListNode tail = dummyHead;               // tail是合成出来的整个链条的最尾部的节点

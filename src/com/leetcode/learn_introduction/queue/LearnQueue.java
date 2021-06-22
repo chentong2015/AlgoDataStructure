@@ -1,8 +1,6 @@
 package com.leetcode.learn_introduction.queue;
 
-import java.util.ArrayDeque;
-import java.util.HashSet;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Queue队列：严格按照指定的访问顺序来process data
@@ -11,21 +9,33 @@ import java.util.Queue;
  */
 public class LearnQueue {
 
-    // TODO: Queue接口的实现类型是ArrayDeque<>() + add() + peek() + poll();
+    // TODO: Queue接口的实现类型是 add() + peek() + poll();
+
+    // 使用LinkedList(implements Deque<E>)作为队列使用
     public void testQueue() {
-        Queue<Integer> q = new ArrayDeque<>();
-        q.add(10);
-        q.offer(5);
-        // 查看应该出队列的元素，但是不会移除，可能返回null，不能赋值给值类型 !!
-        System.out.println("The first element is: " + q.peek());
-        q.offer(13);
-        q.offer(8);
-        q.offer(6);
-        if (!q.isEmpty()) {
-            int value = q.poll(); // 取出第一个出队列的数
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(10);                     // 适用于队列的容量不受限制
+        queue.offer(5);                 // 通常使用在容量受限的队列，该方法比add()更加可取 !!
+        int size = queue.size();
+        Integer checkValue = queue.peek(); // 查看应该出队列的元素，但是不会移除，可能返回null，不能赋值给值类型 !!
+        if (!queue.isEmpty()) {
+            int value = queue.poll();      // 取出第一个出队列的元素
         }
-        int size = q.size();
     }
+
+    // ArrayDeque在默认初始情况下存储16个元素
+    // Constructs an empty array deque with an initial capacity sufficient to hold 16 elements.
+    public void testDeque() {
+        Queue<Integer> queue = new ArrayDeque<>();
+    }
+
+    // 1. 基于优先级堆的无界优先级队列
+    // 2. 优先级队列的元素根据它们的自然顺序进行排序，或者由队列构建时提供的Comparator进行排序
+    private void testPriorityQueue() {
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////
 
     // Open the Lock
     // 4 circular wheels. Each wheel has 10 slots (0-9)(9-0) 数字循环，在相邻的两个数字可以自由移动

@@ -5,11 +5,16 @@ import java.util.Map;
 
 /**
  * Hash Table 使用Hash方法快速的插入和检索: 使用Standard Template Libraries
- * 1. Data structure which organizes data using "hash functions" in order to support quick insertion and search
- * 2. HashSet<>  对Set数据类型的实现，不包含重复的值
- * 3. HashMap<,> 对Map数据类型的实现，包含<key, value>键值对
+ * Data structure which organizes data using "hash functions" in order to support quick insertion and search
  */
-public class BaseHashMap {
+// HashSet<>          对Set接口的实现，不包含重复的值: 不保证元素的迭代顺序，不保证顺序不变 !!
+//   LinkedHashSet<>  确定迭代的顺序，必须是插入元素的顺序
+//   TreeSet<>        对元素进行自然排序，或者提供Comparator进行对象的自定义比较
+
+// HashMap<,>         对Map接口的实现，包含<key, value>键值对: 不保证元素的迭代顺序，不保证顺序不变 !!
+//   LinkedHashMap<,> 确定迭代的顺序，必须是插入元素的顺序
+//   TreeMap<>        对元素进行自然排序，或者提供Comparator
+public class BaseHashTable {
 
     // TODO: Hash Table类型 new HashMap<>() + put(,) + get() + .entrySet()
     public void testHashMap() {
@@ -34,9 +39,9 @@ public class BaseHashMap {
         }
 
         System.out.println("The size : " + hashmap.size());
-        hashmap.clear();
         if (hashmap.isEmpty()) {
             System.out.println("hash map is empty now!");
         }
+        hashmap.clear();
     }
 }

@@ -28,9 +28,7 @@ public class LearnDynamicProgramming {
     // O(nlog(n)) 时间复杂度看成是log(n)层 * 每一层merge的时间复杂度O(n) !!
     // O(n)       空间复杂度来自于每一层排序时的sublist, 最大情况时O(n)的临时存储空间 ==> 在递归divide Single Element过程中，总O(n)
     public int[] merge_sort(int[] input) {
-        if (input.length <= 1) {
-            return input;
-        }
+        if (input.length <= 1) return input;  // 0个或者1个值没有必要排序
         int pivot = input.length / 2;
         int[] left_list = merge_sort(Arrays.copyOfRange(input, 0, pivot));  // Arrays复制片段的时候，复制到最后一个位置前 !!
         int[] right_list = merge_sort(Arrays.copyOfRange(input, pivot, input.length));
@@ -40,10 +38,10 @@ public class LearnDynamicProgramming {
     // 标准解法：合并两个排序的数组，使用两个index位置游标 + 结果表的index(ret_cursor)
     //         当一个游标结束后，直接添加另一个剩下的结果
     public int[] merge(int[] left_list, int[] right_list) {
-        int[] ret = new int[left_list.length + right_list.length];
         int left_cursor = 0;
         int right_cursor = 0;
         int ret_cursor = 0;
+        int[] ret = new int[left_list.length + right_list.length];
         while (left_cursor < left_list.length && right_cursor < right_list.length) {
             if (left_list[left_cursor] < right_list[right_cursor]) {
                 ret[ret_cursor++] = left_list[left_cursor++];
@@ -51,6 +49,7 @@ public class LearnDynamicProgramming {
                 ret[ret_cursor++] = right_list[right_cursor++];
             }
         }
+        // 补充完最后一部分的值，排序好的值
         while (left_cursor < left_list.length) {
             ret[ret_cursor++] = left_list[left_cursor++];
         }

@@ -2,13 +2,12 @@ package com.leetcode.learn_introduction.hash_table;
 
 import java.util.*;
 
-// 实现一个能够随机取出一个元素的Hash Set类型
-// 确保插入，删除和随机取一个值都是以O(1)的时间复杂度来完成
+// 实现一个能够随机取出一个元素的Hash Set类型                     ==> 充分利用别的数据结构来实现
+// 确保插入，删除和随机取一个值都是以O(1)的时间复杂度来完成 !!
+// 1. List列表 用于动态存储数据，根据index快速的查找删除，根据随机产生的一个整数index，返回随机元素
+// 2. HashMap 用于存储值和index的对应关系，快速定位到值的index位置
+//            在插入和移除的时候，需要快速判断值是否存在，需要将value作为HashMap的key，做快速判断
 public class BaseRandomizedSet {
-
-    // 思考过程: 充分利用其他数据结构的特点来实现
-    // 1. 什么样的数据结构能够满足值的快速插入和删除  ==> List链表，动态数组  ==> 数据的查找速度慢
-    // 2. 什么样的数据结构能够满足快速判断值是否存在  ==> Hash Table        ==> 数据的查找速度快
 
     private List<Integer> values;
     private Map<Integer, Integer> map;
@@ -45,7 +44,7 @@ public class BaseRandomizedSet {
     // 2. There will be at least one element in the data structure when getRandom is called
     public int getRandom() {
         Random random = new Random();
-        int randomIndex = random.nextInt(map.size()); // 产生一个随机数字 1 <= ? < map.size() 左闭右开的区间 !!
+        int randomIndex = random.nextInt(map.size()); // 产生一个随机数字0<=?<map.size()左闭右开的区间 !!
         return values.get(randomIndex);
     }
 }
