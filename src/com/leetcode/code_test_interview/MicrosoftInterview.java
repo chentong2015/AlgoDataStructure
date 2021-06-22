@@ -1,8 +1,6 @@
 package com.leetcode.code_test_interview;
 
 /**
- * 和平时工作一致，明确需求
- * 白板写代码，如何思考和解决问题
  * 1. 面试的问题不一定有标准答案，有的甚至没有正确答案，把面试官当做客户 !!
  * 2. 沟通好问题是什么，问题的边界，假设条件，边缘场景，异常场景，技术架构、如何测试、技术限制等
  * 3. 动手答题前，请留两分钟思考，抽象算法和逻辑
@@ -13,7 +11,7 @@ package com.leetcode.code_test_interview;
 public class MicrosoftInterview {
 
     // Microsoft 实战题目
-    // 1. https://codeshare.io/ 共享代码界面
+    // 1. https://codeshare.io/ 共享代码界面, 白板写代码
     // 2. Teams 视频面试, 共享桌面，运行测试
     // http://microsoft-hire.me/pages/problems/leetcode.html
     // https://www.careercup.com/page?pid=microsoft-interview-questions
