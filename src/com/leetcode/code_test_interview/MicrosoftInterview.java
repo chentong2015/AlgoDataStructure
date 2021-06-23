@@ -12,7 +12,7 @@ public class MicrosoftInterview {
 
     // Microsoft 实战题目
     // 1. https://codeshare.io/ 共享代码界面, 白板写代码
-    // 2. Teams 视频面试, 共享桌面，运行测试
+    // 2. Teams 视频面试, 共享桌面, 运行测试
     // http://microsoft-hire.me/pages/problems/leetcode.html
     // https://www.careercup.com/page?pid=microsoft-interview-questions
 

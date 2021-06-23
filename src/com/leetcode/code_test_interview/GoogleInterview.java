@@ -10,8 +10,8 @@ package com.leetcode.code_test_interview;
 // https://hangouts.google.com/ 在线视频连接
 // https://www.hackerrank.com/interview/interview-preparation-kit
 
-// Coding： 用熟悉的编程语言(不限)实现给定的题目，会重点关注解题目过程中的"理解"和"沟通能力";
-// 算法：    TODO: 排序/搜索/分治/动态规划/递归，贪婪算法, Dijkstra, A*搜索算法
+// Coding： 用熟悉的编程语言(不限)实现给定的题目, 会重点关注解题目过程中的"理解"和"沟通能力";
+// 算法：    排序/搜索/分治/递归, 动态规划/贪婪算法, Dijkstra, A*搜索算法
 // 数据结构: 每种数据结构的使用场景
 // 复杂度:   理解和分析算法的复杂度
 // 排序：    常见的排序算法，时间/空间复杂度，例如 快排/归并/堆排序/插入/基数排序等等;

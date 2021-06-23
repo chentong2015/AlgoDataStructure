@@ -1,6 +1,6 @@
 package com.leetcode.learn_introduction.array_list_linked;
 
-import com.leetcode.top_interview_questions.base.ListNode;
+import com.leetcode.interview_questions.base.ListNode;
 
 /**
  * Linked List高级解法：

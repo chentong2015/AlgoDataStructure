@@ -1,6 +1,6 @@
 package com.leetcode.learn_introduction.hash_table;
 
-import com.leetcode.top_interview_questions.base.TreeNode;
+import com.leetcode.interview_questions.base.TreeNode;
 
 import java.util.*;
 
