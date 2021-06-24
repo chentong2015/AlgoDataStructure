@@ -53,4 +53,17 @@ public class MockInterview {
         }
         return -1;
     }
+
+    // Google Interview Question
+    // https://www.hackerrank.com/interview/interview-preparation-kit
+    // 有一个n*n的棋盘，上面有m个糖果，最开始有一个人在棋盘左上角，他可以向左向右或者向下移动，但不能向上移动，
+    // 问他最少需要多少步吃完所有糖果
+    // ? 0 0 0   由于不能倒退，则必须保证每一行的必须吃完之后，才下降到下一行中
+    // 0 0 1 0   进入下一行的时候，需要去找这一行有糖果的边界位置的的其中一个最近的位置
+    // 1 0 0 1   在一行中横向移动
+    // 0 1 0 0   直到结束...
+    public int countSteps(int[][] nums, int m) {
+
+        return 0;
+    }
 }

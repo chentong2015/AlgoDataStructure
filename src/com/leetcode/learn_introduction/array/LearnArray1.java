@@ -17,7 +17,7 @@ import java.util.HashSet;
  * .
  * >  return new int[] {item1, item2, item3, ...}   直接在创建对象的时候初始化, []中无需表明具体数目
  * >  return Arrays.copyOf(results, count);         从起始点截取指定的长度
- * >  return Arrays.copyOfRange(results, 0, count); 定位截取指定区间的数据
+ * >  return Arrays.copyOfRange(results, 0, count); 定位截取指定区间的数据, 复制到count位置的前一个位置 !!
  * >  System.arraycopy(digits, 0, results, 1, digits.length); 直接copy源数组的数据到目标数组中
  */
 public class LearnArray1 {

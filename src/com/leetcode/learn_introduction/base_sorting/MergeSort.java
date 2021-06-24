@@ -2,24 +2,24 @@ package com.leetcode.learn_introduction.base_sorting;
 
 import java.util.Arrays;
 
-// TODO: DP金典算法 Divide and Conquer
-//       Merge Sort 归并排序, 有时是最佳解
+// 典型的Dynamic Programming
+// Merge Sort(Divide and Conquer)归并排序, 有时是最佳解
+// O(nlog(n)) 时间复杂度看成是log(n)层高度 * 每一层merge的时间复杂度O(n)
+// O(n)       空间复杂度来自于每一层排序时的sublist, 最大情况时O(n)的临时存储空间
 public class MergeSort {
 
     // Top-Down 自顶向下
     // 1  5  3  2  8  7  6  4
     //   1532       8764
     //  15  32    87   64
-    // 1  5  3  2  8  7  6  4  将大问题拆分成单元的小问题
-    //  15  23    78   46      逐步解决小问题
-    //    1235      4678       使用同样的逻辑，直到最终问题解决
+    // 1  5  3  2  8  7  6  4  将大问题拆分成单元的小问题, 逐步解决小问题
+    //  15  23    78   46      使用同样的逻辑，直到最终问题解决
+    //    1235      4678
     //       12345678
-    // O(nlog(n)) 时间复杂度看成是log(n)层 * 每一层merge的时间复杂度O(n) !!
-    // O(n)       空间复杂度来自于每一层排序时的sublist, 最大情况时O(n)的临时存储空间 ==> 在递归divide Single Element过程中，总O(n)
     public int[] merge_sort(int[] input) {
-        if (input.length <= 1) return input;  // 0个或者1个值没有必要排序
+        if (input.length <= 1) return input;
         int pivot = input.length / 2;
-        int[] left_list = merge_sort(Arrays.copyOfRange(input, 0, pivot));  // Arrays复制片段的时候，复制到最后一个位置前 !!
+        int[] left_list = merge_sort(Arrays.copyOfRange(input, 0, pivot));
         int[] right_list = merge_sort(Arrays.copyOfRange(input, pivot, input.length));
         return merge(left_list, right_list);  // 最后回退到第一层的调用，则merge左右两个半的子数组
     }

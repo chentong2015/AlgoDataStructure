@@ -31,10 +31,12 @@ public class LearnGraphDFS2 {
         if (map.containsKey(node.val)) {
             return map.get(node.val);
         }
+
         // 完整的clone一个结点该如何操作：创建新的对象 !!
         UndirectedGraphNode clone = new UndirectedGraphNode(node.val);
         map.put(clone.val, clone);
         for (UndirectedGraphNode neighbor : node.neighbors) {
+            // 相邻的node结点必须要clone()之后才能添加到clone过的结点的neighbors中
             clone.neighbors.add(clone(neighbor));
         }
         return clone;

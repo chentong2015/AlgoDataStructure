@@ -23,7 +23,7 @@ public class HashMapDataStructure {
     // 1. 使用哈希表存储
     // HashMap使用哈希表(hash table散列表)来存储数据，通过要key查找要找的值
 
-    // 2. 哈希函数 -> 槽位数必须是2^n
+    // 2. Java原始类型HashMap的哈希函数是如何实现的 ?
     // key -> hash_function(key) -> bucket / Node<,>数组
     //                           -> 均匀存储/均匀分布，减少hash冲突
     // 重新计算hash值
@@ -33,6 +33,7 @@ public class HashMapDataStructure {
         // h ^ (h >>> 16)     异或，无符号右移16位(高位全部补0) !! 高位参与运算
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
+    // 槽位数必须是2^n ?
     // 计算数组槽位 (n-1) & hash 确定在那个bucket桶中 !!
     // h            = 1111 1111 1111 1111 1111 0000 1110 1010
     // h>>>16       = 0000 0000 0000 0000 1111 1111 1111 1111

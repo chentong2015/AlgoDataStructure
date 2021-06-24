@@ -8,11 +8,15 @@ package com.leetcode.code_test_interview;
  * 5. Ask the right question，make decision在多种解法中找到最优化的解法 !!
  * 6. 如果测试的题目需要写的代码量过大，则考虑换一种思路，寻找最优解 !!
  */
+// 1. 至少保证有一门语言不被问倒
+// 2. Coding的速度和code的整洁性 !!
+// 3. 三轮算法(必须在45分钟内) + 一个系统设计 + 一个behavioral行为态度
+// 4. 不是只追求做对题目的“机器” + 扎实的基本功 + 优秀的思维能力 + 出众的沟通能力
 public class MicrosoftInterview {
 
     // Microsoft 实战题目
     // 1. https://codeshare.io/ 共享代码界面, 白板写代码
-    // 2. Teams 视频面试, 共享桌面, 运行测试
+    // 2. Microsoft Teams       视频面试, 共享桌面, 运行测试
     // http://microsoft-hire.me/pages/problems/leetcode.html
     // https://www.careercup.com/page?pid=microsoft-interview-questions
 
