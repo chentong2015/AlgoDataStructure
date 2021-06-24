@@ -10,9 +10,7 @@ import java.util.Stack;
  */
 public class LearnStack {
 
-    // TODO: Stack类型 new Stack<>() + push() + peek() + pop();
-
-    // TODO: 使用特殊的stack栈，同数组的下标index来存储和读取，始终在top前端位置添加和删除 !!
+    // TODO: 使用特殊stack栈，同数组的下标index来存储和读取，始终在top前端位置添加和删除 !!
     // Daily Temperatures
     // Array of integers temperatures represents the daily temperatures
     // Return an array answer such that answer[i] is the number of days you have to wait
@@ -40,6 +38,36 @@ public class LearnStack {
         return ret;
     }
 
+    // TODO: 使用特殊stack栈，同数组的下标index来存储和读取，始终在top前端位置添加和删除 !!
+    // Remove K Digits
+    // Given string num representing a non-negative integer num, and an integer k
+    // return the "smallest possible" integer after removing k digits from num
+    // num = "1432219", k = 3 -> 1219
+    // num = "10200",   k = 1 -> 200
+    // num = "11200",   k = 1 -> 1100
+    // 1 <= k <= num.length <= 10^5 严格的大小约束, num consists of only digits 是有效的数字，最高位不为0
+    public String removeKDigits(String num, int k) {
+        // 正确理解：1. 通过栈数据结构来存储和比较，如果"前面的数字比当然的数字大"，则删除(使用while来循环删除)
+        //            O(n + k) 最终会遍历所有的字符，同时将k减小到0  O(n)
+        char[] stack = new char[num.length()];
+        int left = 0;
+        for (int i = 0; i < num.length(); i++) {
+            char c = num.charAt(i);
+            while (left > 0 && stack[left - 1] > c && k > 0) {
+                left--;
+                k--;
+            }
+            stack[left++] = c;
+        }
+        // 移除stack栈数组中开头的0，同时截取后面的字符组成最后的字符串 !!
+        // 最终结果的字符串长度一定是 num.length() - k !!
+        int idx = 0;
+        int digits = num.length() - k;
+        while (idx < digits && stack[idx] == '0') idx++;
+        if (idx == digits) return "0";
+        return new String(stack, idx, digits - idx);
+    }
+
     // TODO: Stack典型运用，数学四则公式的运算 + - * /
     // Evaluate Reverse Polish Notation
     // Evaluate the value of an arithmetic expression in Reverse Polish Notation
@@ -47,7 +75,8 @@ public class LearnStack {
     // It is guaranteed that the given RPN expression is always valid, always evaluate to result
     // tokens = ["2","1","+","3","*"]  ->  ((2 + 1) * 3) = 9
     public static int evalRPN(String[] tokens) {
-        // 测试理解：1. 在没有特殊条件的情况下，注意约束和标准解法  O(n) O(n) 运算的符号和运算数相差为1，大概为整个tokens长度的一半 !!
+        // 测试理解：1. 在没有特殊条件的情况下，注意约束和标准解法
+        //            O(n) O(n) 运算的符号和运算数相差为1，大概为整个tokens长度的一半 !!
         Stack<Integer> stack = new Stack<>();
         for (String token : tokens) {
             if (stack.isEmpty()) {
@@ -66,7 +95,7 @@ public class LearnStack {
         return stack.peek();
     }
 
-    // TODO: 当一个栈无法实现的时候，考虑使用两个栈同步存储，单独入栈，同时出栈
+    // TODO: 当一个栈无法实现的时候，考虑使用两个栈同步存储，单独入栈，同时出栈  ===> 思考：一个栈能否实现 ?
     // Decode String
     // Given an encoded string, return its decoded string
     // k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times
@@ -74,12 +103,6 @@ public class LearnStack {
     // s长度>1，其中的字符只有方括号和小写英文字符和数字，s一定是有效的编码字符串，其中数字的范围
     // s = "3[a]2[bc]" -> "aaabcbc"    假设输入的encode的字符串都是有效的
     // s = "3[a2[c]]"  -> "accaccacc"  可能包含嵌套的[[]]需要从内向外依次展开
-
-    // 使用一个栈能够实现 ?
-    // c  当遇到一个右方括号的时候，处理一个数字，出栈的如果是字符则直接拼接到一起
-    // 2  cc
-    // a  acc
-    // 3  accaccacc
     public String decodeString(String s) {
         Stack<Integer> intStack = new Stack<>();
         Stack<StringBuilder> strStack = new Stack<>();

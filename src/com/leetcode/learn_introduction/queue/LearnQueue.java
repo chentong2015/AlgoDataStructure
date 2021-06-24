@@ -9,8 +9,6 @@ import java.util.*;
  */
 public class LearnQueue {
 
-    // TODO: Queue接口的实现类型是 add() + peek() + poll();
-
     // 使用LinkedList(implements Deque<E>)作为队列使用
     public void testQueue() {
         Queue<Integer> queue = new LinkedList<>();

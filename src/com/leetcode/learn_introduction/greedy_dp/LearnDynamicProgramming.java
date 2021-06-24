@@ -1,16 +1,18 @@
 package com.leetcode.learn_introduction.greedy_dp;
 
+import com.leetcode.interview_questions.base.IndexMark;
+
 import java.util.Arrays;
 
 /**
- * 动态编程(动态规划):
+ * 动态编程(动态规划)
  * 1. Start with the recursive backtracking solution 使用递归拆分问题，递归解决
  * .    Divide and Conquer 分而治之 + 归并算法
  * .    先将复杂问题差发成若干个小问题SubProblems
  * .    重复且独立的解决每个小问题，最后再汇总结果解决原始问题
  * 2. Optimize by using a memoization table   开辟存储空间，记录迭代中每一步的结果
  * 3. Top-Down & Bottom-Up                    两种设计原则
- * 4. Apply final tricks to reduce complexity 追踪记录结果信息，判断关键点，减低时间空间复杂度
+ * 4. Apply final tricks to reduce complexity 追踪记录结果信息，判断关键点，减低时间空间复杂度 !!
  */
 public class LearnDynamicProgramming {
 
@@ -99,5 +101,61 @@ public class LearnDynamicProgramming {
             min = Math.min(min, currentLevel);
         }
         return dp[remainder] = min;
+    }
+
+    // TODO: DP Bottom Up 自底向上的设计
+    // Jump Game 判断是否能够从开始跳到结尾
+    // Positioned at the first index of the array 0 <= nums[i] <= 10^5
+    // Each element in the array represents your maximum jump length at that position
+    // nums = [2,3,1,1,4]   -> step 1 + step 3
+    // nums = [3,2,1,0,4]   -> 始终只能跳到index=3
+    // [3,  2,  1,  0,  4]  使用等长的数组来存储知否能够跳到的标记信息
+    //          i       ?   在index位置和它能跳到的最远位置 Math.min(i + nums[i], nums.length - 1) 之间，如果有成功标记，则标记index位置 !!
+    public static boolean canJumpBottomUp(int[] nums) {
+        // O(n) 空间复杂度依赖dp数组所存储的标记信息，不会达到O(n^2)  O(n)
+        IndexMark[] dp = new IndexMark[nums.length];
+        Arrays.fill(dp, IndexMark.Unknown);
+        dp[dp.length - 1] = IndexMark.Good;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            int furthestJump = Math.min(i + nums[i], nums.length - 1);
+            for (int j = i + 1; j <= furthestJump; j++) {
+                if (dp[j] == IndexMark.Good) {
+                    dp[i] = IndexMark.Good;
+                    break;
+                }
+            }
+        }
+        return dp[0] == IndexMark.Good;
+    }
+
+    // TODO: DP 动态编程的最后一步，减少空间复杂度(对DP数组进行替代)，实现最优解
+    public boolean canJumpGreedy(int[] nums) {
+        int lastPos = nums.length - 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (i + nums[i] >= lastPos) {
+                lastPos = i;
+            }
+        }
+        return lastPos == 0;
+    }
+
+    // DP 动态编程的普通运用
+    // 测试理解：通过"记录"每一个位置(根据前面)所跳的最大值，判断是否能到达最后位置
+    public static boolean canJumpTrick(int[] nums) {
+        int maxSteps = nums[0];
+        int index = 1;
+        while (index < nums.length) {
+            // 在index位置，它前面的剩余的最大步数，至少要有1步，才能到当前这个位置
+            if (maxSteps < 1) return false;
+            if (nums[index] == 0) {
+                if (maxSteps < 2) return index == nums.length - 1;
+                maxSteps--;
+            } else {
+                maxSteps--;
+                maxSteps = Math.max(nums[index], maxSteps);
+            }
+            index++;
+        }
+        return index == nums.length;
     }
 }
