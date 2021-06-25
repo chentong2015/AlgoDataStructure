@@ -4,7 +4,7 @@ package com.leetcode.learn_introduction.greedy_dp;
 public class DynamicProgramming2 {
 
     // TODO: Longest Common Subsequence 使用二位空间的DP数组，记录之前累积的计算结果 !!
-    // 金典的CS问题，应用在数据比较(diff utility & winMerge)和Git版本比较与修订
+    //       金典的CS问题，应用在数据比较(diff utility & winMerge)和Git版本比较与修订
     // https://en.m.wikipedia.org/wiki/Longest_common_subsequence_problem
     // Subsequence 子序列是按照顺序排序的一串子字符，通过删除某些字符后可以形成
     // text1="agcat", text2="gca"  完全复杂度为O(2^n * 2^m)中比较的可能
