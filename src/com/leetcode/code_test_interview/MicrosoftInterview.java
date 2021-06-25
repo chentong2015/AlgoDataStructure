@@ -48,15 +48,4 @@ public class MicrosoftInterview {
         nums[i] = nums[j];
         nums[j] = temp;
     }
-
-    // TODO: Longest Common Subsequence
-    // Return the longest common subsequence of two strings
-    // Subsequence 子序列是按照顺序排序的一串子字符，通过删除某些字符后可以形成
-    // text1 = "abcde", text2 = "ace"  -> 3 
-    // text1 = "abc",   text2 = "def"  -> 0
-    public int longestCommonSubsequence(String str1, String str2) {
-        // O(n*m) O(1)
-
-        return 0;
-    }
 }

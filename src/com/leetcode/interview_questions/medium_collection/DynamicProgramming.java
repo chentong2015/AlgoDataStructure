@@ -11,7 +11,7 @@ public class DynamicProgramming {
     // steps = [1, 1,1,2,2,3,4  ,4]
     public int lengthOfLIS(int[] nums) {
         // 正确理解：1. Dynamic Programming 使用等长数组保存"每一步所积累的'它前面的'最长的到达步数"
-        //            O(n²) O(n)
+        //            O(n^2) O(n)
         if (nums.length == 0) return 0;
         int[] steps = new int[nums.length];
         steps[0] = 1;

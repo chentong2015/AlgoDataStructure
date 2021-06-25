@@ -14,7 +14,6 @@ public class Backtracking {
         // 测试理解: 1. 所有能拆分出来的子字符串组合，判断有"多少个组合的子字符串"全部满足palindrome条件
         //             3: 1 + 1 + 1; 1 +2 ; 2+1
         //             4: 1+1+1+1; 1+2+1; 1+3; 2+1+1; 2+2; 3+1
-
         List<List<String>> results = new ArrayList<>();
         partitionDFS(0, str, results, new ArrayList<>());
         return results;

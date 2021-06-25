@@ -14,7 +14,7 @@ import java.util.Arrays;
  * 3. Top-Down & Bottom-Up                    两种设计原则
  * 4. Apply final tricks to reduce complexity 追踪记录结果信息，判断关键点，减低时间空间复杂度 !!
  */
-public class LearnDynamicProgramming {
+public class DynamicProgramming1 {
 
     // TODO: DP Top-Down 自定向下的设计
     // Coin Change 只用最少的零钱数目来凑出指定的值, 假设每种零钱的数目是足够的
