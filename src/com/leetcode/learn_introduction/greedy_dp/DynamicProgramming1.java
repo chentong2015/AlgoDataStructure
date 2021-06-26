@@ -5,7 +5,6 @@ import com.leetcode.interview_questions.base.IndexMark;
 import java.util.Arrays;
 
 /**
- * 动态编程(动态规划)
  * 1. Start with the recursive backtracking solution 使用递归拆分问题，递归解决
  * .    Divide and Conquer 分而治之 + 归并算法
  * .    先将复杂问题差发成若干个小问题SubProblems

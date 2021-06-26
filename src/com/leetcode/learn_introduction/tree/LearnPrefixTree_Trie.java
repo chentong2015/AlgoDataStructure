@@ -1,6 +1,6 @@
-package com.leetcode.interview_questions.top_hard_collection;
+package com.leetcode.learn_introduction.tree;
 
-import com.leetcode.interview_questions.top_hard_collection.model.TrieNode;
+import com.leetcode.learn_introduction.tree.model.TrieNode;
 
 /**
  * Prefix Tree(Implement Trie): 在String集中存储和从中检索key的一种数据结构
@@ -22,7 +22,7 @@ import com.leetcode.interview_questions.top_hard_collection.model.TrieNode;
 // 3. Longest prefix matching algorithm in IP routing to select an entry from a forwarding table
 // 4. Solving word games
 // 5. Text on key9 predictive text 手机9宫格输入器预测单词
-public class OtherPrefixTree {
+public class LearnPrefixTree_Trie {
 
     private TrieNode root = new TrieNode();
 
@@ -42,7 +42,7 @@ public class OtherPrefixTree {
             }
             node = node.get(currentChar);
         }
-        node.setEnd();
+        node.setEnd(); // 作为单词结尾的位置，标记上结束，作为一个完整的word
     }
 
     public boolean search(String word) {

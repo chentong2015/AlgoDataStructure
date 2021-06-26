@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.recursion_backtracking;
+package com.leetcode.learn_introduction.backtracking_recursion;
 
 /**
  * Backtracking 回溯算法: 构建问题的所有可能的解决方案，推翻其中一些方案，从而从所有备选可能中找到答案

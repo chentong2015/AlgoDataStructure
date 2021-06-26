@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.recursion_backtracking;
+package com.leetcode.learn_introduction.backtracking_recursion;
 
 import java.util.ArrayList;
 import java.util.List;

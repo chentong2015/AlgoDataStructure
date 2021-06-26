@@ -6,8 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * List 继承和实现层级：
- * Iterable<E> ==> Collection<E> ==> List<E>
+ * Iterable<E> ==> Collection<E> ==> List<E> 继承和实现层级
  * AbstractList, "ArrayList", CopyOnWriteList, "LinkedList", Stack, Vector
  * .
  * ArrayList 列表(动态数组)，长度可变
@@ -28,7 +27,7 @@ public class LearnArrayList1 {
         String[] myArray1 = (String[]) myList.toArray(); // .toArray()之后强制类型转换
     }
 
-    // Array List的基本使用方法
+    // Array List 基本使用方法
     public void testArrayList() {
         List<Integer> v0 = new ArrayList<>();
         List<Integer> v1 = v0;                    // another reference to v1
@@ -60,10 +59,10 @@ public class LearnArrayList1 {
     }
 
     /**
-     * ArrayList的复制：核心方法 System.arraycopy(elementData, 0, a, 0, size);
+     * ArrayList复制：System.arraycopy(elementData, 0, a, 0, size);
      * 1. 直接复制ArrayList中的所有值 addAll()
      * 2. 直接在初始化成指定的ArrayList中的值 new ArrayList<>(list)
-     * 3. 使用循环，依次复制
+     * 3. 使用循环，依次复制每一个index位置的值
      */
     public void copyArrayList() {
         List<String> myList = new ArrayList<>();

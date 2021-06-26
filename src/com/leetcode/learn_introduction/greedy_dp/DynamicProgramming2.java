@@ -19,11 +19,22 @@ public class DynamicProgramming2 {
         for (int i = 0; i < str1.length(); ++i)
             for (int j = 0; j < str2.length(); ++j)
                 if (str1.charAt(i) == str2.charAt(j)) {
-                    dp[i + 1][j + 1] = dp[i][j] + 1; // 添加一个延伸序列的字符
+                    dp[i + 1][j + 1] = dp[i][j] + 1; // 在去掉这个公共字符的前面字符串所具有的LCS的基础上添加1
                 } else {
                     dp[i + 1][j + 1] = Math.max(dp[i][j + 1], dp[i + 1][j]);
                 }
         return dp[str1.length()][str2.length()];
+    }
+
+    // TODO: 直接利用LCS计算一个字符串和它的反转字符串之间的最长公共子序列的数量
+    //       剩下的长度差值就是要形成Palindrome所需要插入的字符数量
+    // Minimum Insertion Steps to Make a String Palindrome
+    // In one step you can insert any character at any index of the string 每一步可以在字符串的任何位置插入一个字符
+    // Return the minimum number of steps to make s palindrome
+    // s = "mbdadbm" -> "mbdadbm" or "mdbabdm" -> 2
+    public int minInsertions(String s) {
+        String reverseStr = new StringBuilder(s).reverse().toString();
+        return s.length() - longestCommonSubsequence(s, reverseStr);
     }
 
     // TODO: 和LCS同样的算法，拿到最短公共SuperSequence的长度，并非字符组合的结果
@@ -32,23 +43,23 @@ public class DynamicProgramming2 {
     // If multiple answers exist, you may return any of them
     // 1<= n,m <= 1000 其中都是小写字母
     // str1 = "abac", str2 = "cab"        -> "cabac" 如何从所有的结果中取出一个有效值 !!
-    //         a       b     a       c
-    //         a      ab    aba    abac
-    // c  c    ac/ca  cab   caba   abac
-    // a  ca   ca     cab   caba   cabac
-    // b  cab  cab    cab   caba   cabac  保留每一个位置的计算长度值, 从末尾往前面推导
+    //          a       b     a       c
+    //    0     1a     2ab   3aba   4abac
+    // c  1c    ac/ca  cab   caba   abac
+    // a  2ca   ca     cab   caba   cabac
+    // b  3cab  cab    cab   caba   cabac  保留每一个位置的计算长度值, 从末尾往前面推导
     private int[][] getLengthOfShortestCommonSuperSequence(String str1, String str2) {
         int m = str1.length();
         int n = str2.length();
         int[][] dp = new int[m + 1][n + 1];
         for (int i = 0; i <= m; i++) {
             for (int j = 0; j <= n; j++) {
-                if (i == 0) dp[i][j] = j;
+                if (i == 0) dp[i][j] = j;                                // 第一行和第一例只需要补充指定字符串的长度
                 else if (j == 0) dp[i][j] = i;
                 else if (str1.charAt(i - 1) == str2.charAt(j - 1))
-                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                    dp[i][j] = dp[i - 1][j - 1] + 1;                     // 如果相等，则在去掉公共字符的基础上补充一个共同字符
                 else
-                    dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1]);
+                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + 1; // 选择最小的合成长度上面添加一
             }
         }
         return dp;
@@ -66,7 +77,7 @@ public class DynamicProgramming2 {
                 arr[--position] = str1.charAt(i - 1);
                 i--;
                 j--;
-            } else if (dp[i - 1][j] < dp[i][j - 1]) {  // 如何判断从str1还是str2字符串中取字符 !!
+            } else if (dp[i - 1][j] < dp[i][j - 1]) {  // 如果dp[i - 1][j]位置的值更小，则说明使用str1的字符会使得路径更加的短 !!
                 arr[--position] = str1.charAt(i - 1);
                 i--;
             } else {
@@ -85,7 +96,7 @@ public class DynamicProgramming2 {
         return new String(arr);
     }
 
-    // TODO: DP二维空间金典算法，只利用一半的空间位置，从length=1到最长的长度 !!
+    // TODO: DP二维空间金典算法，只利用一半的空间位置，从每次取一个长度字符到取全部的字符
     // Longest Palindromic Subsequence
     // Given a string s, find the longest palindromic subsequence's length in s
     // s = "axbdba" -> "abdba" -> 5
@@ -110,11 +121,5 @@ public class DynamicProgramming2 {
             }
         }
         return dp[0][s.length() - 1];
-    }
-
-    // Minimum Insertion Steps to Make a String Palindrome
-    public int minInsertions(String s) {
-
-        return 0;
     }
 }

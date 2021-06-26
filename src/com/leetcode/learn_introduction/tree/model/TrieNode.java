@@ -1,10 +1,10 @@
-package com.leetcode.interview_questions.top_hard_collection.model;
+package com.leetcode.learn_introduction.tree.model;
 
-// abcdefghijklmnopqrstuvwxyz
-//    link
-// abcdefghijklmnopqrstuvwxyz ...
-//            link
-// abcdefghijklmnopqrstuvwxyz ...
+//                     abcdefghijklmnopqrstuvwxyz
+//                  link                    link
+// abcdefghijklmnopqrstuvwxyz ...             abcdefghijklmnopqrstuvwxyz
+//            link                          link                      link
+// abcdefghijklmnopqrstuvwxyz ...abcdefghijklmnopqrstuvwxyz  ...   abcdefghijklmnopqrstuvwxyz
 //       link
 // abcdefghijklmnopqrstuvwxyz ...
 public class TrieNode {

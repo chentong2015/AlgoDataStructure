@@ -16,34 +16,34 @@ public class MergeSort {
     //  15  23    78   46      使用同样的逻辑，直到最终问题解决
     //    1235      4678
     //       12345678
-    public int[] merge_sort(int[] input) {
+    public int[] mergeSort(int[] input) {
         if (input.length <= 1) return input;
         int pivot = input.length / 2;
-        int[] left_list = merge_sort(Arrays.copyOfRange(input, 0, pivot));
-        int[] right_list = merge_sort(Arrays.copyOfRange(input, pivot, input.length));
-        return merge(left_list, right_list);  // 最后回退到第一层的调用，则merge左右两个半的子数组
+        int[] leftList = mergeSort(Arrays.copyOfRange(input, 0, pivot));
+        int[] rightList = mergeSort(Arrays.copyOfRange(input, pivot, input.length));
+        return merge(leftList, rightList);  // 最后回退到第一层的调用，则merge左右两个半的子数组
     }
 
     // 标准解法：合并两个排序的数组，使用两个index位置游标 + 结果表的index(ret_cursor)
     //         当一个游标结束后，直接添加另一个剩下的结果
-    public int[] merge(int[] left_list, int[] right_list) {
-        int left_cursor = 0;
-        int right_cursor = 0;
-        int ret_cursor = 0;
-        int[] ret = new int[left_list.length + right_list.length];
-        while (left_cursor < left_list.length && right_cursor < right_list.length) {
-            if (left_list[left_cursor] < right_list[right_cursor]) {
-                ret[ret_cursor++] = left_list[left_cursor++];
+    public int[] merge(int[] leftList, int[] rightList) {
+        int leftCursor = 0;
+        int rightCursor = 0;
+        int retCursor = 0;
+        int[] ret = new int[leftList.length + rightList.length];
+        while (leftCursor < leftList.length && rightCursor < rightList.length) {
+            if (leftList[leftCursor] < rightList[rightCursor]) {
+                ret[retCursor++] = leftList[leftCursor++];
             } else {
-                ret[ret_cursor++] = right_list[right_cursor++];
+                ret[retCursor++] = rightList[rightCursor++];
             }
         }
         // 补充完最后一部分的值，排序好的值
-        while (left_cursor < left_list.length) {
-            ret[ret_cursor++] = left_list[left_cursor++];
+        while (leftCursor < leftList.length) {
+            ret[retCursor++] = leftList[leftCursor++];
         }
-        while (right_cursor < right_list.length) {
-            ret[ret_cursor++] = right_list[right_cursor++];
+        while (rightCursor < rightList.length) {
+            ret[retCursor++] = rightList[rightCursor++];
         }
         return ret;
     }

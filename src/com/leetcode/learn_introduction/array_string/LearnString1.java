@@ -9,9 +9,10 @@ package com.leetcode.learn_introduction.array_string;
  * 5. 比Array多出的操作
  * >  s1.indexOf('o')
  * >  s1.lastIndexOf('o')
- * >  s1.substring(6, 11)        --> 都会造成O(n)的时间复杂度, 不可以忽略
+ * >  s1.substring(6, 11)                        都会造成O(n)的时间复杂度, 不可以忽略
  * >  String.copyValueOf(result)
- * >  new String(charArray)      --> 直接通过字符数组构建String
+ * >  new String(charArray)                      直接通过字符数组构建String
+ * >  new StringBuilder(s).reverse().toString(); 使用StringBuilder来反转字符串
  */
 public class LearnString1 {
 

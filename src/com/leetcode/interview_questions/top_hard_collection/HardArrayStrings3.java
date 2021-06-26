@@ -94,4 +94,7 @@ public class HardArrayStrings3 {
         }
         return ans[0] == -1 ? "" : s.substring(ans[1], ans[2] + 1);
     }
+
+    // Guess the word 交互问题
+    // https://leetcode.com/problems/guess-the-word/
 }
