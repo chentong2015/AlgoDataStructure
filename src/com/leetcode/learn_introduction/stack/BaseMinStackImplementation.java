@@ -8,6 +8,7 @@ import com.leetcode.learn_introduction.stack.model.StackNode;
 // 由于需要快速的返回stack中的最小值，所以在每个(head) node上都保存min的信息，方便及时读取 !!
 public class BaseMinStackImplementation {
 
+    // 只需要一个指向链表的头标识, 从头部开始删除节点，和Stack先入后出的顺序一致
     private StackNode head;
 
     public void push(int x) {
@@ -25,7 +26,7 @@ public class BaseMinStackImplementation {
     public void pop() {
         head = head.next;
     }
-    
+
     public int getMin() {
         return head.min;
     }

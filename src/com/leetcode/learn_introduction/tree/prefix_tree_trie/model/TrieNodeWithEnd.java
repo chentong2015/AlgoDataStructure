@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.tree.prefix_tree_trie;
+package com.leetcode.learn_introduction.tree.prefix_tree_trie.model;
 
 //                     abcdefghijklmnopqrstuvwxyz
 //                  link                    link
@@ -7,18 +7,18 @@ package com.leetcode.learn_introduction.tree.prefix_tree_trie;
 // abcdefghijklmnopqrstuvwxyz ...abcdefghijklmnopqrstuvwxyz  ...   abcdefghijklmnopqrstuvwxyz
 //       link
 // abcdefghijklmnopqrstuvwxyz ...
-public class TrieNode {
+public class TrieNodeWithEnd {
 
-    private TrieNode[] links;
+    private TrieNodeWithEnd[] links;
     private boolean isEnd;
 
     // 总共有26个字母的所展开的node children
-    public TrieNode() {
-        links = new TrieNode[26];
+    public TrieNodeWithEnd() {
+        links = new TrieNodeWithEnd[26];
     }
 
     // char-'a'转换index位置，对应的node children位置上添加结点
-    public void put(char ch, TrieNode node) {
+    public void put(char ch, TrieNodeWithEnd node) {
         links[ch - 'a'] = node;
     }
 
@@ -27,7 +27,7 @@ public class TrieNode {
         return links[ch - 'a'] != null;
     }
 
-    public TrieNode get(char ch) {
+    public TrieNodeWithEnd get(char ch) {
         return links[ch - 'a'];
     }
 

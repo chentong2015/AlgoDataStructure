@@ -1,22 +1,18 @@
 package com.leetcode.code_test_interview;
 
 import java.util.HashMap;
+import java.util.List;
 
-// https://codetop.cc/#/home 补充实战题库(国内面试)
 // login: tong
 // password: TCHong15
+// https://codetop.cc/#/home
 public class MockInterview {
 
-    // Twitter算法面试题: 计算每个位置的柱子上方还能储水的量，和该柱子的前后柱子没有关系，只和它前后元素中的最大高度柱子有关系
-    // 解法1: 暴力破解
-    // 解法2: Dynamic programming
-    // 解法3: Using stack
-    // 解法4: Two pointers
+    // Twitter 算法面试题:
+    // 计算每个位置的柱子上方还能储水的量，和该柱子的前后柱子没有关系，只和它前后元素中的最大高度柱子有关系
+    // 对于任何一个柱子，如果它"左边位置的最大值"和"右边位置的最大值"都比该位置的高度高，则柱子上方还有空间存水 !!
     public static int testSaveWater(int[] arr) {
-        // 测试理解：1. 对于任何一个柱子，如果它"左边位置的最大值"和"右边位置的最大值"都比该位置的高度高，则柱子上方还有空间存水
-        //            O(n*n) 由于每个位置都会前后遍历，所以复杂度不可取 O(1)
-
-        // 正确理解: 1. 通过左右两个标识完成左右最大值的更新，依次往中间移动，一次遍历 O(n) O(1)
+        // 正确理解: 通过左右两个标识完成左右最大值的更新，依次往中间移动，线性时间复杂度
         if (arr == null || arr.length < 3) return 0;
         int sum = 0;
         int left = 0;
@@ -63,7 +59,19 @@ public class MockInterview {
     // 1 0 0 1   在一行中横向移动
     // 0 1 0 0   直到结束...
     public int countSteps(int[][] nums, int m) {
-
         return 0;
+    }
+
+    // 2020 Facebook interview
+    // TODO: https://leetcode.com/problems/remove-invalid-parentheses/solution/
+    // Remove Invalid Parentheses
+    // Remove the minimum number of invalid parentheses to make the input string valid
+    // Return all the possible results in any order
+    // s = "()())()"  -> ["(())()","()()()"]   去除最小的括号数(左右括号的数量差值), 使字符串有效
+    // s = "(a)())()" -> ["(a())()","(a)()()"]
+    public List<String> removeInvalidParentheses(String str) {
+        // 测试理解: 1. )((( )))( 有效的字符串，左右括号数量必须一致/数量一致并不一定就有效，左括号必须第一字符，右括号必须最后字符
+        //          2. 暴力破解，依次(全部可能)去除一定数目的字符，判断是否是有效字符串
+        return null;
     }
 }

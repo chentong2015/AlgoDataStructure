@@ -42,16 +42,4 @@ public class Backtracking {
         }
         return true;
     }
-
-    // Remove Invalid Parentheses ==> 2020 Facebook interview question
-    // Remove the minimum number of invalid parentheses to make the input string valid
-    // Return all the possible results in any order
-    // s = "()())()"  -> ["(())()","()()()"]   去除最小的括号数(左右括号的数量差值), 使字符串有效
-    // s = "(a)())()" -> ["(a())()","(a)()()"]
-    public List<String> removeInvalidParentheses(String str) {
-        // 测试理解: 1. )((( )))( 有效的字符串，左右括号数量必须一致/数量一致并不一定就有效，左括号必须第一字符，右括号必须最后字符
-        //          2. 暴力破解，依次(全部可能)去除一定数目的字符，判断是否是有效字符串
-        // TODO: https://leetcode.com/problems/remove-invalid-parentheses/solution/
-        return null;
-    }
 }

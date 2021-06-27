@@ -4,10 +4,8 @@ package com.leetcode.learn_introduction.tree;
 public class NaryTrees {
 
     // N-ary Tree Preorder Traversal
-
-
+    
     // N-ary Tree Level Order Traversal
-
 
     // Maximum Depth of N-ary Tree
 }
