@@ -4,7 +4,7 @@ import com.leetcode.interview_questions.base.TreeNode;
 
 import java.util.*;
 
-public class HardTrees1 {
+public class HardTrees {
 
     // TODO: BBFS(Bidirectional BFS) https://leetcode.com/problems/word-ladder/solution/
     // Word Ladder

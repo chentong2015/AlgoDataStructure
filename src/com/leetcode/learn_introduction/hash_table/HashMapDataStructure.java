@@ -43,12 +43,14 @@ public class HashMapDataStructure {
     // (n-1)        = 0000 0000 0000 0000 0000 0000 0001 0000 ==> 如果n=17，则和hash求与运算之后，落到的槽位不是0就是16 !! 不均匀
 
     // 3. HashMap put方法流程
-    //    if ((p = tab[i = (n - 1) & hash]) == null) 具体在Node数组中的槽位位置
+    //    if ((p = tab[i = (n - 1) & hash]) == null)    具体在Node数组中的槽位位置
     //       tab[i] = newNode(hash, key, value, null);  如果指定槽位没有值，则直接插入node
     //    else
     //       if ((k = p.key) == key || (key != null && key.equals(k))) 如果有相同的key，则直接覆盖
-    //       else if (p instanceof TreeNode) 如果已经是红黑树，则在树中添加node结点
-    //       else                       挂链表的情况(遍历链表，一般插尾部)，如果长度大于8，转上面的红黑树 !!
+    //       else if (p instanceof TreeNode)
+    //            如果已经是红黑树，则在树中添加node结点，如果长度小于6，则转下面的链表
+    //       else
+    //            挂链表的情况(遍历链表，一般插尾部)，如果长度大于8，转上面的红黑树 !!
     //    if (++size > threshold)       超过指定的长度，需要扩容size
     //       resize();
 

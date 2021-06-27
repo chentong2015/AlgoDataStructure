@@ -4,8 +4,8 @@ package com.leetcode.learn_introduction.tree.prefix_tree_trie;
  * Prefix Tree(Trie): Store and retrieve keys in a dataset of strings / tree data structure 本质上是树的结构, 也可以看成是String集
  * Balance Tree 区别 : 平衡树中搜索key的时间复杂度是O(mlog(n)) m为key的长度，n为key的数目
  * Hash Table 区别   :
- * 1. store same count of keys with same prefix, Trie use smaller space
- * 2. Hash table 查找具有相同前缀的key不够高效 (没有将公共prefix的字符串进行整合) !!
+ * 1. Hash Table 存储具有共同前缀的相同数量的key值，占的内存空间比较大
+ * 2. Hash table 查找具有相同前缀的key不够高效
  * 3. Hash table 在按照词典顺序枚举字符串集时不够高效
  */
 // Prefix Tree 实战场景：

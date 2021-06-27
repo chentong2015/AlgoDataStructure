@@ -1,7 +1,6 @@
 package com.leetcode.learn_introduction.hash_table;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Hash Table 使用Hash方法快速的插入和检索: 使用Standard Template Libraries
@@ -15,6 +14,11 @@ import java.util.Map;
 //   LinkedHashMap<,> 确定迭代的顺序，必须是插入元素的顺序
 //   TreeMap<>        对元素进行自然排序，或者提供Comparator
 public class BaseHashTable {
+
+    // 可以直接将List列表构造成HashSet<T>
+    public void testHashSet(List<String> words) {
+        Set<String> set = new HashSet<>(words);
+    }
 
     // TODO: Hash Table类型 new HashMap<>() + put(,) + get() + .entrySet()
     public void testHashMap() {
