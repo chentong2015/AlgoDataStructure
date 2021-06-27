@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.tree.model;
+package com.leetcode.learn_introduction.tree.base;
 
 public class TreeLinkNode {
     public int val;

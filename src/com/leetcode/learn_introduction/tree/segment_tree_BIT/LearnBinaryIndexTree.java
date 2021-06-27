@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.tree.SegmentTree_BIT;
+package com.leetcode.learn_introduction.tree.segment_tree_BIT;
 
 import java.util.ArrayList;
 import java.util.Collections;

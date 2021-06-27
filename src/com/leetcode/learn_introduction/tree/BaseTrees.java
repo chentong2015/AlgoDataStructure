@@ -1,22 +1,20 @@
 package com.leetcode.learn_introduction.tree;
 
 import com.leetcode.interview_questions.base.TreeNode;
-import com.leetcode.learn_introduction.tree.model.TreeLinkNode;
+import com.leetcode.learn_introduction.tree.base.TreeLinkNode;
 
 // 1. N-Ary Tree           N叉任意树
 // 2. Binary Tree
 // 3. Binary Search Tree
 //      Balanced BST       保证树的高度最低
 //      Unbalanced BST     左右子树不平衡
-//      Red–black Tree     自平衡二叉查找树 (对称, 降低树深度, 节点红黑)
-//                         https://zh.wikipedia.org/wiki/红黑树
+//      Red–black Tree     自平衡二叉查找树 (对称, 降低树深度, 节点红黑)  https://zh.wikipedia.org/wiki/红黑树
 // 4. Complete Binary Tree 完全二叉树, 堆(Heap)
-
-// 5. Segment Tree  片段树 / Binary Indexed Tree 二叉索引树
-// 6. Decision Tree 决策树(机器学习中的判断数)
-// 7. Prefix Tree   前缀树(使用26个特征字母节点的树)
-// 8. Quad Tree     四叉树(固定有4个子节点的树)
-// 9. K-d Tree      k维(k-dimensional tree)空间分割的数据结构
+// 5. Segment Tree         片段树 / Binary Indexed Tree 二叉索引树
+// 6. Decision Tree        决策树(机器学习中的判断数)
+// 7. Prefix Tree          前缀树(使用26个特征字母节点的树) N叉任意树
+// 8. Quad Tree            四叉树(固定有4个子节点的树)
+// 9. K-d Tree             k维(k-dimensional tree)空间分割的数据结构
 public class BaseTrees {
 
     /**

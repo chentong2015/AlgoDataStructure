@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.tree.model;
+package com.leetcode.learn_introduction.tree.prefix_tree_trie;
 
 //                     abcdefghijklmnopqrstuvwxyz
 //                  link                    link
