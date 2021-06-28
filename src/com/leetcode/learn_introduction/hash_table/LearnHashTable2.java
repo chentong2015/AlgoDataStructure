@@ -16,6 +16,7 @@ public class LearnHashTable2 {
     // 题型2: 如果数组是排序好的，则可以不需要使用Hash Table
     //       如果数组nums1数量小于nums2，则将数量小的存储到Hash表中  ==> 减少空间复杂度
     //       如果nums2的数据存储在硬盘中，无法全部加载到内存中 ?      ==> RandomAccessFile 利用偏移量加载文件片段，而不是全部
+    
     // 题型3: 两个数组乱序，找出公共的元素，并且保证出现的次数是一致的   ==> 使用Hash Table对数据进行聚和，然后直接判断key的存在
     // nums1 = [4,9,5], nums2 = [9,4,9,8,4] -> [4,9]
     public int[] intersect(int[] nums1, int[] nums2) {

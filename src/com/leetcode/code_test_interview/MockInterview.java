@@ -74,4 +74,7 @@ public class MockInterview {
         //          2. 暴力破解，依次(全部可能)去除一定数目的字符，判断是否是有效字符串
         return null;
     }
+
+    // Amazon Interview
+    // Median of Two Sorted Arrays
 }

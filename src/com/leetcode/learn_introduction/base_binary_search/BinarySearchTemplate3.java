@@ -9,7 +9,6 @@ import java.util.List;
 // 需要访问index以及它的left和right相邻的位置，同时要考虑3个位置处的数据 
 public class BinarySearchTemplate3 {
 
-    // Template 模板 03
     int binarySearch(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
         int left = 0;
@@ -32,20 +31,19 @@ public class BinarySearchTemplate3 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Sqrt(x)  0<=x<=2^31-1
-    // Given a non-negative integer x, compute and return the square root of x
-    // 通过二分法求平方根，只保留正数的部分
+    // Given a non-negative integer x, compute and return the square root of x 二分法求平方根，只保留正数的部分
     // 1. x=8 -> 2.82 -> 2     必须去掉正数后面的小数
     // 2. 2147395599  -> 46339 对于大数, 需要考虑乘积是否会出现值的溢出, 直接比较会出现值的截取, 判断不准 !!
     public static int mySqrt(int x) {
         if (x <= 1) return x;
         int low = 1;
         int high = x;
-        while (low + 1 < high) {                  // 注意这里的边界条件，需要间隔一个位置
+        while (low + 1 < high) {                  // TODO 边界条件: 平方根很可能出现在两个整数的中间，必须留一个间隔位置 !!
             int middle = low + (high - low) / 2;
-            if (middle == x / middle) {           // 先算除法，再来比较，避免乘法造成的值溢出 !!
+            if (middle == x / middle) {           // TODO 先算除法，再来比较，避免乘法造成的值溢出 !!
                 return middle;
             } else if (middle > x / middle) {
-                high = middle;                    // 这里不需要浮动+1和-1，浮动之后很有可能错过要中的值 !!
+                high = middle;                    // 这里不需要浮动+1和-1，浮动之后很有可能错过平方根位置低位的值
             } else {
                 low = middle;
             }
@@ -53,16 +51,14 @@ public class BinarySearchTemplate3 {
         return low; // 出循环条件: low+1=high, 说明平方根在low和high之间
     }
 
-    // TODO: 用二分法搜索K个相邻位置的区间，判断[index, index+k]li两端的临界条件 !!
+    // TODO: 判断以二分法搜索的middle为起点的K个相邻区间[mid, mid+k]的两端条件 !!
     // Find K Closest Elements
     // Given a sorted integer array arr, two integers k and x, return the k closest integers to x in the array
     // The result should also be sorted in ascending order
-    // |a-x|<|b-x| 或 |a-x|==|b-x| and a<b           两种情况说明a比b更加的接近x, 且x不一定在数组中存在
-    // arr = [1,2,3,4,5], k = 4, x = 3 -> [1,2,3,4]  最接近3的4个数，并且有序
+    // |a-x|<|b-x| 或 |a-x|==|b-x| and a<b                     两种情况说明a比b更加的接近x, 且x不一定在数组中存在
+    // arr = [1,2,3,4,5,6,8,9,10], k = 4, x = 3 -> [1,2,3,4]  最接近3的4个数，并且有序
+    // O(log(n-k)+k)  时间复杂度被划分成两个部分  O(k) 结果列表的空间复杂度
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        // 正确理解：1. 找k个元素区间的"左边起使位置"，在区间[0, arr.length - k]范围中，同时减少了二分法查找的时间复杂度 !!
-        //            通过left & right标识无限的接近"左边起使位置"
-        //            O(log(n-k)+k)  O(1)
         int left = 0;
         int right = arr.length - k;                // 左边起点的最大位置，给后面的k个位置留下区间
         while (left < right) {
@@ -73,10 +69,9 @@ public class BinarySearchTemplate3 {
                 right = mid;
             }
         }
+        // 按照顺序取出k个序列的值 O(k)
         List<Integer> result = new ArrayList<>();
-        for (int i = left; i < left + k; i++) {
-            result.add(arr[i]);
-        }
+        for (int i = left; i < left + k; i++) result.add(arr[i]);
         return result;
     }
 
@@ -93,6 +88,7 @@ public class BinarySearchTemplate3 {
                 high = mid;
             }
         }
+        // End condition: left + 1 = high 只有两种可能，left或者right更接近x
         if (Math.abs(nums[low] - x) <= Math.abs(nums[high] - x)) {
             return nums[low];
         }

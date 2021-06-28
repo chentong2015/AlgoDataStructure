@@ -2,26 +2,35 @@ package com.leetcode.learn_introduction.base_binary_search;
 
 import com.leetcode.learn_introduction.base_binary_search.model.ItemDoubleBS;
 
-// TODO: 使用双重二分法进行查找
-public class LearnDoubleBinarySearch {
+// Median of Two Sorted Arrays
+// Given two sorted arrays nums1 and nums2, return the median of the two sorted arrays
+// nums1=[1,2], nums2=[3,4] -> 2.50000
+// 1. 中位数的出现位置index坐标一定在两个数组总长的一半位置(可能一个从一个数组中多取一点，另外一个少取一点)
+// 2. 中位数的目的式将元素平衡的划分成两个部分，使得左边部分的最大值<=右边部分的最小值
+public class LearnBinarySearch2 {
 
-    // Median of Two Sorted Arrays
-    // Given two sorted arrays nums1 and nums2, return the median of the two sorted arrays
-    // 求中位数(有奇偶之分, 和两个数组的大小有关)，不是平均值
-    // nums1=[1,2], nums2=[3,4] -> 2.50000
-    private int[] nums1; // TODO: 使用时，确保nums1的长度更短 !! 值需要对nums1进行二分法
+    // TODO: 二分法查找的变式，对一个数组的查找同时影响第二个数组的查找位置(位置的和为指定的特征值)
+    // https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2481/Share-my-O(log(min(mn)))-solution-with-explanation
+    // X1,X2,X3 .... Xn-2,Xn-1,Xn         (Xi-1, Xi)
+    // 对第一数组进行二分，在某位置的(两个值)和第二个数组(指定位置的两个值)有交集，则要找的数据就在这4个值中
+    // Y1,Y2,Y3 ....... Yn-2,Yn-1,Yn      (Yj-1, Yj)
+
+    // 划分出来最后需要满足的条件，必须是均匀的两个部分，同时值的大小约束 !!
+    //       left_part          |        right_part
+    // A[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]
+    // B[0], B[1], ..., B[j-1]  |  B[j], B[j+1], ..., B[n-1]
+    // 1. len(left_part) == len(right_part)
+    // 2. max(left_part) <= min(right_part)
+    private int[] nums1;
     private int[] nums2;
 
     public double findMedianSortedArrays() {
-        // 正确理解：必须满足时间复杂度 O(log(m+n)) ==> 注意：log(m)+log(n)=log(m*n)
-        //         并不需要合并两个数组，只需要根据数组元素的大小比较位置，即可找到排序在整个数组中的中间值(可以需要取两个值的平均) !!
         int half = (nums1.length + nums2.length + 1) / 2;
         int low1 = 0;
         int high1 = nums1.length;
         ItemDoubleBS index1 = new ItemDoubleBS();
         ItemDoubleBS index2 = new ItemDoubleBS();
         while (low1 <= high1) {
-            // mid1 + mid2 = half; 两个数组中取的二分的位置，和必须为指定的长度，在重排之后在half位置的值就是要找的值 !!
             index1.middleIndex = low1 + (high1 - low1) / 2;
             index2.middleIndex = half - index1.middleIndex;
             setLeftMiddleValue(index1, nums1);
@@ -30,12 +39,11 @@ public class LearnDoubleBinarySearch {
                 low1 = index1.middleIndex + 1;
             } else if (index2.middleValue < index1.leftValue) { // 如果右边的最大值 < 左边的最小值，则下降右边的二分位置
                 high1 = index1.middleIndex - 1;
-            } else {                                // 当出现(left1,right1)和(left2,right2)区间交叉的时候，则满足条件
+            } else {                            // 当出现(left1,right1)和(left2,right2)区间交叉的时候，则满足条件
                 break;
             }
         }
-        // TODO: 判断结束二分法的条件，对于nums1的数组搜索完成，根据middleIndex1, middleIndex2再次计算
-        return findMedianValue(index1, index2);
+        return findMedianValue(index1, index2); // End condition: low1 > high1
     }
 
     private void setLeftMiddleValue(ItemDoubleBS index, int[] nums) {

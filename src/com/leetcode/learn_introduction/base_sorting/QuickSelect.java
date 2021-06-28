@@ -13,7 +13,7 @@ import java.util.Random;
  */
 // 时间复杂度：O(n) 取决于分区的随机算法
 // 空间复杂度：O(n)
-public class QuickSort_Select {
+public class QuickSelect {
 
     private int[] unique;
     private int countElements;

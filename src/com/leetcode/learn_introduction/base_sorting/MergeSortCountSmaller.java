@@ -10,7 +10,7 @@ import java.util.List;
 // he counts array has the property where counts[i] is the number of smaller elements to the right of nums[i]
 // nums = [5,2,6,1] -> [2,1,1,0] 统计每个位置的后面右多少的数字是比当前这个数字小的
 // O(nlog(n) O(n) 由于归并排序造成的复杂度
-public class MergeSort_CountSmaller {
+public class MergeSortCountSmaller {
 
     // The smaller numbers on the right of a number are exactly those that jump from its right to its left during a stable sort.
     // So I do mergesort with added tracking of those right-to-left jumps.

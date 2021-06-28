@@ -3,10 +3,9 @@ package com.leetcode.learn_introduction.base_binary_search;
 // TODO: Binary Search Template II 模板
 // Search for an element or condition which requires accessing the current index and
 // its immediate right neighbor's index in the array
-// 需要访问index和它前或后index(或相关的index/right)，通过while(left<right)循环来逼近最终的值 !!
+// 需要访问index和它前或后index(或相关的index/right)，通过while(left<right)循环来逼近最终的值
 public class BinarySearchTemplate2 {
 
-    // Template 模板 02
     // 1. int right = nums.length; 初始范围在数组的下标范围之外
     // 2. if(left != nums.length)  结束循环之后会做判断处理
     public int binarySearch(int[] nums, int target) {
@@ -30,8 +29,8 @@ public class BinarySearchTemplate2 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // First Bad Version
-    // n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad
-    // 找到一组产品中第一次次品：该index位置是次品，而index-1前面相邻的位置是正品 !!
+    // n versions [1, 2, ..., n] and find out the first bad one, which causes all the following ones to be bad
+    // 找到一组产品中第一次次品：该index位置是次品，而index-1前面相邻的位置是正品
     // 1 2 3 4 0 0 0 0
     public int firstBadVersion(int n) {
         // 正确理解：1. 在二分法查找的过程中，必须判断两个index位置，来确定最后的移动方向
@@ -40,13 +39,12 @@ public class BinarySearchTemplate2 {
         while (low < high) {
             int middle = low + (high - low) / 2;
             if (isBadVersion(middle)) {
-                if (!isBadVersion(middle - 1)) return middle; // 因为次品前面必然有正品，理论上不可能全是次品 !!  ===> 可以不写
+                if (!isBadVersion(middle - 1)) return middle;
                 high = middle;
             } else {
                 low = middle + 1;
             }
         }
-        // 最后逼近同一个位置坐标
         return low; // 出循环条件: low=high, (low-1)位置正品 < low第一个次品, high位置次品 ... 都是次品
     }
 
@@ -59,19 +57,19 @@ public class BinarySearchTemplate2 {
     // A peak element is an element that is strictly greater than its neighbors
     // nums[-1] = nums[n] = -∞ 开头和末尾始终是最小值，可以返回答案中任何一个index
     // nums[i] != nums[i + 1]  约束任意相邻的两个值都不相等
-    public int findPeakElementRecursive(int[] nums, int left, int right) { // left = 0; right = nums.length - 1;
-        // 正确理解：1. 递归的算法逻辑是每一次只取剩下长度的二分之一, 如果是上升趋势，则peak在后面，反之在前面
-        //            O(log2(n))  O(log2(n))
+    // left = 0; right = nums.length - 1;
+    public int findPeakElementRecursive(int[] nums, int left, int right) {
+        // 正确理解：1. 递归的算法逻辑是每一次只取剩下长度的二分之一  O(log2(n)) O(log2(n))
         if (left == right) return left;
         int middle = left + (right - left) / 2;
-        if (nums[middle] > nums[middle]) {
-            return findPeakElementRecursive(nums, left, middle);
+        if (nums[middle] > nums[middle + 1]) {
+            return findPeakElementRecursive(nums, left, middle); // 如果是下降趋势，则取左边的部分继续查找
         }
         return findPeakElementRecursive(nums, middle + 1, right);
     }
 
     // 正确理解：2. Iterative Binary Search
-    // nums = [1,2,1,3,5,6,4] -> index = 5
+    // nums = [1,2,1,3,5,6,4] -> index = 1, index = 5 共有2个波峰的位置
     public int findPeakElementBinarySearch(int[] nums) {
         int left = 0;
         int right = nums.length - 1;
