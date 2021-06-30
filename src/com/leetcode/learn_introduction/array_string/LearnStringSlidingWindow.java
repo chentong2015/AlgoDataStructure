@@ -1,6 +1,8 @@
 package com.leetcode.learn_introduction.array_string;
 
-// TODO: Sliding window technique 关于数组和字符串的滑动窗口算法 
+// TODO: Sliding window technique 关于数组和字符串的滑动窗口算法
+// 1. [i, j] 闭合的区间，用于框选一段数据的范围
+// 2. 所框选的数据必须是连续的，不能间段
 public class LearnStringSlidingWindow {
 
     // Minimum Size Subarray Sum
@@ -9,9 +11,7 @@ public class LearnStringSlidingWindow {
     // The sum is greater than or equal to target. If there is no such subarray, return 0
     // nums = [2,3,1,2,4,3], target = 7  -> [4,3] -> 2
     public int minSubArrayLen(int[] nums, int target) {
-        // 测试理解：1. 一般解法，先对数组进行排序，然后先取大值，再取第二大值，直到满足>=的条件 O(nlog(n)) O(1)
-        // 正确理解：1. 由于必须是连续的子数组，可以使用滑动的窗口依次移动，从而不断的缩小区间
-        //             O(2n)=O(n) 最终可能left和right从左到右各自移动一遍 O(1)
+        // O(2n)=O(n) 最终可能left和right从左到右各自移动一遍 O(1)
         if (nums == null || nums.length == 0) return 0;
         int left = 0;
         int right = 0;
