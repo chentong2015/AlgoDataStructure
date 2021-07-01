@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.graph.model;
+package com.leetcode.learn_introduction.iteration_recursion.model;
 
 import java.util.ArrayList;
 import java.util.List;

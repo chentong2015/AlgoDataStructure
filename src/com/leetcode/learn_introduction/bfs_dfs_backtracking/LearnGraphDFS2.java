@@ -1,8 +1,9 @@
-package com.leetcode.learn_introduction.graph;
+package com.leetcode.learn_introduction.bfs_dfs_backtracking;
 
-public class LearnGraphDFS3 {
+public class LearnGraphDFS2 {
 
     // TODO: 模板二，显式使用stack栈数据结构来实现DFS深度优先遍历
+    //       应用场景：二叉树的前序，中序，后续遍历
     // DFS - Template II
     boolean DFS(int root, int target) {
         // Set<Node> visited;
@@ -21,8 +22,4 @@ public class LearnGraphDFS3 {
         // }
         return false;
     }
-
-    // 应用场景：
-    // 二叉树的前序，中序，后续遍历
-
 }

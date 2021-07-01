@@ -1,14 +1,9 @@
-package com.leetcode.learn_introduction.backtracking_recursion;
+package com.leetcode.learn_introduction.iteration_recursion;
 
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Recursion递归法的本质是无法在一层方法中完整的实现逻辑
-//       因此将后续或者部分的逻辑通过调用自身来一步一步实现
-// 1. 判断和排除特殊情况，以便直接返回
-// 2. 正常执行一个(单元)逻辑的基本操作步骤
-// 3. 调用自身，剩下的交给该方法再做一次
-public class LearnRecursion {
+public class LearnIteration {
 
     // Pascal's Triangle "Recurrence 循环"
     //     1  0  0  0  0 ...
@@ -61,7 +56,7 @@ public class LearnRecursion {
         return false;
     }
 
-    // TODO：对于矩阵，二位数组的认识
+    // TODO：从矩阵或者二位数组的倾斜角度入手，唯一确定移动方向
     // [1,4,7,11,15],     -> 从右上角开始入手，往左下角斜方向进行判断，在值的比较过程中(3种可能)，可以唯一判断行列移动的位置
     // [2,5,8,12,19],     -> 或者从左下角往右上角，在倾斜的方向上面判断
     // [3,6,9,16,22],

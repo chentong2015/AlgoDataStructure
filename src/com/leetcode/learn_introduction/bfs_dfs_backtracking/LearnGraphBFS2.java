@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.graph;
+package com.leetcode.learn_introduction.bfs_dfs_backtracking;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.graph;
+package com.leetcode.learn_introduction.bfs_dfs_backtracking;
 
 import org.w3c.dom.Node;
 
@@ -16,7 +16,7 @@ public class LearnGraphDFS1 {
 
     // TODO: 递归方式方便实现，但是如果递归的层级过大，会造成stack overflow栈溢出 !!
     // DFS Template I - Recursion
-    // Don't have to use any stacks when we implement DFS recursively  ====> 没有用到Stack
+    // Don't have to use any stacks when we implement DFS recursively
     // 递归DFS找到指定的节点Node / 找指定的路径通路，同时标记已经visited的节点
     public boolean DFS(Node cur, Node target, Set<Node> visited) {
         //  return true if cur is target;
@@ -73,9 +73,9 @@ public class LearnGraphDFS1 {
     // An image is represented by an m x n integer grid image, image[i][j] represents the pixel value of the image
     // You are also given three integers sr, sc, and newColor
     // Starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel
-    // image = [1,1,1],  sr = 1, sc = 1, newColor = 2  ->  Output: [2,2,2]
-    //         [1,1,0],                                            [2,2,0]
-    //         [1,0,1]                                             [2,0,1]
+    // image = [1,1,1],  sr = 1, sc = 1   ->  Output: [2,2,2]
+    //         [1,1,0],  newColor = 2                 [2,2,0]
+    //         [1,0,1]                                [2,0,1]
     // 从指定的像素位置点出发，将所有相连的同种像素颜色的位置点，全部设置成新的颜色
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         // Test: 从指定的位置，沿着四个方向展开，形成DFS深度优先遍历 -> 使用递归，使用Stack -> 空间复杂度基本一致

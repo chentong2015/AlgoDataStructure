@@ -1,6 +1,6 @@
 package com.leetcode.code_test_interview;
 
-import com.leetcode.code_test_interview.model.MyPair;
+import com.leetcode.code_test_interview.base.MyPair;
 
 /**
  * 1. 面试的问题不一定有标准答案，有的甚至没有正确答案，把面试官当做客户

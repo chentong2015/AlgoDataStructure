@@ -1,4 +1,4 @@
-package com.leetcode.learn_introduction.graph;
+package com.leetcode.learn_introduction.bfs_dfs_backtracking;
 
 import org.w3c.dom.Node;
 
@@ -97,7 +97,7 @@ public class LearnGraphBFS1 {
                 }
             }
         }
-        return openRooms.size() == rooms.size();
+        return openRooms.size() == rooms.size(); // 所有的钥匙都拿到，所有的门都打开
     }
 
     /////////////////////////////////////////////////////////////////////////////////
