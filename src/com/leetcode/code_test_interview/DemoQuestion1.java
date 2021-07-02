@@ -1,4 +1,4 @@
-package com.leetcode.code_test_interview.mock_interview;
+package com.leetcode.code_test_interview;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class DemoQuestion1 {
     //          ["i","f","l","v"]]           "rain"]
 
     // 0. 基础思考: 能不能在二维数组中将一个单词扣出来 !!
-    // 1. 测试解法: 对二维数组每个点进行BFS广度优先遍历, 同时需要记录已经遍历过的字符(避免循环)
+    // 1. 测试解法: 对二维数组每个点进行BFS广度优先遍历, 同时需要记录已经遍历过的字符(避免循环)         ==> KO
     // 2. 测试解法: 对二维数组的每个点字符构建HashKey, 遍历要查找的每个单词, 逐个判断字符是否存在且连续  ==> KO
     // 3. 高级解法: 根据单词数组，构建Trie Tree + 二分数组以某个字符做为起点DFS + Backtracking回溯
     //             构建快速查找单词的数据结构          以一个点遍历并展开        可以对元素值进行修改(标识已经遍历过，此路不通)，而不需要进行记录

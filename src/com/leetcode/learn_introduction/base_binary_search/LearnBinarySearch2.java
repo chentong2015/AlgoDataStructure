@@ -10,7 +10,6 @@ import com.leetcode.learn_introduction.base_binary_search.model.ItemDoubleBS;
 public class LearnBinarySearch2 {
 
     // TODO: 二分法查找的变式，对一个数组的查找同时影响第二个数组的查找位置(位置的和为指定的特征值)
-    // https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2481/Share-my-O(log(min(mn)))-solution-with-explanation
     // X1,X2,X3 .... Xn-2,Xn-1,Xn         (Xi-1, Xi)
     // 对第一数组进行二分，在某位置的(两个值)和第二个数组(指定位置的两个值)有交集，则要找的数据就在这4个值中
     // Y1,Y2,Y3 ....... Yn-2,Yn-1,Yn      (Yj-1, Yj)
