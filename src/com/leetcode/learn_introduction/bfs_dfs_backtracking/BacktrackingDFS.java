@@ -1,8 +1,8 @@
-package com.leetcode.code_test_interview;
+package com.leetcode.learn_introduction.bfs_dfs_backtracking;
 
 import java.util.List;
 
-public class DemoQuestion1 {
+public class BacktrackingDFS {
 
     // TODO：根据不同的特征点，选择最恰当的数据结构 + 算法，共同构成一个复杂问题
     // Word Search II
