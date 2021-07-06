@@ -56,9 +56,9 @@ public class LearnGraphDFS1 {
         return count;
     }
 
-    // grid[i][j] = '0'; 如果这里的值没有被修改和标记，则需要使用Hash Table来存储并做好标记 !!
-    // 必须在第一个if条件中判断grid[i][j] != '1'，否则会出现栈溢出 ===> 上下左右四个方向的展开，可能导致无限循环 !!
+    // TODO: 通过修改二维数组的元素值来避免使用Hash Table记录标记
     private void DFSMarking(char[][] grid, int i, int j) {
+        // 判断grid[i][j] != '1', 避免无限循环导致的栈溢出
         if (i < 0 || j < 0 || i >= row || j >= col || grid[i][j] != '1') return;
         grid[i][j] = '0';
         DFSMarking(grid, i + 1, j);
@@ -67,7 +67,7 @@ public class LearnGraphDFS1 {
         DFSMarking(grid, i, j - 1);
     }
 
-    /////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Flood Fill
     // An image is represented by an m x n integer grid image, image[i][j] represents the pixel value of the image
