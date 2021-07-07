@@ -3,15 +3,9 @@ package com.leetcode;
 import java.util.HashMap;
 import java.util.List;
 
-// Leetcode login: chen2015tong@gmail.com / TCHong15&
-// https://codetop.cc/#/home  Login: tong / TCHong15
-// https://codeshare.io/      共享代码界面, 白板写代码
+// Leetode 企业题库 https://codetop.cc/#/home              Login: tong / TCHong15
+// Leetode 题目全集 https://leetcode.com/problemset/all/   Login: chen2015tong@gmail.com / TCHong15&
 // TODO: https://longwang2.gitbooks.io/lintcode/content/substringlei-xing-wen-ti/minimum-size-subarray-sum.html
-
-// 1. 至少保证有一门语言不被问倒
-// 2. Coding的速度和code的整洁性
-// 3. 三轮算法(必须在45分钟内)  + 一个系统设计 + 一个behavioral行为态度
-// 4. 不是只追求做对题目的“机器” + 扎实的基本功 + 优秀的思维能力 + 出众的沟通能力
 public class MockInterview {
 
     // Twitter Interview Question
