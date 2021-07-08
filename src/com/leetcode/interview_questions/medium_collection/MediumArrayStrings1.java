@@ -13,9 +13,7 @@ public class MediumArrayStrings1 {
         // 正确理解: 1. 降维处理，从3维降到2维的计算，固定一个值，然后找两个值的和是该值的相反值  O(n^3)  O(n)
         //         2. 使用值来构建Key, 通过HashMap来加快搜索，不改变原来的array中的值
         HashMap<String, List<Integer>> results = new HashMap<>();
-        if (nums == null || nums.length < 3) {
-            return new ArrayList<>();
-        }
+        if (nums == null || nums.length < 3) return new ArrayList<>();
         for (int i = 0; i < nums.length - 2; i++) {
             for (int j = i + 1; j < nums.length - 1; j++) {
                 for (int k = j + 1; k < nums.length; k++) {
@@ -40,29 +38,32 @@ public class MediumArrayStrings1 {
     // Set Matrix Zeroes
     // Given an m x n matrix. If an element is 0, set its entire row and column to 0. Do it in-place.
     public void setZeroes(int[][] matrix) {
-        // 测试理解：1. 遍历每一个位置，如果是0，则标记横向和纵向的位置(原始是0的位置不做标记，同一个位置不被标记两次)
-        //            使用额外的O(mn)或者O(m+n)空间进行标记，但不是最优的解法 !!
-
-        // 正确理解: 1. 使用两个Set集来存储记录到的行和列，最后根据记录的值来修改
-        //          2. 尝试使用第一行和第一列来作为是否变化的标识符，最后根据标记来更改 ?? Space(1)不存在
-        int R = matrix.length;
-        int C = matrix[0].length;
-        Set<Integer> rows = new HashSet<>();  // Space O(m+n)
-        Set<Integer> cols = new HashSet<>();
-        for (int i = 0; i < R; i++) {         // Time O(m+n)
-            for (int j = 0; j < C; j++) {
+        // 正确理解: 1. 使用两个Set集来存储记录到的行和列，最后根据记录的值来修改  Time O(m*n) / Space O(m+n)
+        //          2. 用第一行和第一列来作为是否变化的标识符，根据设置0来更改   Time O(m*n) / Space O(1)
+        boolean firstRow = false;
+        boolean firstCol = false;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {
-                    rows.add(i);
-                    cols.add(j);
+                    if (i == 0) firstRow = true;
+                    if (j == 0) firstCol = true;
+                    matrix[0][j] = 0;  // 标记第一行和第一列作为判断
+                    matrix[i][0] = 0;
                 }
             }
         }
-        for (int i = 0; i < R; i++) {
-            for (int j = 0; j < C; j++) {
-                if (rows.contains(i) || cols.contains(j)) {
+        // 设置除了第一行第一列的所有位置, 从row=1 & col=1开始往后
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 1; j < matrix[0].length; j++) {
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
                     matrix[i][j] = 0;
                 }
             }
+        }
+        // 最后检查是否第一行和第一列需要设置
+        if (firstRow) Arrays.fill(matrix[0], 0);
+        if (firstCol) {
+            for (int i = 0; i < matrix.length; i++) matrix[i][0] = 0;
         }
     }
 

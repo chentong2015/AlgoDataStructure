@@ -65,21 +65,25 @@ public class LearnArray2 {
         //             O(n) O(1)
 
         // 正确理解：1. 优化提高 > 如果尾部上的值已经是奇数，则不需要交换到前面，再交换到后面 > 减少交换的次数 !!
-        int last = nums.length - 1;
+        int right = nums.length - 1;
         int index = 0;
-        while (index < last) {
+        while (index < right) {
             if (nums[index] % 2 == 1) {
-                while (last > index && nums[last] % 2 == 1) { // 找到偶数才交换，否则往左边移动，直到index位置 !!
-                    last--;
+                while (right > index && nums[right] % 2 == 1) { // 找到偶数才交换，否则往左边移动，直到index位置 !!
+                    right--;
                 }
-                int temp = nums[last];
-                nums[last] = nums[index];
-                nums[index] = temp;
-                last--;
+                swapArrayValues(nums, index, right);
+                right--;
             } else {
                 index++;
             }
         }
         return nums;
+    }
+
+    private void swapArrayValues(int[] nums, int index, int right) {
+        int temp = nums[right];
+        nums[right] = nums[index];
+        nums[index] = temp;
     }
 }

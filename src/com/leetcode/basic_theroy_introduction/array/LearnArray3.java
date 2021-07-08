@@ -1,7 +1,7 @@
 package com.leetcode.basic_theroy_introduction.array;
 
 public class LearnArray3 {
-
+    
     // TODO: 左边总值 + 中间值 + 右边总值 == 数组和的总值 !!
     // Find Pivot Index
     // Given an array of integers nums, calculate the pivot index of this array
@@ -10,8 +10,6 @@ public class LearnArray3 {
     // nums = [1,7,3,6,5,6] -> pivot = 3
     // nums = [2,1,-1]      -> pivot = 0
     public int pivotIndex(int[] nums) {
-        // 测试理解：1. 一次遍历不行，不借助别的数据结构也不行 !!
-
         // 正确理解：1. 使用两次读取，借助另外一个copy出来的数组，分前后两次读取，判断是否该位置的左右和相等 !!
         //            因为要输出最小的index，所以先从右到左边计算，然后从左到右 
         //            O(2n)=O(n) O(n)

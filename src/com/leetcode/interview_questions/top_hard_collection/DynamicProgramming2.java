@@ -37,22 +37,37 @@ public class DynamicProgramming2 {
         Set<String> wordDictSet = new HashSet<>(wordDict);  // 直接用List构建Hash Table
         boolean[] dp = new boolean[str.length() + 1];       // 默认length+1里面的初始值均为false
         dp[0] = true;
-        for (int i = 1; i <= str.length(); i++) {           // 利用DP数组来完成迭代和累计
+        for (int index = 1; index <= str.length(); index++) {           // 利用DP数组来完成迭代和累计
             // 判断该index位置是否能够通过前面某个位置到达，做好标记
-            for (int j = 0; j < i; j++) {
-                if (dp[j] && wordDictSet.contains(str.substring(j, i))) {
-                    dp[i] = true;
+            for (int left = 0; left < index; left++) {
+                // 只有当dp[left]为真的时候，才计算后面的判断.substring()，可以减低时间复杂度
+                if (dp[left] && wordDictSet.contains(str.substring(left, index))) {
+                    dp[index] = true;
                     break;
                 }
             }
         }
         return dp[str.length()];
     }
+    
+    // Word Break II
+    // Given a string s and a dictionary of strings wordDict
+    // Add spaces in s to construct a sentence where each word is a valid dictionary word
+    // Return all such possible sentences in any order                 找出不止一种，返回所有的可能，需要一种存储的机制
+    // s = "catsanddog", wordDict = ["cat","cats","and","sand","dog"]  提供的数量有一定的约束，单词可以多次使用，只包含小写字母
+    // ->  ["cats and dog", "cat sand dog"]
+    // s = "pineapplepenapple", wordDict = ["apple","pen","applepen","pine","pineapple"] wordDict里面提供的单词是不重复的
+    // ->  ["pine apple pen apple", "pineapple pen apple", "pine applepen apple"]
+    public List<String> wordBreak2(String str, List<String> wordDict) {
+        // 本质上是在字符串的每个字符区间位置，添加或者不添加空格 !! O(2^n)种可能
+        // 1. 自顶向下，使用递归找出所有的组合可能，每一种连接通过StringBuilder来连接  ==> 复杂度过高
+        // 2. 自底向上，存储没有位置能够拆分出来的情况                              ==> 如何存储所有的情况 ?
+        // 3. 使用DP二维空间
+
+        return null;
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // Word Break II
-
 
     // TODO：不推荐使用hard coding硬编码
     // Target Sum
