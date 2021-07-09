@@ -1,14 +1,13 @@
-package com.leetcode.basic_theroy_introduction.base_sorting;
+package com.leetcode.basic_theroy_introduction.base_sorting.merge_sort;
 
 import java.util.Arrays;
 
-// 典型的Dynamic Programming
 // Merge Sort(Divide and Conquer)归并排序, 有时是最佳解
 // O(nlog(n)) 时间复杂度看成是log(n)层高度 * 每一层merge的时间复杂度O(n)
 // O(n)       空间复杂度来自于每一层排序时的sublist, 最大情况时O(n)的临时存储空间
 public class MergeSort {
 
-    // Top-Down 自顶向下
+    // Top-Down 自顶向下(通过递归来实现)
     // 1  5  3  2  8  7  6  4
     //   1532       8764
     //  15  32    87   64
@@ -24,8 +23,7 @@ public class MergeSort {
         return merge(leftList, rightList);  // 最后回退到第一层的调用，则merge左右两个半的子数组
     }
 
-    // 标准解法：合并两个排序的数组，使用两个index位置游标 + 结果表的index(ret_cursor)
-    //         当一个游标结束后，直接添加另一个剩下的结果
+    // TODO: 合并两个排序的数组"标准解法"，两个index位置游标 + 结果表的index(ret_cursor)
     public int[] merge(int[] leftList, int[] rightList) {
         int leftCursor = 0;
         int rightCursor = 0;

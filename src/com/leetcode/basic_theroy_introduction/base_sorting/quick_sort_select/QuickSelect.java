@@ -1,4 +1,4 @@
-package com.leetcode.basic_theroy_introduction.base_sorting;
+package com.leetcode.basic_theroy_introduction.base_sorting.quick_sort_select;
 
 import java.util.Arrays;
 import java.util.HashMap;

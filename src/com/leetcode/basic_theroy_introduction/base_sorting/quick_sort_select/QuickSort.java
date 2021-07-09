@@ -1,4 +1,4 @@
-package com.leetcode.basic_theroy_introduction.base_sorting;
+package com.leetcode.basic_theroy_introduction.base_sorting.quick_sort_select;
 
 // Quick Sort(分治法)快速排序, 有时是最佳解
 // 时间复杂度 O(nlog(n)) ~ O(n²)

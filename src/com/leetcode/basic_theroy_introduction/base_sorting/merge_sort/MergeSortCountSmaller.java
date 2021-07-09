@@ -1,21 +1,20 @@
-package com.leetcode.basic_theroy_introduction.base_sorting;
-
-import com.leetcode.basic_theroy_introduction.base_sorting.model.ValuePair;
+package com.leetcode.basic_theroy_introduction.base_sorting.merge_sort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 // Count of Smaller Numbers After Self
-// he counts array has the property where counts[i] is the number of smaller elements to the right of nums[i]
-// nums = [5,2,6,1] -> [2,1,1,0] 统计每个位置的后面右多少的数字是比当前这个数字小的
-// O(nlog(n) O(n) 由于归并排序造成的复杂度
+// Counts array has the property where counts[i] is the number of smaller elements to the right of nums[i]
+// nums = [5,2,6,1] -> counts = [2,1,1,0] 统计每个位置的后面有多少的数字是比当前这个数字小的
+// O(nlog(n)) O(n) 由于归并排序造成的复杂度
 public class MergeSortCountSmaller {
 
-    // The smaller numbers on the right of a number are exactly those that jump from its right to its left during a stable sort.
-    // So I do mergesort with added tracking of those right-to-left jumps.
+    // The smaller numbers on the right of a number are exactly those that jump from its right to its left during a stable sort
+    // So I do merge sort with added tracking of those right-to-left jumps
     // 1. 统计对于每一数字，它右边的数字移动到它左边的数目，在merge sort的过程中记录
-    // 2. 对于排序(后)的每一个数字，需要直到它的原始index的位置，以便在指定的位置上记录统计数目 !! ==> 如果数字不重复，则可以使用HashMap<>
+    // 2. 对于排序(后)的每一个数字，需要找到它原始index位置，以便在指定的位置上记录统计数目 !!
+    // 如果数字不重复，则可以使用HashMap<>
 
     private int[] count;
     private int[] indexes;
@@ -74,22 +73,22 @@ public class MergeSortCountSmaller {
     // https://leetcode.com/explore/interview/card/top-interview-questions-hard/118/trees-and-graphs/851/discuss/76584/Mergesort-solution
     public List<Integer> countSmaller2(int[] nums) {
         List<Integer> res = new ArrayList<>();
-        ValuePair[] arr = new ValuePair[nums.length];
+        ItemPair[] arr = new ItemPair[nums.length];
         Integer[] smaller = new Integer[nums.length];
         Arrays.fill(smaller, 0);
         for (int i = 0; i < nums.length; i++) {
-            arr[i] = new ValuePair(i, nums[i]);
+            arr[i] = new ItemPair(i, nums[i]);
         }
         mergeSort(arr, smaller);
         res.addAll(Arrays.asList(smaller));
         return res;
     }
 
-    private ValuePair[] mergeSort(ValuePair[] arr, Integer[] smaller) {
+    private ItemPair[] mergeSort(ItemPair[] arr, Integer[] smaller) {
         if (arr.length <= 1) return arr;
         int pivot = arr.length / 2;
-        ValuePair[] left = mergeSort(Arrays.copyOfRange(arr, 0, pivot), smaller);
-        ValuePair[] right = mergeSort(Arrays.copyOfRange(arr, pivot, arr.length), smaller);
+        ItemPair[] left = mergeSort(Arrays.copyOfRange(arr, 0, pivot), smaller);
+        ItemPair[] right = mergeSort(Arrays.copyOfRange(arr, pivot, arr.length), smaller);
         for (int i = 0, j = 0; i < left.length || j < right.length; ) {
             if (j < right.length && i < left.length && left[i].val > right[j].val) {
                 arr[i + j] = left[i];
