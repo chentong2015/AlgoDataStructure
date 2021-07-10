@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class DynamicProgramming {
 
     // TODO: DP典型实例, 保留前面计算过的值, 在此基础上更新和判断
+    //       最长连续增长子序列，可以演变为最长满足条件的增长 !!
     // Longest Increasing Subsequence
     // An integer array nums, return the length of the longest strictly increasing subsequence
     // nums  = [10,9,2,5,3,7,101,18] -> [2,3,7,101] 最长连续增长子序列
@@ -29,7 +30,8 @@ public class DynamicProgramming {
         return maxAnswer;
     }
 
-    // 正确理解：2. Dynamic Programming with Binary Search  O(nlog(n)) O(n)
+    // 正确理解：2. Dynamic Programming with Binary Search
+    //            O(nlog(n)) O(n)
     public int lengthOfLIS2(int[] nums) {
         // input: [0, 8, 4, 12, 2]
         //    dp: [0]
@@ -42,14 +44,12 @@ public class DynamicProgramming {
         int length = 0;
         for (int num : nums) {
             // Returns index of the search key if found, else return (-(insertion point) - 1)
-            int index = Arrays.binarySearch(dp, 0, length, num); // 根据查找出来的index位置，确定插入点
-            if (index < 0) {
-                index = -(index + 1);
-            }
-            dp[index] = num;         // 将读取的每个值添加到dp数组中指定的位置"insertion point"
-            if (index == length) {   // 使用length来统计插入到的位置长度
-                length++;
-            }
+            int index = Arrays.binarySearch(dp, 0, length, num);
+
+            if (index < 0) index = -(index + 1); // 根据查找的index，重新计算要插入的点
+            dp[index] = num;                     // 将读取的每个值添加到dp数组中指定的位置"insertion point"
+
+            if (index == length) length++;       // 使用length来统计插入到的位置长度
         }
         return length;
     }

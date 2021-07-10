@@ -23,6 +23,8 @@ public class LearnBinarySearch1 {
     //                            0' 1 1 2 2 3 3 4 4 4 5 5 6 7 8 9 基础算法O(n^2)可以将所有的距离穷举出来
     public int smallestDistancePair(int[] nums, int k) {
         // O(nlog(n) + nlog(m)) n为数组的长度，m为最大的差值距离
+
+        // 排序是为了方便在使用Sliding Windows的时候计算方便
         Arrays.sort(nums);
         int low = 0;
         int high = nums[nums.length - 1] - nums[0];
@@ -39,7 +41,7 @@ public class LearnBinarySearch1 {
         return low; // End condition: low = high;
     }
 
-    // 排序是为了方便在使用Sliding Windows的时候计算方便
+
     // number of pairs with distance <= mid 统计所有小于等于mid值的pairs对
     // 滑动时，右侧每增加一个数，产生的首位距离值是在上升的，从左侧拿掉一个值，首尾的距离值会降低 !!
     // [1,3,5,6,9,10]
