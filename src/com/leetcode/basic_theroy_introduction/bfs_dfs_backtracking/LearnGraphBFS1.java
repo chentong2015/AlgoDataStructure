@@ -8,8 +8,8 @@ import java.util.*;
 // A -> C ->
 //   -> D -> F
 //             -> G
-// 1. 遍历顺序: 首先遍历root，然后将它指向的结点都检加入到队列中，作为第二层，然后添加第二层所有指向的结点...
-// 2. FIFO:    最先被压入队列的将会优先出队列
+// 首先遍历root，然后将它指向的结点都检加入到队列中，作为第二层，然后添加第二层所有指向的结点...
+// 最先被压入队列的将会优先出队列
 public class LearnGraphBFS1 {
 
     // BFS - Template I
@@ -44,7 +44,7 @@ public class LearnGraphBFS1 {
         //  Queue<Node> queue;  // store all nodes which are waiting to be processed
         //  Set<Node> visited;  // store all the nodes that we've visited
         //  int step = 0;       // number of steps neeeded from root to current node
-        //  // initialize
+        //  initialize
         //  add root to queue;
         //  add root to visited;
         //  while (queue is not empty) {
@@ -102,13 +102,13 @@ public class LearnGraphBFS1 {
 
     /////////////////////////////////////////////////////////////////////////////////
 
-    // TODO: BFS的研究问题 ??
-    // 01 Matrix
+    // TODO: BFS特殊运用，借助Queue队列广度遍历到所有的值，统计从0移动到非0位置的步数，逐次累加
+    // 01 Matrix 统计每个cell距离0的距离步数
     // Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell
     // The distance between two adjacent cells is 1
-    // mat = [0,0,0],   ->  [0,0,0]   统计每个cell距离0的距离步数
-    //       [0,1,0],       [0,1,0]   在递归的时候，在1的数字上面进行累加，每一步加一，避免通过递归方式返回数值 !!
-    //       [1,1,1]        [1,2,1]   当一个位置上面所连通的所有位置都不为0时，才+1
+    // mat = [0,0,0], ->  [0,  0,   0]    ->  [0,0,0]
+    //       [0,1,0],     [0,  max, 0]        [0,1,0]
+    //       [1,1,1]      [max,max, max]      [1,2,1]
     public List<List<Integer>> updateMatrix(List<List<Integer>> matrix) {
         int m = matrix.size();
         int n = matrix.get(0).size();
@@ -116,23 +116,26 @@ public class LearnGraphBFS1 {
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (matrix.get(i).get(j) == 0) {
-                    queue.offer(new int[]{i, j});
+                    queue.add(new int[]{i, j});
                 } else {
                     matrix.get(i).set(j, Integer.MAX_VALUE);
                 }
             }
         }
-        // 移动的4个方向的位置坐标间隔
-        int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         while (!queue.isEmpty()) {
             int[] cell = queue.poll();
-            for (int[] d : dirs) {
-                int r = cell[0] + d[0];
-                int c = cell[1] + d[1];
-                if (r < 0 || r >= m || c < 0 || c >= n) continue;
-                if (matrix.get(r).get(c) <= matrix.get(cell[0]).get(cell[1]) + 1) continue;
-                queue.add(new int[]{r, c});
-                matrix.get(r).set(c, matrix.get(cell[0]).get(cell[1]) + 1);
+            for (int[] direction : directions) {
+                int row = cell[0] + direction[0];
+                int col = cell[1] + direction[1];
+                if (row < 0 || row >= m || col < 0 || col >= n) continue;
+
+                // 只有当移动后的位置上的值比原来基础上的值+1大的时候，才添加到队列中，并在原来位置的基础上+1步数
+                int beforeStepValue = matrix.get(cell[0]).get(cell[1]);
+                if (matrix.get(row).get(col) > beforeStepValue + 1) {
+                    queue.add(new int[]{row, col});
+                    matrix.get(row).set(col, beforeStepValue + 1);
+                }
             }
         }
         return matrix;

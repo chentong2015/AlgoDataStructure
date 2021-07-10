@@ -3,9 +3,12 @@ package com.leetcode;
 import java.util.HashMap;
 import java.util.List;
 
-// Leetode 企业题库 https://codetop.cc/#/home              Login: tong / TCHong15
-// Leetode 题目全集 https://leetcode.com/problemset/all/   Login: chen2015tong@gmail.com / TCHong15&
-// TODO: https://longwang2.gitbooks.io/lintcode/content/substringlei-xing-wen-ti/minimum-size-subarray-sum.html
+// 企业题库  https://codetop.cc/#/home              Login: tong / TCHong15
+// 题目全集  https://leetcode.com/problemset/all/   Login: chen2015tong@gmail.com / TCHong15&
+// 算法总结  https://longwang2.gitbooks.io/lintcode/content/substringlei-xing-wen-ti/minimum-size-subarray-sum.html
+// 1. Easy   ：只包含1个基础的核心逻辑，一个思想
+// 2. Medium : 包含1个较难的逻辑，或者包含2到3个(构建在基础题目上面的)逻辑和思想
+// 3. Hard   : 包含4个或者更换多的判断和逻辑，一般是一些小游戏的逻辑或是小工具软件的组成部分
 public class MockInterview {
 
     // Twitter Interview Question

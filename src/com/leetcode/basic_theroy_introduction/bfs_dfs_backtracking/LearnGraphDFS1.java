@@ -29,8 +29,9 @@ public class LearnGraphDFS1 {
         return false;
     }
 
-    // 以DFS深度优先遍历的方式对一个点进行展开  ===> 没有用到Stack
-    // Number of Islands
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Number of Islands       以DFS深度优先遍历的方式对一个点进行展开
     // Input: grid = [         Output: 3
     //  ["1","1","0","0","0"],
     //  ["1","1","0","0","0"],
@@ -78,15 +79,15 @@ public class LearnGraphDFS1 {
     //         [1,0,1]                                [2,0,1]
     // 从指定的像素位置点出发，将所有相连的同种像素颜色的位置点，全部设置成新的颜色
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-        // Test: 从指定的位置，沿着四个方向展开，形成DFS深度优先遍历 -> 使用递归，使用Stack -> 空间复杂度基本一致
-        //       可以使用栈来替换递归法：
+        // Test: 从指定的位置，沿着四个方向展开，形成DFS深度优先遍历
+        //       可以使用Stack栈来替换递归法，空间复杂度基本一致
         //       1. stack存储4个的方向的位置(坐标) Stack<int[]> stack;
         //       2. 同时使用set来记录已经存储过的数据 !!
         resetColor(image, sr, sc, image[sr][sc], newColor);
         return image;
     }
 
-    // O(n*m) O(n*m) 最差的情况是所有的位置都会遍历到，递归调用n*m次的方法的，设置全部位置的值 !!
+    // O(n*m) O(n*m) 最差的情况是所有的位置都会遍历到，递归调用n*m次的方法的，设置全部位置的值
     private void resetColor(int[][] image, int row, int col, int sourceColor, int newColor) {
         if (row >= image.length || row < 0 || col >= image[0].length || col < 0) return;
         if (image[row][col] == newColor || image[row][col] != sourceColor) return;    // 避免递归造成的栈溢出的情况 !!

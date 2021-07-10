@@ -26,4 +26,16 @@ public class QuestionArray01 {
         // 2,3
         return 0;
     }
+
+    // Sum Game
+    // Alice and Bob replaces ? with one number (0-9), until there is not ? in the String
+    // Alice go first, there are even character in the String
+    // Check sums of the first half and the second half are equal
+    // nums = "5023"     -> 5+0=2+3     -> Bob will win
+    // nums = "25??"     -> "259?"      -> Alice will win
+    // nums = "?3295???" -> "93295927"  -> Bob 后填，始终能够找到一种填法，使得前后的和相等
+    public boolean sumGame(String str) {
+
+        return false;
+    }
 }
