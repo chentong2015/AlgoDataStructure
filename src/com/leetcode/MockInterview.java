@@ -37,17 +37,15 @@ public class MockInterview {
     // Alibaba Interview Question
     // Find elements with more than half the frequency, suppose there is only one answer
     // nums = [1,2,2,3,3,2,6,2]  ->  2
+    // 重点考虑数组中值的范围和特点，寻找可能的极限解法
+    // 1. 排序之后判断每个元素所占的长度区间  O(nlog(n)) O(1)
+    // 2. 使用HashMap<>来存储每个元素的频率 O(n)       O(n)
     public int findMostFrequencyElement(int[] nums) {
-        // 测试理解：1. 是否能够在不使用别的数据结构的情况下，通过依次遍历将结果判断出来 !!
-        //         2. 排序之后判断每个元素所占的长度区间  O(nlog(n)) O(1)
-        //         3. 使用HashMap<>来存储每个元素的频率 O(n) O(n)
         if (nums == null || nums.length == 0) return -1;
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int num : nums) {
             int count = map.getOrDefault(num, 0);
-            if (count > nums.length / 2) {
-                return num;
-            }
+            if (count > nums.length / 2) return num;
             map.put(num, count);
         }
         return -1;

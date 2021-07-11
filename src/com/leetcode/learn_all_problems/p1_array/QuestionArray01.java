@@ -1,41 +1,54 @@
 package com.leetcode.learn_all_problems.p1_array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QuestionArray01 {
 
-    // TODO: 本质上是一个"连续梯度上升"的问题，通过排序将这一个特征显现出来 !!
-    //       通过DP + Binary解决连续梯度上升特征的问题 !! Longest Increasing Subsequence
-    // Russian Doll Envelopes
-    // envelopes[i] = [wi, hi] represents the width and the height of an envelope
-    // One envelope can fit into another if and only if both the width and height of one envelope are greater than the other
-    // Return the maximum number of envelopes you can Russian doll
-    // 1. 作用范围，必须是长宽严格大于才能放入
-    // 2. 同时不能够旋转envelope(把长当作宽来使用)
-    // envelopes = [[5,4],[6,4],[6,7],[2,3]] -> [2,3] => [5,4] => [6,7] -> 3
-    public int maxEnvelopesDP(int[][] envelopes) {
-        // 思路1. 自定义比较器(先比较宽度，再比较高度)，将数组信息排序出来
-        //       使用DP + Binary Search来找出最长的增长数 !! O(nlog(n)) O(n)
-        return 0;
+    // TODO: 利用数组值的区间来找坐标index位置，利用数组存储空间完成值的交换 !!
+    // Find All Duplicates in an Array
+    // All the integers of nums are in the range [1, n] and each integer appears once or twice
+    // Return an array of all the integers that appears twice
+    // 1 <= nums.length <= 10^5
+    // 1 <= nums[i] <= nums.length                 1. 数组中元素的值的范围不超过数组的长度范围
+    // Each element in nums appears once or twice  1. 只可能出现过一次或者两次
+    // nums = [4,3,2,7,8,2,3,1] -> [2,3]
+    public List<Integer> findDuplicates(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        for (int index = 0; index < nums.length; index++) {
+            if (nums[index] == 0 || nums[index] == index + 1)
+                continue;
+            int findIndex = nums[index] - 1;
+            if (nums[index] != nums[findIndex]) {
+                swap(nums, index, findIndex);
+            } else {
+                result.add(nums[index]);
+                nums[index] = 0;
+            }
+            index--; // 无论是交换还是提取重复的值，都需要退回一步再做判断
+        }
+        return result;
     }
 
-    public int maxEnvelopesTree(int[][] envelopes) {
-        // 思路2. 构建Nary-tree，其中子节点信封能够放入到父节点中，返回树的最大深度，则是最大的number
-        // 问题.  需要创建Tree Node，每次添加的时候，都需要遍历树的结点以找到要添加的最深的长度位置 ?? 复杂度至少O(n*n)
-        //         root
-        //     6,7      6,4
-        //  5,4  2,3   2,3
-        // 2,3
-        return 0;
+    private void swap(int[] nums, int index1, int index2) {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
     }
 
-    // Sum Game
-    // Alice and Bob replaces ? with one number (0-9), until there is not ? in the String
-    // Alice go first, there are even character in the String
-    // Check sums of the first half and the second half are equal
-    // nums = "5023"     -> 5+0=2+3     -> Bob will win
-    // nums = "25??"     -> "259?"      -> Alice will win
-    // nums = "?3295???" -> "93295927"  -> Bob 后填，始终能够找到一种填法，使得前后的和相等
-    public boolean sumGame(String str) {
-
-        return false;
+    // TODO: 根据数据的特点，value<->index通过位置关联，设置数组中的值，记录特征点，不需要交换两者的值
+    // [4,3,2,7,8,2,3,1]
+    // [4,3,2,-7,8,2,3,1]  标记负数表示能够通过某个位置上的值"定位找到"这个位置上面来
+    // [4,3,-2,7,8,2,3,1]  当再次找位置的时候，如果之前已经"被找到过"，那个这个数字就是第二次出现的
+    public List<Integer> findDuplicates2(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        for (int index = 0; index < nums.length; index++) {
+            int findIndex = Math.abs(nums[index]) - 1;  // 通过求Math.abs()j绝对值，忽略掉原来标记的值造成的影响 !!
+            if (nums[findIndex] < 0) {
+                result.add(findIndex + 1);              // 根据下标记录重复的数据值
+            }
+            nums[findIndex] = -nums[findIndex];         // 由于最多只能出现两次，如果从负数恢复到正数，则不造成任何影响 !!
+        }
+        return result;
     }
 }

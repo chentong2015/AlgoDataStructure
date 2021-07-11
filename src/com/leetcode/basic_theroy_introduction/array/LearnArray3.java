@@ -1,7 +1,7 @@
 package com.leetcode.basic_theroy_introduction.array;
 
 public class LearnArray3 {
-    
+
     // TODO: 左边总值 + 中间值 + 右边总值 == 数组和的总值 !!
     // Find Pivot Index
     // Given an array of integers nums, calculate the pivot index of this array
@@ -10,32 +10,14 @@ public class LearnArray3 {
     // nums = [1,7,3,6,5,6] -> pivot = 3
     // nums = [2,1,-1]      -> pivot = 0
     public int pivotIndex(int[] nums) {
-        // 正确理解：1. 使用两次读取，借助另外一个copy出来的数组，分前后两次读取，判断是否该位置的左右和相等 !!
-        //            因为要输出最小的index，所以先从右到左边计算，然后从左到右 
-        //            O(2n)=O(n) O(n)
-        int[] temp = new int[nums.length];
+        // 使用两遍循环，先计算出总值，右边的总和通过总值来计算 !! 去掉辅助的数组所开辟的空间复杂度
         int sum = 0;
-        for (int index = nums.length - 1; index >= 0; index--) {
-            temp[index] = sum;
-            sum += nums[index];
-        }
-        sum = 0;
-        for (int index = 0; index < nums.length; index++) {
-            if (sum == temp[index]) return index;
-            sum += nums[index];
-        }
-        return -1;
-    }
-
-    // 正确理解: 2. 使用两遍循环，先计算出总值，右边的总和通过总值来计算 !! 去掉辅助的数组所开辟的空间复杂度
-    //            O(n) O(1)
-    public int pivotIndex2(int[] nums) {
-        int sum = 0;
-        int leftsum = 0;
+        int leftSum = 0;
         for (int x : nums) sum += x;
         for (int i = 0; i < nums.length; ++i) {
-            if (leftsum == sum - leftsum - nums[i]) return i;
-            leftsum += nums[i];
+            int rightSum = sum - leftSum - nums[i];
+            if (leftSum == rightSum) return i;
+            leftSum += nums[i];
         }
         return -1;
     }

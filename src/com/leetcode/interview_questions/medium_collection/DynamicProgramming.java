@@ -46,10 +46,9 @@ public class DynamicProgramming {
             // Returns index of the search key if found, else return (-(insertion point) - 1)
             int index = Arrays.binarySearch(dp, 0, length, num);
 
-            if (index < 0) index = -(index + 1); // 根据查找的index，重新计算要插入的点
+            if (index < 0) index = -(index + 1); // 根据查找的index，重新计算要插入的点，可能直接追加到最后 !!
             dp[index] = num;                     // 将读取的每个值添加到dp数组中指定的位置"insertion point"
-
-            if (index == length) length++;       // 使用length来统计插入到的位置长度
+            if (index == length) length++;       // 使用length来统计插入到的位置长度，如果是插入到最后，则需要延申长度
         }
         return length;
     }

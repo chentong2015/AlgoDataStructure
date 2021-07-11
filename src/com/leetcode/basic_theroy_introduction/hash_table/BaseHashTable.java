@@ -48,4 +48,14 @@ public class BaseHashTable {
         }
         hashmap.clear();
     }
+
+    // 通过TreeMap的排序之后，找到ceiling天花板元素或者floor地板元素
+    private void testTreeMap() {
+        NavigableMap<Integer, Integer> intervalMap = new TreeMap<>();
+        intervalMap.put(1, 2);
+        intervalMap.put(2, 5);
+        intervalMap.put(5, 10);
+        Map.Entry<Integer, Integer> ceilingEntry = intervalMap.ceilingEntry(2);
+        Map.Entry<Integer, Integer> floorEntry = intervalMap.floorEntry(2);
+    }
 }

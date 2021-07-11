@@ -7,8 +7,7 @@ public class BaseArray2 {
     // nums = [0,1,0,3,12] -> [1,3,12,0,0] 只能在原始的数组上操作
     //         1 3 12
     public void moveZeroes(int[] nums) {
-        // 测试理解：1. 将非0的值依次排列在数组的开头，最后留下的位置就是0的值(统计数目)
-        //            O(n) O(1)
+        // 测试理解：1. 将非0的值依次排列在数组的开头，最后留下的位置就是0的值(统计数目) O(n) O(1)
         int count = 0;
         int index = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -27,9 +26,6 @@ public class BaseArray2 {
     // You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees
     // You have to rotate the image in-place 必须在原始矩阵上面改
     public void rotate(int[][] matrix) {
-        // 测试理解：1. 每次移动一个值，构建循环的路径，直到移动的位置回到原点
-        //            从矩阵的斜角位置进行遍历(0,0) -> (1,1) -> (2, 2)
-
         // 正确理解：1. 不需要内部的while()循环，本质是在旋转的时候，只有4个点(东南西北)位置的坐标值需要依次交换
         int n = matrix.length;                                      // n = 5
         for (int i = 0; i < (n + 1) / 2; i++) {                     // i = 0

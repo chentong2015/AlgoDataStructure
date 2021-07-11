@@ -8,67 +8,33 @@ public class BaseArray1 {
     // Remove Element
     // Given an array nums and a value val, remove all instances of that value in-place and return the new length
     // The order of elements can be changed. It doesn't matter what you leave beyond the new length
-    // nums = [0,1,2,2,3,0,4,2], val = 2 -> 5, nums = [0,1,4,0,3]
+    // nums = [0,1,2,2,3,0,4,2], val = 2 -> nums = [0,1,4,0,3]
     public int removeElement(int[] nums, int val) {
-        // 测试理解：1. 从两侧读取，左边遇到指定的值时，从右边取出非val值来填写 ==> 判断所有的边缘条件，和特殊情况 !!
-        //           O(n) O(1)
-
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        if (nums.length == 1) {
-            return nums[0] == val ? 0 : 1;
-        }
         int left = 0;
-        int right = nums.length - 1;
-        while (left < right) {
-            if (nums[left] == val) {
-                while (nums[right] == val) {
-                    right--;
-                    if (left == right) return left; // 同一个位置碰到的值，就是nums[left]位置需要删除的值
-                }
-                nums[left] = nums[right];
-                right--;
-                if (left == right) return left + 1; // 将非val值移动到left位置，减right之后如果遇到则说明总数需要+1
-            }
-            left++;
-        }
-        // 如果left直接移动到最后一个位置(nums.length - 1)，跳出while循环之后，需要判断最后一个位置的值
-        return nums[left + 1] == val ? left : left + 1;
-    }
-
-    // TODO: 数组基础典型问题 
-    // 正确理解: 1. 只需要把不是val的值提取到前面，共开始起排列  ===> 上面测试算法的反面，避免多次比较val !!
-    public int removeElement1(int[] nums, int val) {
-        int i = 0;
-        for (int j = 0; j < nums.length; j++) {
-            if (nums[j] != val) {
-                nums[i] = nums[j];
-                i++;
+        for (int index = 0; index < nums.length; index++) {
+            if (nums[index] != val) {
+                nums[left] = nums[index];
+                left++;
             }
         }
-        return i;
+        return left;
     }
 
     // Remove duplicates from sorted array
     // The input array is passed in by reference, it doesn't matter what you leave beyond the returned length
     // For example: [0,0,1,1,1,2,2,3,3,4] -> [0,1,2,3,4]
     public int removeDuplicates(int[] nums) {
-        // 测试理解：当出现重复的item时，不能将后面所有的items都往前面移动，复杂度不正确 !!
-
         // 正确理解：由于是排序排列的，因此只需要找到所有不同的item，从开始位置依次往后排即可
         //         从第二个位置开始，只在有不同的值出现的时候才交换一次位置 !!
-        if (nums.length == 0) {
-            return 0;
-        }
-        int i = 0;
-        for (int j = 1; j < nums.length; j++) {
-            if (nums[j] != nums[i]) {
-                i++;
-                nums[i] = nums[j];
+        if (nums == null || nums.length == 0) return 0;
+        int left = 1;
+        for (int index = 1; index < nums.length; index++) {
+            if (nums[index] != nums[left]) {
+                nums[left] = nums[index];
+                left++;
             }
         }
-        return i + 1;
+        return left + 1;
     }
 
     // Best Time to Buy and Sell Stock II
@@ -148,7 +114,7 @@ public class BaseArray1 {
     // Return true if any value appears at least twice in the array
     // nums = [1,2,3,1] -> true
     public boolean containsDuplicate(int[] nums) {
-        // 正确解法: 1. 先对数组进行排序，判断相邻两个值 Arrays.sort(nums) O(nlog(n)), O(1)
+        // 正确解法: 1. 先对数组进行排序，判断相邻两个值 Arrays.sort()     O(nlog(n)), O(1)
         //          2. 使用HashSet<>保存出现过的值，Set中不包含重复的值   O(n) 最差情况是读完全部的值 O(n)
         if (nums.length == 0) return false;
         Set<Integer> setNums = new HashSet<>();

@@ -2,10 +2,10 @@ package com.leetcode.basic_theroy_introduction.array;
 
 import java.util.Arrays;
 
-// TODO: 数组统一相似问题的研究, "bit位运算" & "求和解法"
+// TODO: 数组统一相似问题的研究，"bit位运算" & "求和解法"
 // 1. 找数组中唯一出现一次的数字
 // 2. 找(连续)数组中唯一缺失的数字
-// 3. 找(连续)数组中唯一重复的数字
+// 3. 找(连续)数组中唯一重复的数字  ==> 拓展：找出所有重复的数字
 public class LearnArray4 {
 
     // Single Number
