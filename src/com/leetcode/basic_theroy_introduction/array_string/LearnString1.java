@@ -37,6 +37,21 @@ public class LearnString1 {
         String result = str.toString();           // 将StringBuilder转换成String
     }
 
+    // TODO: 从int整数转成char，再使用StringBuilder来拼接字符串
+    //       1. 使用'A'+const int    必须使用具体的值作为偏移量
+    //       2. 使用(char)(65+value) 使用变量作为偏移，然后强制转换成char
+    public static String convertColNumber(int col) {
+        if (col < 0) return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        int remaining = col;
+        while (remaining > 0) {
+            int offset = (remaining - 1) % 26;
+            stringBuilder.append((char) (65 + offset));
+            remaining = (remaining - offset) / 26;
+        }
+        return stringBuilder.reverse().toString();
+    }
+
     // TODO：充分使用字符串中字符直接的运算 .charAt(index)-'0' 从char转换到int来计算 !!
     // Add Binary
     // Given two binary strings a and b, return their sum as a binary string

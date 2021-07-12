@@ -16,13 +16,14 @@ public class QuestionArray01 {
     public List<Integer> findDuplicates(int[] nums) {
         List<Integer> result = new ArrayList<>();
         for (int index = 0; index < nums.length; index++) {
-            if (nums[index] == 0 || nums[index] == index + 1)
+            int currentNum = nums[index];
+            int findIndex = currentNum - 1;
+            if (currentNum == 0 || currentNum == index + 1) // 如果该位置是0，或者值已经在正确的位置上面了
                 continue;
-            int findIndex = nums[index] - 1;
-            if (nums[index] != nums[findIndex]) {
+            if (currentNum != nums[findIndex]) {
                 swap(nums, index, findIndex);
             } else {
-                result.add(nums[index]);
+                result.add(currentNum); // 说明要找的那个位置(要交换的位置)的值出现重复了
                 nums[index] = 0;
             }
             index--; // 无论是交换还是提取重复的值，都需要退回一步再做判断
@@ -43,7 +44,7 @@ public class QuestionArray01 {
     public List<Integer> findDuplicates2(int[] nums) {
         List<Integer> result = new ArrayList<>();
         for (int index = 0; index < nums.length; index++) {
-            int findIndex = Math.abs(nums[index]) - 1;  // 通过求Math.abs()j绝对值，忽略掉原来标记的值造成的影响 !!
+            int findIndex = Math.abs(nums[index]) - 1;  // 通过求Math.abs()绝对值，忽略掉原来标记的值造成的影响 !!
             if (nums[findIndex] < 0) {
                 result.add(findIndex + 1);              // 根据下标记录重复的数据值
             }
