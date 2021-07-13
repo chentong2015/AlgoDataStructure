@@ -54,9 +54,8 @@ public class BinarySearchTemplate2 {
 
     // TODO: 注意"Recursive Binary Search"递归二分法会带来额外的空间复杂度的开销 !!
     // Find Peak Element 提取"波峰"元素
-    // A peak element is an element that is strictly greater than its neighbors
-    // nums[-1] = nums[n] = -∞ 开头和末尾始终是最小值，可以返回答案中任何一个index
-    // nums[i] != nums[i + 1]  约束任意相邻的两个值都不相等
+    // A peak element is an element that is strictly greater than its neighbors 位置上面体现连续性
+    // nums[i] != nums[i + 1], nums[-1] = nums[n] = -∞ 开头和末尾始终是最小值，可以返回答案中任何一个index
     // left = 0; right = nums.length - 1;
     public int findPeakElementRecursive(int[] nums, int left, int right) {
         // 正确理解：1. 递归的算法逻辑是每一次只取剩下长度的二分之一  O(log2(n)) O(log2(n))
@@ -68,8 +67,8 @@ public class BinarySearchTemplate2 {
         return findPeakElementRecursive(nums, middle + 1, right);
     }
 
-    // 正确理解：2. Iterative Binary Search
-    // nums = [1,2,1,3,5,6,4] -> index = 1, index = 5 共有2个波峰的位置
+    // 正确理解：2. Iterative Binary Search  O(log(n)) O(1)
+    //            nums = [1,2,1,3,5,6,4] -> index = 1, 5 共有2个波峰的位置
     public int findPeakElementBinarySearch(int[] nums) {
         int left = 0;
         int right = nums.length - 1;
