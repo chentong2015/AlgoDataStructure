@@ -78,6 +78,34 @@ public class MockInterview {
         return 0;
     }
 
+    // Excel Formula Validation
+    // input: array AA -> ZZ, 00 -> 99, cell data is numeric
+    // AA00: "10"
+    // AB00: "20"
+    // AA01: AA00 + AB00 = "30"
+    // AB01: AA01(AA00 + AB00) * AB00 + AC00(0) ? 公式如何解析
+    private HashMap<String, String> map = new HashMap<>();
+
+    private boolean canEvaluated(String[][] cells) {
+        for (String[] cell : cells) {
+            if (!isCellFormula(cell[1])) map.put(cell[0], cell[1]);
+        }
+        for (String[] cell : cells) {
+            if (!isValidCellValue(cell[1])) return false;
+        }
+        return true;
+    }
+
+    private boolean isCellFormula(String cellValue) {
+        return cellValue.toLowerCase().charAt(0) - 'A' > 0;
+    }
+
+    private boolean isValidCellValue(String cellFormula) {
+        if (isCellFormula(cellFormula)) {
+        }
+        return true;
+    }
+
     // Google Interview Question
     // https://www.hackerrank.com/interview/interview-preparation-kit
     // 有一个n*n的棋盘，上面有m个糖果，最开始有一个人在棋盘左上角，他可以向左向右或者向下移动，但不能向上移动，

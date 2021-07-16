@@ -12,7 +12,7 @@ public class BaseArray {
      * 2. 直接利用位置下标进行计算，将问题转换成和index相关
      * 3. 遍历两遍数组，第一遍查找关键信息，第二遍得出结果
      * 4. 使用两个标识left，right，从左右两端往中间遍历
-     * 5. 使用HashSet<>判断key值，HashMap<>统计频率
+     * 5. 使用HashSet<>判断key值，HashMap<>统计key频率
      * 6. 使用Arrays.sort()排序，将特征信息展示出来
      * 7. "bit位运算" & "求和解法"
      * 8. TODO: 寻找value和index之间对应关系，转换条件

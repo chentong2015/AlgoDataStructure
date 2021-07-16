@@ -85,10 +85,10 @@ public class QuestionArray01 {
     // iValue=8    12j
     // iValue=8         8<9<12成立
 
-    // 1 2 3 4 5 6    降低的值会依次排布在前面，直到出现一个大值，改变排序并插入其中，同时设置kValue的值
-    //           6j   kValue=min
-    //         5j     kValue=min
-    //       4j       kValue=min
+    // 1 2 3 4  5  6    降低的值会依次排布在前面，直到出现一个大值，改变排序并插入其中，同时设置kValue的值
+    //             6j   kValue=min
+    //          5j 6    kValue=min
+    //       4j 5  6    kValue=min
     // ...
 
     // 8 12 9 10 8 7   6
@@ -96,19 +96,19 @@ public class QuestionArray01 {
     //                 7j   kValue=6   当设置kValue的值的时候，说明最终条件成立了一半: nums[k] < nums[j]
     //                 8j   kValue=7
     //                 10j  kValue=8   对于10j而言，它后面小于它的且最大的值是8
-    //             9j  10   kValue=8   9正好位于8~10之间，所以直接添加在前面    ==> 同时也说明9比10后面的值都要大，并不构成132Pattern
-    //             12j 10   kValue=10  对于12j而言，它后面小于它的且最大的值是10 ==> 需要找到比12小的后面的最大值，使得132出现的概率最大
-    // 8<10<12 条件成立
+    //             9j  10   kValue=8   9正好位于8~10之间，所以直接添加在前面       ==> 同时也说明9比10后面的值都要大，并不构成132Pattern
+    //             9   12j  kValue=10  对于12j而言，它后面小于它的且最大的值是10   ==> 需要找到比12小的后面的最大值，使得132出现的概率最大
+    //             8<10<12  条件成立
     public boolean find132Pattern2(int[] nums) {
         int jIndex = nums.length;
         int kValue = Integer.MIN_VALUE;
         for (int index = nums.length - 1; index >= 0; index--) {
             int iValue = nums[index];
             if (iValue < kValue) return true; // 当iValue小于kValue的时候，在这中间一定有一个jValue比kValue大，且满足左边关系 !!
-            while (jIndex < nums.length && iValue > nums[jIndex]) {
-                kValue = nums[jIndex++];
-            }
-            nums[--jIndex] = iValue;          // 往前一个位置坐标设置值
+            while (jIndex < nums.length && iValue > nums[jIndex]) { // iValue > nums[jIndex] 说明后面找到了nums[j] > nums[k]的关系
+                kValue = nums[jIndex++];                            // 继续循环往后，是为了找到后面后面小于nums[j]的最大的那个值 !!
+            }                                 // 将上面用来判断的iValue作为jValue的值
+            nums[--jIndex] = iValue;          // 往前一个位置坐标设置值，作为标记j的位置
         }
         return false;
     }
