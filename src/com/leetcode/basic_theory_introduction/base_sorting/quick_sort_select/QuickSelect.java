@@ -58,13 +58,12 @@ public class QuickSelect {
         }
     }
 
-    // 这里获取随机pivot index的算法影响时间复杂度
+    // 这里获取随机pivot index的算法影响时间复杂度 !!
     private int getRandomPivot(int left, int right) {
         Random random_num = new Random();
         return left + random_num.nextInt(right - left);
     }
 
-    // 注意pivot位置的设置
     // 最后将最右边存储的pivot移动到index,作为分区的中间位置 !!
     public int partition(int left, int right, int pivot) {
         swap(pivot, right);
