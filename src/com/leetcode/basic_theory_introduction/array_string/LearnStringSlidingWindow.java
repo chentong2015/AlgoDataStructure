@@ -1,8 +1,8 @@
 package com.leetcode.basic_theory_introduction.array_string;
 
 // TODO: Sliding window technique 关于数组和字符串的滑动窗口算法
-// 1. [i, j] 闭合的区间，用于框选一段数据的范围
-// 2. 所框选的数据必须是连续的，不能间段
+// 1. [i, j]闭合的区间，用于"框选"一段数据的范围
+// 2. 所选的区间内的数据必须是连续的 Consecutive !!
 public class LearnStringSlidingWindow {
 
     // Minimum Size Subarray Sum
@@ -57,7 +57,7 @@ public class LearnStringSlidingWindow {
     // "abcdeafbdgcbb"
     // a: 6    字符始终记录出现的最后一个位置的index，每次更新位置     chars[r] = right;
     // b: 12   当发现字符出现，取出它的位置，并从它的下一个位置开始截断  left = index + 1;
-    // c: 11   同时每一步更新结果                                  res = Math.max(,)
+    // c: 11   同时每一步更新结果                                 res = Math.max(,)
     // d: 9
     // ...
     public int lengthOfLongestSubstring2(String s) {
@@ -76,5 +76,28 @@ public class LearnStringSlidingWindow {
             right++;
         }
         return res;
+    }
+
+    // TODO: 从数据的连续性推导出"数学公式"的成立，假设能够拆分的数字个数是k个，连续数字的第一个数字是x
+    //       时间复杂度必须小于O(n)，一般只有两种可能O(log(n)) & O(n^0.5)和数据的平方有关系
+    // Consecutive Numbers Sum
+    // Given an integer n, return the number of ways you can write n as the sum of consecutive positive integers
+    // n = 5   -> 5 = 2 + 3 -> 2
+    // n = 9   -> 9 = 4 + 5 = 2 + 3 + 4 -> 3
+    // n = 15  -> 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5 -> 4
+    // 1. 如何判断一个数字能拆，如何拆才是合理的? 如何统计拆分的可能性?
+    // 2. 反向推理，使用"Sliding Windows"从结果推理出Sum的总和值!! O(n) O(1)
+    // 3. 通项公式，转换成数学问题
+    //    x+(x+1)+(x+2)+(x+3)...(x+(k-1)) = N
+    //    ((2x+k-1)*k)/2 = N
+    //    xk + k(k-1)/2 = N
+    //    xk = N - k(k-1)/2    对每一个拆分出来的数目k，对k求余数必须是整除的(结果保证x的值)
+    //    1< k < Math.sprt(2N) 这里k的范围约束在n的平方根之下，降低时间复杂度为O(n^0.5)
+    public int consecutiveNumbersSum(int n) {
+        int count = 1;
+        for (int k = 2; k < Math.sqrt(2 * n); k++) {
+            if ((n - (k * (k - 1) / 2)) % k == 0) count++;
+        }
+        return count;
     }
 }

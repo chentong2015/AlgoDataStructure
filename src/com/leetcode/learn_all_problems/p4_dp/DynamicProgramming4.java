@@ -17,8 +17,8 @@ public class DynamicProgramming4 {
         int[][] dp = new int[m + 1][n + 1];
         for (String str : strs) {
             int[] count = countZeroOne(str);
-            for (int i = m; i >= count[0]; i--) {
-                for (int j = n; j >= count[1]; j--) {
+            for (int i = m; i >= count[0]; i--) {      // 横坐标为0的统计位置
+                for (int j = n; j >= count[1]; j--) {  // 纵坐标为1的统计位置
                     int recordedValue = dp[i - count[0]][j - count[1]]; // 从历史累积的数据中提取判断过程中的最大值的组合
                     dp[i][j] = Math.max(recordedValue + 1, dp[i][j]);   // 从前面纪录的位置+str统计的0和1，到组成i，j位置
                 }

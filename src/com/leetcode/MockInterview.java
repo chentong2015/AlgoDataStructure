@@ -35,20 +35,27 @@ public class MockInterview {
     }
 
     // Alibaba Interview Question
+    // More than half frequency element
     // Find elements with more than half the frequency, suppose there is only one answer
-    // nums = [1,2,2,3,3,2,6,2]  ->  2
-    // 重点考虑数组中值的范围和特点，寻找可能的极限解法
+    // nums = [1,2,2,3,3,2,6,2,2]  ->  2
     // 1. 排序之后判断每个元素所占的长度区间  O(nlog(n)) O(1)
     // 2. 使用HashMap<>来存储每个元素的频率 O(n)       O(n)
+    // 3. 使用两遍遍历数组：第一遍找出其中出现次数最多的数字，第一遍统计这个数字出现的次数是否超过一半 !!
     public int findMostFrequencyElement(int[] nums) {
-        if (nums == null || nums.length == 0) return -1;
+        if (nums == null || nums.length == 0) return 0;
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int num : nums) {
-            int count = map.getOrDefault(num, 0);
+            int count = map.getOrDefault(num, 0) + 1;
             if (count > nums.length / 2) return num;
             map.put(num, count);
         }
-        return -1;
+        return 0;
+    }
+
+    // Tencent Interview Question
+    // https://www.nowcoder.com/ta/exam-qq
+    public void test() {
+        
     }
 
     // Microsoft Interview Question
