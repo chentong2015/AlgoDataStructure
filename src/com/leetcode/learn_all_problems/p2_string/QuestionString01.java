@@ -22,7 +22,9 @@ public class QuestionString01 {
         return new String(chars);
     }
 
-    public static void main(String[] args) {
-        System.out.println(reverseString("gk"));
+    // Repeated String Match
+    // https://leetcode.com/problems/repeated-string-match/
+    public int repeatedStringMatch(String a, String b) {
+        return 0;
     }
 }

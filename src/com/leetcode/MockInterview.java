@@ -54,7 +54,11 @@ public class MockInterview {
 
     // Tencent Interview Question
     // https://www.nowcoder.com/ta/exam-qq
-    public void test() {
+    // Check Contains subString 确认一个字符串中是否包含另一个字符串(可以乱序排列字符)
+    // str1 = "ab", str2="hskoebac" -> true
+    public boolean checkContains(String str1, String str2) {
+
+        return false;
     }
 
     // Microsoft Interview Question
