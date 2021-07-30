@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
-// TODO: Hash Table如何使用key键值
-// 1. 通过key键值进行聚和，分组，统计
-// 2. 通过key键值定位index位置
+// TODO: Hash Table如何使用key键值(聚和，分组，统计，定位index位置)
 public class LearnHashTable2 {
 
     // Intersection of Two Arrays

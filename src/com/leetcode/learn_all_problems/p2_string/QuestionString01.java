@@ -23,8 +23,22 @@ public class QuestionString01 {
     }
 
     // Repeated String Match
-    // https://leetcode.com/problems/repeated-string-match/
+    // Given two strings a and b, return the minimum number of times you should repeat string a
+    // so that string b is a substring of it.
+    // If it is impossible for b to be a substring of a after repeating it, return -1
+    // Input: a = "abcd", b = "cdabcdab" -> "abcdabcdabcd" -> 3 将A重复3次之后则包含字符串B
+    // Input: a = "a", b = "aa"          -> "aa"           -> 2
     public int repeatedStringMatch(String a, String b) {
-        return 0;
+        if (a == null || a.length() < 1) return -1;
+        if (b == null || b.length() < 1) return -1;
+        StringBuilder strBuilder = new StringBuilder(a);
+        int countRepeatTimes = 0;
+        while (strBuilder.length() < b.length()) {  // A字符串重复的长度如果超过B，则跳出循环，最多还可以再重复一次Ａ
+            countRepeatTimes++;
+            strBuilder.append(a);
+        }
+        if (strBuilder.toString().contains(b)) return countRepeatTimes;
+        if (strBuilder.append(a).toString().contains(b)) return countRepeatTimes + 1;
+        return -1;
     }
 }

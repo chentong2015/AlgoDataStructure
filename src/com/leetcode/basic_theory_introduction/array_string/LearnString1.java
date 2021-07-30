@@ -1,19 +1,13 @@
 package com.leetcode.basic_theory_introduction.array_string;
 
-/**
- * String 字符串研究
- * 1. A string is actually an array of unicode characters (16 bits unicode码值的数组)
- * 2. Use "==" to compares whether these two objects are the same object 只是比较是否是同一个对象
- * 3. TODO: 使用.equals()不仅比较是否是同于个对象，如果不是相同对象，则比较对象包含的值(每个字符)
- * 4. Immutable String 字符串具有不可变性, 如果要改变, 则需要创建一个新的String --> Java/C#不可变, C++可变
- * 5. 比Array多出的操作
- * >  s1.indexOf('o')
- * >  s1.lastIndexOf('o')
- * >  s1.substring(6, 11)                        都会造成O(n)的时间复杂度, 不可以忽略
- * >  String.copyValueOf(result)
- * >  new String(charArray)                      直接通过字符数组构建String
- * >  new StringBuilder(s).reverse().toString(); 使用StringBuilder来反转字符串
- */
+// 1. A string is actually an array of unicode characters (16 bits unicode码值的数组)
+// 2. Immutable String 字符串具有不可变性, 如果要改变, 则需要创建一个新的String --> Java/C#不可变, C++可变
+// s1.indexOf('o')
+// s1.lastIndexOf('o')
+// s1.substring(6, 11)                        都会造成O(n)的时间复杂度, 不可以忽略
+// String.copyValueOf(char[] data)            直接通过取值来构建
+// new String(charArray)                      直接通过字符数组构建String
+// new StringBuilder(s).reverse().toString(); 使用StringBuilder来反转字符串
 public class LearnString1 {
 
     // Immutable String - Problems & Solutions

@@ -35,9 +35,7 @@ public class LearnHashTable1 {
         return sum;
     }
 
-    // TODO: HashMap<>实战
-    //       需要快速判断特征条件的Key值
-    //       具备Map准确映射关系的特征(比如index坐标位置)
+    // TODO: HashMap<>实战: 需要快速判断特征条件的Key值, 具备Map准确映射关系的特征(比如index坐标位置)
     // Two Sum
     // Given an array of integers nums and an integer target
     // Return indices of the two numbers such that they add up to target

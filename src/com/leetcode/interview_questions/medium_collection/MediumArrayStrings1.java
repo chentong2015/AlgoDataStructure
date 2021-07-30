@@ -69,7 +69,7 @@ public class MediumArrayStrings1 {
 
     // TODO: Hash Table "Aggregate by Key" 通过键值来聚合同类数据
     // Group Anagrams
-    // Given an array of strings strs, group the anagrams together. can return answer in any order
+    // Given an array of strings strs, group the anagrams together. Return answer in any order
     // strs = ["eat","tea","tan","ate","nat","bat"] -> [["bat"],["nat","tan"],["ate","eat","tea"]]
     public List<List<String>> groupAnagrams(String[] strs) {
         // 测试理解: 1. 暴力解法：直接遍历，然后归类添加到结果列表中  O(n*n*mlog(m))   O(n*m)
@@ -81,18 +81,14 @@ public class MediumArrayStrings1 {
         if (strs.length == 0) return new ArrayList();
         for (int i = 0; i < strs.length; i++) {
             char[] chars = strs[i].toCharArray();
-            Arrays.sort(chars);                                // 排序造成O(mlog(m))的复杂度 !!
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int j = 0; j < chars.length; j++) {
-                stringBuilder.append(chars[i]);
-            }
-            String key = stringBuilder.toString();              // Get map key from string
-            if (results.containsKey(key)) {                     // Add item by group
+            Arrays.sort(chars);                          // 排序造成O(mlog(m))的复杂度 !!
+            String key = new String(chars);              // Create Mapkey From String 完全Copy出chars数组中的字符
+            if (results.containsKey(key)) {              // Add item by group
                 results.get(key).add(strs[i]);
             } else {
                 List<String> newList = new ArrayList<>();
                 newList.add(strs[i]);
-                results.put(key, newList);                      // Put new item to results
+                results.put(key, newList);
             }
         }
         return new ArrayList(results.values()); // 通过.values()来构造出List

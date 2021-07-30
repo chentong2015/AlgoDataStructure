@@ -23,13 +23,12 @@ public class LearnHashTable4 {
         return count;
     }
 
-    // 正确理解：
-    // 1. return S.replaceAll("[^" + J + "]", "").length(); 现有方法的实现
-    // 2. 不使用额外的存储空间来实现，利用约束条件和int<->char之间的转换
+    // 正确理解：不使用额外的存储空间来实现，利用约束条件和int<->char之间的转换
+    // return S.replaceAll("[^" + J + "]", "").length();
     public int numJewelsInStones2(String jewels, String stones) {
-        int[] stoneNum = new int[58];    // 给定的长度有限制，因此使用定长的数组 !!
+        int[] stoneNum = new int[58];
         for (char stone : jewels.toCharArray()) {
-            stoneNum[stone - 65]++;      // ASCII码值 A -> 65
+            stoneNum[stone - 65]++;      // char会根据Unicode码值表，转成int类型计算的值
         }
         int sum = 0;
         for (char jewel : stones.toCharArray()) {

@@ -14,7 +14,6 @@ public class LearnArrayList1 {
      * Iterable<E> ==> Collection<E> ==> List<E> 继承和实现层级
      * AbstractList, "ArrayList", CopyOnWriteList, "LinkedList", Stack, Vector
      */
-
     // TODO: 数组和list列表之间的相互转换
     private void testConvertArrayAndList() {
         Integer[] nums = {1, 2, 3};
@@ -29,24 +28,24 @@ public class LearnArrayList1 {
 
     // Array List 基本使用方法
     public void testArrayList() {
-        List<Integer> v0 = new ArrayList<>();
-        List<Integer> v1 = v0;                    // another reference to v1
-        List<Integer> v3 = new ArrayList<>(v0);   // make an actual copy of v1 (存储的是值类型)深度拷贝
+        List<Integer> list0 = new ArrayList<>();
+        List<Integer> list1 = list0;                    // another reference to list1
+        List<Integer> list3 = new ArrayList<>(list0);   // make an actual copy of list1 (存储的是值类型)深度拷贝
 
-        v1.add(-1);
-        v1.add(1, 6);
-        v1.add(1, 2);     // 导致index=1往后的值都会移动，以完成列表长度的自动扩充 ==> 造成时间复杂度 !!
-        v1.remove(1);             // 后面位置的值自全部向前一位填充
-        v1.remove(v1.size() - 1); // 删除最后一个元素
-        v3.set(0, -1);
+        list1.add(-1);
+        list1.add(1, 6);
+        list1.add(1, 2);     // 导致index=1往后的值都会移动，以完成列表长度的自动扩充 ==> 造成时间复杂度 !!
+        list1.remove(1);             // 后面位置的值自全部向前一位填充
+        list1.remove(list1.size() - 1); // 删除最后一个元素
+        list3.set(0, -1);
 
-        int size = v1.size();
-        int firstItem = v1.get(0);
-        int position = v1.indexOf(0);
-        for (int i = 0; i < v1.size(); ++i) {
-            System.out.print(" " + v1.get(i));
+        int size = list1.size();
+        int firstItem = list1.get(0);
+        int position = list1.indexOf(0);
+        for (int i = 0; i < list1.size(); ++i) {
+            System.out.print(" " + list1.get(i));
         }
-        for (int item : v1) {
+        for (int item : list1) {
             System.out.print(" " + item);
         }
     }

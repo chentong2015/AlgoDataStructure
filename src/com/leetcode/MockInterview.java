@@ -5,7 +5,8 @@ import java.util.List;
 
 // 企业题库  https://codetop.cc/#/home              Login: tong / TCHong15
 // 题目全集  https://leetcode.com/problemset/all/   Login: chen2015tong@gmail.com / TCHong15&
-// 算法总结  https://longwang2.gitbooks.io/lintcode/content/substringlei-xing-wen-ti/minimum-size-subarray-sum.html
+// 算法总结  http://www.leetcodecn.com/
+//         https://longwang2.gitbooks.io/lintcode/content/
 // 1. Easy   ：只包含1个基础的核心逻辑，一个思想
 // 2. Medium : 包含1个较难的逻辑，或者包含2到3个(构建在基础题目上面的)逻辑和思想
 // 3. Hard   : 包含4个或者更换多的判断和逻辑，一般是一些小游戏的逻辑或是小工具软件的组成部分
@@ -55,7 +56,9 @@ public class MockInterview {
     // Tencent Interview Question
     // https://www.nowcoder.com/ta/exam-qq
     // Check Contains subString 确认一个字符串中是否包含另一个字符串(可以乱序排列字符)
-    // str1 = "ab", str2="hskoebac" -> true
+    // str1 = "abc", str2="hskoebacdh" -> true
+    // 1. 对str1排序之后，构建StringKey，判单str2中相同长度的子字符串是否和该Key相同
+    // 2. TODO：如何判断每一个打乱顺序的str1 ??
     public boolean checkContains(String str1, String str2) {
 
         return false;

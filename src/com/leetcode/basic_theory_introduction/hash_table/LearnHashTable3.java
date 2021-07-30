@@ -59,7 +59,8 @@ public class LearnHashTable3 {
     }
 
     // 用后续遍历构建出当前node的Serial序列, 满足重复序列的则提取到结果list中
-    private int postorder(TreeNode root, Map<String, Integer> serialToId, Map<Integer, Integer> idToCount, List<TreeNode> res) {
+    private int postorder(TreeNode root, Map<String, Integer> serialToId,
+                          Map<Integer, Integer> idToCount, List<TreeNode> res) {
         if (root == null) return 0;
         int leftId = postorder(root.getLeft(), serialToId, idToCount, res);
         int rightId = postorder(root.getRight(), serialToId, idToCount, res);

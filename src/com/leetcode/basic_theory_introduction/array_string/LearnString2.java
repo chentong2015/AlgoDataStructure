@@ -70,7 +70,7 @@ public class LearnString2 {
         Map<Integer, Integer> map1 = parseSums(nums1, nums2);
         Map<Integer, Integer> map2 = parseSums(nums3, nums4);
         for (int key : map1.keySet()) {     // O(n^2)
-            if (map2.containsKey(-key)) {  // O(1)
+            if (map2.containsKey(-key)) {   // O(1)
                 sum += map1.get(key) * map2.get(-key);
             }
         }

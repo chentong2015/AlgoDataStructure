@@ -1,12 +1,8 @@
 package com.leetcode.basic_theory_introduction.base_sorting;
 
-// 原生语言自带的排序方法：
-// Arrays.sort(array);
-// Collections.sort(list, comparator); 可以自定义排序的比较器 !!
+// 金典排序算法(超过20种)
 public class BaseSorting {
-
-    // 金典排序算法(超过20种):
-
+    
     // 比较排序
     // 1. 插入排序  O(n²)      O(1)       每读取一个值, 将它插入到前面有序的序列中
     // 2. 选择排序  O(n²)      O(1)       每次遍历找最大或者最小值, 放到开头或者末尾
