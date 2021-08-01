@@ -1,24 +1,26 @@
 package com.leetcode.basic_theory_introduction.bfs_dfs_backtracking;
 
 /**
- * Backtracking 回溯算法: 构建问题的所有可能的解决方案，推翻其中一些方案，从而从所有备选可能中找到答案
- * TODO: 算法推导出满足需求的(所有)答案，但是没有办法在众多的答案中再挑选出最优化的那一个 !!
+ * TODO: 算法推导出满足需求的(一些或者所有)答案，但是没有办法在答案中再挑选出最优化的那一个 !!
+ * Backtracking 回溯算法:
+ * 构建问题的所有可能的解决方案，推翻其中一些方案，从而从所有备选可能中找到答案
  * Backtracking is a general algorithm for finding all (or some) solutions to some computational problems
  * which incrementally builds candidates to the solution and abandons a candidate ("backtracks")
  * as soon as it determines that the candidate cannot lead to a valid solution
  */
 //                    <Problem>
-// Candidate 1          ....         Candidate i         似于树的遍历，直到找到叶子节点，或者有明显的判断不能继续找到有效答案，则放弃
-//    TODO: \backtracking\回溯的核心在于判断到异常情况时的撤回
-//          将原先设置的条件恢复，再进行下一步的递归判断
-// Candidate 1.1 (KO)   ....         Candidate i.j       一层一层的趋近最终的Solution
+// 似于树的遍历，直到找到叶子节点，或者有明显的判断不能继续找到有效答案，则放弃
+// Candidate 1          ....         Candidate i
+//    \backtracking\回溯的核心在于判断到异常情况时的撤回
+//     将原先设置的条件恢复，再进行下一步的递归判断，一层一层的趋近最终的Solution
+// Candidate 1.1 (KO)   ....         Candidate i.j
 //                   Solution m-1    Solution m
-public class LearnBacktracking {
+public class BacktrackingBasics {
 
-    // TODO: 1. 回溯算法经典案列 N-Queen puzzle
+    // TODO: 1. 回溯算法经典案列
     // N-Queens II
-    // Placing n queens on an n x n chessboard such that no two queens attack each other.
-    // Given an integer n, return the number of distinct solutions to the n-queens puzzle.
+    // Placing n queens on an n x n chessboard such that no two queens attack each other
+    // Given an integer n, return the number of distinct solutions to the n-queens puzzle
     // 0 0 1 0    0 1 0 0
     // 1 0 0 0    0 0 0 1 -> Queen能够攻击该位置的横竖列和斜方向上的所有位置
     // 0 0 0 1    1 0 0 0
@@ -45,7 +47,8 @@ public class LearnBacktracking {
     // 3. 当递归回溯判断row==n; 则说明将n个queen完整填入其中
     public void backtracking(int row, boolean[] cols, boolean[] diag1, boolean[] diag2, int n) {
         if (row == n) count++;
-        for (int col = 0; col < n; col++) {     // 在不同的row行，填充在每个列的位置，直到推导到row=n最后一层，则记成一个有效的答案 !!
+        // 在不同的row行，填充在每个列的位置，直到推导到row=n最后一层，则记成一个有效的答案 !!
+        for (int col = 0; col < n; col++) {
             int id1 = col - row + n;
             int id2 = col + row;
             if (cols[col] || diag1[id1] || diag2[id2]) continue;

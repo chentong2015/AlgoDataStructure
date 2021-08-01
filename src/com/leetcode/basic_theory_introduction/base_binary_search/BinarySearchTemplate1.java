@@ -1,7 +1,5 @@
 package com.leetcode.basic_theory_introduction.base_binary_search;
 
-// TODO: Binary Search Template I 模板
-// Standard Binary Search Template
 // Search for an element or condition which can be determined by accessing a single index
 // 标准二分法, 只需要访问单一的index就能确定, 不需要考虑相邻或者相关的index
 public class BinarySearchTemplate1 {
@@ -14,11 +12,12 @@ public class BinarySearchTemplate1 {
         if (nums == null || nums.length == 0) return -1;
         int left = 0;
         int right = nums.length - 1;
-        while (left <= right) {                  // 相等条件, 能确定到搜索同一个位置, 后面的left，right其中之一必须移动
+        // 相等条件, 能确定到搜索同一个位置, 后面的left，right其中之一必须移动
+        while (left <= right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] == target) return mid;
-            if (nums[mid] < target) {            // 常规的模板是：左边left右边right均可以上下移动 !!
-                left = mid + 1;
+            if (nums[mid] < target) {
+                left = mid + 1;  // 因为mid位置不是，所以可以上移一个位置往后
             } else {
                 right = mid - 1;
             }
@@ -45,7 +44,7 @@ public class BinarySearchTemplate1 {
                 low = middle + 1;                 // 必须将low低位往前进，避免下次计算middle时，回到原来的low值，造成循环 !!
             }
         }
-        return low; // 出循环条件: low=high 说明置于统一位置，可以确定
+        return low; // 出循环条件: low=high说明置于同一个位置，可以确定该值
     }
 
     private int guess(int num) {

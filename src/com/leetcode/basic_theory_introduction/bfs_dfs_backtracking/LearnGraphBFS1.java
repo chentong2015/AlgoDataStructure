@@ -5,11 +5,11 @@ import org.w3c.dom.Node;
 import java.util.*;
 
 //   -> B  -> E
-// A -> C ->
-//   -> D -> F
-//             -> G
-// 首先遍历root，然后将它指向的结点都检加入到队列中，作为第二层，然后添加第二层所有指向的结点...
-// 最先被压入队列的将会优先出队列
+// A -> C  -> K  -> M
+//   -> D  -> F
+//               -> G
+// 首先遍历root，然后将它指向的结点都检加入到队列中作为第二层
+// 然后添加第二层所有指向的结点..最先被压入队列的将会优先出队列
 public class LearnGraphBFS1 {
 
     // BFS - Template I
@@ -49,7 +49,7 @@ public class LearnGraphBFS1 {
         //  add root to visited;
         //  while (queue is not empty) {
         //      step = step + 1;
-        //      int size = queue.size();
+        //      int size = queue.size();  控制一层的遍历读取
         //      for (int i = 0; i < size; ++i) {
         //          Node cur = the first node in queue;
         //          return step if cur is target;
@@ -122,6 +122,9 @@ public class LearnGraphBFS1 {
                 }
             }
         }
+
+        // 对于队列中的位置(值为0)分别移动4个方向，找到提前标记的MAX_VALUE
+        // 将其位置的值在前一个Cell值的基础上+1 (到达的步数会累积起来)
         int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         while (!queue.isEmpty()) {
             int[] cell = queue.poll();
@@ -131,10 +134,10 @@ public class LearnGraphBFS1 {
                 if (row < 0 || row >= m || col < 0 || col >= n) continue;
 
                 // 只有当移动后的位置上的值比原来基础上的值+1大的时候，才添加到队列中，并在原来位置的基础上+1步数
-                int beforeStepValue = matrix.get(cell[0]).get(cell[1]);
-                if (matrix.get(row).get(col) > beforeStepValue + 1) {
+                int stepCellValueBefore = matrix.get(cell[0]).get(cell[1]);
+                if (matrix.get(row).get(col) > stepCellValueBefore + 1) {
                     queue.add(new int[]{row, col});
-                    matrix.get(row).set(col, beforeStepValue + 1);
+                    matrix.get(row).set(col, stepCellValueBefore + 1);
                 }
             }
         }

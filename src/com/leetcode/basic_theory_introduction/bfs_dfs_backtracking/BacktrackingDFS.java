@@ -13,16 +13,16 @@ public class BacktrackingDFS {
     // Each word must be constructed from letters of sequentially adjacent cells
     // The same letter cell may not be used more than once in a word    单词全部都是小写字符
     // board = [["o","a","b","n"],  words = ["oa","oaa"] words中要查找的单词都是唯一，可以构建HashKey
-    //          ["o","t","a","e"],  Output: ["oa","oaa"] 这里必须要判断到单词的完整长度，不能重复添加 !!
+    //          ["o","t","a","e"],  Output: ["oa","oaa"] 这里必须要判断到单词的完整长度，不能重复添加
     //          ["a","h","k","r"],
     //          ["a","f","l","v"]]
 
     // board = [["o","a","a","n"],  words = ["oath","pea","eat","rain","hklf", "hf"]
-    //          ["e","t","a","e"],  注意取的单词构成了一个闭合的线路 !!
+    //          ["e","t","a","e"],  注意取的单词构成了一个闭合的线路
     //          ["i","h","k","r"],
     //          ["i","f","l","v"]]
 
-    // 0. 基础思考: 能不能在二维数组中将一个单词取出来 !!
+    // 0. 基础思考: 能不能在二维数组中将一个单词取出来
     // 1. 测试解法: 对二维数组每个点进行BFS广度优先遍历, 同时需要记录已经遍历过的字符(避免循环)         ==> KO
     // 2. 测试解法: 对二维数组的每个点字符构建HashKey, 遍历要查找的每个单词, 逐个判断字符是否存在且连续  ==> KO
     // 3. 高级解法: 单词数组构建Trie Tree + 以某个字符为起点DFS展开遍历 + Backtracking回溯

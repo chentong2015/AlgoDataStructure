@@ -2,8 +2,7 @@ package com.leetcode.basic_theory_introduction.base_binary_search;
 
 // TODO: Ternary Search 三元搜索, 三分法
 // 1. 将二分的区间进行三分，使用两个middle位置进行判断
-// 2. 在某种场景下，能够将时间复杂度从O(log2(n))缩小到O(log3(n))
-//    但是继续提高分区可能造成时间复杂度的降低 !!
+// 2. 在某种场景下，能够将时间复杂度从O(log2(n))缩小到O(log3(n))，继续提高分区可能造成时间复杂度的降低 !!
 public class LearnTernarySearch {
 
     // Guess Number Higher or Lower

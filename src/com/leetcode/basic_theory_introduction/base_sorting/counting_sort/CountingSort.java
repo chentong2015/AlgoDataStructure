@@ -5,7 +5,7 @@ package com.leetcode.basic_theory_introduction.base_sorting.counting_sort;
 // O(n+k) 需要额外的统计元素频率的数组
 public class CountingSort {
 
-    // 计数排序是用来排序0到100之间的数字的最好的算法
+    // TODO: 计数排序是用来排序0到100之间的数字的最好的算法
     // 比如：10个年龄不同的人，统计出有8个人的年龄比A小，那A的年龄就排在第9位
     // 1. 找出待排序的数组中最大和最小的元素
     // 2. 统计数组中每个值为i的元素出现的次数，存入数组C的第i项
@@ -14,11 +14,11 @@ public class CountingSort {
 
     // Input: 1, 4, 1, 2, 7, 5, 2
     //
-    // Index: 0  1  2  3  4  5  6  7  8  9
-    // Count: 0  2  2  0  1  1  0  1  0  0
+    // Index: 0  1  2  3  4  5  6  7
+    // Count: 0  2  2  0  1  1  0  1
     //
-    // Index: 0  1  2  3  4  5  6  7  8  9
-    // Count: 0  2  4  4  5  6  6  7  7  7
+    // Index: 0  1  2  3  4  5  6  7
+    // Count: 0  2  4  4  5  6  6  7  ==> 中间没有的值累加出来的结果没有任何影响，不会取到该位置position = nums[i] - min
     //
     // Process the input data: 1, 4, 1, 2, 7, 5, 2.
     // Position of 1 is 2. 找到要放置的位置，在放置完成之后，降低位置，以便下一次放到前面
@@ -33,14 +33,17 @@ public class CountingSort {
         // 优化解法，压缩统计数组的大小，减少使用的空间复杂度
         int[] counts = new int[max - min + 1];
         for (int num : nums) counts[num - min] += 1;
+
+        // 将每个位置的index累加前面的index之和
         for (int i = 1; i < counts.length; ++i) {
             counts[i] = counts[i] + counts[i - 1];
         }
 
         int[] numsSorted = new int[nums.length];
         for (int i = nums.length - 1; i >= 0; --i) {
-            numsSorted[counts[nums[i] - min]] = nums[i];
-            counts[nums[i] - min]--;
+            int position = nums[i] - min;
+            numsSorted[counts[position]] = nums[i];
+            counts[position]--;
         }
         return numsSorted;
     }

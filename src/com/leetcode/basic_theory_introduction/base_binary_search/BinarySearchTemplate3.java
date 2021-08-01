@@ -3,12 +3,12 @@ package com.leetcode.basic_theory_introduction.base_binary_search;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: Binary Search Template III 模板
 // Search for an element or condition which requires
 // accessing the current index and its immediate left and right neighbor's index in the array
 // 需要访问index以及它的left和right相邻的位置，同时要考虑3个位置处的数据 
 public class BinarySearchTemplate3 {
 
+    // 使用(left + 1 < right)循环条件，则left和right在移动的时候不够+1，否则可能会错过结果值 !!
     int binarySearch(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
         int left = 0;

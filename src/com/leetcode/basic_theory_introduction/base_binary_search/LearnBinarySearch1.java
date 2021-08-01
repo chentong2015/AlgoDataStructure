@@ -63,7 +63,7 @@ public class LearnBinarySearch1 {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // TODO: Binary Search 在最大值和总值之间使用二分法, 结果一定是其中的一个和sum
+    // TODO: Binary Search 在最大值和总值之间使用二分法, 结果一定是其中的一个sum值
     // Split Array Largest Sum
     // Given an array nums which consists of non-negative integers and an integer m
     // Split the array into m non-empty "continuous sub-arrays" 切分出来的数字必须是连续且非空的
@@ -72,7 +72,7 @@ public class LearnBinarySearch1 {
     // nums = [7,2,5,10,8], m = 2 -> [7,2,5] and [10,8] -> 18   共4种分法：1+4, 2+3, 3+2(最小的一种分法), 4+1
     // nums = [1,2,3,4,5],  m = 2 -> [1,2,3] and [4,5]  -> 9    TODO：通过数学方法来穷举所有的划分可能 !!
     // nums = [1,4,4],      m = 3 -> [1] [4] and [4]    -> 4
-    public int splitArray(int @NotNull [] nums, int m) {
+    public int splitArray(int @NotNull [] nums, int numSplit) {
         // 由于数组元素固定，结果必须是连续的子字符串，所以不能对数组进行排序
         // O(nlog(M)) n是元素的个数，M是最大值和总值之间的距离 O(1)
 
@@ -82,13 +82,13 @@ public class LearnBinarySearch1 {
             max = Math.max(num, max);
             sum += num;
         }
-        if (m == 1) return sum;
+        if (numSplit == 1) return sum;
 
         int low = max;
         int high = sum;
         while (low <= high) {
             int mid = low + (high - low) / 2;
-            if (valid(mid, nums, m)) {
+            if (valid(mid, nums, numSplit)) {
                 high = mid - 1;
             } else {
                 low = mid + 1;
@@ -97,8 +97,7 @@ public class LearnBinarySearch1 {
         return low; // End condition: low > high
     }
 
-    // TODO: 和Sliding Windows同样的逻辑
-    // 在当个最大值和总值之间进行二分，每一个值都是一个连续片段和的上限
+    // Sliding Windows: 在当个最大值和总值之间进行二分，每一个值都是一个连续片段和的上限
     // 1. 以二分位置作为目标结果和，划分数组成指定的数量m，如果这个目标值做不到准确的划分，则目标值不对
     // 2. 由于要取划分出来的子数组中的最小和，则需要将每个划分"最大可能"的接近目标值，以保证平衡 !!
     // 1 4 4, 3
@@ -108,14 +107,14 @@ public class LearnBinarySearch1 {
     // 4 4
     // 4 3
     // low > high
-    public boolean valid(int mid, int[] nums, int m) {
+    public boolean valid(int targetSum, int[] nums, int numSplit) {
         int count = 1;
         int total = 0;
         for (int num : nums) {
             total += num;
-            if (total > mid) {
+            if (total > targetSum) {  // 如果超过了目标sum，则开始做下一次的划分
                 count++;
-                if (count > m) return false;
+                if (count > numSplit) return false;
                 total = num;   // 前面的部分去掉，从当前这个数num重新开始累计总和sum
             }
         }

@@ -1,12 +1,11 @@
 package com.leetcode.basic_theory_introduction.base_binary_search;
 
-// TODO: Binary Search Template II 模板
 // Search for an element or condition which requires accessing the current index and
 // its immediate right neighbor's index in the array
 // 需要访问index和它前或后index(或相关的index/right)，通过while(left<right)循环来逼近最终的值
 public class BinarySearchTemplate2 {
 
-    // 1. int right = nums.length; 初始范围在数组的下标范围之外
+    // 1. int right = nums.length; 初始范围在数组的下标范围之外，确保能取到最后一个值
     // 2. if(left != nums.length)  结束循环之后会做判断处理
     public int binarySearch(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
@@ -84,20 +83,20 @@ public class BinarySearchTemplate2 {
     }
 
     // Find Minimum in Rotated Sorted Array
-    // nums = [0,1,2,4,5,6,7] -> [4,5,6,7,0,1,2] if it was rotated 4 times
     // Given the sorted rotated array nums of unique elements, return the minimum element of this array
-    // nums = [4,5,6,7,0,1,2] -> 0
+    // nums = [0,1,2,4,5,6,7] -> [4,5,6,7,0,1,2] rotated 4 times  -> minValue = 0
     public static int findMinIndex(int[] nums) {
         int left = 0;
         int right = nums.length - 1;
         while (left < right) {
             int middle = left + (right - left) / 2;
             if (nums[middle] > nums[right]) {
-                left = middle + 1;
+                left = middle + 1; // 如果中间的位置的值大于右端位置的值，则最小值在右边
             } else {
                 right = middle;
             }
         }
-        return nums[left]; // 出循环条件: left=right当两个位置坐标相遇, 说明前面一个位置是大值，后面一个位置也是大值 !!
+        // 出循环条件: left=right当两个位置坐标相遇, 说明前面一个位置是大值，后面一个位置也是大值 !!
+        return nums[left];
     }
 }
