@@ -43,6 +43,7 @@ public class MockInterview {
     // 2. 使用HashMap<>来存储每个元素的频率 O(n)       O(n)
     // 3. 使用两遍遍历数组：第一遍找出其中出现次数最多的数字，第一遍统计这个数字出现的次数是否超过一半 !!
     public int findMostFrequencyElement(int[] nums) {
+        // TODO: 以下不是最优解
         if (nums == null || nums.length == 0) return 0;
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int num : nums) {
@@ -147,4 +148,10 @@ public class MockInterview {
     // Amazon Interview
     // Median of Two Sorted Arrays
     // TODO: https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2481/Share-my-O(log(min(mn)))-solution-with-explanation
+
+    // Autodesk Interview Question
+    // Intersection of Two Arrays
+    public int[] intersect(int[] nums1, int[] nums2) {
+        return null;
+    }
 }

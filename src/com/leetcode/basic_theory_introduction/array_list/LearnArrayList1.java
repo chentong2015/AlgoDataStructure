@@ -2,12 +2,15 @@ package com.leetcode.basic_theory_introduction.array_list;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 // ArrayList 列表(动态数组)，长度可变
-// 1. 查找数据的速度比较快，直接通过下标index索引即可访问     ===> 数据存储的地址是连续的，可以直接计算偏移量 !!
+// 1. 查找数据的速度比较快，直接通过下标index索引即可访问 (数据存储的地址是连续的，可以直接计算偏移量) !!
 // 2. 在数据中间插入元素的速度比较慢，会影响插入位置后面的元素
+
+// Collections.sort(list);
+// Collections.swap(list, 1, 2);
+// List<Integer> array = Collections.synchronizedList(list); TODO: 通过Collections来构造出线程安全的List列表多对象
 public class LearnArrayList1 {
 
     /**
@@ -48,13 +51,6 @@ public class LearnArrayList1 {
         for (int item : list1) {
             System.out.print(" " + item);
         }
-    }
-
-    // 利用Collections的静态方法
-    private void testCollections() {
-        List<Integer> list = new ArrayList<>();
-        Collections.sort(list);
-        Collections.swap(list, 1, 2);
     }
 
     /**

@@ -38,7 +38,7 @@ public class LearnHashTable2 {
                 }
             }
         }
-        return Arrays.copyOf(nums1, index);
+        return Arrays.copyOf(nums1, index); // 直接使用现有的数组作为最终的结果，不需要额外开辟新的结果数组 !!
     }
 
     // Contains Duplicate II 
