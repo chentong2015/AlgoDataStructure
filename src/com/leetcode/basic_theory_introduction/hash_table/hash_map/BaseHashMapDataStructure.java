@@ -1,10 +1,10 @@
-package com.leetcode.basic_theory_introduction.hash_table;
+package com.leetcode.basic_theory_introduction.hash_table.hash_map;
 
 public class BaseHashMapDataStructure {
 
     // HashMap JDK 1.8
     // key -> Node[] table 数组(Node<k,v>一个结点) / bucket桶位，槽位
-    //                     -> Node -> Node ... 冲突的时候，需要挂链表  O(n)
+    //                     -> Node -> Node ... 冲突的时候，需要挂链表     O(n)
     //                     -> 当链表长度大于8时,自动转成红黑树,优化查询   O(log(n))
 
     // 1. 数组初始容量(默认bucket 16数量)，最大容量，负载因子(存储的数据大于75%时，则需要扩容)
@@ -39,8 +39,8 @@ public class BaseHashMapDataStructure {
     // (n-1) & hash = 0000 0000 0000 0000 0000 0000 0000 0101 ==> 5存储在第5个槽位上
 
     // 槽位数必须是2^n ? 为了使哈希后的结果更加的均匀
-    // 如果是2^n, 则保证与运算的时候，保证低位上面都有1参与运算        ==> 相当于求15的模值 => TODO: h&length 比 h%length更有效率 !!
-    // (n-1)        = 0000 0000 0000 0000 0000 0000 0001 0000 ==> 如果n=17，则和hash求与运算之后，落到的槽位不是0就是16 !! 不均匀
+    // 如果是2^n, 则保证与运算的时候，保证低位上面都有1参与运算  ==> 相当于求15的模值 => TODO: h&length 比 h%length更有效率 !!
+    // (n-1)        = 0000 0000 0000 0000 0000 0000 0001 0000    ==> 如果n=17，则和hash求与运算之后，落到的槽位不是0就是16  !! 不均匀
 
     // 3. HashMap put方法流程
     //    if ((p = tab[i = (n - 1) & hash]) == null)    具体在Node数组中的槽位位置
@@ -48,7 +48,7 @@ public class BaseHashMapDataStructure {
     //    else
     //       if ((k = p.key) == key || (key != null && key.equals(k))) 如果有相同的key，则直接覆盖
     //       else if (p instanceof TreeNode)
-    //            如果已经是红黑树，则在树中添加node结点，如果长度小于6，则转下面的链表
+    //            如果已经是红黑树，则在树中添加node结点，如果长度小于6，则转下面的链表 !!
     //       else
     //            挂链表的情况(遍历链表，一般插尾部)，如果长度大于8，转上面的红黑树 !!
     //    if (++size > threshold)       超过指定的长度，需要扩容size

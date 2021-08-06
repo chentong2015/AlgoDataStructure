@@ -1,4 +1,4 @@
-package com.leetcode.basic_theory_introduction.hash_table;
+package com.leetcode.basic_theory_introduction.hash_table.hash_map;
 
 import java.util.*;
 
@@ -7,12 +7,12 @@ import java.util.*;
 // 1. List列表 用于动态存储数据，根据index快速的查找删除，根据随机产生的一个整数index，返回随机元素
 // 2. HashMap 用于存储值和index的对应关系，快速定位到值的index位置
 //            在插入和移除的时候，需要快速判断值是否存在，需要将value作为HashMap的key，做快速判断
-public class BaseRandomizedSet {
+public class RandomizedSet {
 
     private List<Integer> values;
     private Map<Integer, Integer> map;
 
-    public BaseRandomizedSet() {
+    public RandomizedSet() {
         values = new ArrayList<>();
         map = new HashMap<>();
     }

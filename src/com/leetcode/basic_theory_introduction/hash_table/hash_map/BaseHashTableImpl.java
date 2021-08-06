@@ -1,4 +1,4 @@
-package com.leetcode.basic_theory_introduction.hash_table;
+package com.leetcode.basic_theory_introduction.hash_table.hash_map;
 
 // 衡量Hash表优劣的两个维度
 // 1. 性能高，接近O(1)的查询复杂度

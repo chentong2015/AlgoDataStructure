@@ -1,4 +1,4 @@
-package com.leetcode.basic_theory_introduction.hash_table;
+package com.leetcode.basic_theory_introduction.hash_table.hash_map;
 
 import java.util.*;
 
@@ -19,7 +19,7 @@ public class BaseHashTable {
     public void testHashSet(List<String> words) {
         Set<String> set = new HashSet<>(words);
     }
-    
+
     public void testHashMap() {
         Map<Integer, Integer> hashmap = new HashMap<>();
         hashmap.putIfAbsent(0, 0);
