@@ -71,17 +71,25 @@ public class BaseConcurrentHashMap {
     //                scanAndLockForPut(key, hash, value); 等锁失败时会执行
     //             lock()     --> 阻塞，直到加到锁之后才会执行完成，
     //                        --> 等效于while(!tryLock()) {}自旋  ==> 可以在等待锁的过程中执行一定的操作 !!
-    //       ...类似于HashMap的做法添加
+    //       类似于HashMap的做法添加...
     //   }
 
     //   HashEntry<K,V> scanAndLockForPut(key, hash, value) { 阻塞加锁: 线程在等待锁的过程中，能够做些什么事情 ?
-    //       最终一定会拿到索，在等待的过程中:
+    //       最终一定会拿到锁，在等待的过程中:
     //       1. 通过key计算出index，遍历指定Entry数组的index位置的值，或所挂的链表，或红黑树)，如果有相同的key，则修改这个Entry的value值
-    //                            如何遍历 ?
     //       2. 如果没有找到相同的key，则可以先生成Entry<K,V>，以便之后直接使用
     //       while(!tryLock()) {
-    //
+    //            first = entryForHash(this, hash); 拿到Entry Table链表的第一个Entry值
+    //            e = first;...
+    //            TODO: 每次都会尝试去遍历链表，一旦拿到锁之后，则不管遍历到什么位置 (以下的两个判断是在等待的过程中，可做可不做的事情)
+    //            if key.equals(e.key)
+    //               如果找到了相同的key，也会标记出来 retries=0;
+    //            e = e.next(); 遍历链表上的key，
+    //               if node == null 如果遍历完成之后，则生成一个新的HashEntry<K,V>()
+    //            遍历完链表之后，最多再允许再执行while() MAX_SCAN_RETRIES=64次
+    //               lock(); 然后直接阻塞
+    //            在增加偶数的次数时，再次通过entryForHash()取Entry Table链表的第一个Entry值，如果改变了，说明有新的结点插到头部
+    //               retries=-1; 重新再去遍历，看是否有相同的可以存在
     //       }
     //   }
-
 }
