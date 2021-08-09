@@ -1,4 +1,4 @@
-package com.leetcode.basic_theory_introduction.hash_table.hash_map;
+package com.leetcode.basic_theory_introduction.hash_table.learn;
 
 import java.util.*;
 

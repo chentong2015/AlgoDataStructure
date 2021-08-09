@@ -1,10 +1,11 @@
 package com.leetcode.basic_theory_introduction.hash_table.hash_map;
 
+// HashMap JDK 1.8 在1.7版上面进行了优化
 public class BaseHashMapDataStructure {
 
-    // HashMap JDK 1.8
     // key -> Node[] table 数组(Node<k,v>一个结点) / bucket桶位，槽位
-    //                     -> Node -> Node ... 冲突的时候，需要挂链表     O(n)
+    //     -> Entry<key,value> Entry类型的对象
+    //                     -> Node -> Node ... 冲突的时候，需要挂链表  O(n)
     //                     -> 当链表长度大于8时,自动转成红黑树,优化查询   O(log(n))
 
     // 1. 数组初始容量(默认bucket 16数量)，最大容量，负载因子(存储的数据大于75%时，则需要扩容)
@@ -39,12 +40,13 @@ public class BaseHashMapDataStructure {
     // (n-1) & hash = 0000 0000 0000 0000 0000 0000 0000 0101 ==> 5存储在第5个槽位上
 
     // 槽位数必须是2^n ? 为了使哈希后的结果更加的均匀
-    // 如果是2^n, 则保证与运算的时候，保证低位上面都有1参与运算  ==> 相当于求15的模值 => TODO: h&length 比 h%length更有效率 !!
-    // (n-1)        = 0000 0000 0000 0000 0000 0000 0001 0000    ==> 如果n=17，则和hash求与运算之后，落到的槽位不是0就是16  !! 不均匀
+    //                 想要通过&算出index的必要条件是，约束数组的长度必须是2^n值
+    // 如果是2^n, 则保证与运算的时候，保证低位上面都有1参与运算         ==> 相当于求15的模值      ==> TODO: h&length比h%length更有效率 !!
+    // (n-1)        = 0000 0000 0000 0000 0000 0000 0001 0000  ==> 如果n=17，则和hash求与运算之后，落到的槽位不是0就是16  !! 不均匀
 
     // 3. HashMap put方法流程
     //    if ((p = tab[i = (n - 1) & hash]) == null)    具体在Node数组中的槽位位置
-    //       tab[i] = newNode(hash, key, value, null);  如果指定槽位没有值，则直接插入node
+    //       tab[i] = newNode(hash, key, value, null);  如果指定槽位没有值，则直接插入node  ==> TODO: 多线程场景下会出现并发的(判断)问题
     //    else
     //       if ((k = p.key) == key || (key != null && key.equals(k))) 如果有相同的key，则直接覆盖
     //       else if (p instanceof TreeNode)
