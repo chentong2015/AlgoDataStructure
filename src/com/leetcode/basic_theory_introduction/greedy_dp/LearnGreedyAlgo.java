@@ -17,4 +17,6 @@ public class LearnGreedyAlgo {
     // 2. 把求解的问题分成若干个子问题
     // 3. 对每一子问题求解，得到子问题的局部最优解
     // 4. 把子问题的解局部最优解合成原来解问题的一个解
+
+    // TODO: http://www.leetcodecn.com/pages/2b9db5/#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0
 }

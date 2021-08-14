@@ -15,4 +15,5 @@ public class BaseBigDataAlgo {
 
     // 6. 成员查询(Membership Query)
     //    定一个无限的数据流和一个有限集合，如何判断数据流中的元素是否在这个集合中
+    //    布隆过滤器(Bloom Filter)
 }
