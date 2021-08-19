@@ -1,4 +1,4 @@
-package com.leetcode.others.big_data;
+package com.big_data;
 
 // Dig Data 大数据金典算法
 public class BaseBigDataAlgo {
