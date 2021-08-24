@@ -27,13 +27,35 @@ public class RealInterview {
     // https://www.nowcoder.com/ta/exam-qq
     // Check Contains subString 确认一个字符串中是否包含另一个字符串(可以乱序排列字符)
     // str1 = "abc", str2="hskoebacdh" -> true
-    // 1. 对str1排序之后，构建StringKey，判单str2中相同长度的子字符串是否和该Key相同
-    // 2. TODO：如何判断每一个打乱顺序的str1 ??
-    // 3. 使用滑动窗口算法取str2字符串的指定长度，然后判断是否和str1一致
-    //    先将str1的字符信息统计到HashMap中，然后使用map来做判断 !!
-    //    O(n + n*m)  O(n)
+    // 1. 将str1排序成mapKey，判断str2中是否有这key所在的区间
+    // 2. TODO: 将str1的每一个字符统计到数组中，依次截取str2指定长度的子字符串，进行比较判断  ==> 假设只有26个小写字母
     public boolean checkContains(String str1, String str2) {
         // 先做几个常见的特殊情况的判断
+        int[] counts = new int[26];
+        for (char c : str1.toCharArray()) {
+            counts[c - 'a']++;
+        }
+        StringBuilder subString = new StringBuilder();
+        int countChars = 0;
+        for (int index = 0; index < str2.length(); index++) {
+            int findIndex = str2.charAt(index) - 'a';
+            if (counts[findIndex] > 0) {
+                countChars++;
+                subString.append(str2.charAt(index));
+                if (countChars == str1.length()) {
+                    // 判断提取的subString是否符合counts数组统计出来的值
+                } else if (countChars > str1.length()) {
+                    // 删除截取的开头的字符，然后比较subString
+                    subString.deleteCharAt(0);
+                }
+            } else {
+                countChars = 0;
+                // 清空已经提取的子字符串，重新截取
+                if (subString.length() > 0) {
+                    subString = new StringBuilder();
+                }
+            }
+        }
         return false;
     }
 

@@ -1,4 +1,4 @@
-package com.big_data;
+package com.base_system_design.big_data;
 
 // Dig Data 大数据金典算法
 public class BaseBigDataAlgo {

@@ -2,22 +2,14 @@ package com.interview;
 
 import java.util.List;
 
-// 企业题库
-// https://codetop.cc/#/home
-// Login: tong / TCHong15
-
-// 题目全集
-// https://leetcode.com/problemset/all/
-// Login: chen2015tong@gmail.com / TCHong15&
+// 数据结构绘图工具 https://processon.com/diagrams
+// 企业题库    https://codetop.cc/#/home (tong / TCHong15)
+// 题目全集    https://leetcode.com/problemset/all/ (chen2015tong@gmail.com / TCHong15&)
 
 // 算法总结
 // http://www.leetcodecn.com/
 // https://longwang2.gitbooks.io/lintcode/content/
 // https://wizardforcel.gitbooks.io/the-art-of-programming-by-july/content/00.01.html
-
-// 1. Easy   ：只包含1个基础的核心逻辑，一个思想
-// 2. Medium : 包含1个较难的逻辑，或者包含2到3个(构建在基础题目上面的)逻辑和思想
-// 3. Hard   : 包含4个或者更换多的判断和逻辑，一般是一些小游戏的逻辑或是小工具软件的组成部分
 public class MockInterview {
 
     // Twitter Interview Question

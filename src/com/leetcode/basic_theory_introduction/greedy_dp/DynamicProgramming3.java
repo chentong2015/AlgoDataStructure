@@ -1,6 +1,6 @@
 package com.leetcode.basic_theory_introduction.greedy_dp;
 
-// DP动态编程 高级实战与应用, 如何利用dp二维空间
+// DP动态编程: 高级实战与应用, 如何利用dp二维空间
 public class DynamicProgramming3 {
 
     // TODO: Longest Common Subsequence 使用二位空间的DP数组，记录之前累积的计算结果 !!
