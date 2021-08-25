@@ -2,16 +2,16 @@ package com.leetcode.basic_theory_introduction.tree.prefix_tree_trie;
 
 import com.leetcode.basic_theory_introduction.tree.prefix_tree_trie.model.TrieNodeWithEnd;
 
-/**
- * Prefix Tree(Trie): Store and retrieve keys in a dataset of strings / tree data structure
- * 1. 本质上是树的结构, 也可以看成是String集
- * 2. TODO: Prefix Tree有两种设计方法，在prefix结尾处标记结束，或者在prefix结尾处标记prefix完整字符串 !!
- * Balance Tree 区别 : 平衡树中搜索key的时间复杂度是O(mlog(n)) m为key的长度，n为key的数目
- * Hash Table 区别   :
- * 1. Hash Table 存储具有共同前缀的相同数量的key值，占的内存空间比较大
- * 2. Hash table 查找具有相同前缀的key不够高效
- * 3. Hash table 在按照词典顺序枚举字符串集时不够高效
- */
+// Prefix Tree(Trie): Store and retrieve keys in a dataset of strings / tree data structure
+// 1. 本质上是树的结构, 也可以看成是String集
+// 2. TODO: Prefix Tree有两种设计方法，在prefix结尾处标记结束，或者在prefix结尾处标记prefix完整字符串 !!
+
+// Balance Tree 区别 : 平衡树中搜索key的时间复杂度是O(mlog(n)) m为key的长度，n为key的数目
+// Hash Table 区别
+// 1. Hash Table 存储具有共同前缀的相同数量的key值，占的内存空间比较大
+// 2. Hash table 查找具有相同前缀的key不够高效
+// 3. Hash table 在按照词典顺序枚举字符串集时不够高效
+
 // Prefix Tree 实战场景：
 // 1. AutoComplete 搜索自动补全
 // 2. SpellChecker 英语拼写检查

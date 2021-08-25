@@ -4,17 +4,23 @@ import com.leetcode.basic_theory_introduction.tree.base.TreeLinkNode;
 import com.leetcode.interview_questions.base.TreeNode;
 
 // 1. N-Ary Tree           N叉任意树
-// 2. Binary Tree          2叉树
-// 3. Binary Search Tree   2叉搜索树
+// 2. Binary Tree          二叉树
+// 3. Binary Search Tree   二叉搜索树
 //      Balanced BST       保证树的高度最低
 //      Unbalanced BST     左右子树不平衡
-//      Red–black Tree     自平衡二叉查找树 (对称, 降低树深度, 节点红黑)  https://zh.wikipedia.org/wiki/红黑树
-// 4. Complete Binary Tree 完全二叉树, 堆(Heap)
-// 5. Segment Tree         片段树 / Binary Indexed Tree 二叉索引树
-// 6. Decision Tree        决策树(机器学习中的判断数)
-// 7. Prefix Tree          前缀树(使用26个特征字母节点的树) N叉任意树
-// 8. Quad Tree            四叉树(固定有4个子节点的树)
-// 9. K-d Tree             k维(k-dimensional tree)空间分割的数据结构
+// 4. Red–black Tree       自平衡二叉查找树(对称, 降低树深度, 节点红黑)
+// 5. Complete Binary Tree 完全二叉树, 堆(Heap)
+
+// 6. Segment Tree         片段树 / Binary Indexed Tree 二叉索引树
+// 7. Decision Tree        决策树(机器学习中的判断数)
+
+// 8. Prefix Tree          前缀树(使用26个特征字母节点的树) N叉任意树
+
+// 9. Quad Tree            四叉树(固定有4个子节点的树)
+// 10. K-d Tree            k维(k-dimensional tree)空间分割的数据结构
+
+// 11. B-Tree              树的单个结点存储多个数据，降低树的高度
+// 12. B+Tree              MySQL索引底层选择的数据结构
 public class BaseTrees {
 
     /**
