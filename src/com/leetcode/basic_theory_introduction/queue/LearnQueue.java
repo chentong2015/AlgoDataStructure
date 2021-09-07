@@ -7,22 +7,33 @@ import java.util.Queue;
 
 // Queue队列: First-in-first-out, BFS广度优先遍历
 // Queue<E>实现类型：
-//      Interface Deque<E>    双端队列
-//      class LinkedList<E>
-//      class ArrayDeque<E>         默认初始状态下存16个元素
-//      class PriorityQueue<E>      基于优先级堆，根据队列元素进行自然排序(或者在初始化时传递自定义的Comparator)
-//      class ArrayBlockingQueue<E> 有界(capacity容量固定)阻塞队列，使用ReentrantLock支持多线程并发操作
+//   Interface Deque<E>    双端队列
+//   class LinkedList<E>
+//   class ArrayDeque<E>         默认初始状态下存16个元素
+//   class PriorityQueue<E>      基于优先级堆，根据队列元素进行自然排序(或者在初始化时传递自定义的Comparator)
+//   class ArrayBlockingQueue<E> 有界(capacity容量固定)阻塞队列，使用ReentrantLock支持多线程并发操作
 public class LearnQueue {
 
     public void testQueue() {
         Queue<Integer> queue = new LinkedList<>();
-        queue.add(10);                     // 适用于队列的容量不受限制
-        queue.offer(5);                 // 通常使用在容量受限的队列，该方法比add()更加可取 !!
+        queue.add(10);
+        queue.offer(5);
         int size = queue.size();
-        Integer peekValue = queue.peek(); // 查看应该出队列的元素，但是不会移除，可能返回null，不能赋值给值类型 !!
+        Integer peekValue = queue.peek(); // 查看出队列元素但不移除，可能返回null，不能赋值给值类型 !!
         if (!queue.isEmpty()) {
-            int value = queue.poll();      // 取出第一个出队列的元素
+            int value = queue.poll();     // 取出第一个出队列元素
         }
+    }
+
+    public void compareAddAndOffer() {
+        // boolean offer(e) 返回入队列是否成功
+
+        // public boolean add(E e) { 判断是否受到队列长度的限制，而造成入队列不成功
+        //     if (offer(e))         会抛出队列已满的异常(多抛出一种异常)
+        //         return true;
+        //     else
+        //         throw new IllegalStateException("Queue full");
+        // }
     }
 
     // Open the Lock

@@ -3,14 +3,13 @@ package com.interview;
 import java.util.List;
 
 // 数据结构绘图工具 https://processon.com/diagrams
-// 数据结构可视化  Data Structure Visualizations
-// https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+// 数据结构可视化   https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
 
-// 企业题库    https://codetop.cc/#/home (tong / TCHong15)
-// 题目全集    https://leetcode.com/problemset/all/ (chen2015tong@gmail.com / TCHong15&)
-
-// https://www.bilibili.com/video/BV1a54y1b74k 50道基本算法题
-// http://www.leetcodecn.com/  算法总结
+// TODO: 50道基本算法题 https://www.bilibili.com/video/BV1a54y1b74k
+// 企业题库      https://codetop.cc/#/home (tong / TCHong15)
+// 题目全集      https://leetcode.com/problemset/all/ (chen2015tong / TCHong15&)
+// 算法总结题库
+// http://www.leetcodecn.com/
 // https://longwang2.gitbooks.io/lintcode/content/
 // https://wizardforcel.gitbooks.io/the-art-of-programming-by-july/content/00.01.html
 public class MockInterview {
