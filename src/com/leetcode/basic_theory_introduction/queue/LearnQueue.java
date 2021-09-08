@@ -5,13 +5,13 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
-// Queue队列: First-in-first-out, BFS广度优先遍历
+// Queue队列: FIFO, BFS广度优先遍历
 // Queue<E>实现类型：
-//   Interface Deque<E>    双端队列
-//   class LinkedList<E>
-//   class ArrayDeque<E>         默认初始状态下存16个元素
-//   class PriorityQueue<E>      基于优先级堆，根据队列元素进行自然排序(或者在初始化时传递自定义的Comparator)
-//   class ArrayBlockingQueue<E> 有界(capacity容量固定)阻塞队列，使用ReentrantLock支持多线程并发操作
+// Interface Deque<E>          双端队列
+// class LinkedList<E>
+// class ArrayDeque<E>         默认初始状态下存16个元素
+// class PriorityQueue<E>      基于优先级堆，根据队列元素进行自然排序(或者在初始化时传递自定义的Comparator)
+// class ArrayBlockingQueue<E> 有界(capacity容量固定)阻塞队列，使用ReentrantLock支持多线程并发操作
 public class LearnQueue {
 
     public void testQueue() {
