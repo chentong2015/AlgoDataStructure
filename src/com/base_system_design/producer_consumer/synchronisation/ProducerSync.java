@@ -1,16 +1,14 @@
-package com.base_system_design.producer_consumer.base_sync_lock;
+package com.base_system_design.producer_consumer.synchronisation;
 
 import java.util.List;
 import java.util.Random;
 
-public class SyncProducer implements Runnable {
+public class ProducerSync implements Runnable {
 
     private List<String> buffer;
-    private String color;
 
-    public SyncProducer(List<String> buffer, String color) {
+    public ProducerSync(List<String> buffer) {
         this.buffer = buffer;
-        this.color = color;
     }
 
     @Override
@@ -22,14 +20,14 @@ public class SyncProducer implements Runnable {
                 synchronized (buffer) {
                     buffer.add(num);
                 }
-                System.out.println(color + "Adding.." + num);
+                System.out.println("Adding.." + num);
                 Thread.sleep(random.nextInt(1000));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         synchronized (buffer) {
-            buffer.add("EOF"); // "EOF": End of file String
+            buffer.add("EOF");
         }
     }
 }

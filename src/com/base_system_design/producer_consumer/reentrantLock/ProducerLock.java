@@ -1,18 +1,16 @@
-package com.base_system_design.producer_consumer.base_sync_lock;
+package com.base_system_design.producer_consumer.reentrantLock;
 
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class LockProducer implements Runnable {
+public class ProducerLock implements Runnable {
 
     private List<String> buffer;
-    private String color;
     private ReentrantLock reentrantLock;
 
-    public LockProducer(List<String> buffer, String color, ReentrantLock reentrantLock) {
+    public ProducerLock(List<String> buffer, ReentrantLock reentrantLock) {
         this.buffer = buffer;
-        this.color = color;
         this.reentrantLock = reentrantLock;
     }
 
@@ -25,7 +23,7 @@ public class LockProducer implements Runnable {
                 reentrantLock.lock();
                 buffer.add(num);
                 reentrantLock.unlock();
-                System.out.println(color + "Adding.." + num);
+                System.out.println("Adding.." + num);
                 Thread.sleep(random.nextInt(1000));
             } catch (InterruptedException e) {
                 e.printStackTrace();

@@ -1,4 +1,4 @@
-package com.base_system_design.producer_consumer.delay_queue;
+package com.base_system_design.timed_task_scheduler;
 
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
