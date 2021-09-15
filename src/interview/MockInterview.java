@@ -1,4 +1,4 @@
-package com.interview;
+package interview;
 
 import java.util.List;
 

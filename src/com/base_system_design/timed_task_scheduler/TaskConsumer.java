@@ -10,6 +10,7 @@ public class TaskConsumer implements Runnable {
         this.queue = queue;
     }
 
+    // 消费者不需要关心时间差，直接在while(true)里不断take()
     @Override
     public void run() {
         while (true) {
