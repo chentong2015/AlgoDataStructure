@@ -25,7 +25,6 @@ public class TaskProducer implements Runnable {
         }
     }
 
-    // 生产一些时间随机的任务，添加到队列中
     private void produceRandomTasks() {
         int delay = random.nextInt(10000);
         String randomName = UUID.randomUUID().toString();

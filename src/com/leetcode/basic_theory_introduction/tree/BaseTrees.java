@@ -21,6 +21,8 @@ import com.leetcode.interview_questions.base.TreeNode;
 
 // 11. B-Tree              树的单个结点存储多个数据，降低树的高度
 // 12. B+Tree              MySQL索引底层选择的数据结构
+
+// 13. Splay Tree
 public class BaseTrees {
 
     /**

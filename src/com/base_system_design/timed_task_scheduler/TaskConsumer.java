@@ -11,11 +11,11 @@ public class TaskConsumer implements Runnable {
     }
 
     // 消费者不需要关心时间差，直接在while(true)里不断take()
+    // 当队列中没有任务时，TaskConsumer会无限等待，直到被唤醒，因此它不会消耗CPU
     @Override
     public void run() {
         while (true) {
             try {
-                // 从队列中取出task，当队列中没有任务时，TaskConsumer会无限等待，直到被唤醒，因此它不会消耗CPU
                 DelayedTask task = queue.take();
                 System.out.println("Take " + task);
             } catch (InterruptedException e) {
