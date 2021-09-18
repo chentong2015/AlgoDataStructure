@@ -29,7 +29,7 @@ public class BaseHashMapDataStructure {
     static final int hash(Object key) { // 重新计算hash值
         int h;
         // h = key.hashCode() 取hashCode值
-        // h ^ (h >>> 16)     异或，无符号右移16位(高位全部补0) !! 高位参与运算
+        // h ^ (h >>> 16)     异或, 无符号右移16位(高位全部补0), 高位参与运算
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
     // 计算数组槽位(n-1) & hash确定在那个bucket桶中 !! 默认的槽位数n=16
@@ -41,8 +41,11 @@ public class BaseHashMapDataStructure {
 
     // 槽位数必须是2^n ? 为了使哈希后的结果更加的均匀
     //                 想要通过&算出index的必要条件是，约束数组的长度必须是2^n值
-    // 如果是2^n, 则保证与运算的时候，保证低位上面都有1参与运算         ==> 相当于求15的模值      ==> TODO: h&length比h%length更有效率 !!
+    // 如果是2^n, 则保证与运算的时候，保证低位上面都有1参与运算         ==> 相当于求15的模值
     // (n-1)        = 0000 0000 0000 0000 0000 0000 0001 0000  ==> 如果n=17，则和hash求与运算之后，落到的槽位不是0就是16  !! 不均匀
+
+    // TODO: h&length 比 h%length 更有效率
+    // 优化策略：任意数 % 2^n  ==> 任意数 ^ (2^n - 1)
 
     // 3. HashMap put方法流程
     //    if ((p = tab[i = (n - 1) & hash]) == null)    具体在Node数组中的槽位位置
