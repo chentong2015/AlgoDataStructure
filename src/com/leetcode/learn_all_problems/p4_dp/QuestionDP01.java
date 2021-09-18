@@ -1,6 +1,6 @@
 package com.leetcode.learn_all_problems.p4_dp;
 
-public class DynamicProgramming4 {
+public class QuestionDP01 {
 
     // TODO: 如何想到DP算法，前面的提取结果后面的选择有影响 + 二维划分分布的问题 + 找整个的最大值条件数目
     // Ones and Zeroes

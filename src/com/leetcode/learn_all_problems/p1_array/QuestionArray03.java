@@ -88,30 +88,4 @@ public class QuestionArray03 {
         // 假设这里的乘积结果不会越界
         return Math.max(min1 * min2 * max1, max1 * max2 * max3);
     }
-
-    // TODO: 从特殊性到一般性的过渡，满足同一个逻辑条件的成立 ==> 数据统计的相互抵消性质，一定是出现次数多的那个数据占优势(被留下来) !!
-    // More than half frequency element
-    // Find elements with more than half the frequency, suppose there is only one answer
-    // nums = [1,2,2,3,3,2,6,2,2]  ->  2
-    // 2,2,2,2,2,1,3,3,6  假如有一个数字出现的次数超过一半，通过count统计最后留下来的mostFrequencyValue一定是这个数字
-    // 1,2,2,3,3,2,6,2,2  数据打乱之后依然能保留到这个数字，原因是因为在count统计的过程中数据会呈现相互抵消的效果 !!
-    public int findMostFrequencyElement2(int[] gifts, int n) {
-        if (gifts.length < n || gifts.length == 0) return 0;
-        int count = 0;
-        int mostFrequencyValue = gifts[0];
-        for (int i = 0; i < n; i++) {
-            if (count == 0) {
-                mostFrequencyValue = gifts[i]; // 只有当count被累积清空之后，才会变动记录的数字mostFrequencyValue
-                count = 1;
-            } else {
-                if (mostFrequencyValue == gifts[i]) count++;
-                else count--;
-            }
-        }
-        int size = 0;
-        for (int i = 0; i < n; i++) {
-            if (gifts[i] == mostFrequencyValue) size++;
-        }
-        return (size > n / 2) ? mostFrequencyValue : 0;
-    }
 }
