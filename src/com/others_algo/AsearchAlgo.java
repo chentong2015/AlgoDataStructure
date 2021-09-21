@@ -1,4 +1,4 @@
-package com.leetcode.others;
+package com.others_algo;
 
 public class AsearchAlgo {
 }

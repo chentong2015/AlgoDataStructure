@@ -1,4 +1,4 @@
-package com.leetcode.others;
+package com.others_algo;
 
 // 数学证明，离散数学，组合数学，例如N个中选k个的方法等
 public class MathProblem {
