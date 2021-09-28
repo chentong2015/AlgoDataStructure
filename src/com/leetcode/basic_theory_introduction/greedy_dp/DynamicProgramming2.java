@@ -72,7 +72,7 @@ public class DynamicProgramming2 {
     // nums = [2,3,1,1,4]   -> step 1 + step 3
     // nums = [3,2,1,0,4]   -> 始终只能跳到index=3
     // [3,  2,  1,  0,  4]  使用等长的数组来存储知否能够跳到的标记信息
-    //          i       ?   在index位置和它能跳到的最远位置 Math.min(i + nums[i], nums.length - 1) 之间，如果有成功标记，则标记index位置 !!
+    //          i       ?   在index位置和它能跳到的最远位置Math.min(i + nums[i], nums.length - 1)之间，如果有成功标记，则标记index位置 !!
     public static boolean canJumpBottomUp(int[] nums) {
         // O(n) 空间复杂度依赖dp数组所存储的标记信息，不会达到O(n^2)  O(n)
         IndexMark[] dp = new IndexMark[nums.length];
@@ -116,7 +116,7 @@ public class DynamicProgramming2 {
         int lastPos = nums.length - 1;
         for (int i = nums.length - 1; i >= 0; i--) {
             if (i + nums[i] >= lastPos) {
-                lastPos = i;
+                lastPos = i; // 更新有效位置(可以到达的位置)
             }
         }
         return lastPos == 0;

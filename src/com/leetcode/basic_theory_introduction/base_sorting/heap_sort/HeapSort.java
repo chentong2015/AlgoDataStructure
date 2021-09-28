@@ -7,17 +7,15 @@ package com.leetcode.basic_theory_introduction.base_sorting.heap_sort;
 // 空间复杂度	    O(n) total, O(1) auxiliary
 public class HeapSort {
 
-    /*
-     * 第一步：将数组堆化
-     * beginIndex = 第一个非叶子节点
-     * 从第一个非叶子节点开始即可, 无需从最后一个叶子节点开始。
-     * 叶子节点可以看作已符合堆要求的节点, 根节点就是它自己且自己以下值为最大
-     *
-     * 第二步：对堆化数据排序
-     * 每次都是移出最顶层的根节点A[0], 与最尾部节点位置调换, 同时遍历长度 - 1
-     * 然后从新整理被换到根节点的末尾元素, 使其符合堆的特性。
-     * 直至未排序的堆长度为0
-     */
+    // 第一步：将数组堆化
+    // beginIndex = 第一个非叶子节点
+    // 从第一个非叶子节点开始即可, 无需从最后一个叶子节点开始。
+    // 叶子节点可以看作已符合堆要求的节点, 根节点就是它自己且自己以下值为最大
+    // 
+    // 第二步：对堆化数据排序
+    // 每次都是移出最顶层的根节点A[0], 与最尾部节点位置调换, 同时遍历长度 - 1
+    // 然后从新整理被换到根节点的末尾元素, 使其符合堆的特性。
+    // 直至未排序的堆长度为0
     private int[] arr = new int[100];
 
     public void sort() {
@@ -31,12 +29,10 @@ public class HeapSort {
             maxHeapify(0, i - 1);
         }
     }
-
-    /*
-     * 调整索引为index处的数据，使其符合堆的特性
-     * index 需要堆化处理的数据索引
-     * len   未排序的堆（数组）的长度
-     */
+    
+    // 调整索引为index处的数据，使其符合堆的特性
+    // index 需要堆化处理的数据索引
+    // len   未排序的堆（数组）的长度
     private void maxHeapify(int index, int len) {
         int li = (index << 1) + 1; // 左子节点索引
         int ri = li + 1;           // 右子节点索引

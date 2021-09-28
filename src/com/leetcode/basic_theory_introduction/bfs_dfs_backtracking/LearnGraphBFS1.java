@@ -9,7 +9,7 @@ import java.util.*;
 //   -> D  -> F
 //               -> G
 // 首先遍历root，然后将它指向的结点都检加入到队列中作为第二层
-// 然后添加第二层所有指向的结点..最先被压入队列的将会优先出队列
+// 然后添加第二层所有指向的结点, 最先被压入队列的将会优先出队列
 public class LearnGraphBFS1 {
 
     // BFS - Template I

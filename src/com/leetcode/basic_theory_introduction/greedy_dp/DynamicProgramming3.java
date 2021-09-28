@@ -3,11 +3,22 @@ package com.leetcode.basic_theory_introduction.greedy_dp;
 // DP动态编程: 高级实战与应用, 如何利用dp二维空间
 public class DynamicProgramming3 {
 
+    // TODO: 直接利用LCS计算一个字符串和它的反转字符串之间的最长公共子序列的数量
+    //       剩下的长度差值就是要形成Palindrome所需要插入的字符数量
+    // Minimum Insertion Steps to Make a String Palindrome
+    // In one step you can insert any character at any index of the string
+    // Return the minimum number of steps to make s palindrome
+    // s = "mbdadbm" -> "mbdadbm" or "mdbabdm" -> 2
+    public int minInsertions(String s) {
+        String reverseStr = new StringBuilder(s).reverse().toString();
+        return s.length() - longestCommonSubsequence(s, reverseStr);
+    }
+
     // TODO: Longest Common Subsequence 使用二位空间的DP数组，记录之前累积的计算结果 !!
     //       金典的CS问题，应用在数据比较(diff utility & winMerge)和Git版本比较与修订
     // https://en.m.wikipedia.org/wiki/Longest_common_subsequence_problem
     // Subsequence 子序列是按照顺序排序的一串子字符，通过删除某些字符后可以形成
-    // text1="agcat", text2="gca"  完全复杂度为O(2^n * 2^m)中比较的可能
+    // text1="agcat", text2="gac"  完全复杂度为O(2^n * 2^m)中比较的可能
     //     Ø	A	G	C	A	T  在确定好字符后，两个字符串的比较是线性的
     // Ø   Ø	Ø	Ø	Ø	Ø   Ø
     // G   Ø	0   1   1   1   1
@@ -24,17 +35,6 @@ public class DynamicProgramming3 {
                     dp[i + 1][j + 1] = Math.max(dp[i][j + 1], dp[i + 1][j]);
                 }
         return dp[str1.length()][str2.length()];
-    }
-
-    // TODO: 直接利用LCS计算一个字符串和它的反转字符串之间的最长公共子序列的数量
-    //       剩下的长度差值就是要形成Palindrome所需要插入的字符数量
-    // Minimum Insertion Steps to Make a String Palindrome
-    // In one step you can insert any character at any index of the string 每一步可以在字符串的任何位置插入一个字符
-    // Return the minimum number of steps to make s palindrome
-    // s = "mbdadbm" -> "mbdadbm" or "mdbabdm" -> 2
-    public int minInsertions(String s) {
-        String reverseStr = new StringBuilder(s).reverse().toString();
-        return s.length() - longestCommonSubsequence(s, reverseStr);
     }
 
     // TODO: 和LCS同样的算法，拿到最短公共SuperSequence的长度，并非字符组合的结果
@@ -54,7 +54,7 @@ public class DynamicProgramming3 {
         int[][] dp = new int[m + 1][n + 1];
         for (int i = 0; i <= m; i++) {
             for (int j = 0; j <= n; j++) {
-                if (i == 0) dp[i][j] = j;                                // 第一行和第一例只需要补充指定字符串的长度
+                if (i == 0) dp[i][j] = j;                                // 第一行和第列只需要补充指定字符串的长度
                 else if (j == 0) dp[i][j] = i;
                 else if (str1.charAt(i - 1) == str2.charAt(j - 1))
                     dp[i][j] = dp[i - 1][j - 1] + 1;                     // 如果相等，则在去掉公共字符的基础上补充一个共同字符
@@ -103,10 +103,11 @@ public class DynamicProgramming3 {
     //    a  x  b  d  b  a
     // a  1  1  1  1  3  3+2=5 最大长度的结果，逆向推导得出最后的字符串
     // x     1  1  1  3  3
-    // b        1  1  3  3  (x  b  d  b)这4个字符的最大长度来源于(b  d  b)这3个字符
-    // d           1  1  1  取3个字符(有相等则1+2，反之取前两个字符或者后两个字符组成的最大值)
-    // b              1  1  取2个字符
-    // a                 1  取1个字符 构成反斜线上数值
+    // b        1  1  3  3     (x  b  d  b)这4个字符的最大长度来源于(b  d  b)这3个字符
+    //                TODO: b和b相等，则构成的最长palindromic子序列为: 这两个字符中间的所有字符所构成的最长长度 +2
+    // d           1  1  1     取3个字符(有相等则1+2，反之取前两个字符或者后两个字符组成的最大值)
+    // b              1  1     取2个字符
+    // a                 1     取1个字符 构成反斜线上数值
     public int longestPalindromeSubsequence(String s) {
         int[][] dp = new int[s.length()][s.length()];
         for (int i = s.length() - 1; i >= 0; i--) {

@@ -2,7 +2,7 @@ package com.leetcode.basic_theory_introduction.array_string;
 
 // TODO: Sliding window technique 关于数组和字符串的滑动窗口算法
 // 1. [i, j]闭合的区间，用于"框选"一段数据的范围
-// 2. 所选的区间内的数据必须是连续的 Consecutive !!
+// 2. Consecutive 所选的区间内的数据必须是连续的
 public class LearnStringSlidingWindow {
 
     // Minimum Size Subarray Sum
@@ -33,28 +33,28 @@ public class LearnStringSlidingWindow {
     // Given a string s, find the length of the longest substring without repeating characters
     // s consists of English letters, digits, symbols and spaces.
     // s = "abcabcbb" -> "abc" -> 3
-    // int[128] for ASCII (该码值为8个bit位置), int[256] for Extended ASCII
+    // int[128] for ASCII(该码值为8个bit位置), int[256] for Extended ASCII
     public int lengthOfLongestSubstring(String s) {
         int left = 0;
         int right = 0;
-        int res = 0;
+        int result = 0;
         int[] chars = new int[128];
         while (right < s.length()) {
             char r = s.charAt(right);
             chars[r]++;
-            while (chars[r] > 1) {       // 一步一步的移动，直到windows窗口的区间中，没有重复的char字符 !!
+            while (chars[r] > 1) { // 逐步移动直到windows窗口的区间中，没有重复的char字符
                 char l = s.charAt(left);
                 chars[l]--;
                 left++;
             }
-            res = Math.max(res, right - left + 1);
+            result = Math.max(result, right - left + 1); // 依次统计距离的max值
             right++;
         }
-        return res;
+        return result;
     }
 
     // TODO: 滑动窗口算法的优化版本, left坐标位置不需要逐步移动，而是一步跳跃式的移动到指定位置
-    // "abcdeafbdgcbb"
+    // "mabcdeafbdgcbb"
     // a: 6    字符始终记录出现的最后一个位置的index，每次更新位置     chars[r] = right;
     // b: 12   当发现字符出现，取出它的位置，并从它的下一个位置开始截断  left = index + 1;
     // c: 11   同时每一步更新结果                                 res = Math.max(,)
@@ -64,12 +64,14 @@ public class LearnStringSlidingWindow {
         int left = 0;
         int right = 0;
         int res = 0;
+        // TODO: 这个字符数组中存放的是，某个字符在字符串中出现的最后位置
+        //       如果出现重复，则它前面的位置全部跳过，避免一步一步滑动
         Integer[] chars = new Integer[128]; // char -> int 根据ASCII码值表对应十进制的值，作为数组的下标
         while (right < s.length()) {
             char r = s.charAt(right);
-            Integer index = chars[r];       // 使用引用类型来做null空的判断，避免之间判断index的范围 !!
-            if (index != null && left <= index && index < right) {
-                left = index + 1;
+            Integer charLastIndex = chars[r]; // 使用引用类型来做null空的判断，避免之间判断index的范围
+            if (charLastIndex != null && left <= charLastIndex && charLastIndex < right) {
+                left = charLastIndex + 1;
             }
             res = Math.max(res, right - left + 1); // 需要在移动过程中记录结果
             chars[r] = right;

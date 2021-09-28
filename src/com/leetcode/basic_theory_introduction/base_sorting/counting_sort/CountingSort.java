@@ -6,19 +6,19 @@ package com.leetcode.basic_theory_introduction.base_sorting.counting_sort;
 public class CountingSort {
 
     // TODO: 计数排序是用来排序0到100之间的数字的最好的算法
-    // 比如：10个年龄不同的人，统计出有8个人的年龄比A小，那A的年龄就排在第9位
+    // 10个年龄不同的人，统计出有8个人的年龄比A小，那A的年龄就排在第9位
     // 1. 找出待排序的数组中最大和最小的元素
     // 2. 统计数组中每个值为i的元素出现的次数，存入数组C的第i项
     // 3. 对所有的计数累加C中的第一个元素开始，每一项和前一项相加
-    // 4. 反向填充目标数组：将每个元素i放在新数组的第C[i]}项，每放一个元素就将C[i]减去1
+    // 4. 反向填充目标数组：将每个元素i放在新数组的第C[i]项，每放一个元素就将C[i]减去1
 
     // Input: 1, 4, 1, 2, 7, 5, 2
     //
-    // Index: 0  1  2  3  4  5  6  7
-    // Count: 0  2  2  0  1  1  0  1
+    // Index:  0  1  2  3  4  5  6  7
+    // Counts: 0  2  2  0  1  1  0  1
     //
-    // Index: 0  1  2  3  4  5  6  7
-    // Count: 0  2  4  4  5  6  6  7  ==> 中间没有的值累加出来的结果没有任何影响，不会取到该位置position = nums[i] - min
+    // Index:  0  1  2  3  4  5  6  7
+    // Counts: 0  2  4  4  5  6  6  7  ==> 中间没有的值累加出来的结果没有任何影响，不会取到该位置position = nums[i] - min
     //
     // Process the input data: 1, 4, 1, 2, 7, 5, 2.
     // Position of 1 is 2. 找到要放置的位置，在放置完成之后，降低位置，以便下一次放到前面
@@ -42,6 +42,7 @@ public class CountingSort {
         int[] numsSorted = new int[nums.length];
         for (int i = nums.length - 1; i >= 0; --i) {
             int position = nums[i] - min;
+            // 根据counts中统计的数目来判断nums[i]在结果数组中放置的位置
             numsSorted[counts[position]] = nums[i];
             counts[position]--;
         }
@@ -65,7 +66,6 @@ public class CountingSort {
             if (citation > len) counts[len]++;
             else counts[citation]++;
         }
-
         // 从后往前取并累加，优先考虑最大的zIndex !!
         int total = 0;
         for (int i = len; i >= 0; i--) {

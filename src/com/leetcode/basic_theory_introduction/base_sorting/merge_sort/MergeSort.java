@@ -2,7 +2,7 @@ package com.leetcode.basic_theory_introduction.base_sorting.merge_sort;
 
 import java.util.Arrays;
 
-// Merge Sort(Divide and Conquer)归并排序, 有时是最佳解
+// Merge Sort(Divide and Conquer) 归并排序, 有时是最佳解
 // O(nlog(n)) 时间复杂度看成是log(n)层高度 * 每一层merge的时间复杂度O(n)
 // O(n)       空间复杂度来自于每一层排序时的sublist, 最大情况时O(n)的临时存储空间
 public class MergeSort {

@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class DynamicProgramming1 {
 
     // TODO: DP Top-Down 自顶向下的设计
-    //        展开的形式是一个任意Tree树，最小perfect square的数目，也就是树的最低深度Level
+    //       展开的形式是一个任意Tree树，最小perfect square的数目，也就是树的最低深度Level
     // Perfect Squares
     // Given an integer n, return the "least number" of perfect square numbers that sum to n
     // A perfect square is an integer that is the square of an integer: 1 4 9 16 25 ...
@@ -33,11 +33,12 @@ public class DynamicProgramming1 {
         if (dp[remainder] != -1) return dp[remainder];
         int level = Integer.MAX_VALUE;
         for (int num = 1; num * num <= remainder; num++) {
-            remainder = remainder - num * num;
+            remainder -= num * num;
             int currentLevel = 1 + dpCount(remainder, dp);
             level = Math.min(level, currentLevel);
         }
-        dp[remainder] = level; // 记录这个remainder拆分出来的最小level层次是多少，以便在递归层次的内部使用
+        // 记录这个remainder拆分出来的最小level层次是多少，以便在递归层次的内部使用
+        dp[remainder] = level;
         return level;
     }
 
@@ -51,8 +52,8 @@ public class DynamicProgramming1 {
         // 开始遍历的时候，dp[1]的位置会讲计算成1
         for (int i = 1; i <= n; i++) {
             // 每一个位置，判断它前面是通过多少个有效的平方数组成而来
-            // 看dp[i - j * j]位置是否有已经计算的拆分值，然后再累加一个j平方数构成i值
             for (int j = 1; j * j <= i; j++) {
+                // 看dp[i - j * j]位置是否有已经计算的拆分值，然后再累加一个j平方数构成i值
                 dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
             }
         }
