@@ -5,14 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-/**
- * Quick Select: Hoare's selection algorithm 专门查找数据中的前K个什么特征的数据
- * 1. 统计每个元素(array或者list)和它出现的频率(hash table)
- * 2. TODO: 根据每个元素的频率，进行Quick Sort快速排序，从低频到高频
- * 3. 直到要取的前k的频率和pivot分区位置相等，则它右边的就是前k个最大频率 !!
- */
-// 时间复杂度：O(n) 取决于分区的随机算法
-// 空间复杂度：O(n)
+// Quick Select: 查找数据中的前K个什么特征的数据
+// 1. 统计集合中每个元素出现的频率(hash table)
+// 2. 根据每个元素的频率，进行Quick Sort快速排序，从低频到高频
+// 3. 直到要取的前k的频率和pivot分区位置相等，则它右边的就是前k个最大频率
+// O(n) O(n)
 public class QuickSelect {
 
     private int[] unique;
@@ -23,7 +20,8 @@ public class QuickSelect {
         countNumFrequencies(nums);
         addAllUniqueElements();
         quickSelect(0, countElements - 1, countElements - k);
-        return Arrays.copyOfRange(unique, countElements - k, countElements); // 只取右侧位置前k个元素，已经分区过的元素
+        // 只取右侧位置前k个元素，已经分区过的元素
+        return Arrays.copyOfRange(unique, countElements - k, countElements);
     }
 
     private void countNumFrequencies(int[] nums) {
@@ -58,7 +56,7 @@ public class QuickSelect {
         }
     }
 
-    // 这里获取随机pivot index的算法影响时间复杂度 !!
+    // TODO: 分区的随机算法影响算法的时间复杂度
     private int getRandomPivot(int left, int right) {
         Random random_num = new Random();
         return left + random_num.nextInt(right - left);
