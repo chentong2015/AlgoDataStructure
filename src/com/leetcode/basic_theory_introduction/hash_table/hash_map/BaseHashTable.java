@@ -2,14 +2,10 @@ package com.leetcode.basic_theory_introduction.hash_table.hash_map;
 
 import java.util.*;
 
-/**
- * Hash Table 使用Hash方法快速的插入和检索: 使用Standard Template Libraries
- * Data structure which organizes data using "hash functions" in order to support quick insertion and search
- */
+// Hash Table 使用Hash方法支撑快速插入和检索:
 // HashSet<>          对Set接口的实现，不包含重复的值: 不保证元素的迭代顺序，不保证顺序不变 !!
 //   LinkedHashSet<>  确定迭代的顺序，必须是插入元素的顺序
 //   TreeSet<>        对元素进行自然排序，或者提供Comparator进行对象的自定义比较
-
 // HashMap<,>         对Map接口的实现，包含<key, value>键值对: 不保证元素的迭代顺序，不保证顺序不变 !!
 //   LinkedHashMap<,> 确定迭代的顺序，必须是插入元素的顺序
 //   TreeMap<>        对元素进行自然排序，或者提供Comparator
