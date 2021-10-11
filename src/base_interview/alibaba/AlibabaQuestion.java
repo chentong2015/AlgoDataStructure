@@ -1,4 +1,4 @@
-package interview.alibaba;
+package base_interview.alibaba;
 
 public class AlibabaQuestion {
 

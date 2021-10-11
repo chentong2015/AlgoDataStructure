@@ -1,4 +1,4 @@
-package interview;
+package base_interview;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class MockInterview {
         return 0;
     }
 
-    // 2020 Facebook interview
+    // 2020 Facebook base_interview
     // TODO: https://leetcode.com/problems/remove-invalid-parentheses/solution/
     // http://www.noteanddata.com/leetcode-301-Remove-Invalid-Parentheses-java-solution-note2.html
     // Remove Invalid Parentheses

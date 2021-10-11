@@ -1,11 +1,11 @@
-package com.leetcode.interview_questions.easy_collection;
+package com.leetcode.learn_all_problems.p7_bits;
 
 /**
  * Bit位运算，侧重底层实现的原理，数据存储形式以及计算方式
  * 位运算的4大操作：与，或，异或，位移动
  * 测试时，将java的int类型视为无符号的类型来处理
  */
-public class OthersBits {
+public class QuestionBits01 {
 
     // Number of 1 bits
     // 统计一个int类型的值中有多少个bit 1，由于Java的int类型都是带有符号的，所以需要注意最高位的处理

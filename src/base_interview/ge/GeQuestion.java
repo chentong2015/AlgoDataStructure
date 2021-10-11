@@ -1,4 +1,4 @@
-package interview.ge;
+package base_interview.ge;
 
 import java.util.List;
 import java.util.Random;
