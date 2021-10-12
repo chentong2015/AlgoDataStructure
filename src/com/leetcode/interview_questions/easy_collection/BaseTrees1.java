@@ -120,8 +120,7 @@ public class BaseTrees1 {
     // https://leetcode.com/problems/binary-tree-postorder-traversal/discuss/45648/three-ways-of-iterative-postorder-traversing-easy-explanation
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> out = new ArrayList<Integer>();
-        if (root == null)
-            return out;
+        if (root == null) return out;
         TreeNode dummy = new TreeNode(-1), pre = null;
         dummy.setLeft(root);
         root = dummy;
@@ -140,7 +139,8 @@ public class BaseTrees1 {
                         out.add(node.getVal());
                         node = node.getRight();
                     }
-                    out.add(node.getVal());          // Print again since we are stopping at node=root.left
+                    // Print again since we are stopping at node=root.left
+                    out.add(node.getVal());
                     reverse(pre, root.getLeft());
                     pre.setRight(null);
                     root = root.getRight();

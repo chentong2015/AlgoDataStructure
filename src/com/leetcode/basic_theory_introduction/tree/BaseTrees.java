@@ -8,8 +8,8 @@ import com.leetcode.interview_questions.base.TreeNode;
 // 3. Binary Search Tree   二叉搜索树
 //      Balanced BST       保证树的高度最低
 //      Unbalanced BST     左右子树不平衡
-// 4. AVL Tree             完全自平衡二叉查找树(左右旋)
-//      Red–black Tree     红黑树，平衡树(尽量平衡)
+// 4. AVL Tree             完全自平衡二叉查找树(完全平衡)
+//      Red–black Tree     红黑树，平衡树(只保证黑色结点平衡)
 // 5. Complete Binary Tree 完全二叉树, 堆(Heap)
 
 // 6. Segment Tree         片段树/Binary Indexed Tree二叉索引树
