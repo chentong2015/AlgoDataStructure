@@ -16,8 +16,7 @@ public class BaseTreeMap {
         treeMap.put(9, 1);
         // 返回树的"第一个结点"的key值(排序后最小的结点的值)
         int firstValue = treeMap.firstKey();
-
-        // TODO: 返回大于等于某key值的子树结构(一个排序好序的map)
+        // TODO: 返回大于等于某key值的子树结构(排序好序的map)
         SortedMap<Integer, Integer> sortedMap = treeMap.tailMap(4);
         int firstSortedValue = sortedMap.firstKey();
     }
