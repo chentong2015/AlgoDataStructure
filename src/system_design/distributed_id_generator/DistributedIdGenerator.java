@@ -6,10 +6,17 @@ package system_design.distributed_id_generator;
 // 3. 尽可能短
 public class DistributedIdGenerator {
 
-    // UUID: 索引太长，非自增
-    // (数据库)自增ID: 数据库分表之后，自增的id可能会出现重复
+    // 失败方案:
+    // 1. UUID: 索引太长，非自增
+    // 2. (数据库)自增ID: 数据库分表之后，自增的id可能会出现重复
+    //
     // 分布式ID生成系统: 高可用，高并发(高调用率)
-    // 1. 数据库自增ID: 使用另外一个数据库来做自增ID > 使用集群和主从来保证高可用
+    // 1. 数据库自增ID: 使用另外一个数据库来做自增ID
+    // 2. 数据库多主模式: 使用集群和主从来保证高可用
+    // 3. 号段模式: 请求一次数据库，批量获取分布式ID
+    //
+    // 成熟的企业级分布式ID生成器
+    // 1. TinyID: Spring + JdbcTemplate + DB
     // 2.
     // 3.
 
