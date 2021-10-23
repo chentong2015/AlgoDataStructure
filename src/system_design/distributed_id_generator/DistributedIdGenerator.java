@@ -19,10 +19,11 @@ public class DistributedIdGenerator {
     // 成熟的企业级分布式ID生成器
     // 1. DiDi TinyID: Spring + JdbcTemplate + DB数据库 > 基于自增
     // 2. Twitter Snowflake: 雪花算法
-    //    2.1 Meituan leaf 提供号段和雪花两种模式
-    //    2.2 Baidu uid-generator 不推荐使用 !
-    //        作为雪花算法的一个扩展，在使用的时候能够自动生成对应的机器id
-    //        > 只能连一个数据库
-    //        >  没有做到对应机器部署的区分(docker或实体机)
+    // 2.1 Meituan leaf 提供号段和雪花两种模式
+    //     使用Zk来解决workid的自动生成，利用zk的"有序"增加的特性
+    //     [192.168.0.102:8889-0000001, 192.168.0.102:8889-0000000] 顺序递增，使用后面的序列数
+    // 2.2 Baidu uid-generator 不推荐使用 !
+    //     作为雪花算法的一个扩展，在使用的时候能够自动生成对应的机器id
+    //     只能连一个数据库，没有做到对应机器部署的区分(docker或实体机)
 
 }
