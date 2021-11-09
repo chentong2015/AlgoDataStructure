@@ -4,14 +4,12 @@ import java.util.*;
 
 public class MediumArrayStrings1 {
 
-    // TODO: 3Sum: return all the triplets [nums[i], nums[j], nums[k]]
+    // 3Sum: return all the triplets [nums[i], nums[j], nums[k]]
     // Such that i!=j, i!=k, and j!=k, and nums[i]+nums[j]+nums[k] == 0
     // Solution set must not contain duplicate triplets 不能出现重复的结果集
+    // nums = [-1,0,1,2,-1,-4] -> [[-1,-1,2],[-1,0,1]]
+    //         -4 -1 -1 0 1 2
     public List<List<Integer>> threeSum(int[] nums) {
-        // 测试理解: 1. 移动3个指针, 排列组合问题，从N个数中提取出3个数字，和数字的顺序无关
-
-        // 正确理解: 1. 降维处理，从3维降到2维的计算，固定一个值，然后找两个值的和是该值的相反值  O(n^3)  O(n)
-        //         2. 使用值来构建Key, 通过HashMap来加快搜索，不改变原来的array中的值
         HashMap<String, List<Integer>> results = new HashMap<>();
         if (nums == null || nums.length < 3) return new ArrayList<>();
         for (int i = 0; i < nums.length - 2; i++) {
@@ -33,6 +31,36 @@ public class MediumArrayStrings1 {
             }
         }
         return new ArrayList<>(results.values());
+    }
+
+    // TODO: 经典降维问题01: 根据题目条件特征，从三维降到二维的复杂度
+    //
+    public List<List<Integer>> threeSumPlus(int[] num) {
+        Arrays.sort(num);
+        List<List<Integer>> res = new LinkedList<>();
+        for (int i = 0; i < num.length - 2; i++) {
+            if (i == 0 || num[i] != num[i - 1]) {
+                int lo = i + 1;
+                int hi = num.length - 1;
+                int sum = -num[i];
+                while (lo < hi) {
+                    if (num[lo] + num[hi] == sum) {
+                        res.add(Arrays.asList(num[i], num[lo], num[hi]));
+                        while (lo < hi && num[lo] == num[lo + 1])
+                            lo++;
+                        while (lo < hi && num[hi] == num[hi - 1])
+                            hi--;
+                        lo++;
+                        hi--;
+                    } else if (num[lo] + num[hi] < sum) {
+                        lo++;
+                    } else {
+                        hi--;
+                    }
+                }
+            }
+        }
+        return res;
     }
 
     // Set Matrix Zeroes
@@ -94,7 +122,7 @@ public class MediumArrayStrings1 {
         return new ArrayList(results.values()); // 通过.values()来构造出List
     }
 
-    // 正确理解:  2. 将字符串中的字符依次统计，用统计数值(int -> String)作为Key
+    // 正确理解2. 将字符串中的字符依次统计，用统计数值(int -> String)作为Key
     //             O(n*m)  O(n*m)
     public List<List<String>> groupAnagrams2(String[] strs) {
         if (strs.length == 0) return new ArrayList();
