@@ -18,24 +18,27 @@ public class QuestionArray04 {
     // 1 <= rating[i] <= 10^5
     // All the integers in rating are unique
     public int numTeams(int[] arr) {
+        // 测试理解：定位中间值的位置index，统计左右两侧比它大和比它小的数目
+        //         计算出一个位置对应出多少种可能的选择
+        // O(n^2) O(1) 每一次循环，内层的复杂度为o(n)
         int count = 0;
         int len = arr.length;
         for (int j = 0; j < len; j++) {
-            int leftSmaller = 0, rightLarger = 0;
-            int leftLarger = 0, rightSmaller = 0;
+            int leftSmaller = 0;
+            int leftLarger = 0;
+            int rightSmaller = 0;
+            int rightLarger = 0;
             for (int i = 0; i < j; i++) {
-                if (arr[i] < arr[j]) {
+                if (arr[i] < arr[j])
                     leftSmaller++;
-                } else if (arr[i] > arr[j]) {
+                else if (arr[i] > arr[j])
                     leftLarger++;
-                }
             }
             for (int k = j + 1; k < len; k++) {
-                if (arr[j] < arr[k]) {
+                if (arr[j] < arr[k])
                     rightLarger++;
-                } else if (arr[j] > arr[k]) {
+                else if (arr[j] > arr[k])
                     rightSmaller++;
-                }
             }
             count += leftSmaller * rightLarger + leftLarger * rightSmaller;
         }

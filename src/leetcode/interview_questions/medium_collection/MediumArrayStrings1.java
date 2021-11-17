@@ -4,58 +4,36 @@ import java.util.*;
 
 public class MediumArrayStrings1 {
 
+    // TODO: 经典降维问题01: 根据题目条件特征，从三维降到二维的复杂度
+    //       确定一个Index位置的坐标，则另外两个index坐标和起来的遍历复杂度是O(n)
     // 3Sum: return all the triplets [nums[i], nums[j], nums[k]]
     // Such that i!=j, i!=k, and j!=k, and nums[i]+nums[j]+nums[k] == 0
     // Solution set must not contain duplicate triplets 不能出现重复的结果集
     // nums = [-1,0,1,2,-1,-4] -> [[-1,-1,2],[-1,0,1]]
     //         -4 -1 -1 0 1 2
     public List<List<Integer>> threeSum(int[] nums) {
-        HashMap<String, List<Integer>> results = new HashMap<>();
-        if (nums == null || nums.length < 3) return new ArrayList<>();
-        for (int i = 0; i < nums.length - 2; i++) {
-            for (int j = i + 1; j < nums.length - 1; j++) {
-                for (int k = j + 1; k < nums.length; k++) {
-                    if (nums[i] + nums[j] + nums[k] == 0) {
-                        Integer[] keys = {nums[i], nums[j], nums[k]};
-                        Arrays.sort(keys);
-                        StringBuilder stringBuilder = new StringBuilder();
-                        for (int m = 0; m < 3; m++) {
-                            stringBuilder.append(keys[m]);
-                        }
-                        String key = stringBuilder.toString();
-                        if (!results.containsKey(key)) {
-                            results.put(key, Arrays.asList(keys));
-                        }
-                    }
-                }
-            }
-        }
-        return new ArrayList<>(results.values());
-    }
-
-    // TODO: 经典降维问题01: 根据题目条件特征，从三维降到二维的复杂度
-    //
-    public List<List<Integer>> threeSumPlus(int[] num) {
-        Arrays.sort(num);
+        Arrays.sort(nums);
         List<List<Integer>> res = new LinkedList<>();
-        for (int i = 0; i < num.length - 2; i++) {
-            if (i == 0 || num[i] != num[i - 1]) {
-                int lo = i + 1;
-                int hi = num.length - 1;
-                int sum = -num[i];
-                while (lo < hi) {
-                    if (num[lo] + num[hi] == sum) {
-                        res.add(Arrays.asList(num[i], num[lo], num[hi]));
-                        while (lo < hi && num[lo] == num[lo + 1])
-                            lo++;
-                        while (lo < hi && num[hi] == num[hi - 1])
-                            hi--;
-                        lo++;
-                        hi--;
-                    } else if (num[lo] + num[hi] < sum) {
-                        lo++;
+        for (int i = 0; i < nums.length - 2; i++) {
+            // 如果index位置和index-1的位置相同，则说明该值已经被判断过了，无需重复
+            if (i == 0 || nums[i - 1] != nums[i]) {
+                int jIndex = i + 1;
+                int kIndex = nums.length - 1;
+                int sum = -nums[i];
+                while (jIndex < kIndex) {
+                    if (nums[jIndex] + nums[kIndex] == sum) {
+                        res.add(Arrays.asList(nums[i], nums[jIndex], nums[kIndex]));
+                        // 如果是相同的值，在直接跳过，直到是不同的值
+                        while (jIndex < kIndex && nums[jIndex] == nums[jIndex + 1])
+                            jIndex++;
+                        while (jIndex < kIndex && nums[kIndex] == nums[kIndex - 1])
+                            kIndex--;
+                        jIndex++;
+                        kIndex--;
+                    } else if (nums[jIndex] + nums[kIndex] < sum) {
+                        jIndex++;
                     } else {
-                        hi--;
+                        kIndex--;
                     }
                 }
             }
