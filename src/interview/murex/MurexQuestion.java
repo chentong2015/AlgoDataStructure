@@ -97,6 +97,7 @@ public class MurexQuestion {
         return offset;
     }
 
+    // TODO: 如果在遍历的过程没有办法标记，则如何使用回溯算法 ?
     // 判断从(0,0)是否能在(m,n)的矩阵中找到4
     // 0 表示可以通过
     // 1 表示墙，不能通过
@@ -106,9 +107,7 @@ public class MurexQuestion {
     // 0 0 0 3  --> output: true
     // 1 0 1 1
     // 1 0 2 4
-    // 测试理解：
-    // 需要遍历两轮：先判断是否有可能找到key，然后在找4的通路
-    // TODO: 如果在遍历的过程没有办法标记，则如何使用回溯算法 ?
+    // 测试理解：需要遍历两轮：先判断是否有可能找到key，然后在找4的通路 ??
     public static boolean trialOfValor(Integer[][] array) {
         boolean getKey = false;
         for (int row = 0; row < array.length; row++) {

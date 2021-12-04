@@ -35,7 +35,8 @@ public class LearnGraphDFS1 {
     //  ["0","0","1","0","0"],
     //  ["0","0","0","1","1"]
     // ]
-    // O(n*m) 外层嵌套循环确定复杂度，内存DFSMarking递归算法最多只能更新所有的cell一次，因此时间复杂度是累加  O(1)
+    // O(n*m) 外层嵌套循环确定复杂度，内层DFSMarking递归算法最多更新所有的cell一次，时间复杂度是累加
+    // O(1)   空间复杂度降到最低
     public int numIslands(char[][] grid) {
         // 检测特殊条件 !!
         int count = 0;

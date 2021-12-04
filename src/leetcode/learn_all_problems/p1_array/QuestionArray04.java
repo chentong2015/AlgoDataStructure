@@ -44,5 +44,4 @@ public class QuestionArray04 {
         }
         return count;
     }
-    
 }
