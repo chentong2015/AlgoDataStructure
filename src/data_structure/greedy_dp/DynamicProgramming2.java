@@ -1,6 +1,6 @@
 package data_structure.greedy_dp;
 
-import leetcode.interview_questions.base.IndexMark;
+import core_algo.data_model.IndexMark;
 
 import java.util.Arrays;
 

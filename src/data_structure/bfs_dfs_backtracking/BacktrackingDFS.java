@@ -1,6 +1,6 @@
 package data_structure.bfs_dfs_backtracking;
 
-import data_structure.tree.prefix_tree_trie.model.TrieNodeWithWord;
+import data_structure.base_structures.tree.prefix_tree_trie.model.TrieNodeWithWord;
 
 import java.util.ArrayList;
 import java.util.HashSet;
