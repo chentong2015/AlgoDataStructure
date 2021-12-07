@@ -1,17 +1,17 @@
-package data_structure.base_structures.collections.stack;
+package data_structure.base_structures.collections.stack.impl;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
 
 // Implement Stack using Queues
-// 1. Implement a last in first out (LIFO) stack using only two queues
+// 1. Implement a LIFO stack using only two queues
 // 2. 使用队列数据结构来实现stack栈，只能使用队列的标准方法
 // 3. 因为队列的出口是双端的，所以理论上只需要一个Queue则可以实现stack的全部功能 !!
-public class BaseQueueStackImplementation {
+public class QueueStackImplementation {
 
     private Queue<Integer> queue;
 
-    public BaseQueueStackImplementation() {
+    public QueueStackImplementation() {
         queue = new ArrayDeque<>();
     }
 

@@ -6,12 +6,13 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 // Queue队列: FIFO, BFS广度优先遍历
-// Queue<E>实现类型：
-// Interface Deque<E>          双端队列
-// class LinkedList<E>
-// class ArrayDeque<E>         默认初始状态下存16个元素
-// class PriorityQueue<E>      基于优先级堆，根据队列元素进行自然排序(或者在初始化时传递自定义的Comparator)
-// class ArrayBlockingQueue<E> 有界(capacity容量固定)阻塞队列，使用ReentrantLock支持多线程并发操作
+
+// Interface Queue<E>：
+//   Interface Deque<E>            双端队列
+//     class LinkedList<E>         实现了Queue接口的链表
+//     class ArrayDeque<E>         默认初始状态下存16个元素
+//     class PriorityQueue<E>      基于优先级堆，根据队列元素进行自然排序(或在初始时自定义Comparator)
+//     class ArrayBlockingQueue<E> 有界(capacity容量固定)阻塞队列，使用ReentrantLock支持多线程并发操作
 public class LearnQueue {
 
     public void testQueue() {
@@ -21,7 +22,7 @@ public class LearnQueue {
         int size = queue.size();
         Integer peekValue = queue.peek(); // 查看出队列元素但不移除，可能返回null，不能赋值给值类型 !!
         if (!queue.isEmpty()) {
-            int value = queue.poll();     // 取出第一个出队列元素
+            int value = queue.poll(); // 取出第一个出队列元素
         }
     }
 
@@ -44,14 +45,16 @@ public class LearnQueue {
     //      0101   0102
     //     1212      2002
     //    0201        '0202'
-    // "0000" -> "1000" -> "1100" -> "1200" -> "1201" -> "1202" -> "0202" 在数字变化的过程中，需要使用到char和int的转换
-
+    // "0000" -> "1000" -> "1100" -> "1200" -> "1201" -> "1202" -> "0202"
+    // 在数字变化的过程中，需要使用到char和int的转换
+    //
     // 0001  0010  0100  1000
     //          0000           -> 每一个结点可以延展开8个位置，每一个位置又能恢复成原来的位置，造成循环 !!
     // 0009  0090  0900  9000  -> 每变化一次，作为是一层的展开，记作一步统计 !!
     public int openLock(String[] deadends, String target) {
         // 测试理解：1. 逆向推导，从目标的值恢复成0000，避开死锁的情况下最快需要几步
-        //            使用BFS算法，将该字符移动一步可以达到的相关位置都入队列，然后从第二层移动到第三层，最后判断结果是否能够到0000
+        //            使用BFS算法，将该字符移动一步可以达到的相关位置都入队列
+        //            然后从第二层移动到第三层，最后判断结果是否能够到0000
         if (target.equals("0000")) return 1;
         HashSet<String> setDeadEnds = new HashSet<>();
         for (String end : deadends) setDeadEnds.add(end);

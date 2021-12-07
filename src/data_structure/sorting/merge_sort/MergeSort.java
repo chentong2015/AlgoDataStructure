@@ -20,7 +20,8 @@ public class MergeSort {
         int pivot = input.length / 2;
         int[] leftList = mergeSort(Arrays.copyOfRange(input, 0, pivot));
         int[] rightList = mergeSort(Arrays.copyOfRange(input, pivot, input.length));
-        return merge(leftList, rightList);  // 最后回退到第一层的调用，则merge左右两个半的子数组
+        // 最后回退到第一层的调用，merge左右两个半的子数组
+        return merge(leftList, rightList);
     }
 
     // TODO: 合并两个排序的数组"标准解法"，两个index位置游标 + 结果表的index(ret_cursor)
@@ -28,22 +29,22 @@ public class MergeSort {
         int leftCursor = 0;
         int rightCursor = 0;
         int retCursor = 0;
-        int[] ret = new int[leftList.length + rightList.length];
+        int[] result = new int[leftList.length + rightList.length];
         while (leftCursor < leftList.length && rightCursor < rightList.length) {
             if (leftList[leftCursor] < rightList[rightCursor]) {
-                ret[retCursor++] = leftList[leftCursor++];
+                result[retCursor++] = leftList[leftCursor++];
             } else {
-                ret[retCursor++] = rightList[rightCursor++];
+                result[retCursor++] = rightList[rightCursor++];
             }
         }
         // 补充完最后一部分的值，排序好的值
         while (leftCursor < leftList.length) {
-            ret[retCursor++] = leftList[leftCursor++];
+            result[retCursor++] = leftList[leftCursor++];
         }
         while (rightCursor < rightList.length) {
-            ret[retCursor++] = rightList[rightCursor++];
+            result[retCursor++] = rightList[rightCursor++];
         }
-        return ret;
+        return result;
     }
 
     // Count of Smaller Numbers After Self

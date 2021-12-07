@@ -5,35 +5,36 @@ import java.util.Stack;
 // Stack栈 / Debug栈帧：严格按照指定的访问顺序来process data, DFS 深度优先遍历
 public class LearnStack {
 
-    // TODO: 使用特殊stack栈，同数组的下标index来存储和读取，始终在top前端位置添加和删除 !!
+    // TODO: 使用特殊stack栈(数组结构)
+    //       同数组的下标index来存储和读取，始终在top前端位置添加和删除
     // Daily Temperatures
     // Array of integers temperatures represents the daily temperatures
     // Return an array answer such that answer[i] is the number of days you have to wait
-    //   after the i^th day to get a warmer temperature
+    // after the i^th day to get a warmer temperature
     // If there is no future day for which this is possible, keep answer[i] == 0 instead
-    // temperatures = [73,74,75,71,69,72,76,73] -> [1,1,4,2,1,1,0,0]
+    // temperatures = [73,74,75,71,69,72,76,73] -> [1,1,4,2,1,1,0,0] 相当于每个位置后面更大的值
     // 1 <= temperatures.length <= 10^5
     // 30 <= temperatures[i] <= 100 注意温度值的约束范围
     public int[] dailyTemperatures(int[] temperatures) {
-        // 正确理解：1. 使用stack[top]存储读取过的index位置，如果后面有位置有更大的值，则更新前面相关index对应结果的数组 !!
+        // 正确理解：使用stack[top]存储读取过的index位置
+        //         如果后面有位置有更大的值，则更新前面相关index对应结果的数组
         int top = -1;
         int length = temperatures.length;
         int[] stack = new int[length];
-        int[] ret = new int[length];
+        int[] result = new int[length];
         for (int i = 0; i < length; i++) {
-            // 这里内层的while在执行次数上面，最多ret[index]只能被设置n次，和外面的for循环是累加的关系 !!
+            // 内层while在执行次数上面，最多ret[index]只能被设置n次，和外面的for循环是累加的关系
             while (top > -1 && temperatures[stack[top]] < temperatures[i]) {
-                int index = stack[top];
-                ret[index] = i - index;
+                int stackIndex = stack[top];
+                result[stackIndex] = i - stackIndex; // 计算间隔的步数
                 top--;
             }
             top++;
             stack[top] = i;
         }
-        return ret;
+        return result;
     }
 
-    // TODO: 使用特殊stack栈，同数组的下标index来存储和读取，始终在top前端位置添加和删除 !!
     // Remove K Digits
     // Given string num representing a non-negative integer num, and an integer k
     // return the "smallest possible" integer after removing k digits from num
@@ -90,7 +91,8 @@ public class LearnStack {
         return stack.peek();
     }
 
-    // TODO: 当一个栈无法实现的时候，考虑使用两个栈同步存储，单独入栈，同时出栈  ===> 思考：一个栈能否实现 ?
+    // TODO: 当一个栈无法实现的时候，考虑使用两个栈同步存储，单独入栈，同时出栈
+    //       思考：一个栈能否实现 ?
     // Decode String
     // Given an encoded string, return its decoded string
     // k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times

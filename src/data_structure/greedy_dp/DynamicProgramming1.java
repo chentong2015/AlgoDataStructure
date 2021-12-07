@@ -2,12 +2,16 @@ package data_structure.greedy_dp;
 
 import java.util.Arrays;
 
-// 1. Start with the recursive backtracking solution 使用递归拆分问题，递归解决
-//    Divide and Conquer 归并算法: 先将复杂问题差发成若干个小问题SubProblems, 独立解决问题, 最后汇总解决原始问题
-// 2. Optimize by using a memoization table 开辟存储空间，记录迭代中每一步的结果
+// 动态编程解题方法论:
+// 1. Start with the recursive backtracking solution
+//    Divide and Conquer 使用递归拆分问题，归并算法
+//    先将复杂问题差发成若干个小问题SubProblems, 独立解决问题, 最后汇总解决原始问题
+// 2. Optimize by using a memoization table
+//    开辟存储空间，记录迭代中每一步的结果
 // 3. Top-Down  设计, 需要用到递归
 //    Bottom-Up 设计, 需要用到dp数组(等效递归方式造成的空间复杂度)
-// 4. Apply final tricks to reduce space complexity 追踪记录结果信息，用基础的几个变量替代所需要的空间复杂度 !!
+// 4. Apply final tricks to reduce space complexity
+//    追踪记录结果信息，用基础的几个变量替代所开辟的空间复杂度
 public class DynamicProgramming1 {
 
     // TODO: DP Top-Down 自顶向下的设计
@@ -43,7 +47,8 @@ public class DynamicProgramming1 {
     }
 
     // TODO: Bottom-Up 自底向上设计
-    //       判断每一个位置值它的前面最少由多少的Perfect Squares数组成而来(前面的值已经在遍历的过程中计算过)
+    //       判断每一个位置值它的前面最少由多少的Perfect Squares数组成而来
+    //       (前面的值已经在遍历的过程中计算过)
     // O(n * n^0.5) 内存循环只关注它平方根的下面的数 O(n)
     public int numSquares2(int n) {
         int[] dp = new int[n + 1];

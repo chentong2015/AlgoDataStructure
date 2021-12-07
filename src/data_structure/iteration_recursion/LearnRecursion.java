@@ -4,16 +4,18 @@ import data_structure.iteration_recursion.model.UndirectedGraphNode;
 
 import java.util.HashMap;
 
-// TODO: Recursion递归法的本质是无法在一层方法中完整的实现逻辑
-//       因此将后续或者部分的逻辑通过调用自身来一步一步来简化问题，最后合成解决最终问题
-// 1. 判断和排除特殊情况，以便直接返回
-// 2. 正常执行一个(单元)逻辑的基本操作步骤
-// 3. 调用自身，剩下的交给该方法再做一次
+// Recursion递归法的本质是无法在一层方法中完整的实现逻辑
+// 因此将后续或者部分的逻辑通过"调用自身来再次处理"，最后合成解决最终问题
 public class LearnRecursion {
 
     // TODO: Recursion递归方法的典型运用，3步操作逻辑
+    // 1. 判断和排除特殊情况，以便直接返回
+    // 2. 正常执行一个(单元)逻辑的基本操作步骤
+    // 3. 调用自身，剩下的交给该方法再做一次
+
     // Clone Graph
-    // Given a reference of a node in a connected undirected graph, return a deep copy (clone) of the graph
+    // Given a reference of a node in a connected undirected graph,
+    // return a deep copy (clone) of the graph
     // Each node's value is the same as the node's index (1-indexed)
     // An adjacency list is a collection of unordered lists used to represent a finite graph
     // 1. The given node will always be the first node with val = 1
@@ -33,11 +35,12 @@ public class LearnRecursion {
         if (node == null) return null;
         if (map.containsKey(node.val)) return map.get(node.val);
 
-        // 2. 完整的clone一个结点该如何操作：创建新的对象 !!
+        // 2. 完整的clone一个结点该如何操作：创建新的对象
         UndirectedGraphNode clone = new UndirectedGraphNode(node.val);
         map.put(clone.val, clone);
         for (UndirectedGraphNode neighbor : node.neighbors) {
             // 3. 相邻的node结点必须要clone()之后才能添加到clone过的结点的neighbors中
+            //    递归调用自身，完成neighbor的clone，再添加
             clone.neighbors.add(clone(neighbor));
         }
         return clone;

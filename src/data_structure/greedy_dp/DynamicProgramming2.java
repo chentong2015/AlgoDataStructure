@@ -1,6 +1,6 @@
 package data_structure.greedy_dp;
 
-import core_algo.data_model.IndexMark;
+import core_algo.data_model.enum_model.IndexMark;
 
 import java.util.Arrays;
 

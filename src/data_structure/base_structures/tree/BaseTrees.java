@@ -11,28 +11,26 @@ import data_structure.base_structures.tree.base.TreeLinkNode;
 // 4. AVL Tree             完全自平衡二叉查找树(完全平衡)
 //      Red–black Tree     红黑树，平衡树(只保证黑色结点平衡)/ TreeMap的实现
 // 5. Complete Binary Tree 完全二叉树, 堆(Heap)
-
+//
 // 6. Segment Tree         片段树/Binary Indexed Tree二叉索引树
 // 7. Decision Tree        决策树(机器学习中的判断数)
-
+//
 // 8. Prefix Tree          前缀树(使用26个特征字母节点的树) N叉任意树
-
+//
 // 9. Quad Tree            四叉树(固定有4个子节点的树)
 // 10. K-d Tree            k维(k-dimensional tree)空间分割的数据结构
-
+//
 // 11. B-Tree              树的单个结点存储多个数据，降低树的高度
 // 12. B+Tree              MySQL索引底层选择的数据结构
-
+//
 // 13. Splay Tree
 public class BaseTrees {
 
-    /**
-     * Binary Tree 遍历方式
-     * 1. DFS(Depth first search)   递归遍历 + Stack栈入栈出
-     * 2. BFS(Breadth First Search) 层次迭代(DummyHead辅助) + Queue & Deque双端队列
-     * 3. BBFS(Bidirectional BFS)   从顶向下和从底向上同时遍历，如果在同一个Level层面有交集则是联通的
-     * 4. Morris Traversal          非递归, 非Stack, 最佳复杂度 O(n) O(1)
-     */
+    // TODO: Binary Tree 四大遍历方式
+    // 1. DFS(Depth first search)   递归遍历 + Stack栈入栈出
+    // 2. BFS(Breadth First Search) 层次迭代(DummyHead辅助) + Queue & Deque双端队列
+    // 3. BBFS(Bidirectional BFS)   从顶向下和从底向上同时遍历，如果在同一个Level层面有交集则是联通的
+    // 4. Morris Traversal          非递归, 非Stack, 最佳复杂度 O(n) O(1)
 
     // Search in a Binary Search Tree
     // Find the node in the BST that the node's value equals val and return the subtree rooted with that node
@@ -83,7 +81,8 @@ public class BaseTrees {
     }
 
     // Same Tree
-    // Given the roots of two binary trees p and q, write a function to check if they are the same or not
+    // Given the roots of two binary trees p and q, write a function to
+    // check if they are the same or not
     // They are structurally identical, and the nodes have the same value
     //  1      1     -> false
     // 2  1   1  2   -> 往下层递归到左右子树

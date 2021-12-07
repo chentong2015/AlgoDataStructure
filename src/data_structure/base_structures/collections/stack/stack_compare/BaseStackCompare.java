@@ -1,4 +1,4 @@
-package core_algo.learn_all_problems.p1_array.stack_compare;
+package data_structure.base_structures.collections.stack.stack_compare;
 
 import java.util.Stack;
 
@@ -33,16 +33,17 @@ public class BaseStackCompare {
         return results;
     }
 
-    // TODO: 借助特殊的数据结构，以空间换时间(减少时间复杂度)
+    // TODO: 使用特殊栈(数组结构)，作为判断的临时存储结构，优化时间复杂度
+    // O(2n)=O(n) O(2n)=O(n)
     public int[] nextGreaterElementsStack(int[] nums) {
-        int[] res = new int[nums.length];
         Stack<Integer> stack = new Stack<>();
+        int[] res = new int[nums.length];
         for (int i = 2 * nums.length - 1; i >= 0; --i) {
             while (!stack.empty() && nums[stack.peek()] <= nums[i % nums.length]) {
                 stack.pop();
             }
             res[i % nums.length] = stack.empty() ? -1 : nums[stack.peek()];
-            stack.push(i % nums.length);
+            stack.push(i % nums.length); // 存储index坐标
         }
         return res;
     }
