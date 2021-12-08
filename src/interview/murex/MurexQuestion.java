@@ -122,4 +122,10 @@ public class MurexQuestion {
         // ...
         return false;
     }
+
+    // Stock buy and sell
+    // [12,25,50,26,62...] 在何时买和何时卖，所产生的收益值是最大的
+
+    // LCA 二叉树中最小的公共前继
+    // public static int findLCA(TreeNode root, int p, int q) {}
 }

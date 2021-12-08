@@ -45,13 +45,14 @@ public class HardTrees {
         return 0;
     }
 
+    // TODO: 二叉树递归的思想
     // LCA(Lowest Common Ancestor) of a Binary Tree 最低公共前继, 普通二叉树
     // Given a binary tree, find the lowest common ancestor of two given nodes in the tree
     // 1. All Node.val are unique
     // 2. p != q, p and q will exist in the tree
     // 3. 允许一个结点是另一个结点的后继
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        // 测试理解：1. 递归将二叉树处理成root结点和左右子树，左右子树中判断root结点和子树的关系
+        // 测试理解：1. 递归将二叉树处理成root结点和左右子树，左右子树中判断roo  methodt结点和子树的关系
         //             O(n) O(n) 最大的递归(递归方法造成的栈开销)的高度是n层，所有的节点排列在一侧
         if (root == p || root == q) {
             return root;
@@ -64,13 +65,16 @@ public class HardTrees {
         if (root.getRight() != null) {
             rightCommonNode = lowestCommonAncestor(root.getRight(), p, q);
         }
-        if (leftCommonNode == null && rightCommonNode == null) { // 如果在"某root结点"的左右子树中都没有有效的结点(没有目标结点)
+        if (leftCommonNode == null && rightCommonNode == null) {
+            // 如果在"某root结点"的左右子树中都没有有效的结点(没有目标结点)
             return null;
         } else if (leftCommonNode == null) {
             return rightCommonNode;          // 返回一个非空的值，递归到上层去判断 !!
         } else if (rightCommonNode == null) {
             return leftCommonNode;
-        } else {                             // 两个子树都非空，说明要找的结点分布在"某root结点"的两侧，该root节点就是它们的最小公共前继 !!
+        } else {
+            // 两个子树都非空，说明要找的结点分布在"某root结点"的两侧
+            // 该root节点就是它们的最小公共前继，共同的前继
             return root;
         }
     }
