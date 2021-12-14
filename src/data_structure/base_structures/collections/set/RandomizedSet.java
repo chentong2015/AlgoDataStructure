@@ -1,4 +1,4 @@
-package data_structure.base_structures.hash_table.hash_map;
+package data_structure.base_structures.collections.set;
 
 import java.util.*;
 

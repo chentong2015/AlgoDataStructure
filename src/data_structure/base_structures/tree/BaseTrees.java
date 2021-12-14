@@ -10,7 +10,8 @@ import data_structure.base_structures.tree.base.TreeLinkNode;
 //      Unbalanced BST     左右子树不平衡
 // 4. AVL Tree             完全自平衡二叉查找树(完全平衡)
 //      Red–black Tree     红黑树，平衡树(只保证黑色结点平衡)/ TreeMap的实现
-// 5. Complete Binary Tree 完全二叉树, 堆(Heap)
+// 5. Complete Binary Tree 完全二叉树
+//    Heap                 堆
 //
 // 6. Segment Tree         片段树/Binary Indexed Tree二叉索引树
 // 7. Decision Tree        决策树(机器学习中的判断数)

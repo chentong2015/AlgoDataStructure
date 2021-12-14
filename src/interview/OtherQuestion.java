@@ -1,4 +1,4 @@
-package interview.other;
+package interview;
 
 import java.util.List;
 
