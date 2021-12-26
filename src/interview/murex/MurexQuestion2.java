@@ -3,7 +3,7 @@ package interview.murex;
 import java.util.Collections;
 import java.util.List;
 
-public class MurexQuestion {
+public class MurexQuestion2 {
 
     // 0 - 999 计算出座位可以被最少划分，最多可以将3个连续的座位算到一起
     // O(nlog(n)) O(1)
@@ -35,18 +35,15 @@ public class MurexQuestion {
         return sum;
     }
 
-    /*
-     * Complete the 'findSuspect' function below.
-     *
-     * The function is expected to return an instance of DecryptionResult containing the
-     * suspect's decrypted name as well as the Caesar cipher key used by the cryptographer
-     * to encrypt his name.
-     * If the decrypted name is not found in the guest list, the EMPTY object should be returned.
-     *
-     * The function accepts following parameters:
-     *  1. STRING encryptedName
-     *  2. STRING_ARRAY guestList
-     */
+    // Complete the 'findSuspect' function below.
+    // The function is expected to return an instance of DecryptionResult containing the
+    // suspect's decrypted name as well as the Caesar cipher key used by the cryptographer
+    // to encrypt his name.
+    // If the decrypted name is not found in the guest list, the EMPTY object should be returned.
+    //
+    // The function accepts following parameters:
+    //  1. STRING encryptedName
+    //  2. STRING_ARRAY guestList
     // 判断一个字符串是否能够通过加密，得到list中的一个值，并指出这个加密的offset index
     // 如果找不到，则返回空的DecryptionResult对象
     // O(n * L * m) 会比较所有字符的长度 O(1)
@@ -97,35 +94,23 @@ public class MurexQuestion {
         return offset;
     }
 
-    // TODO: 如果在遍历的过程没有办法标记，则如何使用回溯算法 ?
+    // TODO: BFS-DFS，在递归遍历过程中增加判断的条件，使用两次BFS
     // 判断从(0,0)是否能在(m,n)的矩阵中找到4
     // 0 表示可以通过
     // 1 表示墙，不能通过
-    // 2 表示窗，只有再拿到key才能通过
+    // 2 表示窗，只有在拿到key才能通过
     // 3 表示key钥匙
     // 4 表示目标
     // 0 0 0 3  --> output: true
     // 1 0 1 1
     // 1 0 2 4
-    // 测试理解：需要遍历两轮：先判断是否有可能找到key，然后在找4的通路 ??
-    public static boolean trialOfValor(Integer[][] array) {
-        boolean getKey = false;
-        for (int row = 0; row < array.length; row++) {
-            for (int col = 0; col < array[0].length; col++) {
-                if (array[row][col] == 1) {
-                    break;
-                } else if (array[row][col] == 3) {
-                    getKey = true;
-                }
-            }
-        }
-        // ...
+    public static boolean trialOfValor(int[][] array) {
+        // 1. 第一次，BFS递归
+        //    只走0数字线路，直到找到3为止，反之视为没有找到
+        //    如果在BFS过程中，找到了4，则直接返回
+        // 2. 第二次，BFS递归
+        //    如果找到key，则走0和2数字线路
+        //    反之，只走0数字线路
         return false;
     }
-
-    // Stock buy and sell
-    // [12,25,50,26,62...] 在何时买和何时卖，所产生的收益值是最大的
-
-    // LCA 二叉树中最小的公共前继
-    // public static int findLCA(TreeNode root, int p, int q) {}
 }

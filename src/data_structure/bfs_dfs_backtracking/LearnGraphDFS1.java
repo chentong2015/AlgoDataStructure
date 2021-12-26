@@ -44,6 +44,7 @@ public class LearnGraphDFS1 {
             for (int j = 0; j < grid[0].length; j++)
                 if (grid[i][j] == '1') {
                     DFSMarking(grid, i, j);
+                    // 遍历完一个岛屿后，算作一次统计
                     count++;
                 }
         }
