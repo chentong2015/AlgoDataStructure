@@ -1,4 +1,4 @@
-package core_algo.learn_big_data;
+package core_algo.others_algo.big_data;
 
 // TODO: 在大数据场景下，如何找到优化的点，算法如何体现 ?
 // 1. 在处理大数据的场景时，考虑不将所有的数据元素进行存储，而是存储数据的统计信息或者算法信息 !!
