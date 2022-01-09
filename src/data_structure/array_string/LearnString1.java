@@ -1,7 +1,7 @@
 package data_structure.array_string;
 
 // 1. A string is actually an array of unicode characters (16 bits unicode码值的数组)
-// 2. Immutable String 字符串具有不可变性, 如果要改变, 则需要创建一个新的String --> Java/C#不可变, C++可变
+// 2. Immutable String 字符串具有不可变性, 如果要改变, 则需要创建一个新的String
 // s1.indexOf('o')
 // s1.lastIndexOf('o')
 // s1.substring(6, 11)                        都会造成O(n)的时间复杂度, 不可以忽略
@@ -24,11 +24,13 @@ public class LearnString1 {
             s += "hello"; // 每次追加的新的字符串，都会造成额外的内存空间开辟，然后造成Copy的操作
         }
 
-        StringBuilder str = new StringBuilder(s); // 用String来构建StringBuilder
+        // 用String来构建StringBuilder
+        StringBuilder str = new StringBuilder(s);
         for (int i = 0; i < n; i++) {
             str.append("hello");
         }
-        String result = str.toString();           // 将StringBuilder转换成String
+        // 将StringBuilder转换成String
+        String result = str.toString();
     }
 
     // TODO: 从int整数转成char，再使用StringBuilder来拼接字符串
