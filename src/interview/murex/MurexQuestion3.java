@@ -10,7 +10,8 @@ public class MurexQuestion3 {
     // [12,25,50,26,62...]
     public int findMostIncome(int[] stocks) {
         int rightMaxValue = 0;
-        // 从后往前遍历，并计算
+        // 从后往前遍历，记录后面位置的最大值
+        // 从前往后遍历，记录前面位置的最小值
         return -1;
     }
 

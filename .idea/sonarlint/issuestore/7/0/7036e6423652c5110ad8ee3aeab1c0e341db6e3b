@@ -1,0 +1,33 @@
+
+Q	java:S125"<This block of commented-out lines of code should be removed.(ªªš
+Q
+java:S1854";Remove this useless assignment to local variable "myArray".(Ú‰Û
+Q
+java:S1854";Remove this useless assignment to local variable "myArray".(‘“‘Œ
+N
+java:S1854"8Remove this useless assignment to local variable "list".(Üòœ 
+?
+java:S1481")Remove this unused "list" local variable.(Üòœ 
+D
+java:S3020".Pass "new String[0]" as argument to "toArray".(Ú‰Û
+W
+java:S18540"<Remove this useless assignment to local variable "position".(¥â¬Éıÿÿÿÿ
+X
+java:S1854/"=Remove this useless assignment to local variable "firstItem".(ŸÁ«ıÿÿÿÿ
+N
+java:S1854."8Remove this useless assignment to local variable "size".(«‘ãÍ
+?
+java:S1481.")Remove this unused "size" local variable.(«‘ãÍ
+I
+java:S1481/".Remove this unused "firstItem" local variable.(ŸÁ«ıÿÿÿÿ
+H
+java:S14810"-Remove this unused "position" local variable.(¥â¬Éıÿÿÿÿ
+M	java:S1062"9Replace this use of System.out or System.err by a logger.(Š¸Â
+N	java:S1065"9Replace this use of System.out or System.err by a logger.(ÔÄÌ®
+S
+java:S1854="=Remove this useless assignment to local variable "copyList1".(Íù‚İ
+Q	java:S1259"<This block of commented-out lines of code should be removed.(ı²úö
+D
+java:S1481=".Remove this unused "copyList1" local variable.(Íù‚İ
+R
+java:S1144"<Remove this unused private "testConvertArrayAndList" method.(‘’˜²

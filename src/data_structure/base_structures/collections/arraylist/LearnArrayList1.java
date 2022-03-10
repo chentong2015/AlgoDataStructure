@@ -38,8 +38,8 @@ public class LearnArrayList1 {
 
         list1.add(-1);
         list1.add(1, 6);
-        list1.add(1, 2); // 导致index=1往后的值都会移动，以完成列表长度的自动扩充，造成时间复杂度
-        list1.remove(1); // 后面位置的值自全部向前一位填充
+        list1.add(1, 2);         // 导致index=1往后的值都会移动，以完成列表长度的自动扩充，造成时间复杂度
+        list1.remove(1);                // 后面位置的值自全部向前一位填充
         list1.remove(list1.size() - 1); // 删除最后一个元素
         list3.set(0, -1);
 

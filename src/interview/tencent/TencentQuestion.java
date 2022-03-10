@@ -53,6 +53,7 @@ public class TencentQuestion {
             s1map[s1.charAt(i) - 'a']++;
             s2map[s2.charAt(i) - 'a']++;
         }
+        // 滑动窗口，从s2中截取指定的片段，每次移除一个字符，再添加一个字符的(位置)统计
         for (int i = 0; i < s2.length() - s1.length(); i++) {
             if (matches(s1map, s2map)) return true;
             s2map[s2.charAt(i) - 'a']--;

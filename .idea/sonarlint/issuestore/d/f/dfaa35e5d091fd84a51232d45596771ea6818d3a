@@ -1,0 +1,9 @@
+
+@
+java:S3457"%String contains no format specifiers.(ΔΎήτώÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ΔΎήτώÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(°¥Γ„ώÿÿÿÿ
+?
+java:S1068	")Remove this unused "color" private field.(Θ„…¦
+s	java:S135"YReduce the total number of break and continue statements in this loop to use at most one.(οÿÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ϊ·»

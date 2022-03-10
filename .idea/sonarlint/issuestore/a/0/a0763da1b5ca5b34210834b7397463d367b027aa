@@ -1,0 +1,15 @@
+
+P
+java:S1118":Add a private constructor to hide the implicit public one.(’†Ã¢
+G
+java:S1172k",Remove this unused method parameter "array".(ßˆ¹¢üÿÿÿÿ
+M
+java:S1135a"2Complete the task associated to this TODO comment.(Ûç™âúÿÿÿÿ
+>
+java:S10683"(Remove this unused "name" private field.(Ú§×œ
+L
+java:S10684"1Remove this unused "encryptionKey" private field.(Ð„¢üÿÿÿÿ
+Y
+java:S1155">Use isEmpty() to check whether the collection is empty or not.(ç›ýÏüÿÿÿÿ
+T
+java:S1155?">Use isEmpty() to check whether the collection is empty or not.(¤§î¡
