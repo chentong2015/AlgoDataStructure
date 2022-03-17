@@ -1,7 +1,5 @@
 package data_structure.binary_search;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
 
 /**
@@ -72,7 +70,7 @@ public class LearnBinarySearch1 {
     // nums = [7,2,5,10,8], m = 2 -> [7,2,5] and [10,8] -> 18   共4种分法：1+4, 2+3, 3+2(最小的一种分法), 4+1
     // nums = [1,2,3,4,5],  m = 2 -> [1,2,3] and [4,5]  -> 9    TODO：通过数学方法来穷举所有的划分可能 !!
     // nums = [1,4,4],      m = 3 -> [1] [4] and [4]    -> 4
-    public int splitArray(int @NotNull [] nums, int numSplit) {
+    public int splitArray(int[] nums, int numSplit) {
         // 由于数组元素固定，结果必须是连续的子字符串，所以不能对数组进行排序
         // O(nlog(M)) n是元素的个数，M是最大值和总值之间的距离 O(1)
 
