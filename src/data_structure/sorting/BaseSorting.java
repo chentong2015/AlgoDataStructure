@@ -1,6 +1,6 @@
 package data_structure.sorting;
 
-// 金典排序算法(超过20种)
+// 金典排序算法
 public class BaseSorting {
 
     // 1. 插入排序  O(n²)      O(1)       每读取一个值, 将它插入到前面有序的序列中
