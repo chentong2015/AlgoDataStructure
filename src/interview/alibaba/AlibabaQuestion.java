@@ -22,13 +22,17 @@ public class AlibabaQuestion {
         int mostFrequencyValue = gifts[0];
         for (int i = 0; i < n; i++) {
             if (count == 0) {
-                mostFrequencyValue = gifts[i]; // 只有当count被累积清空之后，才会变动记录的数字mostFrequencyValue
+                // 只有当count被累积清空之后，才会变动记录的数字mostFrequencyValue
+                mostFrequencyValue = gifts[i];
                 count = 1;
             } else {
+                // 累计频率或者是抵消
                 if (mostFrequencyValue == gifts[i]) count++;
                 else count--;
             }
         }
+        // 前面统计出来的最大频率的数据，并没有准确的统计出其数目
+        // 需要再次统计最大频率的数目是否超过一半(该数据据不一定存在)
         int size = 0;
         for (int i = 0; i < n; i++) {
             if (gifts[i] == mostFrequencyValue) size++;
