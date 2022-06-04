@@ -42,8 +42,6 @@ Msrc/data_structure/base_structures/collections/arraylist/LearnArrayList1.java,
 W
 'src/data_structure/array/BaseArray.java,8\7\870d7a102019ecdd0365751573910f78a7824196
 Y
-)src/data_structure/array/LearnArray4.java,8\f\8f96970332550ca0e4dca2c0a438c4fa67213339
-Y
 )src/data_structure/array/LearnArray3.java,9\6\960792e2cd05ed688cb1b84b98f8f8f73243d183
 Y
 )src/data_structure/array/LearnArray2.java,d\e\de57da4772094cfd7c9774e239ca42b360bc8619
@@ -63,3 +61,7 @@ c
 3src/data_structure/array_string/SourceCodeImpl.java,d\3\d3c6cc157e57c779ee7842e06ef2eb1993a7539d
 a
 1src/data_structure/array_string/LearnString3.java,c\b\cbef2c9bead9ea48d5eb9c1c53761bf18d848a22
+P
+ src/interview/OtherQuestion.java,a\2\a25f54b6dfba35d14b159e6123411eeffc3738e8
+_
+/src/core_algo/others_algo/EncryptedProblem.java,2\e\2ed06d0312f25616ba9bb9f995885654993d7366
