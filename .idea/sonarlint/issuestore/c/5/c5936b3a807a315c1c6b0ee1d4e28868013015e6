@@ -1,15 +1,0 @@
-
-7
-java:S1643"Use a StringBuilder instead.(ñİç¨ıÿÿÿÿ
-O
-java:S1854!":Remove this useless assignment to local variable "result".(ğäÈq
-M
-java:S1135"2Complete the task associated to this TODO comment.(†‰åšşÿÿÿÿ
-@
-java:S1481!"+Remove this unused "result" local variable.(ğäÈq
-M
-java:S1135$"2Complete the task associated to this TODO comment.(ÙÙ¢şÿÿÿÿ
-M
-java:S11353"2Complete the task associated to this TODO comment.(É³éåüÿÿÿÿ
-m
-java:S3776M"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ï„Ïšşÿÿÿÿ

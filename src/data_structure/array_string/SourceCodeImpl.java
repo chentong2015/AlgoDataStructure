@@ -61,4 +61,17 @@ public class SourceCodeImpl {
         int lenReplacedStr = str.replace(target, "").length();
         return (lenStr - lenReplacedStr) / target.length();
     }
+
+    // 4. 提取两个指定分割符之间的子字符串
+    public static String getMiddleName(String name) {
+        int firstIndex = name.indexOf("/");
+        int lastIndex = name.lastIndexOf("/");
+        if (firstIndex > -1) {
+            if (lastIndex > firstIndex) {
+                return name.substring(firstIndex, lastIndex);
+            }
+            return name.substring(lastIndex);
+        }
+        return name;
+    }
 }
