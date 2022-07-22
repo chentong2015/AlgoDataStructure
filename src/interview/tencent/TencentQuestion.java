@@ -6,7 +6,7 @@ import java.util.List;
 public class TencentQuestion {
 
     // Tencent Interview Question
-    // Permutation in String 判断一个字符串是否包含另一个字符串的所有排列
+    // Permutation in String 判断一个字符串是否包含另一个字符串(字符)的所有排列
     // 1 <= s1.length, s2.length <= 10^4  需要根据特殊情况做几个判断测试
     // s1 and s2 consist of lowercase English letters
     // str1 = "abc", str2="hskoebacdh" -> true
@@ -16,6 +16,7 @@ public class TencentQuestion {
         for (char c : str1.toCharArray()) {
             counts[c - 'a']++;
         }
+
         StringBuilder subString = new StringBuilder();
         int countChars = 0;
         for (int index = 0; index < str2.length(); index++) {
@@ -48,18 +49,21 @@ public class TencentQuestion {
         if (s1.length() > s2.length()) return false;
         int[] s1map = new int[26];
         int[] s2map = new int[26];
-        // 1. 首先需要同时统计，记录char的位置和数目
         for (int i = 0; i < s1.length(); i++) {
             s1map[s1.charAt(i) - 'a']++;
             s2map[s2.charAt(i) - 'a']++;
         }
-        // 滑动窗口，从s2中截取指定的片段，每次移除一个字符，再添加一个字符的(位置)统计
+        // TODO. [index i, index i + s1.length]区间构成滑动窗口
+        // 从s2中截取指定的片段，每次移除一个字符，再添加一个字符的(位置)统计
         for (int i = 0; i < s2.length() - s1.length(); i++) {
-            if (matches(s1map, s2map)) return true;
+            // TODO. 这里matches String的循环次数是26常数，对时间复杂读不会造成根本的改变
+            if (matches(s1map, s2map)) {
+                return true;
+            }
             s2map[s2.charAt(i) - 'a']--;
             s2map[s2.charAt(i + s1.length()) - 'a']++;
         }
-        // 2. 判断最后一个添加的字符是否满足
+        // 判断最后一个添加的字符是否满足
         return matches(s1map, s2map);
     }
 
@@ -70,9 +74,9 @@ public class TencentQuestion {
         return true;
     }
 
+    // TODO: 在每次滑动一个char位置的时候，没有必要再次循环整个char数组，只需要判断差异的位置
     // 解法 2. Optimized Sliding Window滑动窗口进阶版本
     //        O(L1+(L2-L1))  O(1)
-    // TODO: 在每次滑动一个char位置的时候，没有必要再次循环整个char数组，只需要判断差异的位置
     public boolean checkInclusionOptimized(String s1, String s2) {
         if (s1.length() > s2.length()) return false;
         int[] s1map = new int[26];
@@ -93,11 +97,17 @@ public class TencentQuestion {
             if (count == 26) return true;
             // 只需要定位到指定的位置，避免数组循环
             s2map[right]++;
-            if (s2map[right] == s1map[right]) count++; // 位置上原来不等，现在等，则+1
-            else if (s2map[right] == s1map[right] + 1) count--; // 位置上原来等，现在不等，则-1
+            if (s2map[right] == s1map[right]) {
+                count++; // 位置上原来不等，现在等，则+1
+            } else if (s2map[right] == s1map[right] + 1) {
+                count--; // 位置上原来等，现在不等，则-1
+            }
             s2map[left]--;
-            if (s2map[left] == s1map[left]) count++;
-            else if (s2map[left] == s1map[left] - 1) count--;
+            if (s2map[left] == s1map[left]) {
+                count++;
+            } else if (s2map[left] == s1map[left] - 1) {
+                count--;
+            }
         }
         return count == 26;
     }
