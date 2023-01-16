@@ -44,6 +44,18 @@ public class BaseHashTable {
         hashmap.clear();
     }
 
+    // 可以设置HashMap初始容量，但HashMap会将其值优化成"二的幂次方"
+    public void testLinkedHashMap() {
+        Map<String, String> fields = new LinkedHashMap<>(10);
+        for (int index = 0; index < 5; index++) {
+            fields.put("key" + index, "value" + index);
+        }
+        System.out.println(fields.size());
+        for (Map.Entry<String, String> entry : fields.entrySet()) {
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
+    }
+
     // 通过TreeMap的排序之后，找到ceiling天花板元素或者floor地板元素
     private void testTreeMap() {
         NavigableMap<Integer, Integer> intervalMap = new TreeMap<>();
