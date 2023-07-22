@@ -1,41 +1,10 @@
 package data_structure.array_string;
 
-// 1. A string is actually an array of unicode characters (16 bits unicode码值的数组)
-// 2. Immutable String 字符串具有不可变性, 如果要改变, 则需要创建一个新的String
-// s1.indexOf('o')
-// s1.lastIndexOf('o')
-// s1.substring(6, 11)                        都会造成O(n)的时间复杂度, 不可以忽略
-// String.copyValueOf(char[] data)            直接通过取值来构建
-// new String(charArray)                      直接通过字符数组构建String
-// new StringBuilder(s).reverse().toString(); 使用StringBuilder来反转字符串
 public class LearnString1 {
 
-    // Immutable String - Problems & Solutions
-    // TODO: String Concatenation in Java 注意String的级联造成巨大的时间复杂度 !!
-    // 如何解决和更好的利用Java String不可变的特性 
-    // 1. 转换成charArray()字符数组
-    // 2. 使用StringBuilder数据结构，支持字符串的可变性，可以追加int类型
-    public void testString(int n) {
-        // First allocating enough space for the new string
-        // Copy the contents from the old string and append to the new string
-        // 5 + 5 × 2 + 5 × 3 + … + 5 × n = O(n^2) 操作会造成二次方的时间复杂度 !!
-        String s = "";
-        for (int i = 0; i < n; i++) {
-            s += "hello"; // 每次追加的新的字符串，都会造成额外的内存空间开辟，然后造成Copy的操作
-        }
-
-        // 用String来构建StringBuilder
-        StringBuilder str = new StringBuilder(s);
-        for (int i = 0; i < n; i++) {
-            str.append("hello");
-        }
-        // 将StringBuilder转换成String
-        String result = str.toString();
-    }
-
     // TODO: 从int整数转成char，再使用StringBuilder来拼接字符串
-    //       1. 使用'A'+const int    必须使用具体的值作为偏移量
-    //       2. 使用(char)(65+value) 使用变量作为偏移，然后强制转换成char
+    //  1. 使用'A'+const int 必须使用具体的值作为偏移量
+    //  2. 使用(char)(65+value) 使用变量作为偏移，然后强制转换成char
     public static String convertColNumber(int col) {
         if (col < 0) return null;
         StringBuilder stringBuilder = new StringBuilder();

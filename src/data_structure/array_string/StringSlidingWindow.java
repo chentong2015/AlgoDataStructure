@@ -10,23 +10,27 @@ public class StringSlidingWindow {
     // Return the minimal length of a "contiguous subarray" [nums l, nums l+1, ..., nums r-1, nums r]
     // The sum is greater than or equal to target. If there is no such subarray, return 0
     // nums = [2,3,1,2,4,3], target = 7  -> [4,3] -> 2
+    //
+    // O(2n)=O(n) O(1)
+    // 最终可能left和right从左到右各自移动一遍
     public int minSubArrayLen(int[] nums, int target) {
-        // O(2n)=O(n) 最终可能left和right从左到右各自移动一遍 O(1)
         if (nums == null || nums.length == 0) return 0;
         int left = 0;
         int right = 0;
         int sum = 0;
-        int min = Integer.MAX_VALUE;
+        int minLength = Integer.MAX_VALUE;
+
+        // 在中间while迭代的时候，不能返回，需要判断到数组的最后
         while (right < nums.length) {
             sum += nums[right];
             while (sum >= target) {                    // 从头开始减少，通过[j-i]来缩小区间
-                min = Math.min(min, right - left + 1); // 保留移动过程中，有效最小窗口的宽度，注意长度 +1
+                minLength = Math.min(minLength, right - left + 1); // 保留移动过程中，有效最小窗口的宽度，注意长度 +1
                 sum -= nums[left];
                 left++;
             }
             right++;
         }
-        return min == Integer.MAX_VALUE ? 0 : min;
+        return minLength == Integer.MAX_VALUE ? 0 : minLength;
     }
 
     // Longest Substring

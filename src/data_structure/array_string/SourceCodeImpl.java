@@ -3,24 +3,28 @@ package data_structure.array_string;
 // 通过自定义算法实现Java源码方法
 public class SourceCodeImpl {
 
-    // 1. 实现stringBuilder.reverse()源码效果
-    // Reverse a string using recursive
-    // 1. 根据坐标index位置，从两端往中间进行递归
-    // 2. 转换成数组问题，直接从左右两端遍历交换
+    // 1. 实现stringBuilder.reverse()源码
+    // 转换成字符数组，根据坐标index位置，从两端往中间进行递归
     public static String reverseString(String str) {
-        if (str == null || str.length() < 1) return null;
+        if (str == null || str.length() < 1) {
+            return null;
+        }
         return recursive(str.toCharArray(), 1);
     }
 
     private static String recursive(char[] chars, int index) {
         int length = chars.length;
         if (index < length / 2 + 1) {
-            char temp = chars[index - 1];
+            // 将index指定下标位置的char和它对称位置进行交换
+            char tempChar = chars[index - 1];
             int swapIndex = length - index;
             chars[index - 1] = chars[swapIndex];
-            chars[swapIndex] = temp;
+            chars[swapIndex] = tempChar;
+
+            // 交换完成后，再递归给先一个index位置交换char
             recursive(chars, index + 1);
         }
+        // 最后根据结果的char[]构建生成反转后的字符串
         return new String(chars);
     }
 

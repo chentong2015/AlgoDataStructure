@@ -9,21 +9,23 @@ public class LearnArray1 {
     // nums = [1,1,0,1,1,1] -> 3
     public int findMaxConsecutiveOnes(int[] nums) {
         // 测试理解：1. 标记开始统计的起使位置，并在每一次完整的统计之后，比较最大的长度  O(n) O(1)
+        int maxCount = 0;
         int count = 0;
-        int max = 0;
-        for (int i = 0; i < nums.length; i++) {
+        for (int num : nums) {
             if (count > 0) {  // 前面已经有统计1
-                if (nums[i] == 1) {
+                if (num == 1) {
                     count++;
                 } else {
-                    max = Math.max(max, count);
+                    maxCount = Math.max(maxCount, count);
                     count = 0;
                 }
-            } else {          // 前面还没有统计1
-                if (nums[i] == 1) count = 1;
+            } else {          // 前面还没有统计1, 判断是否应该统计
+                if (num == 1) {
+                    count = 1;
+                }
             }
         }
-        return Math.max(max, count); // 比较最后一个位置的统计结果
+        return Math.max(maxCount, count); // 比较最后一个位置的统计结果
     }
 
     // Find Numbers with Even Number of Digits

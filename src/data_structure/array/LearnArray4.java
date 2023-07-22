@@ -73,8 +73,8 @@ public class LearnArray4 {
         int sum = 0;
         int length = nums.length;
         int total = ((1 + length) * length) / 2;
-        for (int index = 0; index < nums.length; index++) {
-            sum += nums[index];
+        for (int num : nums) {
+            sum += num;
         }
         return length - (total - sum);
     }
