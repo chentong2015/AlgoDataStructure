@@ -1,0 +1,25 @@
+Backtracking 回溯算法:
+构建问题的所有可能的解决方案，推翻其中一些方案，从而从所有备选可能中找到答案
+算法推导出满足需求的(一些或者所有)答案，但是没有办法在答案中再挑选出最优化的那一个
+Backtracking is a general algorithm for finding all (or some) solutions to some computational problems
+which incrementally builds candidates to the solution and abandons a candidate ("backtracks")
+as soon as it determines that the candidate cannot lead to a valid solution
+
+//                    <Problem>
+// 似于树的遍历，直到找到叶子节点，或者有明显的判断不能继续找到有效答案，则放弃
+// Candidate 1          ....         Candidate i
+//    \backtracking\回溯的核心在于判断到异常情况时的撤回
+//     将原先设置的条件恢复，再进行下一步的递归判断，一层一层的趋近最终的Solution
+// Candidate 1.1 (KO)   ....         Candidate i.j
+//                   Solution m-1    Solution m
+
+TODO: 回溯算法经典案列
+ https://leetcode.com/problems/combination-sum/solutions/16502/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning/
+
+Robot Room Cleaner
+扫地机器人的行走路径算法: 将位置区间划分，回溯判断是否碰壁，是则回头，反之继续清扫
+通过回溯算法将每一个能够到达的区间够访问到
+https://leetcode.com/explore/learn/card/recursion-ii/472/backtracking/2793/
+
+Sudoku Solver
+验证数独算法

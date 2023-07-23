@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class DynamicProgramming2 {
 
-    // TODO: DP Top-Down 自顶向下的设计 (包含递归)
+    // TODO: DP Top-Down 自顶向下的设计(包含递归)
     // Coin Change 只用最少的零钱数目来凑出指定的值, 假设每种零钱的数目是足够的
     // An integer array coins representing coins, an integer amount representing a total amount of money
     // Return the fewest number of coins that you need to make up that amount
@@ -27,8 +27,11 @@ public class DynamicProgramming2 {
     private int coinChange(int[] coins, int remainder, int[] count) {
         if (remainder < 0) return -1;
         if (remainder == 0) return 0;
+
         // 如果某一个位置已经是最优的零钱分配，则直接返回它分配出来的最小种类的数目
-        if (count[remainder - 1] != 0) return count[remainder - 1];
+        if (count[remainder - 1] != 0) {
+            return count[remainder - 1];
+        }
 
         int min = Integer.MAX_VALUE;
         for (int coin : coins) {
@@ -42,7 +45,7 @@ public class DynamicProgramming2 {
         return count[remainder - 1];
     }
 
-    // TODO: DP Bottom Up 自底向上的设计 (从底部开始向上展开)
+    // TODO: DP Bottom Up 自底向上的设计(从底部开始向上展开)
     // F(3) = min{F(3−c1),F(3−c2),F(3−c3)}+1
     //      = min{F(3−1),F(3−2),F(3−3)}+1
     //      = min{F(2),F(1),F(0)}+1

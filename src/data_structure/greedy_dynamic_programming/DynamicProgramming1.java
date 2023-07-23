@@ -15,7 +15,7 @@ import java.util.Arrays;
 public class DynamicProgramming1 {
 
     // TODO: DP Top-Down 自顶向下的设计
-    //       展开的形式是一个任意Tree树，最小perfect square的数目，也就是树的最低深度Level
+    //  展开形式为任意Tree树，最小perfect square的数目，也就是树的最低深度Level
     // Perfect Squares
     // Given an integer n, return the "least number" of perfect square numbers that sum to n
     // A perfect square is an integer that is the square of an integer: 1 4 9 16 25 ...
@@ -33,8 +33,12 @@ public class DynamicProgramming1 {
     }
 
     private int dpCount(int remainder, int[] dp) {
-        if (remainder == 0) return 0;
-        if (dp[remainder] != -1) return dp[remainder];
+        if (remainder == 0) {
+            return 0;
+        }
+        if (dp[remainder] != -1) {
+            return dp[remainder];
+        }
         int level = Integer.MAX_VALUE;
         for (int num = 1; num * num <= remainder; num++) {
             remainder -= num * num;
@@ -46,14 +50,15 @@ public class DynamicProgramming1 {
         return level;
     }
 
-    // TODO: Bottom-Up 自底向上设计
-    //       判断每一个位置值它的前面最少由多少的Perfect Squares数组成而来
-    //       (前面的值已经在遍历的过程中计算过)
+    // TODO: Bottom-Up 自底向上设计(前面的值已经在遍历的过程中计算过)
+    //  判断每一个位置值它的前面最少由多少的Perfect Squares数组成而来
     // O(n * n^0.5) 内存循环只关注它平方根的下面的数 O(n)
     public int numSquares2(int n) {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
-        dp[0] = 0; // 这里设置为0，是为了(i - j * j)刚好整除的时候，取的基础值
+
+        // 这里设置为0，是为了(i - j * j)刚好整除的时候，取的基础值
+        dp[0] = 0;
         // 开始遍历的时候，dp[1]的位置会讲计算成1
         for (int i = 1; i <= n; i++) {
             // 每一个位置，判断它前面是通过多少个有效的平方数组成而来

@@ -3,13 +3,13 @@ package interview.tencent;
 import java.util.ArrayList;
 import java.util.List;
 
+// Tencent Interview Question
+// Permutation in String 判断一个字符串是否包含另一个字符串(字符)的所有排列
+// 1 <= s1.length, s2.length <= 10^4  需要根据特殊情况做几个判断测试
+// s1 and s2 consist of lowercase English letters
+// str1 = "abc", str2="hskoebacdh" -> true
 public class TencentQuestion {
 
-    // Tencent Interview Question
-    // Permutation in String 判断一个字符串是否包含另一个字符串(字符)的所有排列
-    // 1 <= s1.length, s2.length <= 10^4  需要根据特殊情况做几个判断测试
-    // s1 and s2 consist of lowercase English letters
-    // str1 = "abc", str2="hskoebacdh" -> true
     // 测试理解 1: 将str1排序成mapKey，判断str2中是否有这key所在的区间 ==> 复杂度不好控制
     public boolean checkContains(String str1, String str2) {
         int[] counts = new int[26];
@@ -43,8 +43,8 @@ public class TencentQuestion {
 
     // TODO: 涉及到字符串截取或首尾增删，使用char数组进行统计，通过index在数组中定位，而不使用StringBuilder来过渡
     // 解法1. Sliding Window滑动窗口算法:
-    //       将str1的每一个字符统计到数组中，然后在str2中依次框选指定的区间进行比较
-    //       O(L1+26*(L2-L1))  O(1)
+    // 将str1的每一个字符统计到数组中，然后在str2中依次框选指定的区间进行比较
+    // O(L1+26*(L2-L1))  O(1)
     public boolean checkInclusion(String s1, String s2) {
         if (s1.length() > s2.length()) return false;
         int[] s1map = new int[26];
@@ -53,6 +53,7 @@ public class TencentQuestion {
             s1map[s1.charAt(i) - 'a']++;
             s2map[s2.charAt(i) - 'a']++;
         }
+
         // TODO. [index i, index i + s1.length]区间构成滑动窗口
         // 从s2中截取指定的片段，每次移除一个字符，再添加一个字符的(位置)统计
         for (int i = 0; i < s2.length() - s1.length(); i++) {

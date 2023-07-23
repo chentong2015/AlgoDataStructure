@@ -4,7 +4,7 @@ package data_structure.greedy_dynamic_programming;
 public class DynamicProgramming3 {
 
     // TODO: 直接利用LCS计算一个字符串和它的反转字符串之间的最长公共子序列的数量
-    //       剩下的长度差值就是要形成Palindrome所需要插入的字符数量
+    //  剩下的长度差值就是要形成Palindrome所需要插入的字符数量
     // Minimum Insertion Steps to Make a String Palindrome
     // In one step you can insert any character at any index of the string
     // Return the minimum number of steps to make s palindrome
@@ -14,8 +14,8 @@ public class DynamicProgramming3 {
         return s.length() - longestCommonSubsequence(s, reverseStr);
     }
 
-    // TODO: Longest Common Subsequence 使用二位空间的DP数组，记录之前累积的计算结果 !!
-    //       金典的CS问题，应用在数据比较(diff utility & winMerge)和Git版本比较与修订
+    // TODO: Longest Common Subsequence使用二位空间的DP数组，记录之前累积的计算结果 !!
+    //   金典的CS问题，应用在数据比较(diff utility & winMerge)和Git版本比较与修订
     // https://en.m.wikipedia.org/wiki/Longest_common_subsequence_problem
     // Subsequence 子序列是按照顺序排序的一串子字符，通过删除某些字符后可以形成
     // text1="agcat", text2="gac"  完全复杂度为O(2^n * 2^m)中比较的可能
@@ -29,8 +29,10 @@ public class DynamicProgramming3 {
         int[][] dp = new int[str1.length() + 1][str2.length() + 1];
         for (int i = 0; i < str1.length(); ++i)
             for (int j = 0; j < str2.length(); ++j)
+
+                // 在去掉这个公共字符的前面字符串所具有的LCS的基础上添加1
                 if (str1.charAt(i) == str2.charAt(j)) {
-                    dp[i + 1][j + 1] = dp[i][j] + 1; // 在去掉这个公共字符的前面字符串所具有的LCS的基础上添加1
+                    dp[i + 1][j + 1] = dp[i][j] + 1;
                 } else {
                     dp[i + 1][j + 1] = Math.max(dp[i][j + 1], dp[i + 1][j]);
                 }
