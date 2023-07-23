@@ -5,32 +5,14 @@ import java.util.Arrays;
 // https://sammancoaching.org/kata_descriptions/yatzy.html
 public class Yatzy {
 
-    public static int countOne(int... diceNums) {
-        return countSpecifiedDiceNumber(1, diceNums);
-    }
-
-    public static int countTwo(int... diceNums) {
-        return countSpecifiedDiceNumber(2, diceNums);
-    }
-
-    public static int countThree(int... diceNums) {
-        return countSpecifiedDiceNumber(3, diceNums);
-    }
-
-    public static int countFour(int... diceNums) {
-        return countSpecifiedDiceNumber(4, diceNums);
-    }
-
-    public static int countFive(int... diceNums) {
-        return countSpecifiedDiceNumber(5, diceNums);
-    }
-
-    public static int countSix(int... diceNums) {
-        return countSpecifiedDiceNumber(6, diceNums);
+    public static int countTargetNumber(int targetNumber, int... diceNums) {
+        return countSpecifiedDiceNumber(targetNumber, diceNums);
     }
 
     private static int countSpecifiedDiceNumber(int targetNum, int... diceNums) {
-        if (!isValidDiceNums(diceNums)) return -1;
+        if (!isValidDiceNums(diceNums)) {
+            return -1;
+        }
         long count = Arrays.stream(diceNums).filter(dice -> dice == targetNum).count();
         return (int) (targetNum * count);
     }
@@ -38,7 +20,9 @@ public class Yatzy {
     // Note: This function makes sure the input dice number is valid
     //       There are five numbers between 1 and 6(inclusive)
     public static boolean isValidDiceNums(int... diceNums) {
-        if (diceNums.length != 5) return false;
+        if (diceNums.length != 5) {
+            return false;
+        }
         for (int dice : diceNums) {
             if (dice < 1 || dice > 6) return false;
         }
@@ -63,22 +47,10 @@ public class Yatzy {
         return 50;
     }
 
-    public static int countPair(int... diceNums) {
+    public static int countPairOrNumOfKinds(int numOfKinds, int... diceNums) {
         if (!isValidDiceNums(diceNums)) return -1;
-        int pairDiceFound = findHighDiceMoreThanSpecifiedTimes(2, diceNums);
-        return pairDiceFound * 2;
-    }
-
-    public static int countThreeOfKind(int... diceNums) {
-        if (!isValidDiceNums(diceNums)) return -1;
-        int threeKindDiceFound = findHighDiceMoreThanSpecifiedTimes(3, diceNums);
-        return threeKindDiceFound * 3;
-    }
-
-    public static int countFourOfKind(int... diceNums) {
-        if (!isValidDiceNums(diceNums)) return -1;
-        int fourKindDiceFound = findHighDiceMoreThanSpecifiedTimes(4, diceNums);
-        return fourKindDiceFound * 4;
+        int diceFound = findHighDiceMoreThanSpecifiedTimes(2, diceNums);
+        return diceFound * numOfKinds;
     }
 
     // Note: This function finds the highest matching dice with more than specified times
@@ -110,15 +82,9 @@ public class Yatzy {
         return 0;
     }
 
-    public static int countSmallStraight(int... diceNums) {
+    public static int countSmallOrLargeStraight(int valueStraight, int... diceNums) {
         if (isValidStraightScores(true, diceNums))
-            return 15;
-        return 0;
-    }
-
-    public static int countLargeStraight(int... diceNums) {
-        if (isValidStraightScores(false, diceNums))
-            return 20;
+            return valueStraight;
         return 0;
     }
 

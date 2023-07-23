@@ -1,0 +1,17 @@
+
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìÉÙïıÿÿÿÿ
+R
+java:S1172"7Remove these unused method parameters "root", "target".(ìÉÙïıÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(àóìÏüÿÿÿÿ
+h	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï¼òûÿÿÿÿ
+R
+java:S1172+"7Remove these unused method parameters "root", "target".(Ï¼òûÿÿÿÿ
+H
+java:S1135)"2Complete the task associated to this TODO comment.(ŠôÑ±
+M
+java:S1135*"2Complete the task associated to this TODO comment.(İ±·¤üÿÿÿÿ
+V	java:S1250"<This block of commented-out lines of code should be removed.(·ÂúÇøÿÿÿÿ
+m
+java:S3776p"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ÌôÒ–ÿÿÿÿÿ
+H
+java:S1135i"2Complete the task associated to this TODO comment.(‰ÙÄ“

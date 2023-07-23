@@ -69,7 +69,9 @@ public class LearnArray2 {
         int index = 0;
         while (index < right) {
             if (nums[index] % 2 == 1) {
-                while (right > index && nums[right] % 2 == 1) { // 找到偶数才交换，否则往左边移动，直到index位置 !!
+                // 由于右端的奇数不需要做任何的调整，通过while循环可以快速缩小范围
+                // 找到偶数才交换，否则往左边移动，直到index位置
+                while (right > index && nums[right] % 2 == 1) {
                     right--;
                 }
                 swapArrayValues(nums, index, right);

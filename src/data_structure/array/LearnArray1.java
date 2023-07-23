@@ -114,9 +114,11 @@ public class LearnArray1 {
         //            O(2*n)=O(n)  O(n) 时间上面比HashMap<>要快一点
         HashSet<Integer> set = new HashSet<>();
         for (int a : arr) {
-            if (a == 0 && set.contains(0)) {  // 0是特殊的值，如果有两个以上，则直接返回true !!
+            if (a == 0 && set.contains(0)) {
+                // 0是特殊的值，如果有两个以上，则直接返回true !!
                 return true;
             } else if (set.contains(2 * a) || (a % 2 == 0 && set.contains(a / 2))) {
+                // 判断set集中是否存储着它的倍数或者是它的二分数值
                 return true;
             } else {
                 set.add(a);

@@ -1,6 +1,6 @@
 package interview.murex;
 
-import core_algo.data_model.TreeNode;
+import algorithms.datamodel.TreeNode;
 
 public class MurexQuestion3 {
 

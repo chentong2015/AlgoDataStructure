@@ -37,21 +37,27 @@ public class StringSlidingWindow {
     // Given a string s, find the length of the longest substring without repeating characters
     // s consists of English letters, digits, symbols and spaces.
     // s = "abcabcbb" -> "abc" -> 3
-    // int[128] for ASCII(该码值为8个bit位置), int[256] for Extended ASCII
     public int lengthOfLongestSubstring(String s) {
         int left = 0;
         int right = 0;
         int result = 0;
+
+        // TODO. 将字符串中的char映射到int值，通过数组来统计指定char出现的次数
+        // int[256] for ASCII of 8 bits
         int[] chars = new int[128];
         while (right < s.length()) {
             char r = s.charAt(right);
             chars[r]++;
-            while (chars[r] > 1) { // 逐步移动直到windows窗口的区间中，没有重复的char字符
+
+            // 如果指定的数组位置的值大于1, 说明之前有计算过，左边的lift坐标需要往右边移动
+            while (chars[r] > 1) {
                 char l = s.charAt(left);
                 chars[l]--;
                 left++;
             }
-            result = Math.max(result, right - left + 1); // 依次统计距离的max值
+
+            // 在while循环之后，统计当前截取位置的距离长度
+            result = Math.max(result, right - left + 1);
             right++;
         }
         return result;
