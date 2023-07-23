@@ -1,48 +1,45 @@
 package data_structure.master_backtracking;
 
-// N-Queens II 回溯算法典型案例
-// Placing n queens on an n x n chessboard such that no two queens attack each other
-// Given an integer n, return the number of distinct solutions to the n-queens puzzle
-// 0 0 1 0    0 1 0 0
-// 1 0 0 0    0 0 0 1 -> Queen能够攻击该位置的横竖列和斜方向上的所有位置
-// 0 0 0 1    1 0 0 0
-// 0 1 0 0    0 0 1 0 -> 给出n*n的方格中有几种不同的放置n个Queen的可能情况 ?
+import java.util.ArrayList;
+import java.util.List;
 
-// 1 0 0 0
-// 0 0 1 0    -> (1,2)位置对应出来的反斜对角位置为2-1+4=5, 正斜对角对应的位置是1+2=3
-// 0 0 0 0
-// 0 1 0 0    -> 左侧最多只能放置3个Queen
 public class Backtracking2 {
 
-    private int count = 0;
-
-    // O(n!) 递归n层，每一层中再递归(n-1)... !!
-    // O(n)  额外开辟3个存储的数组，内存开销
-    public int totalNQueens(int n) {
-        boolean[] cols = new boolean[n];        // columns   |  列只需要占n个位置
-        boolean[] diag1 = new boolean[2 * n];   // diagonals \  斜对角需要占(2n-1)个位置做判断 !
-        boolean[] diag2 = new boolean[2 * n];   // diagonals /
-        backtracking(0, cols, diag1, diag2, n);
-        return count;
+    // Palindrome Partitioning
+    // Given a string s, partition s such that every substring of the partition is a palindrome
+    // Return all possible palindrome partitioning of s 返回所有的划分组合的可能
+    // s = "aab"  -> [["a","a","b"],["aa","b"]]
+    // s = "aabb" -> [["a","a","b","b"],["aa","b","b"],["a","a","bb"],["aa","bb"]]
+    public List<List<String>> partitionTest(String str) {
+        // 测试理解: 1. 所有能拆分出来的子字符串组合，判断有"多少个组合的子字符串"全部满足palindrome条件
+        //             3: 1 + 1 + 1; 1 +2 ; 2+1
+        //             4: 1+1+1+1; 1+2+1; 1+3; 2+1+1; 2+2; 3+1
+        List<List<String>> results = new ArrayList<>();
+        partitionDFS(0, str, results, new ArrayList<>());
+        return results;
     }
 
-    // 1. 填一个位置时，记录相关位置上的情况，做排除
-    // 2. 从上往下，逐行判断，一行最多只能在一个位置放置，之后移动到下面一行，所有并不需要行上面的标记 !
-    // 3. 当递归回溯判断row==n; 则说明将n个queen完整填入其中
-    public void backtracking(int row, boolean[] cols, boolean[] diag1, boolean[] diag2, int n) {
-        if (row == n) count++;
-        // 在不同的row行，填充在每个列的位置，直到推导到row=n最后一层，则记成一个有效的答案 !!
-        for (int col = 0; col < n; col++) {
-            int id1 = col - row + n;
-            int id2 = col + row;
-            if (cols[col] || diag1[id1] || diag2[id2]) continue;
-            cols[col] = true;  // 这3个位置的确定，标明了在n*n的位置中唯一确定了一个位置
-            diag1[id1] = true;
-            diag2[id2] = true;
-            backtracking(row + 1, cols, diag1, diag2, n);
-            cols[col] = false; // 在回溯回来的时候，撤回之前放置的位置造成的改变
-            diag1[id1] = false;
-            diag2[id2] = false;
+    // O(n^2*2^n) 外层具有O(n)的复杂度，递归的内存也具有O(n)级别的复杂度，内层递归树结点的数目是2^n ??
+    // O(n)       存储递归栈的空间Maximum depth of the recursive call stack is N, 每次只取一个字符形成最大深度
+    void partitionDFS(int start, String str, List<List<String>> results, List<String> currentList) {
+        if (start >= str.length()) {
+            results.add(new ArrayList<>(currentList));           // DFS到底，添加有效结果成为结果之一
         }
+        for (int index = start; index < str.length(); index++) { // 每次切分字符串的一个部分来判断，如果是则继续往内存递归
+            if (isPalindrome(str, start, index)) {
+                currentList.add(str.substring(start, index + 1));
+                partitionDFS(index + 1, str, results, currentList);
+                currentList.remove(currentList.size() - 1); // 回溯的核心：回退一步到调用该方法的上一层去添加新的组合 !!
+            }
+        }
+    }
+
+    private boolean isPalindrome(String str, int left, int right) {
+        while (left < right) {
+            if (str.charAt(left++) != str.charAt(right--)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
