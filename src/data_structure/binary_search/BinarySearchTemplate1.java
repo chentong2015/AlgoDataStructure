@@ -6,16 +6,20 @@ public class BinarySearchTemplate1 {
 
     // 1. 注意起使位置的设置，确定范围                   ==> 根据数组或者数字范围确定
     // 2. 注意while循环的结束条件                      ==> 判断是否能相等，是否需要间隔，结束的条件是什么
-    // 3. TODO: 计算中间位置时，注意避免值的溢出overflow  ==> 固定写法
-    // 4. 注意左右index位置的更新 !!                   ==> 在left < right循环中必须更新
+    // 3. 注意左右index位置的更新 !!                   ==> 在left < right循环中必须更新
     public int binarySearch1(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
         int left = 0;
         int right = nums.length - 1;
-        // 相等条件, 能确定到搜索同一个位置, 后面的left，right其中之一必须移动
+        // TODO. 注意这里的相等条件
+        // 能确定到搜索同一个位置, 后面的left，right其中之一必须移动
         while (left <= right) {
+            // TODO: 计算中间位置时，注意避免值的溢出overflow  ==> 固定写法
             int mid = left + (right - left) / 2;
-            if (nums[mid] == target) return mid;
+
+            if (nums[mid] == target) {
+                return mid;
+            }
             if (nums[mid] < target) {
                 left = mid + 1;  // 因为mid位置不是，所以可以上移一个位置往后
             } else {
@@ -64,6 +68,7 @@ public class BinarySearchTemplate1 {
     // nums = [4,5,6,7, 0,1,2], target = 3 -> -1
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
+
         int minIndex = BinarySearchTemplate2.findMinIndex(nums);
         if (nums[minIndex] == target) return minIndex;
         int low = nums[minIndex] < target ? minIndex : 0;                    // 只有两种可能区间[0, minIndex-1] & [minIndex, length-1]

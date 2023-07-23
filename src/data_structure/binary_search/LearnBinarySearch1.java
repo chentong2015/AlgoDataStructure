@@ -2,13 +2,6 @@ package data_structure.binary_search;
 
 import java.util.Arrays;
 
-/**
- * 二分法搜索：不需遍历所有值，时间复杂度为O(log(n))
- * Arrays.binarySearch(array, item) / Collections.binarySearch(list, item)
- * 1. 根据不同同情况使用三种不同模板 Templates
- * 2. 适用于排序好的数据，如果是拼接好的排序数据，则对片段数据操作二分法 O(2log(n)) = O(log(n))
- * 3. TODO: 二分法不止作用在元素位置上面，同样可以作用在总值范围 & 距离差值 (方法最终要返回的结果) !!
- */
 public class LearnBinarySearch1 {
 
     // TODO: Binary Search + Sliding Windows 在0和最大距离之间使用二分法，和元素本身的值没有关系 !!

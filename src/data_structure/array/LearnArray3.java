@@ -2,21 +2,25 @@ package data_structure.array;
 
 public class LearnArray3 {
 
-    // TODO: 左边总值 + 中间值 + 右边总值 == 数组和的总值 !!
+    // TODO: 左边总值 + 中间值 + 右边总值 == 数组和总值
     // Find Pivot Index
     // Given an array of integers nums, calculate the pivot index of this array
     // 数组的pivot左边和右边数的和相等，第一位置左边和最后一个位置的右边和都是0
     // Return the leftmost pivot index. If no such index exists, return -1
     // nums = [1,7,3,6,5,6] -> pivot = 3
     // nums = [2,1,-1]      -> pivot = 0
+    //
+    // O(2n)=O(n) O(1) 去掉辅助的数组所开辟的空间复杂度
     public int pivotIndex(int[] nums) {
-        // 使用两遍循环，先计算出总值，右边的总和通过总值来计算 !! 去掉辅助的数组所开辟的空间复杂度
+        // 使用两遍循环，先计算出总值，右边的总和通过总值来计算
         int sum = 0;
         int leftSum = 0;
         for (int x : nums) sum += x;
         for (int i = 0; i < nums.length; ++i) {
             int rightSum = sum - leftSum - nums[i];
-            if (leftSum == rightSum) return i;
+            if (leftSum == rightSum) {
+                return i;
+            }
             leftSum += nums[i];
         }
         return -1;

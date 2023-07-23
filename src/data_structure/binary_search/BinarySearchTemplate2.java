@@ -9,6 +9,7 @@ public class BinarySearchTemplate2 {
     // 2. if(left != nums.length)  结束循环之后会做判断处理
     public int binarySearch(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
+
         int left = 0;
         int right = nums.length;
         while (left < right) {
@@ -17,19 +18,20 @@ public class BinarySearchTemplate2 {
             if (nums[mid] < target) {
                 left = mid + 1;
             } else {
-                right = mid;
+                right = mid; // 右侧下标会往右边偏移一位
             }
         }
         // End Condition: left == right
-        if (left != nums.length && nums[left] == target) return left;
+        if (left != nums.length && nums[left] == target) {
+            return left; // 取最后一个位置的值
+        }
         return -1;
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     // First Bad Version
-    // n versions [1, 2, ..., n] and find out the first bad one, which causes all the following ones to be bad
-    // 找到一组产品中第一次次品：该index位置是次品，而index-1前面相邻的位置是正品
+    // n versions [1, 2, ..., n] and find out the first bad one,
+    // which causes all the following ones to be bad
+    // 找到一组产品中第一次次品: 该index位置是次品，而index-1前面相邻的位置是正品
     // 1 2 3 4 0 0 0 0
     public int firstBadVersion(int n) {
         // 正确理解：1. 在二分法查找的过程中，必须判断两个index位置，来确定最后的移动方向
@@ -38,13 +40,16 @@ public class BinarySearchTemplate2 {
         while (low < high) {
             int middle = low + (high - low) / 2;
             if (isBadVersion(middle)) {
-                if (!isBadVersion(middle - 1)) return middle;
+                if (!isBadVersion(middle - 1)) {
+                    return middle;
+                }
                 high = middle;
             } else {
                 low = middle + 1;
             }
         }
-        return low; // 出循环条件: low=high, (low-1)位置正品 < low第一个次品, high位置次品 ... 都是次品
+        // 出循环条件: low=high, (low-1)位置正品 < low第一个次品, high位置次品 ... 都是次品
+        return low;
     }
 
     private boolean isBadVersion(int n) {
