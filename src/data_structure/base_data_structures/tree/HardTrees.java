@@ -53,10 +53,12 @@ public class HardTrees {
     // 3. 允许一个结点是另一个结点的后继
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // 测试理解：1. 递归将二叉树处理成root结点和左右子树，左右子树中判断roo  methodt结点和子树的关系
-        //             O(n) O(n) 最大的递归(递归方法造成的栈开销)的高度是n层，所有的节点排列在一侧
+        //            O(n) O(n) 最大的递归(递归方法造成的栈开销)的高度是n层，所有的节点排列在一侧
         if (root == p || root == q) {
             return root;
         }
+
+        // 递归到左右子树中找公共的节点，通过返回的结果来判断
         TreeNode leftCommonNode = null;
         TreeNode rightCommonNode = null;
         if (root.getLeft() != null) {
@@ -65,6 +67,7 @@ public class HardTrees {
         if (root.getRight() != null) {
             rightCommonNode = lowestCommonAncestor(root.getRight(), p, q);
         }
+
         if (leftCommonNode == null && rightCommonNode == null) {
             // 如果在"某root结点"的左右子树中都没有有效的结点(没有目标结点)
             return null;

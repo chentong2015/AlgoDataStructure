@@ -6,4 +6,5 @@ BinarySearch二分法搜索: 不需遍历所有值，时间复杂度为O(log(n))
 JSE API提供二分法的实现: 针对数组和集合的实现
 Arrays.binarySearch(array, item) / Collections.binarySearch(list, item)
 // 如果找到则返回index的位置
-// (-(insertion point) - 1)
+// 没有找到则返回负值 (-(insertion point) - 1)
+// 恢复插入的位置     index = -(index + 1)

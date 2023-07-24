@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class DynamicProgramming {
 
     // TODO: DP典型实例, 保留前面计算过的值, 在此基础上更新和判断
-    //  最长连续增长子序列，可以演变为最长满足条件的增长 !!
+    // 最长连续增长子序列，可以演变为最长满足条件的增长
     // Longest Increasing Subsequence
     // An integer array nums, return the length of the longest strictly increasing subsequence
     // nums  = [10,9,2,5,3,7,101,18] -> [2,3,7,101] 最长连续增长子序列
@@ -19,14 +19,17 @@ public class DynamicProgramming {
         int maxAnswer = 1;
 
         for (int i = 1; i < steps.length; i++) {
-            int maxValue = 0;
+            // 找前面位置更低的数目的(已经存在的)最长的序列数目
+            // 判断当前位置前面的所有更小的值，获取它记录的累计长度 !!
+            int maxStepBefore = 0;
             for (int j = 0; j < i; j++) {
                 if (nums[j] < nums[i]) {
-                    maxValue = Math.max(maxValue, steps[j]); // 找前面位置更低的数目的(已经存在的)最长的序列数目
+                    maxStepBefore = Math.max(maxStepBefore, steps[j]);
                 }
             }
-            steps[i] = maxValue + 1;                         // 在"前面子序列最长的"那个点的基础上再移动一步
-            maxAnswer = Math.max(maxAnswer, steps[i]);       // 更新记录的最大值, 因为可能出现几个不同的增长序列, 需要求总的
+
+            steps[i] = maxStepBefore + 1;  // 在"前面子序列最长的"那个点的基础上再移动一步
+            maxAnswer = Math.max(maxAnswer, steps[i]); // 更新记录的最大值, 因为可能出现几个不同的增长序列, 需要求总的
         }
         return maxAnswer;
     }

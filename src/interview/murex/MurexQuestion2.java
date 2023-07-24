@@ -101,16 +101,54 @@ public class MurexQuestion2 {
     // 2 表示窗，只有在拿到key才能通过
     // 3 表示key钥匙
     // 4 表示目标
-    // 0 0 0 3  --> output: true
-    // 1 0 1 1
-    // 1 0 2 4
+    public static void main(String[] args) {
+        int[][] array = {{0, 0, 0, 3},
+                {1, 0, 1, 1},
+                {1, 0, 2, 4}};
+        System.out.println(trialOfValor(array));
+    }
+
+    private static int mLength = 3;
+    private static int nLength = 4;
+    private static boolean hasFoundKey = false;
+    private static boolean hasFoundTarget = false;
+
     public static boolean trialOfValor(int[][] array) {
-        // 1. 第一次，BFS递归
-        //    只走0数字线路，直到找到3为止，反之视为没有找到
-        //    如果在BFS过程中，找到了4，则直接返回
-        // 2. 第二次，BFS递归
-        //    如果找到key，则走0和2数字线路
-        //    反之，只走0数字线路
-        return false;
+        passPointKey(array, 0, 0, 3);
+        passPointTarget(array, 0, 0, 4);
+        return hasFoundTarget;
+    }
+
+    // 第一遍递归遍历，先判断能否将key值找到
+    // 第一轮在没有找到key的情况下是无法开窗的，因此无法判断是否能找到target
+    private static void passPointKey(int[][] array, int i, int j, int keyValue) {
+        if (array[i][j] == keyValue) {
+            hasFoundKey = true;
+            return;
+        }
+        if (array[i][j] == 0) {
+            if (i < mLength - 1) {
+                passPointKey(array, i + 1, j, keyValue);
+            }
+            if (j < nLength - 1) {
+                passPointKey(array, i, j + 1, keyValue);
+            }
+        }
+    }
+
+    // 第二遍在增加key的情况下，提高递归的判断条件
+    private static void passPointTarget(int[][] array, int i, int j, int targetValue) {
+        if (array[i][j] == targetValue) {
+            hasFoundTarget = true;
+            return;
+        }
+        if (array[i][j] == 0 || (array[i][j] == 2 && hasFoundKey)) {
+            if (i < mLength - 1) {
+                passPointTarget(array, i + 1, j, targetValue);
+            }
+            if (j < nLength - 1) {
+                passPointTarget(array, i, j + 1, targetValue);
+            }
+        }
     }
 }
