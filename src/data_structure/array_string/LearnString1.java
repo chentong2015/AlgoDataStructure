@@ -7,6 +7,7 @@ public class LearnString1 {
     //  2. 使用(char)(65+value) 使用变量作为偏移，然后强制转换成char
     public static String convertColNumber(int col) {
         if (col < 0) return null;
+
         StringBuilder stringBuilder = new StringBuilder();
         int remaining = col;
         while (remaining > 0) {

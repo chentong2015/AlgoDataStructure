@@ -19,9 +19,12 @@ public class LearnArray1 {
                     maxCount = Math.max(maxCount, count);
                     count = 0;
                 }
-            } else {          // 前面还没有统计1, 判断是否应该统计
+            } else {
+                // 前面还没有统计1, 判断是否应该统计
                 if (num == 1) {
                     count = 1;
+                } else {
+                    // 如果前面没有统计数据(count=0), 同时当前的数据也是0, 则可以忽略
                 }
             }
         }

@@ -13,9 +13,10 @@ public class BaseLinkedList {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
 
+        // TODO. 需要通过node节点的移动来统计节点的数目，注意这里的节点数目会少统计一个
         int length = 0;
         ListNode node = head;
-        while (node != null) { //通过遍历统计节点的数目
+        while (node != null) {
             length++;
             node = node.next;
         }
@@ -32,26 +33,30 @@ public class BaseLinkedList {
 
     // Reverse Linked List 两种算法：迭代法和递归法
     // Given the head of a singly linked list, reverse the list, and return the reversed list
+    //        1 -> 3 -> 6 -> 7 -> 10
+    // pre  current next
     public ListNode reverseLinkedListIteratively(ListNode head) {
         // 测试理解：1. 迭代遍历一遍，将原来的节点的连接的顺序颠倒, 注意设置原来head节点下一个节点为null
-
+        //
         // 正确理解: 1. 需要使用"前中后"三个节点的指向，核心是将<当前指向的下一个节点改成指向它原来的前一个节点>
-        //            O(n) O(1)
+        // O(n) O(1)
         ListNode pre = null;
         ListNode current = head;
         ListNode next = null;
         while (current != null) {
             next = current.next; // 保留后一个节点，以便于往后移动
             current.next = pre;
+
             pre = current;       // 使用pre每次记录最后出来的新head节点
             current = next;
         }
-        return pre; // 因为current节点为null
+        // 由于跳出while循环的条件是current==null，必须使用临时节点来保留head节点位置 !!
+        return pre;
     }
 
     // 正确理解: 2. 递归算法是"从后往前"开始做两个节点之间的执行的颠倒; 而不是从前往后换
-    //             A <- B <- C 在递归的过程中，newHead是原来的最后一个
-    //             O(n) O(n) 会造成n层的嵌套调用，造成额外的栈空间开销 !!
+    // A <- B <- C 在递归的过程中，newHead是原来的最后一个
+    // O(n) O(n) 会造成n层的嵌套调用，造成额外的栈空间开销 !!
     public ListNode reverseLinkedListRecursively(ListNode head) {
         if (head == null || head.next == null) {
             return head;
@@ -66,15 +71,20 @@ public class BaseLinkedList {
     // Merge Two Linked List
     // Merge two sorted linked lists and return it as a sorted list 返回排序好的组合链表
     // Both l1 and l2 are sorted in non-decreasing order 注意原始的链表是否排序 !!
+    // 1 -> 4 -> 8 -> 9
+    // 2 -> 5 -> 20
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         // 测试理解：1. 同时遍历两个链表中的数据，交替添加值到新的链表中
         //            O(n+m)  O(n+m) 多出相同的内存空间给新的结果表
-
         // 正确理解: 1. 循环两个链表，将另外一个链表的值，合并到另一个链表
         //            O(n*m)  O(1) 时间度会增加，但空间复杂度比较小  ===> 可能造成循环链表 !!
-        ListNode dummy = new ListNode(0); // 留住新链表的起使位置 !!
+
+        // dummy留住新链表的起使位置，作为创建出来的暂存节点
+        ListNode dummy = new ListNode(0);
         ListNode node = dummy;
-        while (l1 != null || l2 != null) { // 只要还有值，就继续往后读取
+
+        // 哪个链表的值小便移动哪个链表，知道遍历完其中一个链表
+        while (l1 != null || l2 != null) {
             if (l1 == null) {
                 node.next = l2;
                 break;

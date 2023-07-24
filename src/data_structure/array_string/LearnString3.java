@@ -1,5 +1,6 @@
 package data_structure.array_string;
 
+// TODO: 一般不能直接使用基础类库的方法 .split() .trim() !!
 public class LearnString3 {
 
     // Reverse Words in a String
@@ -10,7 +11,6 @@ public class LearnString3 {
     // s = "  hello world  " -> "world hello"
     public String reverseWords(String s) {
         // 测试理解：1. 常规解法，从后往前取每个单词，然后依次通过StringBuilder来构造最后的结果  O(n) O(n)
-        //            TODO: 一般不能直接使用基础类库的方法 .split() .trim() !!
         if (!s.contains(" ")) return s;
         String[] arr = s.split(" ");
         StringBuilder stringBuilder = new StringBuilder();

@@ -8,7 +8,9 @@ public class BaseArray1 {
     // Remove Element
     // Given an array nums and a value val, remove all instances of that value in-place and return the new length
     // The order of elements can be changed. It doesn't matter what you leave beyond the new length
-    // nums = [0,1,2,2,3,0,4,2], val = 2 -> nums = [0,1,4,0,3]
+    //
+    // nums = [0,1,2,2,3,0,4,2], val = 2 -> nums = [0,1,3,0,4]
+    // 对于不是要移除的元素，全部将其移动到数组的左边，返回左边指定长度的结果数据
     public int removeElement(int[] nums, int val) {
         int left = 0;
         for (int index = 0; index < nums.length; index++) {
@@ -20,16 +22,41 @@ public class BaseArray1 {
         return left;
     }
 
+    // Move Zeroes
+    // Given an integer array nums, move all 0's to the end of it while
+    // maintaining the relative order of the non-zero elements.
+    // nums = [0,1,0,3,12] -> [1,3,12,0,0] 只能在原始的数组上操作
+    //         1 3 12
+    public void moveZeroes(int[] nums) {
+        // 测试理解：1. 将非0的值依次排列在数组的开头，最后留下的位置就是0的值(统计数目) O(n) O(1)
+        int count = 0;
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[index++] = nums[i];
+            } else {
+                count++;
+            }
+        }
+        // 最后补充结尾的0位置，可以直接使用index来循环，不需要统计0的数目
+        for (int i = 0; i < count; i++) {
+            nums[nums.length - 1 - i] = 0;
+        }
+    }
+
     // Remove duplicates from sorted array
     // The input array is passed in by reference, it doesn't matter what you leave beyond the returned length
     // For example: [0,0,1,1,1,2,2,3,3,4] -> [0,1,2,3,4]
     public int removeDuplicates(int[] nums) {
         // 正确理解：由于是排序排列的，因此只需要找到所有不同的item，从开始位置依次往后排即可
-        //         从第二个位置开始，只在有不同的值出现的时候才交换一次位置 !!
-        if (nums == null || nums.length == 0) return 0;
-        int left = 1;
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        // 从第二个位置开始，只在有不同的值出现的时候才交换一次位置 !!
+        // 只找后面和left位置值不同的数据，往数组的左边移动
+        int left = 0;
         for (int index = 1; index < nums.length; index++) {
-            if (nums[index] != nums[left]) {
+            if (nums[left] != nums[index]) {
                 nums[left] = nums[index];
                 left++;
             }
@@ -75,8 +102,8 @@ public class BaseArray1 {
     public void rotateArray(int[] nums, int k) {
         // 测试理解：1. 常规解法，每次移动一个位置的值，将数组中全部的值都移动 O(n×k), O(1)
         //         2. 使用额外的数组, 交换item后赋值回原来的数组          O(n), O(n)
-
-        // 正确理解: 1. 循环替换, 前面往后，后面的超过长度往移动到开头 O(n), O(1)
+        //
+        // 正确理解: 1. 循环替换, 前面往后, 后面的超过长度往移动到开头 O(n), O(1)
         k = k % nums.length;
         int count = 0;
         for (int start = 0; count < nums.length; start++) {
@@ -94,6 +121,10 @@ public class BaseArray1 {
     }
 
     // 正确理解: 2. Reverse完全颠倒数组，然后再颠倒部分 O(n) O(1)
+    // nums = [1,2,3,4,5,6,7]
+    // nums = [7,6,5,4,3,2,1]
+    //        [5, 6, 7, 4, 3, 2, 1]
+    //        [5, 6, 7, 1, 2, 3, 4]
     public void rotateArray2(int[] nums, int k) {
         reverse(nums, 0, nums.length - 1);
         reverse(nums, 0, k - 1);
@@ -117,9 +148,12 @@ public class BaseArray1 {
         // 正确解法: 1. 先对数组进行排序，判断相邻两个值 Arrays.sort()     O(nlog(n)), O(1)
         //          2. 使用HashSet<>保存出现过的值，Set中不包含重复的值   O(n) 最差情况是读完全部的值 O(n)
         if (nums.length == 0) return false;
+
+        // 使用HashSet<> 用空间复杂度来换取时间复杂度
         Set<Integer> setNums = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
-            if (setNums.contains(nums[i])) {    // 优化算法，在边读取的时候边判断，而不是读完后，再进行二次遍历 !!
+            // 优化算法，在边读取的时候边判断，而不是读完后，再进行二次遍历 !!
+            if (setNums.contains(nums[i])) {
                 return true;
             }
             setNums.add(nums[i]);

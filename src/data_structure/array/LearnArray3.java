@@ -2,7 +2,7 @@ package data_structure.array;
 
 public class LearnArray3 {
 
-    // TODO: 左边总值 + 中间值 + 右边总值 == 数组和总值
+    // TODO: 左边总值 + 中间值 + 右边总值 = 数组和总值
     // Find Pivot Index
     // Given an array of integers nums, calculate the pivot index of this array
     // 数组的pivot左边和右边数的和相等，第一位置左边和最后一个位置的右边和都是0
