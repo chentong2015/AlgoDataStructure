@@ -10,14 +10,13 @@ import java.util.List;
 // 3. 在数据中间插入元素的速度比较慢，会影响插入位置后面的元素
 
 // 常见Collections集合API:
-// Collections.sort(list);
-// Collections.swap(list, 1, 2);
-// List<Integer> array = Collections.synchronizedList(list); 线程安全的List列表
+// Collections.sort(list)
+// Collections.swap(list, 1, 2)
+// List<Integer> array = Collections.synchronizedList(list) 线程安全的List列表
 public class LearnArrayList1 {
 
     // 数组和list列表之间的相互转换
-    // Arrays.asList(array)
-    // list.toArray()
+    // Arrays.asList(array) <-> list.toArray()
     private void testConvertArrayAndList() {
         Integer[] nums = {1, 2, 3};
         List<Integer> list = new ArrayList<>(Arrays.asList(nums));
@@ -31,10 +30,12 @@ public class LearnArrayList1 {
         myArray = (String[]) myList.toArray();
     }
 
+    // TODO. List列表可以指定index位置进行插入，并且通过位置进行查询数据
     public void testArrayList() {
         List<Integer> list0 = new ArrayList<>();
         List<Integer> list1 = list0; // another reference to list1
-        List<Integer> list3 = new ArrayList<>(list0); // make an actual copy of list1 (存储的是值类型)深度拷贝
+        // make an actual copy of list1 (存储的是值类型)深度拷贝
+        List<Integer> list3 = new ArrayList<>(list0);
 
         list1.add(-1);
         list1.add(1, 6);
@@ -54,7 +55,8 @@ public class LearnArrayList1 {
         }
     }
 
-    // ArrayList复制操作：System.arraycopy(elementData, 0, a, 0, size);
+    // TODO. 自定义从一个List拷贝数据到另外一个List
+    // arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length)
     public void testCopyArrayList() {
         List<String> myList = new ArrayList<>();
         // 使用list来构建新的list
