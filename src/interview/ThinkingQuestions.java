@@ -2,7 +2,7 @@ package interview;
 
 import java.util.List;
 
-public class OtherQuestion {
+public class ThinkingQuestions {
 
     // Google Interview Question
     // https://www.hackerrank.com/interview/interview-preparation-kit
