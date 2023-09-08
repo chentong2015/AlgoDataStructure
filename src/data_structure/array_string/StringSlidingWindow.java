@@ -14,7 +14,9 @@ public class StringSlidingWindow {
     // O(2n)=O(n) O(1)
     // 最终可能left和right从左到右各自移动一遍
     public int minSubArrayLen(int[] nums, int target) {
-        if (nums == null || nums.length == 0) return 0;
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
         int left = 0;
         int right = 0;
         int sum = 0;
@@ -23,7 +25,8 @@ public class StringSlidingWindow {
         // 在中间while迭代的时候，不能返回，需要判断到数组的最后
         while (right < nums.length) {
             sum += nums[right];
-            while (sum >= target) {                    // 从头开始减少，通过[j-i]来缩小区间
+            // 如果累计的值超过了目标数值，则需要从左端进行循环
+            while (sum >= target) {  // 从头开始减少，通过[j-i]来缩小区间
                 minLength = Math.min(minLength, right - left + 1); // 保留移动过程中，有效最小窗口的宽度，注意长度 +1
                 sum -= nums[left];
                 left++;
@@ -91,7 +94,7 @@ public class StringSlidingWindow {
     }
 
     // TODO: 从数据的连续性推导出"数学公式"的成立，假设能够拆分的数字个数是k个，连续数字的第一个数字是x
-    //       时间复杂度必须小于O(n)，一般只有两种可能O(log(n)) & O(n^0.5)和数据的平方有关系
+    //  时间复杂度必须小于O(n)，一般只有两种可能O(log(n)) & O(n^0.5)和数据的平方有关系
     // Consecutive Numbers Sum
     // Given an integer n, return the number of ways you can write n as the sum of consecutive positive integers
     // n = 5   -> 5 = 2 + 3 -> 2
