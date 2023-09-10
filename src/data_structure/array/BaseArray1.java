@@ -1,8 +1,5 @@
 package data_structure.array;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class BaseArray1 {
 
     // Remove Element
@@ -139,25 +136,5 @@ public class BaseArray1 {
             start++;
             end--;
         }
-    }
-
-    // Contains Duplicate
-    // Return true if any value appears at least twice in the array
-    // nums = [1,2,3,1] -> true
-    public boolean containsDuplicate(int[] nums) {
-        // 正确解法: 1. 先对数组进行排序，判断相邻两个值 Arrays.sort()     O(nlog(n)), O(1)
-        //          2. 使用HashSet<>保存出现过的值，Set中不包含重复的值   O(n) 最差情况是读完全部的值 O(n)
-        if (nums.length == 0) return false;
-
-        // 使用HashSet<> 用空间复杂度来换取时间复杂度
-        Set<Integer> setNums = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            // 优化算法，在边读取的时候边判断，而不是读完后，再进行二次遍历 !!
-            if (setNums.contains(nums[i])) {
-                return true;
-            }
-            setNums.add(nums[i]);
-        }
-        return false;
     }
 }

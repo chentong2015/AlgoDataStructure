@@ -93,10 +93,6 @@ o
 0src/data_structure/binary_search/二分法查找,3\b\3b46b758f401ac0c1a676d9c986e9738623db67c
 \
 ,src/data_structure/array_2d/BaseArray2D.java,1\4\14fc03d2e2449bf5a6b15363aa2c5c6118197d98
-X
-(src/data_structure/array/BaseArray1.java,0\f\0fb8d6502cdf61bcfc8d74276acfe1115357eb1c
-Y
-)src/data_structure/array/LearnArray1.java,8\e\8e5e786b314b916bfffe048c01c2ec1a8738ad1b
 Y
 )src/data_structure/array/LearnArray3.java,9\6\960792e2cd05ed688cb1b84b98f8f8f73243d183
 Y
@@ -179,8 +175,6 @@ Z
 *src/interview/natixis/NatixisQuestion.java,3\7\37014be75759b62c1be259e97926ebda0ea4f922
 _
 /src/data_structure/array_string/String算法论,d\0\d0a7040b0b94416b56b69ce65f2c8dcb10c08ddb
-X
-(src/data_structure/array/数组方法论,0\7\0784a125e6b2b4e8967ecdd18d7246008531a88c
 l
 <src/data_structure/base_data_structures/tree/BaseTrees2.java,f\1\f1f33e31f045e2a70701b2f6838f0d4f44c6a6ee
 l
@@ -195,3 +189,11 @@ m
 =src/data_structure/base_data_structures/tree/BinaryTrees.java,5\1\5140897a6195dbe39d29fecdee14d20f93b0f575
 T
 $src/interview/ThinkingQuestions.java,4\2\42201e56005393281e3e90f139ef4f85cb28f521
+Q
+!src/interview/OtherCompanies.java,9\6\963187b4a8ec5ec9d3dc2607383084978b15a499
+k
+;src/data_structure/array_string/MinimumWindowSubstring.java,f\c\fcb633fdfa5519e6701b373cae7e00aa035b04aa
+h
+8src/data_structure/array_string/StringSlidingWindow.java,9\1\9150a7efbee7422e150446c0f3c85b7921164d97
+d
+4src/data_structure/base_collections/List与Set区别,a\a\aa16b72fabee133022501d0ecdbfbb0d5664309a
