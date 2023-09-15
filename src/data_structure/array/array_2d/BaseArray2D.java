@@ -1,4 +1,4 @@
-package data_structure.array_2d;
+package data_structure.array.array_2d;
 
 // 1. 2D Array 二维数组研究
 //    In Java, the two-dimensional array is actually a one-dimensional array

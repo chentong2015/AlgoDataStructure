@@ -1,4 +1,4 @@
-package data_structure.array_2d;
+package data_structure.array.array_2d;
 
 import java.util.Arrays;
 import java.util.LinkedList;

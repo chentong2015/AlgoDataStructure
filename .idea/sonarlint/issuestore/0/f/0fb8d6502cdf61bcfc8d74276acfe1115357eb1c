@@ -1,0 +1,11 @@
+
+T
+java:S1854S">Remove this useless assignment to local variable "baseProfit".(¼ÎûÚ
+N
+java:S1854R"9Remove this useless assignment to local variable "isBuy".(³­§
+E
+java:S1481L"*Remove this unused "total" local variable.(óË üÿÿÿÿ
+E
+java:S1481M"*Remove this unused "isBuy" local variable.(‹©ÂÖúÿÿÿÿ
+D
+java:S1481P"/Remove this unused "baseProfit" local variable.(†“Ìa

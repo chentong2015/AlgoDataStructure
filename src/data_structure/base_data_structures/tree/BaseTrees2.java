@@ -57,6 +57,8 @@ public class BaseTrees2 {
             // 说明只有一个节点
             return true;
         } else if (leftMaxNode == null) {
+            // 说明只有右子树，先判断满足root和右边子数最小值的关系
+            // 然后再移动root节点，进入右字数递归判断
             if (root.getVal() < rightMinNode.getVal()) {
                 return isValidBST(root.getRight());
             }
@@ -65,6 +67,7 @@ public class BaseTrees2 {
                 return isValidBST(root.getLeft());
             }
         } else {
+            // 如果左右子树均存在，则需要同时满足左右子树的递归判断 !!
             if (root.getVal() > leftMaxNode.getVal() && root.getVal() < rightMinNode.getVal()) {
                 return isValidBST(root.getLeft()) && isValidBST(root.getRight());
             }

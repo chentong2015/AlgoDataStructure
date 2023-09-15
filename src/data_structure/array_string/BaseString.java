@@ -42,10 +42,11 @@ public class BaseString {
     // -2^31 <= x <= 2^31 - 1
     public static int reverseInteger(int x) {
         // 测试理解：需要将int中包含的数字进行颠倒，形成新的值
-        //          1. int -> String -> StringBuilder reverse -> new int
+        // 1. int -> String -> StringBuilder reverse -> new int
 
-        // 正确理解: 1. 可以归结位数学问题，和公式计算 !!
-        //          2. 通过StringBuilder可以实现其中的reverse字符操作，复杂度取决于reverse方法
+        // 正确理解:
+        // 1. 可以归结位数学问题，和公式计算 !!
+        // 2. 通过StringBuilder可以实现其中的reverse字符操作，复杂度取决于reverse方法
         int value = x >= 0 ? x : -x;
         StringBuilder stringBuilder = new StringBuilder(Integer.toString(value));
         stringBuilder.reverse();
@@ -71,6 +72,7 @@ public class BaseString {
             maps.put(keyChar, oldCount + 1);
         }
         for (int j = 0; j < s.length(); j++) {
+            // 找到第一个非重复字符，即统计数为1的第一个字符，直接返回
             if (maps.get(s.charAt(j)) == 1) {
                 return j;
             }
@@ -112,22 +114,32 @@ public class BaseString {
         return null;
     }
 
-    // 正确理解：1. 水平扫描：横向遍历，依次比较两个字符串的公共前缀，然后再和第三个进行比较，依次到最后    O(S) S为所有字符的长度和 O(1)
-    //         2. 垂直扫描：纵向遍历字符串的每个位置上的字符(same character index of the strings) O(S) O(1)
-    //         3. 高阶解法：使用Prefix Tree数据结构
+    // 正确理解：
+    // 1. 水平扫描：横向遍历，依次比较两个字符串的公共前缀，然后再和第三个进行比较，依次到最后    O(S) S为所有字符的长度和 O(1)
+    // 2. 垂直扫描：纵向遍历字符串的每个位置上的字符(same character index of the strings) O(S) O(1)
+    // 3. 高阶解法：使用Prefix Tree数据结构
     public String longestCommonPrefixHorizontalScanning(String[] strs) {
-        if (strs == null || strs.length == 0) return "";
-        String prefix = strs[0]; // 暂存的结果值，公共的前缀
-        for (int i = 1; i < strs.length; i++)
-            while (strs[i].indexOf(prefix) != 0) {                 // 公共prefix前缀的index开始位置必须是0
-                prefix = prefix.substring(0, prefix.length() - 1); // 如果不是，则缩短prefix的长度，然后再判断是否是公共的
-                if (prefix.isEmpty()) return "";
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        String prefix = strs[0]; // 假设第一个字符串为所有字符串的公共前缀
+        for (int i = 1; i < strs.length; i++) {
+            // String.indexOf() 找字符串中的前缀字符串的index位置，第一次出现的位置必须从头开始
+            // While循环结束之后再拿公共前缀去和下一个字符串比较，提取公共前缀
+            while (strs[i].indexOf(prefix) != 0) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) {
+                    return "";
+                }
             }
+        }
         return prefix;
     }
 
     public String longestCommonPrefixVerticalScanning(String[] strs) {
-        if (strs == null || strs.length == 0) return "";
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
         // 遍历第一个位置的字符串的所有字符 ==> 避免重复检查前面已经比较过的index位置
         for (int i = 0; i < strs[0].length(); i++) {
             char c = strs[0].charAt(i);
