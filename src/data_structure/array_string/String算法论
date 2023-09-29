@@ -22,3 +22,4 @@ String: 算法理论
     count[c - 'a']++;  从char直接映射index的坐标 !!
 
 5. 利用其它数据结构(HashMap)来完成字符串的统计，利用key值做判断
+   Map<String, Integer> map = new HashMap<>();

@@ -90,17 +90,19 @@ public class MurexQuestion1 {
         return stepCount == 0 ? -1 : stepCount;
     }
 
+    // 最优的BFS遍历方式: 顺时针方法进行遍历
     private static boolean findNextStep(char[][] planetsMap, int i, int j) {
         if (i < 0 || j < 0 || i >= planetsMap.length || j >= planetsMap[0].length)
             return false;
         if (planetsMap[i][j] == 'B' || planetsMap[i][j] == 'E') {
-            return false; // 避免由于判断'B'，造成的无限循环导致栈溢出
+            return false;
         }
         if (planetsMap[i][j] == 'D')
             return true; // 如果找到目标，则直接返回
 
-        // 最优的BFS遍历方式: 顺时针方法进行遍历
+        // 遍历过的位置需要做修改值的处理，避免无限递归造成StackOverflow
         planetsMap[i][j] = 'B';
+
         boolean upStep = findNextStep(planetsMap, i - 1, j);
         boolean rightStep = findNextStep(planetsMap, i, j + 1);
         boolean downStep = findNextStep(planetsMap, i + 1, j);

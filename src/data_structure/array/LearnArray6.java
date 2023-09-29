@@ -7,7 +7,7 @@ import java.util.*;
 public class LearnArray6 {
 
     // TODO: 左边乘积 * 右边乘积 = index位置的其余乘积 (0...i-1 index i+1...length-1)
-    //       遍历两遍 + 从两端读 = 复杂的题目都是由简单的题目构成的
+    //   遍历两遍 + 从两端读 = 复杂的题目都是由简单的题目构成的
     // Product of Array Except Self
     // Given an integer array nums, return an array answer
     // answer[i] is equal to the product of all the elements of nums except nums[i]
@@ -15,6 +15,11 @@ public class LearnArray6 {
     // nums = [1,2,3,4]     -> [24,12,8,6]  数组长度说明，int类型的值范围，必须保证剩余的值的乘积在int的最值范围之内 !!
     // nums = [-1,1,0,-3,3] -> [0,0,9,0,0]  数组有没有可能为null，不能使用除法，不能通过总值来除以当前的元素值
     // 最优的复杂度: O(n) O(1) 空间不考虑结果数组的影响
+    //
+    // 1   2  3   4  -> nums
+    // 1   2  6  24  -> res 用一个数组保留左侧累计乘积的历史数据
+    // *   *  8   6
+    // *   *  12  4  -> rightProduct 用一个变量累计右侧累计的乘积值
     public int[] productExceptSelf(int[] nums) {
         int length = nums.length;
         int[] res = new int[length];
@@ -22,10 +27,11 @@ public class LearnArray6 {
         for (int i = 1; i < length; i++) {
             res[i] = res[i - 1] * nums[i - 1]; // 累积index前面的位置的乘积值
         }
+
         int rightProduct = 1;
         for (int i = length - 1; i >= 0; i--) {
-            res[i] *= rightProduct;   // 左侧的累积值保留在res[i]求值的位置
-            rightProduct *= nums[i];  // 右侧的累积值保留在rightProduct中
+            res[i] = res[i] * rightProduct;   // "左侧"的累积值保留在res[i]求值的位置
+            rightProduct = nums[i] * rightProduct;  // "右侧"的累积值保留在rightProduct中
         }
         return res;
     }
