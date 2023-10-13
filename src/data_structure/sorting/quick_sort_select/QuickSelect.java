@@ -45,7 +45,9 @@ public class QuickSelect {
     // 从左到右，从低到高，第Kth个最大频率的元素正好位于第(n-k)个位置上
     // 其余更左边的没有分区的，可以不用考虑，因为都是更小的值
     public void quickSelect(int left, int right, int kSmallest) {
-        if (left == right) return;
+        if (left == right) {
+            return;
+        }
         int pivot_index = getRandomPivot(left, right);
         pivot_index = partition(left, right, pivot_index);
         if (kSmallest == pivot_index) return;
