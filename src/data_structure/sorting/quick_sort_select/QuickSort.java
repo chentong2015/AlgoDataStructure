@@ -27,6 +27,7 @@ public class QuickSort {
     // 2. 在指定的范围中，随机选择一个值，用来划分左右
     public int partition(int[] nums, int left, int right) {
         int pivot = left;
+
         int index = pivot + 1;
         for (int i = index; i <= right; i++) {
             if (nums[i] < nums[pivot]) {

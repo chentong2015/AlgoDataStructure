@@ -1,5 +1,6 @@
 package data_structure.sorting.quick_sort_select;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,18 +11,30 @@ import java.util.Random;
 // 2. 根据每个元素的频率，进行Quick Sort快速排序，从低频到高频
 // 3. 直到要取的前k的频率和pivot分区位置相等，则它右边的就是前k个最大频率
 // O(n) O(n)
+
+// TODO. 返回的是出现频率大于K的数据
+//  一表存储非重复的离散数据(用于交换位置)
+//  一表存储每个离散数据的重复次数
+// 1 4 5 2 7 4 1 1 2
+//
+// 1 -> 3
+// 4 -> 2
+// 5 -> 1
+// 2 -> 2
+// 7 -> 1
 public class QuickSelect {
 
-    private int[] unique;
     private int countElements;
+    private int[] uniqueElements;
     private Map<Integer, Integer> mapCounts;
 
     public int[] topKFrequent(int[] nums, int k) {
         countNumFrequencies(nums);
         addAllUniqueElements();
+
         quickSelect(0, countElements - 1, countElements - k);
         // 只取右侧位置前k个元素，已经分区过的元素
-        return Arrays.copyOfRange(unique, countElements - k, countElements);
+        return Arrays.copyOfRange(uniqueElements, countElements - k, countElements);
     }
 
     private void countNumFrequencies(int[] nums) {
@@ -35,9 +48,9 @@ public class QuickSelect {
 
     private void addAllUniqueElements() {
         int index = 0;
-        unique = new int[mapCounts.size()];
+        uniqueElements = new int[mapCounts.size()];
         for (int num : mapCounts.keySet()) {
-            unique[index] = num;
+            uniqueElements[index] = num;
             index++;
         }
     }
@@ -48,28 +61,32 @@ public class QuickSelect {
         if (left == right) {
             return;
         }
-        int pivot_index = getRandomPivot(left, right);
-        pivot_index = partition(left, right, pivot_index);
-        if (kSmallest == pivot_index) return;
-        if (kSmallest < pivot_index) {
-            quickSelect(left, pivot_index - 1, kSmallest);
+        int pivotIndex = getRandomPivot(left, right);
+        pivotIndex = partition(left, right, pivotIndex);
+
+        if (kSmallest == pivotIndex) return;
+
+        if (kSmallest < pivotIndex) {
+            quickSelect(left, pivotIndex - 1, kSmallest);
         } else {
-            quickSelect(pivot_index + 1, right, kSmallest);
+            quickSelect(pivotIndex + 1, right, kSmallest);
         }
     }
 
     // TODO: 分区的随机算法影响算法的时间复杂度
     private int getRandomPivot(int left, int right) {
-        Random random_num = new Random();
-        return left + random_num.nextInt(right - left);
+        Random randomNum = new SecureRandom();
+        return left + randomNum.nextInt(right - left);
     }
 
-    // 最后将最右边存储的pivot移动到index,作为分区的中间位置 !!
+    // 最后将最右边存储的pivot移动到index，作为分区的中间位置 !!
     public int partition(int left, int right, int pivot) {
         swap(pivot, right);
         int index = left;
         for (int i = left; i <= right; i++) {
-            if (mapCounts.get(unique[i]) < mapCounts.get(unique[pivot])) {
+            // 判断的是元素的统计量来进行移动Element
+            // 最后返回的是低于自定统计量以下的数据
+            if (mapCounts.get(uniqueElements[i]) < mapCounts.get(uniqueElements[pivot])) {
                 swap(index, i);
                 index++;
             }
@@ -79,8 +96,8 @@ public class QuickSelect {
     }
 
     public void swap(int index1, int index2) {
-        int temp = unique[index1];
-        unique[index1] = unique[index2];
-        unique[index2] = temp;
+        int temp = uniqueElements[index1];
+        uniqueElements[index1] = uniqueElements[index2];
+        uniqueElements[index2] = temp;
     }
 }

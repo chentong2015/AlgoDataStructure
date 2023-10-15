@@ -9,9 +9,10 @@ public class ExtraSubStrings {
         System.out.println(getTotalNumOfNonEmptyExSubstrings("absa"));
     }
 
-    // 26个字符和int之间存在之间的对应关系，之后ab字符的位置特殊
-    // a i k e j
-    // <i -> J> 所有的字符串的可能性一定时N*N
+    // 复杂度的计算: 时间复杂度(等差数列Sequence)，空间复杂度O(N)
+    // c1 c2 c3 ... cN            N为字符的数目
+    // N + (N-1) + (N-2) + ... 1  子字符串必须时联系的相邻的字符
+    // N*(N-1)*N                  总的复杂度为O(N^3)
     public static int getTotalNumOfNonEmptyExSubstrings(String input) {
         char[] chars = input.toLowerCase().toCharArray();
         int totalNum = 0;
@@ -26,8 +27,8 @@ public class ExtraSubStrings {
         return totalNum;
     }
 
-    // TODO. 利用字符本身的隐射关系来完成数据的计算
-    // a b -> 1
+    // TODO. 利用26个字符本身的隐射关系来完成数据的计算
+    // a b -> 1  只有前两个字符处在特殊的位置
     // c d e -> 2
     // f g h -> 3
     private static boolean isValidExSubstring(char[] chars, int startIndex, int endIndex) {
