@@ -1,7 +1,7 @@
 package data_structure.base_data_structures.tree;
 
 import algorithms.datamodel.TreeNode;
-import data_structure.base_data_structures.tree.base.TreeLinkNode;
+import data_structure.base_data_structures.tree.node.TreeLinkNode;
 
 // TODO: Binary Tree 四大遍历方式
 // 1. DFS(Depth first search)   递归遍历 + Stack栈入栈出

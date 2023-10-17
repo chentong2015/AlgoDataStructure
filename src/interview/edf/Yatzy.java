@@ -2,6 +2,7 @@ package interview.edf;
 
 import java.util.Arrays;
 
+// 无法理解Refactoring重构代码之后的评判体系
 // https://sammancoaching.org/kata_descriptions/yatzy.html
 public class Yatzy {
 

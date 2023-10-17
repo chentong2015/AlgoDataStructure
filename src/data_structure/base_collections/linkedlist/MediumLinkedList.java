@@ -17,9 +17,10 @@ public class MediumLinkedList {
         //            O(max(N, M))  O(max(N, M)) 复杂度由最长的那个链表决定
         ListNode head = new ListNode();
         ListNode node = head;
-        int offsetNum = 0;
+
+        int offsetNum = 0; // 需要一个变量来存储偏移量，方便进位
         int sum = 0;
-        while (l1 != null || l2 != null) {
+        while (l1 != null || l2 != null) { // 同时循环两个链表的方法: while非空循环
             if (l1 == null) {
                 sum = l2.value + offsetNum;
                 l2 = l2.next;
@@ -32,6 +33,7 @@ public class MediumLinkedList {
                 l2 = l2.next;
             }
             offsetNum = sum / 10;
+
             node.next = new ListNode(sum % 10);
             node = node.next;
         }

@@ -2,9 +2,9 @@ package data_structure.greedy_dynamic_programming;
 
 /**
  * Greedy Algorithm 贪婪(贪心)算法
+ * 它对每个子问题的解决方案都做出选择，不能回退  ==> 动态规划则会保存以前的运算结果, 有回退功能 !!
  * 1. 一种在每一步选择中都采取在"当前状态下"最好或最优(即最有利)的选择，从而希望导致结果是最好或最优的算法
  * 2. 问题能够分解成子问题来解决，子问题的最优解(局部问题的最优解)能递推到最终问题的最优解(全局最优解)
- * 3. TODO: 它对每个子问题的解决方案都做出选择，不能回退  ==> 动态规划则会保存以前的运算结果, 有回退功能
  */
 public class LearnGreedyAlgo {
 
@@ -27,7 +27,9 @@ public class LearnGreedyAlgo {
         if (n == 3) return 2;
         int timesOf3 = n / 3;
         // 优先考虑拆成3的长度，并计算拆出来的总乘积值
-        if (n - timesOf3 * 3 == 1) timesOf3--;
+        if (n - timesOf3 * 3 == 1) {
+            timesOf3--;
+        }
         int sumTimesOf3 = (int) (Math.pow(3, timesOf3));
 
         int timesOf2 = (n - timesOf3 * 3) / 2;

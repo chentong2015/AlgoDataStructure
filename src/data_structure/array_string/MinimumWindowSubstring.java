@@ -5,12 +5,12 @@ import java.util.*;
 public class MinimumWindowSubstring {
 
     // Minimum Window Substring
-    // Given two strings s/m and t/n, return the minimum window in s which will contain all the characters in t.
+    // Given two strings s and t, return the min window in s which will contain all characters in t.
     // If there is no such window in s that covers all characters in t, return the empty string ""
     // s="ADOBECPMEABCODEBANC", t="ABC" -> "BANC" 如果有结果，那么只有一个最小window substring
     public static String minWindow(String s, String t) {
         // 测试理解：1. 最小子字符串起点必须是t中的字符, 如何保证s和t只被遍历了一遍 ?
-        //          2. 如果t中的字符有重复，会有什么影响 ? 意味着只只需要从s中提取一个字符就能满足"包含" ?
+        // 2. 如果t中的字符有重复，会有什么影响 ? 意味着只需要从s中提取一个字符就能满足"包含" ?
         int[] nums = new int[s.length()];
         for (int i = 0; i < t.length(); i++) {
             for (int j = 0; j < s.length(); j++) {
@@ -85,7 +85,7 @@ public class MinimumWindowSubstring {
                     ans[2] = end;
                 }
                 windowCounts.put(c, windowCounts.get(c) - 1);
-                if (dictT.containsKey(c) && windowCounts.get(c).intValue() < dictT.get(c).intValue()) {
+                if (dictT.containsKey(c) && windowCounts.get(c) < dictT.get(c)) {
                     formed--;
                 }
                 left++;

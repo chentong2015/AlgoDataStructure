@@ -48,12 +48,17 @@ public class LearnIteration {
         int row = 0;
         int lastCol = matrix[0].length - 1;
         int length = matrix.length;
+
         while (row < length) {
-            if (target < matrix[row][0]) return false;        // 注意边界条件，减少不必要的循环和判断 !!
+            if (target < matrix[row][0]) {
+                return false; // 注意边界条件，减少不必要的循环和判断 !!
+            }
             for (int index = 0; index <= lastCol; index++) {
-                if (target == matrix[row][index]) return true;
+                if (target == matrix[row][index]) {
+                    return true;
+                }
                 if (target < matrix[row][index]) {
-                    lastCol = index;
+                    lastCol = index; // 如果小于一行中的某个值，则后面的值都不用再比较
                     break;
                 }
             }

@@ -78,7 +78,7 @@ public class StringSlidingWindow {
         int right = 0;
         int res = 0;
         // TODO: 这个字符数组中存放的是，某个字符在字符串中出现的最后位置
-        //       如果出现重复，则它前面的位置全部跳过，避免一步一步滑动
+        //  如果出现重复，则它前面的位置全部跳过，避免一步一步滑动
         Integer[] chars = new Integer[128]; // char -> int 根据ASCII码值表对应十进制的值，作为数组的下标
         while (right < s.length()) {
             char r = s.charAt(right);

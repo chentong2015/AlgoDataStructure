@@ -2,14 +2,14 @@ package data_structure.array_string;
 
 public class LongestPalindromicSubsequence {
 
-    // TODO: 参照DP编程算法 "Longest Palindromic Subsequence" 能够判断最长的长度 !!
+    // TODO: 参照DP编程算法 "Longest Palindromic Subsequence"
     // Longest Palindromic Substring
     // Given a string s, return the longest palindromic substring in s
     // s = "babad" -> "aba" 字符的位置满足什么样的条件是Palindrome, 中心对称分布
     public String longestPalindrome(String s) {
         // 正确理解：1. 遍历每个位置，然后从"中间位置"往两边扩散，直到扩散不动为止 !!
-        //            避免遗漏掉相邻的两个字符是对称的情况，所以真正作为中心点的位置数目是"n+(n-1)"包含字符中间位置 !!
-        //            O(n*n) O(1)
+        // 避免遗漏掉相邻的两个字符是对称的情况，所以真正作为中心点的位置数目是"n+(n-1)"包含字符中间位置 !!
+        // O(n*n) O(1)
         int start = 0;
         int end = 0;
         for (int index = 0; index < s.length(); index++) {

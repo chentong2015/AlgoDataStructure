@@ -1,53 +1,7 @@
 package data_structure.greedy_dynamic_programming;
 
 public class DynamicProgramming0 {
-
-    // Climbing Stairs 有多少种解法
-    // It takes n steps to reach the top
-    // Each time you can either climb 1 or 2 steps. how many distinct ways can you climb to the top?
-    public int climbStairs(int n) {
-        // 测试理解：每走一步，都对后面有联动的影响，每一步都有两种选择，穷举所有的可能值 !!
-        //          将n步划分成多少个一步和多少个两步的和, 但是和顺序严格相关
-        //          O(2^n) Size of recursion tree will be 2^n 栈开的嵌套方法的调用  !!
-        //          O(n)   The depth of the recursion tree can go upto n 递归造成分配给参数的栈空间，为二叉树的深度 !!
-        if (n == 1) {
-            return 1;
-        } else if (n == 2) {
-            return 2;
-        } else {
-            return climbStairs(n - 1) + climbStairs(n - 2);
-        }
-    }
-
-    // 正确理解: 1. Dynamic Programming: 利用前面已有的(保留的)值，得出下面的结果
-    //            本质上, 到达第n个位置有两种可能, (n-1)位置+1或(n-2)位置+2过来: dp[i]=dp[i−1]+dp[i−2]
-    //            O(n) O(n)
-    public int climbStairsDynamicProgramming(int n) {
-        if (n == 1) return 1;
-        int[] dp = new int[n + 1];
-        dp[1] = 1;
-        dp[2] = 2;
-        for (int i = 3; i <= n; i++) {
-            dp[i] = dp[i - 1] + dp[i - 2];
-        }
-        return dp[n];
-    }
-
-    // TODO: Fibonacci数列 Fib(n)=Fib(n−1)+Fib(n−2)，借助动态编程思想，所实现的最优解
-    // 正确理解: 2. 前两个值分别是1和2, 递归每走一步的两种可能  ==> 无需保存前面每一步(历史)计算出来的值 !!!
-    //           O(n) O(1)
-    public int climbStairsFib(int n) {
-        if (n == 1) return 1;
-        int first = 1;
-        int second = 2;
-        for (int i = 3; i <= n; i++) {
-            int third = first + second;
-            first = second;
-            second = third;
-        }
-        return second;
-    }
-
+    
     // Maximum Subarray
     // Find the contiguous subarray (containing at least one number) which has the largest sum
     // nums = [-2,1,-3,4,-1,2,1,-5,4] -> [4,-1,2,1] -> max = 6
@@ -69,8 +23,8 @@ public class DynamicProgramming0 {
 
     // TODO: DP编程典型实例，使用运算过程中的临时存储值来得出最终结果 !!
     // 正确理解：1. 循环的核心在于"始终有一个中间存储的值，判断是否累计，还是直接用index位置值更新"
-    //            如果在"累计片段"的过程中，加出来的结果是负数，则这个片段直接舍弃
-    //            只有正数的"片断累计"才是有效值，才有可能是和最大的子数组 !!
+    // 如果在"累计片段"的过程中，加出来的结果是负数，则这个片段直接舍弃
+    // 只有正数的"片断累计"才是有效值，才有可能是和最大的子数组 !!
     public int maxSubArray2(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         int max = nums[0];
