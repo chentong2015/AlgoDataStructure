@@ -1,0 +1,36 @@
+
+D
+java:S1121_".Extract the assignment out of this expression.(òæÙ¥
+D
+java:S1121a".Extract the assignment out of this expression.(ÅÅøÎ
+D
+java:S1121b".Extract the assignment out of this expression.(ÐÑª“
+D
+java:S1121q".Extract the assignment out of this expression.(Ê–á¨
+D
+java:S1121s".Extract the assignment out of this expression.(ðÃÜê
+I
+java:S1121t".Extract the assignment out of this expression.(Ùÿ÷°øÿÿÿÿ
+r	java:S127"XRefactor the code in order to not assign to this loop counter from within the loop body.(û©¡ÿúÿÿÿÿ
+m	java:S127#"XRefactor the code in order to not assign to this loop counter from within the loop body.(áŠ¯›
+r	java:S127'"XRefactor the code in order to not assign to this loop counter from within the loop body.(ðí½µúÿÿÿÿ
+m	java:S127("XRefactor the code in order to not assign to this loop counter from within the loop body.(Õ‘‹­
+m	java:S1275"XRefactor the code in order to not assign to this loop counter from within the loop body.(¿Ê²û
+m	java:S1275"XRefactor the code in order to not assign to this loop counter from within the loop body.(¿Ê²û
+m	java:S127K"XRefactor the code in order to not assign to this loop counter from within the loop body.(¿Ê²û
+m	java:S127K"XRefactor the code in order to not assign to this loop counter from within the loop body.(¿Ê²û
+O
+java:S1118	":Add a private constructor to hide the implicit public one.(óÊÂx
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 54 to the 15 allowed.(îªüŠ
+M
+java:S1135"2Complete the task associated to this TODO comment.(äƒ¡¾ýÿÿÿÿ
+Q	java:S1254"<This block of commented-out lines of code should be removed.(áùÈë
+V	java:S125="<This block of commented-out lines of code should be removed.(Øå‰’ûÿÿÿÿ
+Q	java:S125J"<This block of commented-out lines of code should be removed.(ôŠºÀ
+V	java:S125R"<This block of commented-out lines of code should be removed.(¶æ¯÷ùÿÿÿÿ
+V	java:S125Z"<This block of commented-out lines of code should be removed.(˜¹ƒªþÿÿÿÿ
+Z
+java:S1659]"?Declare "pp" and all following declarations on a separate line.(©Ûƒ÷ÿÿÿÿÿ
+U
+java:S1659o"?Declare "pp" and all following declarations on a separate line.(Ú»Òâ

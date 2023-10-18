@@ -1,0 +1,39 @@
+
+w
+java:S1319&"bThe type of "cells" should be an interface such as "Map" rather than the implementation "HashMap".(ÓÑé
+O
+java:S1118":Add a private constructor to hide the implicit public one.(Ó™‡x
+M
+java:S1135 "2Complete the task associated to this TODO comment.(èéÇùÿÿÿÿ
+M
+java:S1135<"2Complete the task associated to this TODO comment.(¬˜Õşüÿÿÿÿ
+N	java:S106]"9Replace this use of System.out or System.err by a logger.(«—ù©
+N	java:S106f"9Replace this use of System.out or System.err by a logger.(«—ù©
+N	java:S106o"9Replace this use of System.out or System.err by a logger.(«—ù©
+N	java:S106y"9Replace this use of System.out or System.err by a logger.(«—ù©
+O	java:S106‚"9Replace this use of System.out or System.err by a logger.(«—ù©
+O	java:S106‹"9Replace this use of System.out or System.err by a logger.(«—ù©
+O	java:S106”"9Replace this use of System.out or System.err by a logger.(«—ù©
+O	java:S106"9Replace this use of System.out or System.err by a logger.(«—ù©
+O	java:S106©"9Replace this use of System.out or System.err by a logger.(«—ù©
+O	java:S106´"9Replace this use of System.out or System.err by a logger.(«—ù©
+D
+java:S1144X".Remove this unused private "testCase1" method.(³ŸŒ
+C
+java:S1144a".Remove this unused private "testCase2" method.(•Ûä
+I
+java:S1144j".Remove this unused private "testCase3" method.(Ï¨ßªüÿÿÿÿ
+D
+java:S1144s".Remove this unused private "testCase4" method.(ğÃàğ
+I
+java:S1144}".Remove this unused private "testCase5" method.(„çÄûÿÿÿÿ
+J
+java:S1144†".Remove this unused private "testCase6" method.(àÖªüÿÿÿÿ
+J
+java:S1144".Remove this unused private "testCase7" method.(ÙÊãÆüÿÿÿÿ
+J
+java:S1144˜".Remove this unused private "testCase8" method.(”¶±óúÿÿÿÿ
+E
+java:S1144¢".Remove this unused private "testCase9" method.(ıĞ„Õ
+K
+java:S1144­"/Remove this unused private "testCase10" method.(µƒûÀüÿÿÿÿ

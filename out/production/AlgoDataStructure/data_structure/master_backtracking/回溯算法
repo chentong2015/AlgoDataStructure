@@ -6,12 +6,11 @@ which incrementally builds candidates to the solution and abandons a candidate (
 as soon as it determines that the candidate cannot lead to a valid solution
 
 TODO: 回溯算法经典案列
- https://leetcode.com/problems/combination-sum/solutions/16502/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning/
+https://leetcode.com/problems/combination-sum/solutions/16502/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning/
 
 Robot Room Cleaner
 扫地机器人的行走路径算法: 将位置区间划分，回溯判断是否碰壁，是则回头，反之继续清扫
 通过回溯算法将每一个能够到达的区间够访问到
 https://leetcode.com/explore/learn/card/recursion-ii/472/backtracking/2793/
 
-Sudoku Solver
-验证数独算法
+Sudoku Solver 验证数独算法

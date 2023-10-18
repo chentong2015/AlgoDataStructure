@@ -1,0 +1,27 @@
+
+J
+java:S3740<"/Provide the parametrized type for this generic.(“Ù—œûÿÿÿÿ
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÔŞÔíşÿÿÿÿ
+f
+java:S1149"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÙÁğ
+f
+java:S1149!"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ŠÈİà
+k
+java:S1149<"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(“Ù—œûÿÿÿÿ
+M
+java:S1135	"2Complete the task associated to this TODO comment.(€¿ô•şÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(£ò–Ä
+S	java:S106+"9Replace this use of System.out or System.err by a logger.(Êµéıÿÿÿÿ
+N	java:S106E"9Replace this use of System.out or System.err by a logger.(¾©¥Ô
+M
+java:S1135P"2Complete the task associated to this TODO comment.(–ó‰€ıÿÿÿÿ
+S	java:S106X"9Replace this use of System.out or System.err by a logger.(°Ë£øÿÿÿÿ
+m
+java:S3776~"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(—õ´¿øÿÿÿÿ
+M
+java:S1135|"2Complete the task associated to this TODO comment.(ôûÜ±ûÿÿÿÿ
+8
+java:S1659"!Declare "pre" on a separate line.(ŒØè•
+8
+java:S1659£""Declare "node" on a separate line.(öõ¦7

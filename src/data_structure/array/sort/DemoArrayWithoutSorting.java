@@ -20,12 +20,13 @@ public class DemoArrayWithoutSorting {
     // 1.  O(n*n)  O(1)  => Not OK
     // 2.  O(n)    O(n)  => OK
     // 3.  O(n)    O(1)  => not possible
-    private static boolean canFindTargetEqualsToSumOfTwoValuesInArray(int[] array, int target, int length) {
+    private static boolean findTargetValue(int[] array, int target, int length) {
         if (array == null || array.length < 2) {
             return false;
         }
         Set<Integer> integerSet = new HashSet<>();
         for (int index = 0; index < length; index++) {
+            // 在遍历时，同时完成对于结果的判断
             if (integerSet.contains(target - array[index])) {
                 return true;
             }
@@ -44,7 +45,7 @@ public class DemoArrayWithoutSorting {
     // [0, 6, 2, 6, 0, 7, 1], 0 -> false
     //
     // O(n*n)   O(n)
-    private static boolean canFindTargetEqualsToSumOfThreeValuesInArray(int[] array, int target) {
+    private static boolean canFindThreeValues(int[] array, int target) {
         if (array == null || array.length < 3) {
             return false;
         }
@@ -53,7 +54,7 @@ public class DemoArrayWithoutSorting {
         for (int index = 0; index < length - 1; index++) {
             swapValueByIndex(array, index, length - 1);
             int remainingValue = target - array[index];
-            boolean canFindSumOfTwoValue = canFindTargetEqualsToSumOfTwoValuesInArray(array, remainingValue, length - 1);
+            boolean canFindSumOfTwoValue = findTargetValue(array, remainingValue, length - 1);
             if (canFindSumOfTwoValue) {
                 return true;
             }
