@@ -1,8 +1,5 @@
 package data_structure.iteration_recursion;
 
-// TODO. Recursion递归 => 解决Tree树递归的问题
-// 使用递归在很多情况下能够简单清除的解决问题，但存在潜在的问题
-// 递归可能导致方法的调用层级过深(可能指数倍的次数)，在空间复杂度上会造成StackOverflow
 public class LearnRecursion1 {
 
     // 使用迭代计算阶乘
@@ -40,7 +37,6 @@ public class LearnRecursion1 {
         }
     }
 
-    // 正确理解1.
     // Dynamic Programming: 利用前面已有的(保留的)值，得出下面的结果
     // 本质上, 到达第n个位置有两种可能, (n-1)位置+1或(n-2)位置+2过来: dp[i]=dp[i−1]+dp[i−2]
     // O(n) O(n)
@@ -56,9 +52,8 @@ public class LearnRecursion1 {
     }
 
     // TODO: Fibonacci数列 Fib(n)=Fib(n−1)+Fib(n−2)，借助动态编程思想，所实现的最优解
-    // 正确理解2.
-    // 前两个值分别是1和2, 递归每走一步的两种可能
-    // 根本不需要保留到每一步的数据，最后只需要返回到最后一步的结果
+    // 第一步有一种可能，第二步有两种可能，第三步的可能情况是前中情况的和(从第一步和第二步都能够走到第三步)
+    // 根本不需要保留到每一步的数据，最后只需要返回到最后一步结果
     // O(n) O(1)
     public int climbStairsFib(int n) {
         if (n == 1) return 1;

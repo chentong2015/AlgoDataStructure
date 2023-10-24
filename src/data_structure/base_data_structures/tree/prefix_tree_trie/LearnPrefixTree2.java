@@ -5,6 +5,7 @@ import java.util.HashMap;
 // TODO: Prefix Hashmap 将前缀树和HashMap结合使用，优化具有共同Prefix的key值的存储
 // 1 <= key.length, prefix.length <= 50
 // key and prefix consist of only lowercase English letters
+//
 // "apple"->3, "app"->2, "code"->1
 // a      0+3+2    c     0+1    sum("app")=3+2=5 存储的是具有公共前缀的字符串的值总和
 // ap     0+3+2    co    0+1    get("app")={"apple", "app"} 获取具有公共前缀的所有字符串(key->list<String>)
@@ -31,7 +32,9 @@ public class LearnPrefixTree2 {
         } else {
             value = val;
         }
-        StringBuilder stringBuilder = new StringBuilder();  // 使用StringBuilder减少字符串拼接造成的时间复杂度 !!
+        
+        // 使用StringBuilder减少字符串拼接造成的时间复杂度
+        StringBuilder stringBuilder = new StringBuilder();
         for (int index = 0; index < key.length(); index++) {
             stringBuilder.append(key.charAt(index));
             String newKey = stringBuilder.toString();

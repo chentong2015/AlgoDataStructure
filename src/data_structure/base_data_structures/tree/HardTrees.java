@@ -52,8 +52,8 @@ public class HardTrees {
     // 2. p != q, p and q will exist in the tree
     // 3. 允许一个结点是另一个结点的后继
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        // 测试理解：1. 递归将二叉树处理成root结点和左右子树，左右子树中判断roo  methodt结点和子树的关系
-        //            O(n) O(n) 最大的递归(递归方法造成的栈开销)的高度是n层，所有的节点排列在一侧
+        // 测试理解：1. 递归将二叉树处理成root结点和左右子树，左右子树中判断root结点和子树的关系
+        // O(n) O(n) 最大的递归(递归方法造成的栈开销)的高度是n层，所有的节点排列在一侧
         if (root == p || root == q) {
             return root;
         }
@@ -72,7 +72,8 @@ public class HardTrees {
             // 如果在"某root结点"的左右子树中都没有有效的结点(没有目标结点)
             return null;
         } else if (leftCommonNode == null) {
-            return rightCommonNode;          // 返回一个非空的值，递归到上层去判断 !!
+            // 返回一个非空的值，递归到上层去判断 !!
+            return rightCommonNode;
         } else if (rightCommonNode == null) {
             return leftCommonNode;
         } else {
@@ -83,7 +84,7 @@ public class HardTrees {
     }
 
     // 测试理解：2. 使用BFS广度优先遍历二叉树，同时使用HashMap存储每一个节点的父节点
-    //            O(n) O(n) 额外开辟3个数据结构的内存空间，但是空间复杂度始终是O(n)
+    // O(n) O(n) 额外开辟3个数据结构的内存空间，但是空间复杂度始终是O(n)
     public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
         Deque<TreeNode> queue = new ArrayDeque<>();
         Map<TreeNode, TreeNode> parent = new HashMap<>();

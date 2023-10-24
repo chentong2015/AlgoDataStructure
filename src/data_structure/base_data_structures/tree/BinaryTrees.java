@@ -3,11 +3,7 @@ package data_structure.base_data_structures.tree;
 import algorithms.datamodel.TreeNode;
 import data_structure.base_data_structures.tree.node.TreeLinkNode;
 
-// TODO: Binary Tree 四大遍历方式
-// 1. DFS(Depth first search)   递归遍历 + Stack栈入栈出
-// 2. BFS(Breadth First Search) 层次迭代(DummyHead辅助) + Queue & Deque双端队列
-// 3. BBFS(Bidirectional BFS)   从顶向下和从底向上同时遍历，如果在同一个Level层面有交集则是联通的
-// 4. Morris Traversal          非递归, 非Stack, 最佳复杂度 O(n) O(1)
+
 public class BinaryTrees {
 
     // Search in a Binary Search Tree

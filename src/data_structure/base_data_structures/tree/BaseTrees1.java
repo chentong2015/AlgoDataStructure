@@ -6,10 +6,7 @@ import java.util.*;
 
 public class BaseTrees1 {
 
-    // TODO: 非递归的三种DFS遍历方式
-    // Binary Tree Traversal : preOrder前序, inorder中序, postOrder后续
-    // 1. 使用递归方式：O(n) O(n)
-    // 2. 使用非递归方式, Stack栈暂存节点
+    // TODO: DFS非递归的遍历方式，前序遍历Tree的所有节点
     public void preOrderStackTraverse(TreeNode root) {
         // 测试复杂度：O(n) O(1) 最多只有两个节点在栈中
         Stack<TreeNode> nodes = new Stack<>();
@@ -78,7 +75,10 @@ public class BaseTrees1 {
     }
 
     // TODO: 非递归的"BFS - Template I"广度优先遍历
-    // 使用queue队列一层一层遍历, 先入队列的先出来, 类似排队
+    //       5
+    //   3      9
+    // 1   4   7   10
+    // 使用queue队列"一层一层"遍历, 先入队列的先出来, 类似排队
     // O(n) O(n) 如果是完全二叉树，队列中对多存储的node是最下面一层，具有和O(n/2)相当的空间复杂度
     public void levelTraverse(TreeNode root) {
         Queue<TreeNode> queue = new ArrayDeque<>();

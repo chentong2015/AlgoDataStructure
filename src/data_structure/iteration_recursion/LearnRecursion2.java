@@ -8,11 +8,6 @@ import java.util.HashMap;
 // 因此将后续或者部分的逻辑通过"调用自身来再次处理"，最后合成解决最终问题
 public class LearnRecursion2 {
 
-    // TODO: Recursion递归方法的典型运用，3步操作逻辑
-    // 1. 判断和排除特殊情况，以便直接返回
-    // 2. 正常执行一个(单元)逻辑的基本操作步骤
-    // 3. 调用自身，剩下的交给该方法再做一次
-
     // Clone Graph
     // Given a reference of a node in a connected undirected graph,
     // return a deep copy (clone) of the graph

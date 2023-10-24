@@ -1,10 +1,10 @@
 package data_structure.base_data_structures.tree.prefix_tree_trie.model;
 
 //                     abcdefghijklmnopqrstuvwxyz
-//                  link                    link
+//                  link                       link
 // abcdefghijklmnopqrstuvwxyz ...             abcdefghijklmnopqrstuvwxyz
 //            link                          link                      link
-// abcdefghijklmnopqrstuvwxyz ...abcdefghijklmnopqrstuvwxyz  ...   abcdefghijklmnopqrstuvwxyz
+// abcdefghijklmnopqrstuvwxyz ... abcdefghijklmnopqrstuvwxyz  ...   abcdefghijklmnopqrstuvwxyz
 //       link
 // abcdefghijklmnopqrstuvwxyz ...
 public class TrieNodeWithEnd {

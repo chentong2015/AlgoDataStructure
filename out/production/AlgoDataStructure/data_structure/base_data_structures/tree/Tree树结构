@@ -7,16 +7,11 @@
      Red–black Tree     红黑树，平衡树(只保证黑色结点平衡)/ TreeMap的实现
 5. Complete Binary Tree 完全二叉树
    Heap                 堆
-
 6. Segment Tree         片段树/Binary Indexed Tree二叉索引树
 7. Decision Tree        决策树(机器学习中的判断数)
-
 8. Prefix Tree          前缀树(使用26个特征字母节点的树) N叉任意树
-
 9. Quad Tree            四叉树(固定有4个子节点的树)
 10. K-d Tree            k维(k-dimensional tree)空间分割的数据结构
-
 11. B-Tree              树的单个结点存储多个数据，降低树的高度
 12. B+Tree              MySQL索引底层选择的数据结构
-
 13. Splay Tree

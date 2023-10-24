@@ -1,11 +1,21 @@
 package interview.murex;
 
+import algorithms.datamodel.TreeNode;
 import interview.murex.model.Word;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MurexQuestion1 {
+
+    // LCA二叉树中最小的公共前继
+    // 输入二叉树的root结点，以及两个结点的值，返回最小公共node
+    public static int findLCA(TreeNode root, int p, int q) {
+        // 判断初始条件
+        // 递归判断左右子树
+        // 按照找到的结果进行返回
+        return 0;
+    }
 
     // 对字符串进行指定规则的加工，添加指定的后缀??
     // this asa out test
