@@ -4,15 +4,16 @@ package data_structure.binary_search;
 // 标准二分法, 只需要访问单一的index就能确定, 不需要考虑相邻或者相关的index
 public class BinarySearchTemplate1 {
 
-    // 1. 注意起使位置的设置，确定范围                   ==> 根据数组或者数字范围确定
-    // 2. 注意while循环的结束条件                      ==> 判断是否能相等，是否需要间隔，结束的条件是什么
-    // 3. 注意左右index位置的更新 !!                   ==> 在left < right循环中必须更新
+    // 1. 注意起使位置的设置，确定范围   ==> 根据数组或者数字范围确定
+    // 2. 注意while循环的结束条件      ==> 判断是否能相等，是否需要间隔，结束的条件是什么
+    // 3. 注意左右index位置的更新 !!   ==> 在left < right循环中必须更新
     public int binarySearch1(int[] nums, int target) {
-        if (nums == null || nums.length == 0) return -1;
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
         int left = 0;
         int right = nums.length - 1;
-        // TODO. 注意这里的相等条件
-        // 能确定到搜索同一个位置, 后面的left，right其中之一必须移动
+        // 注意这里的相等条件: 能确定到搜索同一个位置, 后面的left，right其中之一必须移动
         while (left <= right) {
             // TODO: 计算中间位置时，注意避免值的溢出overflow  ==> 固定写法
             int mid = left + (right - left) / 2;
@@ -29,8 +30,6 @@ public class BinarySearchTemplate1 {
         return -1; // End Condition: left > right
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     // Guess Number Higher or Lower
     // I pick a number from 1 to n. You have to guess which number I picked
     // Every time you guess wrong, I will tell you whether the number I picked is higher or lower than your guess
@@ -39,13 +38,13 @@ public class BinarySearchTemplate1 {
         if (n == 1) return 1;
         int low = 1;
         int high = n;
-        while (low < high) {                      // 这里不需要间隔位置，可以相差一个值
+        while (low < high) { // 这里不需要间隔位置，可以相差一个值
             int middle = low + (high - low) / 2;
             if (guess(middle) == 0) return middle;
             if (guess(middle) < 0) {
-                high = middle;                    // 当while(low<=high)条件是，这里可以使用high = middle - 1;
+                high = middle;  // 当while(low<=high)条件是，这里可以使用high = middle - 1;
             } else {
-                low = middle + 1;                 // 必须将low低位往前进，避免下次计算middle时，回到原来的low值，造成循环 !!
+                low = middle + 1; // 必须将low低位往前进，避免下次计算middle时，回到原来的low值，造成循环 !!
             }
         }
         return low; // 出循环条件: low=high说明置于同一个位置，可以确定该值
@@ -56,7 +55,7 @@ public class BinarySearchTemplate1 {
         // -1: The number I picked is lower than your guess (i.e. pick < num).
         // 1: The number I picked is higher than your guess (i.e. pick > num).
         // 0: The number I picked is equal to your guess (i.e. pick == num).
-        return 0;
+        return num + 1;
     }
 
     // TODO: 如果有两个有序排列的数据，那么就使用两次二分搜索 O(2log(n))
@@ -71,7 +70,7 @@ public class BinarySearchTemplate1 {
 
         int minIndex = BinarySearchTemplate2.findMinIndex(nums);
         if (nums[minIndex] == target) return minIndex;
-        int low = nums[minIndex] < target ? minIndex : 0;                    // 只有两种可能区间[0, minIndex-1] & [minIndex, length-1]
+        int low = nums[minIndex] < target ? minIndex : 0;  // 只有两种可能区间[0, minIndex-1] & [minIndex, length-1]
         int high = nums[minIndex] < target ? nums.length - 1 : minIndex - 1; // 中间minIndex作为划分的分水岭，左边一个是最大值 !
         while (low <= high) {
             int middle = low + (high - low) / 2;

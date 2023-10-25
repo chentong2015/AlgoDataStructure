@@ -16,11 +16,11 @@ public class BaseTrees2 {
         if (root == null) {
             return 0;
         } else if (root.getLeft() == null) {
-            return 1 + maxDepth(root.getRight());
+            return maxDepth(root.getRight()) + 1;
         } else if (root.getRight() == null) {
-            return 1 + maxDepth(root.getLeft());
+            return maxDepth(root.getLeft()) + 1;
         } else {
-            return 1 + Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight()));
+            return Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight())) + 1;
         }
     }
 

@@ -6,7 +6,7 @@ import java.util.Stack;
 public class LearnStack {
 
     // TODO: 使用特殊stack栈(数组结构)
-    //       同数组的下标index来存储和读取，始终在top前端位置添加和删除
+    //  同数组的下标index来存储和读取，始终在top前端位置添加和删除
     // Daily Temperatures
     // Array of integers temperatures represents the daily temperatures
     // Return an array answer such that answer[i] is the number of days you have to wait

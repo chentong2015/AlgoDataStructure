@@ -8,7 +8,9 @@ public class BaseTrees1 {
 
     // TODO: DFS非递归的遍历方式，前序遍历Tree的所有节点
     public void preOrderStackTraverse(TreeNode root) {
-        // 测试复杂度：O(n) O(1) 最多只有两个节点在栈中
+        // O(n) O(1) 最多只有两个节点在栈中，比"递归"的空间复杂度要更加优化 !!
+        //
+        // 需要首先将root跟节点入栈，再取出来依次循环
         Stack<TreeNode> nodes = new Stack<>();
         nodes.push(root);
         while (!nodes.isEmpty()) {

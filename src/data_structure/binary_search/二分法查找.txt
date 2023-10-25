@@ -1,10 +1,16 @@
-BinarySearch二分法搜索: 不需遍历所有值，时间复杂度为O(log(n))
+TODO. 二分法的本质(优先考虑的问题)
+ 从一堆有序的数据中找到指定数据，不需遍历所有值，时间复杂度为O(log(n))
+ 从一堆无序的数据中找到指定数据，只要能够在二分后判断是"先前还是向后"移动index即可
+
+BinarySearch二分法搜索:
 1. 根据不同同情况使用三种不同模板 Templates
 2. 适用于排序好的数据，如果是拼接好的排序数据，则对片段数据操作二分法 O(2log(n)) = O(log(n))
 3. 二分法不止作用在元素位置上面，同样可以作用在总值范围 & 距离差值(方法最终要返回的结果) !!
 
+Arrays.binarySearch(array, item)
+Collections.binarySearch(list, item)
+
 JSE API提供二分法的实现: 针对数组和集合的实现
-Arrays.binarySearch(array, item) / Collections.binarySearch(list, item)
 // 如果找到则返回index的位置
 // 没有找到则返回负值 (-(insertion point) - 1)
 // 恢复插入的位置     index = -(index + 1)

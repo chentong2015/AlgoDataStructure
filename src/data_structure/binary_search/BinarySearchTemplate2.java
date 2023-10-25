@@ -32,7 +32,11 @@ public class BinarySearchTemplate2 {
     // n versions [1, 2, ..., n] and find out the first bad one,
     // which causes all the following ones to be bad
     // 找到一组产品中第一次次品: 该index位置是次品，而index-1前面相邻的位置是正品
+    // 1. 数组中和版本的数目大小没有关系
+    // 2. 当遇到次品时，它前面一定有版本，次品一定不是第一个位置
+    //
     // 1 2 3 4 0 0 0 0
+    // 1 0 0 0 0 0 0 0
     public int firstBadVersion(int n) {
         // 正确理解：1. 在二分法查找的过程中，必须判断两个index位置，来确定最后的移动方向
         int low = 1;
@@ -43,9 +47,9 @@ public class BinarySearchTemplate2 {
                 if (!isBadVersion(middle - 1)) {
                     return middle;
                 }
-                high = middle;
+                high = middle; // 只要能判断左右的移动方向即可
             } else {
-                low = middle + 1;
+                low = middle + 1; // 需要+1，原因是只要能进入else则说明middle位置一定为正品 !!
             }
         }
         // 出循环条件: low=high, (low-1)位置正品 < low第一个次品, high位置次品 ... 都是次品
