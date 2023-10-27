@@ -33,13 +33,15 @@ public class BaseTrees1 {
         TreeNode node = root;
         while (node != null || !stack.isEmpty()) {
             if (node != null) {
-                stack.push(node); // 先压root栈，然后持续压左边子树，直到压到叶子节点
+                // 先压root栈，然后持续压左边子树，直到压到叶子节点
+                stack.push(node);
                 node = node.getLeft();
             } else {
                 // 从最后压入的左边子树的叶子节点开始出栈
                 // 如果该节点有右边的子树，将有节点压入，作为root之后出栈的node
                 TreeNode popNode = stack.pop();
                 System.out.println(popNode.getVal());
+
                 node = popNode.getRight();
             }
         }
@@ -58,13 +60,15 @@ public class BaseTrees1 {
     public void postOrderStackTraverse(TreeNode root) {
         Stack<TreeNode> stack = new Stack();
         TreeNode visitedRightNode = null;
+
         while (root != null || !stack.empty()) {
             if (root != null) {
                 stack.push(root);
                 root = root.getLeft();
             } else {
                 root = stack.peek();
-                if (root.getRight() == null || root.getRight() == visitedRightNode) { // 如果node的右边子树为null，或是已经被遍历过
+                // 如果node的右边子树为null或已经被遍历过
+                if (root.getRight() == null || root.getRight() == visitedRightNode) {
                     System.out.println(root.getVal());
                     stack.pop();
                     visitedRightNode = root;  // 纪录前面一个输出的节点，把遍历过的位置路径做标记
