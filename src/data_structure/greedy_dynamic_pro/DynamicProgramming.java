@@ -13,7 +13,10 @@ public class DynamicProgramming {
     public int lengthOfLIS(int[] nums) {
         // 正确理解：1. Dynamic Programming 使用等长数组保存"每一步所积累的'它前面的'最长的到达步数"
         // O(n^2) O(n)
-        if (nums.length == 0) return 0;
+        if (nums.length == 0) {
+            return 0;
+        }
+        // 必须将之前每一步的数据存储，只用一个变量是无法保存这些信息
         int[] steps = new int[nums.length];
         steps[0] = 1;
         int maxAnswer = 1;
@@ -28,8 +31,10 @@ public class DynamicProgramming {
                 }
             }
 
-            steps[i] = maxStepBefore + 1;  // 在"前面子序列最长的"那个点的基础上再移动一步
-            maxAnswer = Math.max(maxAnswer, steps[i]); // 更新记录的最大值, 因为可能出现几个不同的增长序列, 需要求总的
+            // 在"前面子序列最长的"那个点的基础上再移动一步，如果没有遍历到，则初始第一步为1
+            steps[i] = maxStepBefore + 1;
+            // 更新记录的最大值, 因为可能出现几个不同的增长序列, 需要求总的
+            maxAnswer = Math.max(maxAnswer, steps[i]);
         }
         return maxAnswer;
     }

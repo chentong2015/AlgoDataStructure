@@ -1,8 +1,0 @@
-
-N	java:S106"9Replace this use of System.out or System.err by a logger.(…æÇ¦
-N	java:S106"9Replace this use of System.out or System.err by a logger.(…æÇ¦
-R
-java:S1144
-"7Remove this unused private "testPriorityQueue1" method.(–Š‚Õùÿÿÿÿ
-M
-java:S1144"7Remove this unused private "testPriorityQueue2" method.(ê»¾•

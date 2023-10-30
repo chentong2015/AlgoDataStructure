@@ -1,4 +1,4 @@
-package data_structure.array.sort;
+package data_structure.array.sorting;
 
 import java.util.HashSet;
 import java.util.Set;

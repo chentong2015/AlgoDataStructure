@@ -21,7 +21,7 @@ TODO: Binary Tree 四大遍历方式
    1.1 递归遍历
    1.2 Stack栈入栈出: preOrder前序, inorder中序, postOrder后续
 
-2. BFS(Breadth First Search) 广度优先遍历
+2. BFS(Breadth First Search) 广度优先遍历 (从一个层面上进行遍历)
    2.1 层次迭代(DummyHead辅助)
    2.2 Queue & Deque双端队列
 

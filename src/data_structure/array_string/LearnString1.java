@@ -6,13 +6,15 @@ public class LearnString1 {
     //  1. 使用'A'+const int 必须使用具体的值作为偏移量
     //  2. 使用(char)(65+value) 使用变量作为偏移，然后强制转换成char
     public static String convertColNumber(int col) {
-        if (col < 0) return null;
-
+        if (col < 0) {
+            return null;
+        }
         StringBuilder stringBuilder = new StringBuilder();
         int remaining = col;
         while (remaining > 0) {
             int offset = (remaining - 1) % 26;
-            stringBuilder.append((char) (65 + offset));
+            char c = (char) (65 + offset);
+            stringBuilder.append(c);
             remaining = (remaining - offset) / 26;
         }
         return stringBuilder.reverse().toString();
@@ -46,8 +48,12 @@ public class LearnString1 {
     // haystack = "hello", needle = "ll" -> index = 2
     public int strStr(String haystack, String needle) {
         // 测试理解：1. 在没有别的解法时，直接使用常规解法 O(n*m) O(1) !!
-        if (needle == null || needle.isEmpty()) return 0;
-        if (haystack == null || haystack.length() < needle.length()) return -1;
+        if (needle == null || needle.isEmpty()) {
+            return 0;
+        }
+        if (haystack == null || haystack.length() < needle.length()) {
+            return -1;
+        }
         for (int index = 0; index < haystack.length(); index++) {
             for (int j = 0; j < needle.length(); j++) {
                 if (index + j == haystack.length()) return -1;
