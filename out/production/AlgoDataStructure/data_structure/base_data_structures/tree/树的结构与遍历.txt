@@ -1,0 +1,32 @@
+1. N-Ary Tree           N叉任意树
+2. Binary Tree          二叉树
+3. Binary Search Tree   二叉搜索树
+     Balanced BST       保证树的高度最低
+     Unbalanced BST     左右子树不平衡
+4. AVL Tree             完全自平衡二叉查找树(完全平衡)
+     Red–black Tree     红黑树，平衡树(只保证黑色结点平衡)/ TreeMap的实现
+5. Complete Binary Tree 完全二叉树
+   Heap                 堆
+6. Segment Tree         片段树/Binary Indexed Tree二叉索引树
+7. Decision Tree        决策树(机器学习中的判断数)
+8. Prefix Tree          前缀树(使用26个特征字母节点的树) N叉任意树
+9. Quad Tree            四叉树(固定有4个子节点的树)
+10. K-d Tree            k维(k-dimensional tree)空间分割的数据结构
+11. B-Tree              树的单个结点存储多个数据，降低树的高度
+12. B+Tree              MySQL索引底层选择的数据结构
+13. Splay Tree
+
+TODO: Binary Tree 四大遍历方式
+1. DFS(Depth first search) 深度优先遍历
+   1.1 递归遍历
+   1.2 Stack栈入栈出: preOrder前序, inorder中序, postOrder后续
+
+2. BFS(Breadth First Search) 广度优先遍历 (从一个层面上进行遍历)
+   2.1 层次迭代(DummyHead辅助)
+   2.2 Queue & Deque双端队列
+
+3. BBFS(Bidirectional BFS) 双向广度优先遍历
+   从顶向下和从底向上同时遍历，如果在同一个Level层面有交集则是联通的
+
+4. Morris Traversal
+   非递归, 非Stack, 最佳复杂度 O(n) O(1)

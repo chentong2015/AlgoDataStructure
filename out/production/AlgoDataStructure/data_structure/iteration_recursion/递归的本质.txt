@@ -1,0 +1,27 @@
+TODO. Recursion递归 => 解决Tree树递归的问题
+1. 使用递归在很多情况下能够简单清除的解决问题，但存在潜在的问题
+2. 递归可能导致方法的调用层级过深(可能指数倍的次数)，在空间复杂度上会造成StackOverflow
+
+TODO: Recursion递归方法的典型运用，3步操作逻辑
+1. 判断和排除特殊情况，以便直接返回
+2. 正常执行一个(单元)逻辑的基本操作步骤
+3. 调用自身，剩下的交给该方法再做一次
+
+public static void main(String[] args) {
+   test(5);
+}
+
+// test(5)
+//   test(4)
+//     test(3)
+//       test(2)
+//         test(1)
+//             对于value=1时，test(0)方法返回，则继续执行后面的Print
+//           test(0) return; 递归到底则无法继续递归，开始返回
+public static void test(int value) {
+    if (value == 0) {
+        return;
+    }
+    test(value - 1);
+    System.out.println("return: " + value);
+}

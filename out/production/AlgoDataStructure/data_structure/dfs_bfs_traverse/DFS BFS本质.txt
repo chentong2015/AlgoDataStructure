@@ -1,0 +1,7 @@
+DFS(Depth first search) 深度优先遍历
+BFS(Breadth First Search) 广度优先遍历
+
+两种遍历的应用场景:
+1. Tree树的遍历
+2. Graph图的遍历
+3. Backtracking结合回溯算法解决问题
