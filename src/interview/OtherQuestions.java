@@ -8,6 +8,12 @@ import java.util.Optional;
 
 public class OtherQuestions {
 
+    private interface PhoneCall {
+        String getPhoneNumber();
+
+        Duration getDuration();
+    }
+
     // Ekino
     // 需要注意方法的初始化条件 + Java Stream API的使用
     public Optional<String> solution(List<PhoneCall> phoneCalls) {
@@ -39,11 +45,5 @@ public class OtherQuestions {
             return Optional.empty();
         }
         return Optional.of(resultNumber);
-    }
-
-    interface PhoneCall {
-        String getPhoneNumber();
-
-        Duration getDuration();
     }
 }

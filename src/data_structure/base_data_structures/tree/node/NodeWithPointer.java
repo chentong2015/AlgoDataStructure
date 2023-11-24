@@ -8,8 +8,8 @@ public class NodeWithPointer {
         private Node right;
         private int value;
 
+        // 该方法在极端情况下还是会造成StackOverflow
         public Node find(int v) {
-
             if (this.value == v) {
                 return this;
             } else if (this.value < v) {

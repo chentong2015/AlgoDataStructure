@@ -8,23 +8,21 @@ public class LearnArray5 {
     // [-2, 3, 2, 5, -1] => -1
     // [-2, 3, 5] => -2
     //
-    // O(n) O(1) 在不增加额外的空间复杂度的条件下，使用一个标识符来判断找到的值是否为正
-    public static int computeClosestToZero(int[] array) {
-        if (array == null || array.length == 0) {
+    // 一个值记录比较的最小绝对值，一个值记录最后的结果
+    // 只有两种条件下才会更新最后的result
+    // O(n) O(1)
+    static int closestToZero(int[] ints) {
+        if (ints == null || ints.length == 0) {
             return 0;
         }
         int result = 0;
-        int valueAbsClosestToZero = Integer.MAX_VALUE;
-        for (int item : array) {
-            int valueAbs = Math.abs(item);
-            if (valueAbs < valueAbsClosestToZero) {
-                valueAbsClosestToZero = valueAbs;
-                result = item;
-            }
-
-            // 始终保证返回的是正数的值
-            if (valueAbs == valueAbsClosestToZero && result < item) {
-                result = item;
+        int closestAbs = Integer.MAX_VALUE;
+        for (int i : ints) {
+            if (Math.abs(i) < closestAbs) {
+                closestAbs = Math.abs(i);
+                result = i;
+            } else if (Math.abs(i) == closestAbs && i > 0) {
+                result = i;
             }
         }
         return result;
