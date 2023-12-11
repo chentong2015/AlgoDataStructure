@@ -48,7 +48,8 @@ public class DynamicProgramming {
     //    dp: [0, 4]
     //    dp: [0, 4, 12]
     //    dp: [0, 2, 12] 这里存储的不是正确的排序值，但是数组的长度是最终的答案
-    // Store increasing subsequence formed by including currently encountered element 这个数组需要预留足够的长度
+    // Store increasing subsequence formed by including currently encountered element
+    // 这个数组需要预留足够的长度
     public int lengthOfLIS2(int[] nums) {
         int[] dp = new int[nums.length];
         int length = 0;

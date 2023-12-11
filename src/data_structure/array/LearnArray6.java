@@ -140,20 +140,21 @@ public class LearnArray6 {
     // nums = [3,30,34,5,9,200]  -> "9534330200"
     public String largestNumber(int[] nums) {
         // 正确理解:  1. 本质上是需要做一个排序，换成字符串进行大小比较 !! 不需要比较"整数分位"上的值
-        //              9 > 5 > 34 > 3 > 30 > 200
-        //              O(nlog(n)) 由于数组排序带来的时间复杂度 O(n)
+        //  9 > 5 > 34 > 3 > 30 > 200
+        //  O(nlog(n)) 由于数组排序带来的时间复杂度 O(n)
         String[] strings = new String[nums.length];
         for (int i = 0; i < nums.length; i++) {
             strings[i] = String.valueOf(nums[i]);
         }
+
         Arrays.sort(strings, new LargerNumberComparator());
         if (strings[0].equals("0")) {
             return "0";
         }
-        String largestNumberStr = "";
+        StringBuilder largestNumberStr = new StringBuilder();
         for (String numAsStr : strings) {
-            largestNumberStr += numAsStr;
+            largestNumberStr.append(numAsStr);
         }
-        return largestNumberStr;
+        return largestNumberStr.toString();
     }
 }
