@@ -12,8 +12,7 @@ public class BaseArray1 {
         int left = 0;
         for (int index = 0; index < nums.length; index++) {
             if (nums[index] != val) {
-                nums[left] = nums[index];
-                left++;
+                nums[left++] = nums[index];
             }
         }
         return left;
@@ -26,36 +25,42 @@ public class BaseArray1 {
     //         1 3 12
     public void moveZeroes(int[] nums) {
         // 测试理解：1. 将非0的值依次排列在数组的开头，最后留下的位置就是0的值(统计数目) O(n) O(1)
-        int count = 0;
+        int countZero = 0;
         int index = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != 0) {
                 nums[index++] = nums[i];
             } else {
-                count++;
+                countZero++;
             }
         }
         // 最后补充结尾的0位置，可以直接使用index来循环，不需要统计0的数目
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < countZero; i++) {
             nums[nums.length - 1 - i] = 0;
         }
     }
 
     // Remove duplicates from sorted array
-    // The input array is passed in by reference, it doesn't matter what you leave beyond the returned length
-    // For example: [0,0,1,1,1,2,2,3,3,4] -> [0,1,2,3,4]
-    public int removeDuplicates(int[] nums) {
-        // 正确理解：由于是排序排列的，因此只需要找到所有不同的item，从开始位置依次往后排即可
+    // The input array is passed in by reference
+    // it doesn't matter what you leave beyond the returned length
+    // For example: [0,0,1,1,1,2,2,3,3,4] ->  [0,1,2,3,4,2,2,3,3,4]
+    //              [0,1,2,3,4] -> [0,1,2,3,4]
+    // 排序好的数据，每次只需要检测新出现的值，直接利用数组本身来操作
+    public static int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        // 从第二个位置开始，只在有不同的值出现的时候才交换一次位置 !!
-        // 只找后面和left位置值不同的数据，往数组的左边移动
         int left = 0;
         for (int index = 1; index < nums.length; index++) {
-            if (nums[left] != nums[index]) {
-                nums[left] = nums[index];
-                left++;
+            if (nums[index] != nums[left]) {
+                // 判断两个不同值之间是否处于相邻位置
+                // 当出现不同的值时，left位置一定会向后移动一位
+                if (index == left + 1) {
+                    left++;
+                } else {
+                    left++;
+                    nums[left] = nums[index];
+                }
             }
         }
         return left + 1;
