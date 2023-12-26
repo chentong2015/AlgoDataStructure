@@ -117,8 +117,8 @@ public class LearnArray6 {
     //             O(n+n)=O(n)  O(n)
     public int longestConsecutive2(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {        // O(n)
-            map.put(nums[i], nums[i] + 1);
+        for (int num : nums) {
+            map.put(num, num + 1);
         }
         int max = 0;
         for (int key : map.keySet()) {                 // O(n)

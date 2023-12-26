@@ -18,7 +18,7 @@ public class LearnString6 {
     //
     // O(n) O(1)
     public static int maxScore(String str) {
-        if (str == null || str.length() == 0) {
+        if (str == null || str.isEmpty()) {
             return 0;
         }
         int maxScore = 0;
