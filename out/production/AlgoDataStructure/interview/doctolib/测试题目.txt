@@ -1,0 +1,11 @@
+返回从指定的时间开始，接下来的7天之间内可以约会的所有slots
+You will write a function that takes a date as input and
+returns an object/hash containing the doctor's available slots for the next seven days,
+starting on the input date.
+
+SQL database table that contains events. Events come in two kinds:
+- opening: times when the doctor is available to take patients
+- appointment: times when the doctor is not available because she's with a patient
+
+1. 数据结构是什么 ？
+2. 算法的逻辑如何测试，优先考虑单元测试 ？
