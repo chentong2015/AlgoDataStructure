@@ -6,7 +6,9 @@ public class Event {
 
     private int id;
     private Kind kind;
-    private LocalDateTime localDateTime; // One slot time
+
+    // One slot time: start time + duration ?
+    private LocalDateTime localDateTime;
 
     public Event(int id, Kind kind, LocalDateTime localDateTime) {
         this.id = id;

@@ -2,11 +2,9 @@ package data_structure.sorting;
 
 import java.util.*;
 
-/**
- * 算法1：找一組数据中前K个数的算法
- */
 public class SortingSearching2 {
 
+    // TODO: 找一組数据中前K个数的算法
     // Top K Frequent Elements
     // Given an integer array nums and an integer k, return the k most frequent elements
     public int[] topKFrequent(int[] nums, int k) {
@@ -38,15 +36,6 @@ public class SortingSearching2 {
         }
         return top;
     }
-
-    // Kth Largest Element in an Array 
-    // The kth largest element in the sorted order, not the kth distinct element
-    // 使用QuickSelect算法来解决
-    public int findKthLargestElement() {
-        return 0;
-    }
-
-    // -----------------------------------------------------------------------------------------------------------------
 
     // Merge Intervals 合并特征区间所使用的数据结构
     // Given an array of intervals where intervals[i] = [start, end], start <= end 整合区间
