@@ -12,6 +12,8 @@ public class AppointmentBookingTest {
 
         AppointmentBooking appointmentBooking = new AppointmentBooking();
         List<LocalDateTime> slots = appointmentBooking.computeSlotsForNextSevenDays(startDate);
+
+        // Create assertions for the results
         for (LocalDateTime localDateTime: slots) {
             System.out.println(localDateTime);
         }

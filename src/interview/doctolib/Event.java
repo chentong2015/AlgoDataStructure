@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 public class Event {
 
     private int id;
+    // The type of this event
     private Kind kind;
-
     // One slot time: start time + duration ?
     private LocalDateTime localDateTime;
 

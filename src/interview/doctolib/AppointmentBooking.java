@@ -10,7 +10,9 @@ import java.util.List;
 // starting on the input date.
 public class AppointmentBooking {
 
+    // TODO. 获取最后的结果存在两个层面的Filter过滤(Java | SQL)
     // Get all events and filter all available slots
+    // Add filter inside request SQL to return only opening events !
     public List<LocalDateTime> computeSlotsForNextSevenDays(LocalDate startDate) {
         List<LocalDateTime> availableSlots = new ArrayList<>();
         for (Event event: getEventsData()) {
@@ -22,15 +24,14 @@ public class AppointmentBooking {
         return availableSlots;
     }
 
-    // 比较的时候只能使用Date日期判断，而非使用DateTime时刻判断
+    // 只能使用Date日期判断而非DateTime时刻(存在计算偏差)
     // The valid period/slot should be from today(after yesterday) to 7 days later
     private boolean isValidSlot(LocalDate eventDate, LocalDate startDate) {
          return eventDate.isAfter(startDate.minusDays(1))
                  && eventDate.isBefore(startDate.plusDays(8));
     }
 
-    // Simulate database table data with all events information
-    // All these events are for one single doctor
+    // Simulate database table data with events info, all events for one doctor
     private List<Event> getEventsData() {
         List<Event> eventList = new ArrayList<>();
         eventList.add(new Event(1, Kind.OPENING, LocalDateTime.now().plusDays(1)));
