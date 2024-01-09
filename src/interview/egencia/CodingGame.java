@@ -48,7 +48,7 @@ public class CodingGame {
         List<Integer> results = new ArrayList<>();
         results.add(1);
         for (int id = 1; id < words.length; id++) {
-            if (words[id] == comparedWord) {
+            if (Objects.equals(words[id], comparedWord)) {
                 results.set(index, results.get(index) + 1);
             } else {
                 index++;
@@ -86,14 +86,14 @@ public class CodingGame {
         return totalPrice;
     }
 
-    // 折扣的约束: 0 <= discount <= 100
-    // 当计算中出现浮点小数时，需要向下取整数
+    // 折扣的约束, 注意考虑边界值: 0 <= discount <= 100
     private static int calculate(int price, int discount) {
         if (discount == 0) {
             return price;
         } else if (discount == 100) {
             return 0;
         } else {
+            // 地板函数: 计算中出现浮点小数时，向下取整数
             return (int) Math.floor(price * (100 - discount) / 100);
         }
     }

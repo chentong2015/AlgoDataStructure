@@ -16,8 +16,8 @@ public class AppointmentBooking {
     public List<LocalDateTime> computeSlotsForNextSevenDays(LocalDate startDate) {
         List<LocalDateTime> availableSlots = new ArrayList<>();
         for (Event event: getEventsData()) {
-            if (event.getKind() == Kind.OPENING &&
-                    isValidSlot(event.getLocalDateTime().toLocalDate(), startDate)) {
+            LocalDate date = event.getLocalDateTime().toLocalDate();
+            if (event.getKind() == Kind.OPENING && isValidSlot(date, startDate)) {
                 availableSlots.add(event.getLocalDateTime());
             }
         }

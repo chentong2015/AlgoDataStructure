@@ -14,13 +14,10 @@ public class LearnArray7 {
     // 开头和结尾的边界值需要做特殊的处理
     public static int findPeakElement(int[] nums) {
         int size = nums.length;
-        if (size == 1) {
+        if (size == 1 || nums[0] > nums[1]) {
             return 0;
         }
-        if (nums[0] > nums[1]) {
-            return 0;
-        }
-        if (nums[size-1] > nums[size-2]) {
+        if (nums[size-2] < nums[size-1]) {
             return size-1;
         }
         for (int index = 1; index < size - 1; index++) {
