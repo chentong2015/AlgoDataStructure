@@ -10,7 +10,7 @@ public class LearnRecursion1 {
         return n * factor(n - 1);
     }
 
-    // fi(n) = fi(n-1) + fi(n-2) 通项公式 !!!
+    // 数列通项公式 fi(n) = fi(n-1) + fi(n-2)
     public static long fibonacci(int n) {
         if (n == 0) {
             return 0;

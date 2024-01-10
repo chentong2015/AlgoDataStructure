@@ -1,4 +1,4 @@
-package interview.doctolib;
+package interview.doctolib.model;
 
 import java.time.LocalDateTime;
 
@@ -7,7 +7,7 @@ public class Event {
     private int id;
     // The type of this event
     private Kind kind;
-    // One slot time: start time + duration ?
+    // timestamps: datetime 就是一个时间戳, 不仅仅包含Date日期
     private LocalDateTime localDateTime;
 
     public Event(int id, Kind kind, LocalDateTime localDateTime) {

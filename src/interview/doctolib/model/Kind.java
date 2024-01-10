@@ -1,4 +1,4 @@
-package interview.doctolib;
+package interview.doctolib.model;
 
 // Events come in two kinds:
 // - opening: times when the doctor is available to take patients

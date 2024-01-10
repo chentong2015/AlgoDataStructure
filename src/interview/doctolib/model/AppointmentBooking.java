@@ -1,4 +1,4 @@
-package interview.doctolib;
+package interview.doctolib.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,21 +10,29 @@ import java.util.List;
 // starting on the input date.
 public class AppointmentBooking {
 
-    // TODO. 获取最后的结果存在两个层面的Filter过滤(Java | SQL)
-    // Get all events and filter all available slots
-    // Add filter inside request SQL to return only opening events !
+    // TODO. 两个层面的Filter过滤, 获取最后满足条件的结果
+    // 1. Java Level: For loop | Streams Filter
+    // 2. Request Level: add 'where' condition in SQL request
     public List<LocalDateTime> computeSlotsForNextSevenDays(LocalDate startDate) {
-        List<LocalDateTime> availableSlots = new ArrayList<>();
-        for (Event event: getEventsData()) {
-            LocalDate date = event.getLocalDateTime().toLocalDate();
-            if (event.getKind() == Kind.OPENING && isValidSlot(date, startDate)) {
-                availableSlots.add(event.getLocalDateTime());
-            }
-        }
-        return availableSlots;
+        // Get all available slot by filtering condition of events
+        List<Event> events = getEventsData();
+        return events.stream()
+                .filter(event -> event.getKind() == Kind.OPENING)
+                .map(Event::getLocalDateTime) // Method Reference, map映射到对象的其中一个属性
+                .filter(localDateTime -> isValidSlot(localDateTime.toLocalDate(), startDate)) // 利用属性做进一步的过滤
+                .toList();
+
+        // List<LocalDateTime> availableSlots = new ArrayList<>();
+        // for (Event event: getEventsData()) {
+        //     LocalDate date = event.getLocalDateTime().toLocalDate();
+        //     if (event.getKind() == Kind.OPENING && isValidSlot(date, startDate)) {
+        //         availableSlots.add(event.getLocalDateTime());
+        //     }
+        // }
+        // return availableSlots;
     }
 
-    // 只能使用Date日期判断而非DateTime时刻(存在计算偏差)
+    // 只能使用Date日期判断而非DateTime时刻(DateTime存在计算偏差)
     // The valid period/slot should be from today(after yesterday) to 7 days later
     private boolean isValidSlot(LocalDate eventDate, LocalDate startDate) {
          return eventDate.isAfter(startDate.minusDays(1))

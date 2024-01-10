@@ -6,7 +6,7 @@ import java.util.List;
 // Java提供两个迭代的类型, 用于迭代访问集合中的数据
 // 1. Iterator<T> hasNext()
 // 2. Enumeration<E> hasMoreElements()
-public class LearnIteration {
+public class LearnIteration1 {
 
     // Pascal's Triangle "Recurrence 循环"
     //     1  0  0  0  0 ...
