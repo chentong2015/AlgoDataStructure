@@ -7,7 +7,9 @@ public class Event {
     private int id;
     // The type of this event
     private Kind kind;
-    // timestamps: datetime 就是一个时间戳, 不仅仅包含Date日期
+    // timestamps: datetime 就是一个时间戳
+    // startAt: 起始时刻的时间戳
+    // endAt: 结束时刻的时间戳
     private LocalDateTime localDateTime;
 
     public Event(int id, Kind kind, LocalDateTime localDateTime) {
