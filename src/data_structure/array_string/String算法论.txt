@@ -1,7 +1,6 @@
 String: 算法理论
 1. String -> 将字符串的问题，转成字符数组的问题
    char[] chars = str.toCharArray();
-
    private void reverse(char[] a, int i, int j) {
        while (i < j) {
            char t = a[i];
@@ -24,6 +23,5 @@ String: 算法理论
 
 5. 利用其它数据结构(HashMap)来完成字符串的统计，利用key值做判断
    Map<String, Integer> map = new HashMap<>();
-
 
 https://leetcode.com/problems/substring-with-concatenation-of-all-words
