@@ -47,4 +47,8 @@ public class BaseStackCompare {
         }
         return res;
     }
+
+    // Next Greater Element III
+    // https://leetcode.com/problems/next-greater-element-iii/
+
 }

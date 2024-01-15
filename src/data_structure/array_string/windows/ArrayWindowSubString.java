@@ -46,6 +46,8 @@ public class ArrayWindowSubString {
                 left++;
                 right++;
             }
+
+            // 循环完一种长度之后，循环下一个奇数的长度
             length += 2;
         }
         return sum;
