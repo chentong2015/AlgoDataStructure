@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class LearnHashTable5 {
 
+    // TODO. 是否能够使用Stack来优化获取nums2中的结果?
     // Next Greater Element I
     // Two distinct 0-indexed integer arrays nums1 and nums2, where nums1 is a subset of nums2.
     // For each 0 <= i < nums1.length, find the index j such that nums1[i] == nums2[j]
