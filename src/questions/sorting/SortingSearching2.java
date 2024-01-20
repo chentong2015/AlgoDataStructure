@@ -8,12 +8,9 @@ public class SortingSearching2 {
     // Top K Frequent Elements
     // Given an integer array nums and an integer k, return the k most frequent elements
     public int[] topKFrequent(int[] nums, int k) {
-        // 测试理解：1. 使用HashMap统计每一个值出现的次数，排序之后取出前K个值, 如何排序是关键
-        //            不能组合key和value来排序，由于会出现负数，导致排序出错 1#-3
-
-        // 正确理解：1. TODO: 将最频繁出现的前k个元素构建成Heap堆, 然后提取成数组输出
-        //            O(Nlogk) if k < N and O(N) in the particular case of N = k
-        //            O(N+k) to store the hash map with not featured N elements and a heap with k elements
+        // TODO: 将最频繁出现的前k个元素构建成Heap堆, 然后提取成数组输出
+        // O(Nlogk) if k < N and O(N) in the particular case of N = k
+        // O(N+k) to store the hash map with not featured N elements and a heap with k elements
         if (nums.length == k) {
             return nums;
         }

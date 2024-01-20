@@ -2,7 +2,7 @@ package data_structure.collections.linkedlist;
 
 import questions.algorithms.datamodel.ListNode;
 
-public class HardLinkedList {
+public class LearnLinkedList3 {
 
     // Merge k Sorted Lists
     // An array of k linked-lists lists, each linked-list is sorted in ascending order

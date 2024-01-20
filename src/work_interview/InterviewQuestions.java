@@ -2,10 +2,7 @@ package work_interview;
 
 import java.util.List;
 
-// TODO. 面试实战: 寻找标准答案的解
-// 1. 能使用当前数组就使用当前数组
-// 2. 能不创建变量就不创建变量
-// 3. 能降低复杂度就降低复杂度
+// TODO.
 public class InterviewQuestions {
 
     // Google Interview Question

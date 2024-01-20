@@ -18,51 +18,23 @@ public class BaseArray1 {
         return left;
     }
 
-    // TODO. 在算法中去掉不需要的统计变量，使用现有的结构来计算
     // Move Zeroes
     // Given an integer array nums, move all 0's to the end of it while
     // maintaining the relative order of the non-zero elements.
-    // nums = [0,1,0,3,12] -> [1,3,12,0,0] 只能在原始的数组上操作
+    // nums = [0,1,0,3,12] -> [1,3,12,0,0]
     // nums = [6,1,7,3,12] -> [6,1,7,3,12]
-    public static void moveZeroes(int[] nums) {
-        // 测试理解：1. 将非0的值依次排列在数组的开头，最后留下的位置就是0的值(统计数目) O(n) O(1)
-        int countZero = 0;
-        int index = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                nums[index++] = nums[i];
-            } else {
-                countZero++;
+    public static void moveZeros1(int[] nums) {
+        // 直接使用原始的数组来做数据的移动
+        int left = 0;
+        for (int index=0; index < nums.length; index++) {
+            if (nums[index] != 0) {
+                nums[left] = nums[index];
+                left++;
             }
         }
-        // 最后补充结尾的0位置，可以直接使用index来循环，不需要统计0的数目
-        for (int i = 0; i < countZero; i++) {
-            nums[nums.length - 1 - i] = 0;
-        }
-    }
-
-    // 如果找到非0的值，则一定会往后移动index，
-    public static void moveZeros(int[] nums) {
-        int index = 0;
-        for (int i = 0; i < nums.length; i++){
-            if (nums[i] != 0) {
-                if (index < i) {
-                    nums[index] = nums[i];
-                }
-                index++;
-            }
-        }
-        // index坐标位置同时也是0的统计数目大小
-        for (int i = index; i < nums.length; i++) {
-            nums[i] = 0;
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] nums = {0, 1, 0, 3, 12};
-        moveZeros(nums);
-        for (int num: nums) {
-            System.out.println(num);
+        // 最后再补充尾部的0
+        for (int index=left; index < nums.length; index++) {
+            nums[index] = 0;
         }
     }
 
