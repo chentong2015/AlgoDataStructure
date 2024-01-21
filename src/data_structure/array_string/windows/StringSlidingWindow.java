@@ -1,9 +1,5 @@
 package data_structure.array_string.windows;
 
-// TODO: Sliding window technique 关于数组和字符串的滑动窗口算法
-// 1. [i, j]闭合的区间，用于"框选"一段数据的范围
-// 2. Consecutive 所选的区间内的数据必须是连续的
-// 3. while() 滑动窗口基于特定的判断条件，每次移动需要重新计算并更新条件
 public class StringSlidingWindow {
 
     // Minimum Size Subarray Sum
@@ -28,7 +24,8 @@ public class StringSlidingWindow {
             sum += nums[right];
             // 如果累计的值超过了目标数值，则需要从左端进行循环
             while (sum >= target) {  // 从头开始减少，通过[j-i]来缩小区间
-                minLength = Math.min(minLength, right - left + 1); // 保留移动过程中，有效最小窗口的宽度，注意长度 +1
+                // 保留移动过程中，有效最小窗口的宽度，注意长度 +1
+                minLength = Math.min(minLength, right - left + 1);
                 sum -= nums[left];
                 left++;
             }
