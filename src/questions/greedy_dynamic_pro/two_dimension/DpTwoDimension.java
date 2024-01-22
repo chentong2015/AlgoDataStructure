@@ -1,6 +1,5 @@
 package questions.greedy_dynamic_pro.two_dimension;
 
-// DP动态编程: 高级实战与应用, 如何利用dp二维空间
 public class DpTwoDimension {
 
     // TODO: 直接利用LCS计算一个字符串和它的反转字符串之间的最长公共子序列的数量
@@ -27,9 +26,9 @@ public class DpTwoDimension {
     // Three sequences,(AC),(GC),and(GA) 最终罗列所有的最长子字符串的组合
     public int longestCommonSubsequence(String str1, String str2) {
         int[][] dp = new int[str1.length() + 1][str2.length() + 1];
+
         for (int i = 0; i < str1.length(); ++i)
             for (int j = 0; j < str2.length(); ++j)
-
                 // 在去掉这个公共字符的前面字符串所具有的LCS的基础上添加1
                 if (str1.charAt(i) == str2.charAt(j)) {
                     dp[i + 1][j + 1] = dp[i][j] + 1;
