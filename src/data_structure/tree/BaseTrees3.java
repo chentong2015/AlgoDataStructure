@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-public class MediumTrees {
+public class BaseTrees3 {
 
     // Construct Binary Tree from Preorder and Inorder Traversal
     // Preorder is the preorder traversal of a binary tree

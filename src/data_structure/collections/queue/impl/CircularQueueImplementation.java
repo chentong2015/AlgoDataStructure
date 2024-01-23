@@ -1,6 +1,7 @@
 package data_structure.collections.queue.impl;
 
-// TODO: 使用常规方法实现的队列会造成出栈后空间没有释放，从而没有办法在指定的长度范围下再添加新的item
+// TODO: 使用常规方法实现的队列会造成出栈后空间没有释放，
+//  从而没有办法在指定的长度范围下再添加新的item
 //                      head = 1
 // Circular Queue   |  | 3 | 5 | 6 | 9 | 15 |  count=5
 //           tail=-1                   tail = 5 循环的队列可以有效的节省长度，从开头再开始入新的元素到队列

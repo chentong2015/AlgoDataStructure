@@ -1,4 +1,4 @@
-package questions.algorithms.others_algo;
+package questions.work_others;
 
 public class Others {
 

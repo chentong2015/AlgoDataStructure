@@ -2,12 +2,12 @@ package data_structure.collections.set;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
 
-// Set<E>接口的实现: 存储元素不重复 !!
-// HashSet<E>       不保证迭代的顺序，顺序不固定: 没有第一个和最后一个元素的概念
-// LinkedHashSet<E> 迭代顺序和插入映射中顺序一致
-// SortedSet<E>     严格排序
-// TreeSet<E>       通过Tree实现对key的自然排序
+// Set<E>接口的实现: 存储元素不重复
+// - HashSet<E>       不保证迭代的顺序，顺序不固定: 没有第一个和最后一个元素的概念
+// - LinkedHashSet<E> 迭代顺序和插入映射中顺序一致
+// - TreeSet<E>       排序SortedSet，通过Tree实现对key的自然排序
 public class BaseHashSet {
 
     // TODO: HashSet<E>背后的基本实现:
@@ -22,7 +22,6 @@ public class BaseHashSet {
     //  public boolean contains(Object o) {
     //     return map.containsKey(o);
     //  }
-
     public static void main(String[] args) {
         Set<String> values = new HashSet<>();
         values.add("item1");

@@ -1,4 +1,4 @@
-package questions.algorithms.others_algo;
+package questions.work_others;
 
 // 字符串数据的加密和解密，算法设计
 public class EncryptedProblem {

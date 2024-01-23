@@ -2,7 +2,7 @@ package data_structure.tree;
 
 import java.util.*;
 
-public class HardTrees {
+public class BaseTrees4 {
 
     // TODO: BBFS(Bidirectional BFS) https://leetcode.com/problems/word-ladder/solution/
     // Word Ladder

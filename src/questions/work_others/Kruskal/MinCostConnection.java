@@ -1,4 +1,4 @@
-package questions.algorithms.others_algo.Kruskal;
+package questions.work_others.Kruskal;
 
 import java.util.HashSet;
 

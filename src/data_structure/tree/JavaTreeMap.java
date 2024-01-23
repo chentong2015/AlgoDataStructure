@@ -1,14 +1,13 @@
-package data_structure.map_graph;
+package data_structure.tree;
 
 import java.util.SortedMap;
-import java.util.TreeMap;
 
 // TreeMap<K,V>: 底层使用红黑树来实现, 使用key来进行结点的比较
 // 使用TreeMap来排序和根据区间来快速找寻(利用红黑树的查询效率)范围值
-public class BaseTreeMap {
+public class JavaTreeMap {
 
     private void testTreeMap() {
-        TreeMap<Integer, Integer> treeMap = new TreeMap();
+        java.util.TreeMap<Integer, Integer> treeMap = new java.util.TreeMap();
         treeMap.put(1, 1);
         treeMap.put(2, 1);
         treeMap.put(3, 1);

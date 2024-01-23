@@ -1,4 +1,4 @@
-package questions.algorithms.others_algo;
+package questions.work_others;
 
 // 旅行商问题(最短路径问题): Travelling Salesman Problem
 // 给定一系列城市和每对城市之间的距离，求解访问每一座城市一次并回到起始城市的最短回路
