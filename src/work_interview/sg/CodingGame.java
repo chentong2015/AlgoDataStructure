@@ -14,30 +14,22 @@ public class CodingGame {
         int indexFault = 0;
         int additionValue = 0;
         while (valOne >= 10) {
-            int value1 = valOne % 10;
-            int value2 = valTwo % 10;
-            int result = calcResult % 10;
-
-            // 在判断低位数的和时，需要考虑直接计算所进位的数值
-            int sum = value1 + value2 + additionValue;
+            int sum = valOne % 10 + valTwo % 10 + additionValue; // 累加上低位的求和
             if (sum >= 10) {
-                if (sum % 10 != result) {
-                    return String.valueOf(indexFault);
-                }
-                additionValue = 1;
+                additionValue = 1; // 保留低位求和的进位值
+                sum = sum % 10;
             } else {
-                if (sum != result) {
-                    return String.valueOf(indexFault);
-                }
                 additionValue = 0;
             }
+            if (sum != calcResult % 10) { // 比较每一轮计算出来的末尾数是否正确
+                return String.valueOf(indexFault);
+            }
 
-            indexFault++;
             valOne = valOne / 10;
             valTwo = valTwo / 10;
             calcResult = calcResult / 10;
+            indexFault++;
         }
-
         if (valOne + valTwo != calcResult) {
             return String.valueOf(indexFault);
         }

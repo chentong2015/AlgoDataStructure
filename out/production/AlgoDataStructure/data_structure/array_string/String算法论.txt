@@ -4,7 +4,7 @@ String: 算法理论
    private void reverse(char[] a, int i, int j) {
        while (i < j) {
            char t = a[i];
-           a[i++] = a[j];
+           a[i++] = a[j]; 替换完之后坐标自动移位
            a[j--] = t;
        }
    }
@@ -18,10 +18,8 @@ String: 算法理论
    int[256] for ASCII of 8 bits
 
 4. 使用字符数组做统计和计算
-   .charAt(index)-'0'  从char转换到int来计算 !!
-    count[c - 'a']++;  从char直接映射index的坐标 !!
+   .charAt(index)-'0'  从char转换到int来计算
+    count[c - 'a']++;  从char直接映射index的坐标，26个小写字母从0开始
 
 5. 利用其它数据结构(HashMap)来完成字符串的统计，利用key值做判断
    Map<String, Integer> map = new HashMap<>();
-
-https://leetcode.com/problems/substring-with-concatenation-of-all-words

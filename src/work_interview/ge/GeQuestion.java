@@ -5,12 +5,6 @@ import java.util.Random;
 
 public class GeQuestion {
 
-    // 输入一个日期字符串，返回这一年的全部日子
-    public void getYearDays(String year) {
-        // 1. 非算法题
-        // 2. 调用Java库类型的API方法
-    }
-
     // Random list items 将List中的所有元素随机打乱
     private Random random = new Random();
 
