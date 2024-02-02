@@ -1,6 +1,6 @@
 package data_structure.collections.linkedlist;
 
-import questions.algorithms.datamodel.ListNode;
+import core_model.ListNode;
 
 import java.util.HashSet;
 import java.util.Set;

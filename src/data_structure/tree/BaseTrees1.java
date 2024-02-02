@@ -1,6 +1,6 @@
 package data_structure.tree;
 
-import questions.algorithms.datamodel.TreeNode;
+import core_model.TreeNode;
 
 import java.util.*;
 

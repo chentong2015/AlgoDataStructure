@@ -1,6 +1,6 @@
 package data_structure.hash_table;
 
-import questions.algorithms.datamodel.TreeNode;
+import core_model.TreeNode;
 
 import java.util.*;
 

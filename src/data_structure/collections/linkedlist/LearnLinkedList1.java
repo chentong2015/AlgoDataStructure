@@ -1,6 +1,6 @@
 package data_structure.collections.linkedlist;
 
-import questions.algorithms.datamodel.ListNode;
+import core_model.ListNode;
 
 public class LearnLinkedList1 {
 

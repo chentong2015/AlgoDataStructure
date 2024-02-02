@@ -1,6 +1,6 @@
 package questions.greedy_dynamic_pro;
 
-import questions.algorithms.datamodel.enum_model.IndexMark;
+import core_model.enum_model.IndexMark;
 
 import java.util.Arrays;
 

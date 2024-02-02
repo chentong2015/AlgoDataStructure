@@ -1,8 +1,0 @@
-Minimum Rounds to Complete All Tasks
-https://leetcode.com/problems/minimum-rounds-to-complete-all-tasks/description/
-
-Maximum Points You Can Obtain from Cards
-https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/description/
-
-Shopping Offers
-https://leetcode.com/problems/shopping-offers/description/

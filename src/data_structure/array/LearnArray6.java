@@ -1,6 +1,6 @@
 package data_structure.array;
 
-import questions.algorithms.datamodel.LargerNumberComparator;
+import core_model.LargerNumberComparator;
 
 import java.util.*;
 
