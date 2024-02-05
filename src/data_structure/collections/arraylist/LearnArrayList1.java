@@ -25,9 +25,11 @@ public class LearnArrayList1 {
         String[] myArray = new String[myList.size()];
         // 返回的数组中只会包含list中有的数据
         myArray = myList.toArray(myArray);
-
         // .toArray() 必须提供强制类型转换
         myArray = (String[]) myList.toArray();
+
+        // TODO. List.of()构建的列表是不可变的List
+        List<Integer> needs = List.of(2,3);
     }
 
     // TODO. List列表可以指定index位置进行插入，并且通过位置进行查询数据
@@ -38,9 +40,9 @@ public class LearnArrayList1 {
         List<Integer> list3 = new ArrayList<>(list0);
 
         list1.add(-1);
-        list1.add(1, 6);
-        list1.add(1, 2);         // 导致index=1往后的值都会移动，以完成列表长度的自动扩充，造成时间复杂度
-        list1.remove(1);                // 后面位置的值自全部向前一位填充
+        list1.add(1, 6); // TODO. 在指定位置插入元素
+        list1.add(1, 2); // 导致index=1往后的值都会移动，以完成列表长度的自动扩充，造成时间复杂度
+        list1.remove(1);         // 后面位置的值自全部向前一位填充
         list1.remove(list1.size() - 1); // 删除最后一个元素
         list3.set(0, -1);
 

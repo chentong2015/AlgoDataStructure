@@ -31,7 +31,7 @@ public class OtherQuestions {
         return maxResult;
     }
 
-    // TODO. 是否存在"特殊场景"，时间复杂度如何优化 ?
+    // TODO. 是否存在"特殊场景"，时间复杂度如何优化 = Backtracking ?
     // Item Purchase
     // 一共有m个折扣，可以使用其中x个在某个商品上，商品一旦被使用折扣，便会除以2
     // 2 4 5, m = 2
