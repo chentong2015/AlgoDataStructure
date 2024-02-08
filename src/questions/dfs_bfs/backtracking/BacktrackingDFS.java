@@ -1,4 +1,4 @@
-package questions.dfs_bfs_traverse.backtracking;
+package questions.dfs_bfs.backtracking;
 
 import data_structure.tree.prefix_tree_trie.model.TrieNodeWithWord;
 

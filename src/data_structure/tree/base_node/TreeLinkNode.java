@@ -1,4 +1,4 @@
-package data_structure.tree.node;
+package data_structure.tree.base_node;
 
 public class TreeLinkNode {
     public int val;

@@ -24,6 +24,7 @@ public class OtherQuestions {
             gaps[index] = reward_1.get(index) - reward_2.get(index);
             maxResult += reward_2.get(index);
         }
+        // O(n*logn) 排序算法便是最终的复杂度
         Arrays.sort(gaps);
         for (int index=0; index < k; index++) {
             maxResult += gaps[length-1-index];
@@ -31,7 +32,7 @@ public class OtherQuestions {
         return maxResult;
     }
 
-    // TODO. 是否存在"特殊场景"，时间复杂度如何优化 = Backtracking ?
+    // TODO. 是否存在"特殊场景"，时间复杂度如何优化 ?
     // Item Purchase
     // 一共有m个折扣，可以使用其中x个在某个商品上，商品一旦被使用折扣，便会除以2
     // 2 4 5, m = 2
@@ -45,7 +46,8 @@ public class OtherQuestions {
                     maxIndex = index;
                 }
             }
-            price.set(maxIndex, Math.floorDiv(price.get(maxIndex), 2));
+            int discountPrice = Math.floorDiv(price.get(maxIndex), 2);
+            price.set(maxIndex, discountPrice);
             m--;
         }
         int sum = 0;

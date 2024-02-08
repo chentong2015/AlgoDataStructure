@@ -1,9 +1,11 @@
-package questions.dfs_bfs_traverse.backtracking;
+package questions.dfs_bfs.backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// TODO. 标准回溯算法的模板
+// Combination Sum
 // Given an array of distinct integers candidates and a target integer target,
 // return a list of all unique combinations of candidates where the chosen numbers sum to target.
 // You may return the combinations in any order.
@@ -12,7 +14,7 @@ import java.util.List;
 // Input: candidates = [2,3,6,7], target = 7   Output: [[2,2,3],[7]]
 // Input: candidates = [2,3,5], target = 8     Output: [[2,2,2,2],[2,3,3],[3,5]]
 // Input: candidates = [2], target = 1         Output: []
-public class BacktrackingCombinationSum {
+public class LearnBacktracking2 {
 
     // 穷尽所有的情况，形成标准的树状结构，从上往下判断是否形成目标值
     //                  15

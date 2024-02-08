@@ -1,4 +1,4 @@
-package questions.dfs_bfs_traverse.graph;
+package questions.dfs_bfs.graph;
 
 public class LearnGraphDFS2 {
 

@@ -1,4 +1,4 @@
-package questions.dfs_bfs_traverse.backtracking;
+package questions.dfs_bfs.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,10 @@
-package questions.dfs_bfs_traverse.backtracking;
+package questions.dfs_bfs.backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Backtracking1 {
+public class LearnBacktracking1 {
 
     // TODO. 标准回溯算法的模板
     // Given an integer array nums of unique elements, return all possible subsets (the power set)
@@ -16,26 +16,28 @@ public class Backtracking1 {
     public List<List<Integer>> getSubsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
+        // 将最后的结果带到方法的参数中，传递reference并修改结果
         backtrack(result, new ArrayList<>(), nums, 0);
         return result;
     }
 
+    // for循环每次递归到最深处，直到Tree的叶子节点
     //    1  /  2   /  3
     //   2  /  3   /
     // 3   /      /
     private void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums, int start) {
+        // TODO. 将每次回溯的临时结果添加到最终结果中
         result.add(new ArrayList<>(tempList));
         for (int i = start; i < nums.length; i++) {
-            // 跳过所有重复的值，知道找到第一个新的数字
+            // 跳过所有重复的值，直到找到第一个新的数字
             if (i > start && nums[i] == nums[i - 1]) {
                 continue;
             }
             tempList.add(nums[i]);
-
-            // 这里会递归到最后一个数字，知道start=nums.length
+            // 递归到最后一个数字直到start=nums.length
             backtrack(result, tempList, nums, i + 1);
 
-            // 从递归的层级中返回，将最后一个添加的num回溯掉，一层一层的回溯
+            // TODO. 将最后添加的nums[i]回溯，撤销添加，开始下一个for循环
             tempList.remove(tempList.size() - 1);
         }
     }

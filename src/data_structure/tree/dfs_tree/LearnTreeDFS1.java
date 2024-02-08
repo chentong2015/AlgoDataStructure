@@ -1,4 +1,4 @@
-package questions.dfs_bfs_traverse.tree;
+package data_structure.tree.dfs_tree;
 
 import java.util.Stack;
 

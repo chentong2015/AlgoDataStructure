@@ -1,4 +1,4 @@
-package questions.dfs_bfs_traverse.graph;
+package questions.dfs_bfs.graph;
 
 import java.util.ArrayDeque;
 import java.util.HashSet;
