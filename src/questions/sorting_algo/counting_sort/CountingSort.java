@@ -18,11 +18,14 @@ public class CountingSort {
     // Counts: 0  2  2  0  1  1  0  1
     //
     // Index:  0  1  2  3  4  5  6  7
-    // Counts: 0  2  4  4  5  6  6  7  ==> 中间没有的值累加出来的结果没有任何影响，不会取到该位置position = nums[i] - min
+    // Counts: 0  2  4  4  5  6  6  7
+    // 中间没有的值累加出来的结果没有任何影响，
+    // 不会取到该位置position = nums[i] - min
     //
     // Process the input data: 1, 4, 1, 2, 7, 5, 2.
     // Position of 1 is 2. 找到要放置的位置，在放置完成之后，降低位置，以便下一次放到前面
-    // Put data 1 at index 2 in output. Decrease count by 1 to place, next data 1 at an index 1 smaller than this index.
+    // Put data 1 at index 2 in output. Decrease count by 1 to place,
+    // next data 1 at an index 1 smaller than this index.
     public static int[] countSort(int[] nums) {
         int max = nums[0];
         int min = nums[0];
@@ -76,7 +79,7 @@ public class CountingSort {
     }
 
     // H-Index II
-    // Citations is sorted in an ascending order, return compute the researcher's h-index
+    // Citations is sorted in ascending order, return compute the researcher's h-index
     // citations = [0,1,3,5,6] -> 3
     // citations = [0]         -> 0
     // citations = [0,0]       -> 0
