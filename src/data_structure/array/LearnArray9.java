@@ -2,7 +2,7 @@ package data_structure.array;
 
 public class LearnArray9 {
 
-    // TODO. 错误算法：内层循环和外层index循环重复，使用同一个index即可
+    // TODO. 内层循环和外层index循环重复
     // Gas Station
     // There are n gas stations along a circular route,
     // where the amount of gas at the ith station is gas[i].

@@ -8,11 +8,6 @@ import java.util.List;
 // 1. 动态数组，长度可变
 // 2. 查找速度比较快，直接通过index索引即可访问(数据存储的地址是连续的，可以直接计算偏移量)
 // 3. 在数据中间插入元素的速度比较慢，会影响插入位置后面的元素
-
-// 常见Collections集合API:
-// Collections.sort(list)
-// Collections.swap(list, 1, 2)
-// List<Integer> array = Collections.synchronizedList(list) 线程安全的List列表
 public class LearnArrayList1 {
 
     // 数组和list列表之间的相互转换

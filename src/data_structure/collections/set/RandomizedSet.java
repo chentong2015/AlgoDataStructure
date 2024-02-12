@@ -6,7 +6,7 @@ import java.util.*;
 // 确保插入，删除和随机取一个值都是以O(1)的时间复杂度来完成
 // 1. List列表 用于动态存储数据，根据index快速的查找删除，根据随机产生的一个整数index，返回随机元素
 // 2. HashMap 用于存储值和index的对应关系，快速定位到值的index位置
-//            在插入和移除的时候，需要快速判断值是否存在，需要将value作为HashMap的key，做快速判断
+//    在插入和移除的时候，需要快速判断值是否存在，需要将value作为HashMap的key，做快速判断
 public class RandomizedSet {
 
     private List<Integer> values = new ArrayList<>();
