@@ -9,20 +9,23 @@ public class MicrosoftQuestion {
     // Return the smallest index (left, right) 如果没有这层限制，则使用DP
     public static int findClosestSumIndex(int[] nums, int m) {
         // 1. 使用Sliding Windows框出一部分数据，判断特征
-        if (nums == null || nums.length == 0) return -1;
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
         int closestSum = 0;
         int sum = 0;
         int left = 0;
         for (int index = 0; index < nums.length; index++) {
-            // 滑动窗口，移除掉左边多余的数据
             sum += nums[index];
             while (sum > m) {
                 sum -= nums[left];
                 left++;
             }
+            // 退出while循环的条件是：sum <= m
+            // 在小于等于m的所有数里，越大的数则越接近
             if (sum > closestSum) {
                 closestSum = sum;
-                // 找到最靠近m的位置，则记录坐标 [left, index]
+                // 记录坐标[left, index]最靠近m位置
             }
         }
         return 0;

@@ -45,7 +45,7 @@ public class LearnArray9 {
             totalGas += gas[i];
             totalCost += cost[i];
         }
-        // 理论上，所有加油的gas总量要超过消耗的总量才有可能遍历全部
+        // 理论上加油的gas总量必须不能低于消耗的总量
         if(totalGas < totalCost) {
             return -1;
         }
