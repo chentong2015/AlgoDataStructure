@@ -1,10 +1,32 @@
 package data_structure.array;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class QuestionArray02 {
+public class BaseArray2 {
+
+    // TODO: 不需要交换两者的值，直接根据数据特点value<->index位置关联，设置数组中的值特征点
+    // Find All Duplicates in an Array
+    // All the integers of nums are in the range [1, n] and each integer appears once or twice
+    // Return an array of all the integers that appears twice
+    // 1 <= nums.length <= 10^5
+    // 1 <= nums[i] <= nums.length
+    //
+    // nums = [4,3,2,7,8,2,3,1] -> [2,3]
+    // [4,3,2,7,8,2,3,1]
+    // [4,3,2,-7,8,2,3,1]  标记负数表示能够通过某个位置上的值"定位找到"这个位置上面来
+    // [4,3,-2,7,8,2,3,1]  如果之前已经"被找到过"，那个这个数字就是第二次出现
+    public List<Integer> findDuplicates2(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        for (int index = 0; index < nums.length; index++) {
+            // 计算value映射到的index坐标
+            int findIndex = Math.abs(nums[index]) - 1;
+            if (nums[findIndex] < 0) {
+                result.add(findIndex + 1);
+            }
+            nums[findIndex] = -nums[findIndex];
+        }
+        return result;
+    }
 
     // TODO: 本质上是一个"连续梯度上升"的问题，通过排序将这一个特征显现出来 !!
     //  通过DP + Binary解决连续梯度上升特征的问题 !! Longest Increasing Subsequence

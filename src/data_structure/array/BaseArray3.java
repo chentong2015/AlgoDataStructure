@@ -1,6 +1,6 @@
 package data_structure.array;
 
-public class QuestionArray03 {
+public class BaseArray3 {
 
     // TODO: 理论事实：所有的数据要相等，移动到median中位数的总步数的是最小的，而不是平均数 !!
     // Minimum Moves to Equal Array Elements II

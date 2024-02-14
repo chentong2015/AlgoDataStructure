@@ -1,6 +1,6 @@
 package data_structure.array;
 
-public class QuestionArray04 {
+public class LearnArray10 {
 
     // TODO: 经典降维问题02: 注意问题的核心和要返回的数据，去掉无关的循环
     // Count Number of Teams
