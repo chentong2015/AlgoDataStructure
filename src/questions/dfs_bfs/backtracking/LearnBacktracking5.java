@@ -14,8 +14,6 @@ public class LearnBacktracking5 {
     //          ["A","D","E","E"]],
     // board = [["a","a"]], word = "aaa" -> false
     //
-    // 典型的回溯算法，在递归的过程中找到符合条件的特征
-
     // 遍历二维字符数组的每个字符，以每个字符作为起点，判断是否能找到word
     public boolean exist(char[][] board, String word) {
         for (int i=0; i < board.length; i++) {
@@ -40,19 +38,35 @@ public class LearnBacktracking5 {
         char c = word.charAt(index);
         if (row < board.length - 1 && board[row + 1][col] != ' ' && board[row + 1][col] == c) {
             board[row + 1][col] = ' ';
-            return findWord(board, word, index + 1, row + 1, col);
+            boolean result = findWord(board, word, index + 1, row + 1, col);
+            if (result) {
+                return true;
+            }
+            board[row + 1][col] = c;
         }
         if (row > 0 && board[row - 1][col] != ' ' && board[row - 1][col] == c) {
             board[row - 1][col] = ' ';
-            return findWord(board, word, index + 1, row - 1, col);
+            boolean result = findWord(board, word, index + 1, row - 1, col);
+            if (result) {
+                return true;
+            }
+            board[row + 1][col] = c;
         }
         if (col < board[0].length - 1 && board[row][col + 1] != ' ' && board[row][col + 1] == c) {
             board[row][col + 1] = ' ';
-            return findWord(board, word, index +1, row, col + 1);
+            boolean result = findWord(board, word, index +1, row, col + 1);
+            if (result) {
+                return true;
+            }
+            board[row][col + 1] = c;
         }
         if (col > 0 && board[row][col - 1] != ' ' && board[row][col - 1] == c) {
             board[row][col - 1] = ' ';
-            return findWord(board, word, index +1, row, col - 1);
+            boolean result = findWord(board, word, index +1, row, col - 1);
+            if (result) {
+                return true;
+            }
+            board[row][col - 1] = c;
         }
         return false;
     }
