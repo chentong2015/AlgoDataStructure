@@ -1,91 +1,101 @@
 package data_structure.string;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * String字符串问题的解法
- * 1. 使用2个标识符来定位，减少数据的遍历次数
- * 2. 两个标识符的移动速度可能不同，使用不同的策略 !!
- */
 public class LearnString2 {
 
-    // TODO: 判断什么情况下适合给数组排序，选择牺牲掉一定的复杂度 
-    // Array Partition I
-    // Given an integer array nums of 2n integers, group these integers into n pairs (a1, b1), (a2, b2), ..., (an, bn)
-    // The sum of min(ai, bi) for all i is maximized, Return the maximized sum
-    // nums = [1,4,3,2] -> 4 备用数组的数据必须是双数，可以实现完全分组
-    // (1, 4), (2, 3) -> min(1, 4) + min(2, 3) = 1 + 2 = 3
-    // (1, 3), (2, 4) -> min(1, 3) + min(2, 4) = 1 + 2 = 3
-    // (1, 2), (3, 4) -> min(1, 2) + min(3, 4) = 1 + 3 = 4  ===> 所有分组可能中的最小值
-    public int arrayPairSum(int[] nums) {
-        // 测试理解: 1. 两两分组的可能性有多少，每一种可能性出来的最小值的和是否有特点? 一个值要么被选上，要么不被计算
-        //            (a1, b1), (a2, b2), ..., (an, bn) 最优解来源于，每次都能留住最大值，bn最大，an次大，a1最小 ==> 结果最大
-        //          2. 将数组排序，然后取所有奇数位置上面的和，就是最后的结果  O(nlog(n)) O(1)
-        Arrays.sort(nums);
-        int sum = 0;
-        for (int index = 0; index < nums.length; index += 2) {
-            sum += nums[index];
+    // Remove All Occurrences of a Substring
+    // Given two strings s and part, perform the following operation on s
+    // until all occurrences of the substring part are removed:
+    // Find the leftmost occurrence of the substring part and remove it from s
+    //
+    // Input: s = "daabcbaabcbc", part = "abc"
+    // Output: "dab"
+    // Explanation: The following operations are done:
+    // - s = "daabcbaabcbc", remove "abc" starting at index 2, so s = "dabaabcbc".
+    // - s = "dabaabcbc", remove "abc" starting at index 4, so s = "dababc".
+    // - s = "dababc", remove "abc" starting at index 3, so s = "dab".
+    // Now s has no occurrences of "abc".
+    //
+    // 代码层面的最简短写法 ~O(N)*O(N)
+    public String removeOccurrences(String str, String part) {
+        while (str.contains(part)) {
+            str = str.replaceFirst(part, "");
         }
-        return sum;
+        return str;
     }
 
-    // TODO: 有排序的数组使用双坐标，没有排序的数组考虑使用Hash Table暂存数据 !!
-    // Two Sum II - Input array is sorted
-    // Given an array of integers numbers that is already sorted in non-decreasing order
-    // Find two numbers such that they add up to a specific target number
-    // Return the indices of the two numbers (1-indexed) as an integer array answer of size 2
-    // numbers = [2,7,11,15], target = 9 -> [1,2]
-    public int[] twoSum(int[] numbers, int target) {
-        if (numbers == null || numbers.length < 2) return null;
-        int left = 0;
-        int right = numbers.length - 1;
-        while (left < right) {
-            int sum = numbers[left] + numbers[right];
-            if (sum == target) {
-                return new int[]{left + 1, right + 1};
+    // TODO: 使用.subString5()方法提供更快的字符串处理
+    public String removeOccurrences2(String s, String part) {
+        while (s.contains(part)) {
+            int idx = s.indexOf(part);
+            s = s.substring(0, idx) + s.substring(idx + part.length());
+        }
+        return s;
+    }
+
+    // TODO: 使用StringBuilder类型(可变字符串)提供最快的字符串处理 !!
+    public String removeOccurrences3(String s, String part) {
+        int len = part.length();
+        StringBuilder sb = new StringBuilder(s);
+        do {
+            int i = sb.indexOf(part);
+            if (i == -1) break;
+            sb.replace(i, i + len, "");
+        } while (true);
+        return sb.toString();
+    }
+
+    // 自定义实现算法的逻辑
+    public static String removeOccurrences4(String str, String part) {
+        char[] charsStr = str.toCharArray();
+        char[] charsPart = part.toCharArray();
+        int index = 0;
+        int indexRight = charsStr.length;
+        while (index < indexRight) {
+            boolean isFound = false;
+            if (charsStr[index] == charsPart[0]) {
+                isFound = containsPartStr(charsStr, charsPart, index, indexRight);
             }
-            if (sum < target) {
-                left++;
+            if (isFound) {
+                replacePartStr(charsStr, charsPart, index);
+                indexRight -= charsPart.length;
+                index = 0;
             } else {
-                right--;
+                index++;
             }
         }
-        return null;
+        return generateResultString(charsStr, indexRight);
     }
 
-    // TODO: 数组过多也需要使用Hash Table来减低时间复杂度 !!
-    // 4Sum II
-    // Given four integer arrays nums1, nums2, nums3, and nums4 all of length n
-    // return the number of tuples (i, j, k, l) such that:
-    // 0 <= i, j, k, l < n
-    // nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
-    // nums1 = [1,2], nums2 = [-2,-1], nums3 = [-1,2], nums4 = [0,2] -> 2 一共有两种组合的可能
-    // Test: 所有的数字展开后的排列组成有n^4种可能，基础解法的时间复杂度
-    //       O(n^2) 一共出现了3次该时间复杂度  O(n^2) 需要2个这样的空间复杂度
-    public int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
-        // Check array null or length = 0
-        int sum = 0;
-        Map<Integer, Integer> map1 = parseSums(nums1, nums2);
-        Map<Integer, Integer> map2 = parseSums(nums3, nums4);
-        for (int key : map1.keySet()) {     // O(n^2)
-            if (map2.containsKey(-key)) {   // O(1)
-                sum += map1.get(key) * map2.get(-key);
+    // 从指定位置开始逐个比较part字符串, 必须比较part字符串的每一个字符
+    // 注意主字符串数组移动的边界问题
+    private static boolean containsPartStr(char[] charsStr, char[] charsPart, int startIndex, int rightIndex) {
+        boolean isFound = true;
+        int indexOffset = 0;
+        while (startIndex + indexOffset < rightIndex && indexOffset < charsPart.length) {
+            if (charsStr[startIndex + indexOffset] != charsPart[indexOffset]) {
+                isFound = false;
+                break;
             }
+            indexOffset++;
         }
-        return sum;
+
+        return isFound && indexOffset == charsPart.length;
     }
 
-    private Map<Integer, Integer> parseSums(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int num1 : nums1) {
-            for (int num2 : nums2) {
-                int value = num1 + num2;
-                int count = map.getOrDefault(value, 0);
-                map.put(value, count + 1);
-            }
+    // 移除指定位置找到的sub string字符串, 返回从后往前移动的字符的个数
+    private static void replacePartStr(char[] charsStr, char[] charsPart, int startIndex) {
+        int length = charsPart.length;
+        for (int i = startIndex + length; i < charsStr.length; i++) {
+            charsStr[i - length] = charsStr[i];
         }
-        return map;
+    }
+
+    // Char Array -> StringBuilder -> String
+    private static String generateResultString(char[] charsStr, int indexRight) {
+        StringBuilder resultStr = new StringBuilder();
+        for (int index = 0; index < indexRight; index++) {
+            resultStr.append(charsStr[index]);
+        }
+        return resultStr.toString();
     }
 }

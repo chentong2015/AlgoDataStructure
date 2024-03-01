@@ -47,14 +47,21 @@ public class BacktrackingDFS {
     // 1. 设置递归调用之后，需要将原来的值回复，回溯成最开始的值
     // 2. 同时将添加到的char从StringBuilder中去除，做好char的回退 !!
     private void dfsBacktracking(char[][] board, int row, int col, StringBuilder word) {
-        if (row < 0 || row == board.length) return;
-        if (col < 0 || col == board[0].length) return;
-        if (board[row][col] == '#') return;
+        if (row < 0 || row == board.length) {
+            return;
+        }
+        if (col < 0 || col == board[0].length) {
+            return;
+        }
+        if (board[row][col] == '#') {
+            return;
+        }
 
         char cellValue = board[row][col];
         word.append(cellValue);
         String currentWord = word.toString();
-        if (wordsSet.contains(currentWord) && !result.contains(currentWord)) { // 这里的List查找元素会造成时间复杂度 !!
+        // 这里的List查找元素会造成时间复杂度 !!
+        if (wordsSet.contains(currentWord) && !result.contains(currentWord)) {
             result.add(currentWord);
             return;
         }
