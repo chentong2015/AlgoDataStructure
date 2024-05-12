@@ -10,7 +10,13 @@ import java.util.List;
 // 3. 在数据中间插入元素的速度比较慢，会影响插入位置后面的元素
 public class LearnArrayList1 {
 
-    // 数组和list列表之间的相互转换
+    // TODO. 不可变List
+    public static void main(String[] args) {
+        // List.of()构建的列表不可变, 不能对其修改
+        List<Integer> needs = List.of(2,3);
+        needs.set(0, 10);
+    }
+
     // Arrays.asList(array) <-> list.toArray()
     private void testConvertArrayAndList() {
         Integer[] nums = {1, 2, 3};
@@ -22,9 +28,6 @@ public class LearnArrayList1 {
         myArray = myList.toArray(myArray);
         // .toArray() 必须提供强制类型转换
         myArray = (String[]) myList.toArray();
-
-        // TODO. List.of()构建的列表是不可变的List
-        List<Integer> needs = List.of(2,3);
     }
 
     // TODO. List列表可以指定index位置进行插入，并且通过位置进行查询数据

@@ -1,9 +1,0 @@
-List和Set的三个区别: 从应用层面进行理解
-1. Duplicate Item
-List中允许插入重复的元素。Set中不允许重复元素存在(主要用于存储离散的数据)
-
-2. Ordered collection vs Unordered
-List是有序集合，会保留元素插入时的顺序。Set是无序集合，没有index位置的概念
-
-3. Search Item by Index (id)
-List可以通过index下标来访问。Set不能使用index来直接获取元素
