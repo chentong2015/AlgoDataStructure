@@ -4,35 +4,34 @@ import java.util.*;
 
 public class MicrosoftQuestion {
 
+    // TODO. Sliding Windows 金典使用场景
     // Find the closest sum index
     // Given an array, find the left and right index, within this range the sum is closest to M
-    // Return the smallest index (left, right) 如果没有这层限制，则使用DP
+    // Return the smallest index (left, right)
     public static int findClosestSumIndex(int[] nums, int m) {
-        // 1. 使用Sliding Windows框出一部分数据，判断特征
         if (nums == null || nums.length == 0) {
             return -1;
         }
-        int closestSum = 0;
         int sum = 0;
         int left = 0;
+        int closestSum = 0;
         for (int index = 0; index < nums.length; index++) {
             sum += nums[index];
             while (sum > m) {
                 sum -= nums[left];
                 left++;
             }
-            // 退出while循环的条件是：sum <= m
-            // 在小于等于m的所有数里，越大的数则越接近
+            // 退出while循环条件：sum <= m 在小于等于m的所有数里，越大的数则越接近
             if (sum > closestSum) {
                 closestSum = sum;
-                // 记录坐标[left, index]最靠近m位置
+                // 记录坐标[left, index]
             }
         }
         return 0;
     }
 
+    // TODO: 抽象问题的本质：循环依赖
     // Excel Formula Validation
-    // TODO: 问题的本质(抽象)：循环依赖
     // Spring使用三级缓存(因为有AOP)来部分解决这个问题
     private static Set<String> finishedCells;  // 一级缓存
     private static Set<String> creatingCells;  // 二级缓存

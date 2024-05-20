@@ -2,7 +2,7 @@ package data_structure.collections.stack;
 
 import java.util.Stack;
 
-// TODO. Stack栈的运用场景 => 用空间换时间, 优化O(N)级别
+// TODO. Stack栈运用场景 => 用空间换时间, 优化O(N)级别
 // 1. Stack需要严格按照指定的顺序来Process数据
 // 2. Stack本质上存储的是访问的记录数据(Stack Trace)栈帧
 // 3. Stack通过“入栈选择”和“出栈判断”来执行核心算法
@@ -34,7 +34,7 @@ public class LearnStack1 {
                stack.pop();
            }
            if (!stack.empty()) {
-               // 在计算完折扣的数据后，后面比它小的数据不能pop()
+               // 计算完折扣的数据，栈中小的数据不能pop，只能peek
                prices[index] -= stack.peek();
            }
            stack.push(tempValue);

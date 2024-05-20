@@ -1,10 +1,10 @@
-LinkedList链表(自定义)的特点:
+LinkedList<E>链表(自定义)的特点:
 1. 数据查询比较慢(使用自定义的LinkedListNode结点)
 2. 增删中间节点的速度很快
 3. 非线程安全的，多线程访问的时候，需要在外部设置同步锁
    List list = Collections.synchronizedList(new LinkedList(...));
+4. 比ArrayList多实现了一个双端队列Deque(extends Queue<E>)
 
-LinkedList<E>比ArrayList多实现了一个双端队列Deque(extends Queue<E>)
 LinkedList类型:
    单向链表(Single Linked List)
    双向链表(Doubly Linked List), 实现了list和deque
@@ -12,5 +12,5 @@ LinkedList类型:
 
 TODO: LinkedList方法论
 1. 两种常规解法：迭代法 & 递归法(简单直接)
-2. 直接判断当前node结点是否为null，而非node.next
+2. 直接判断当前node结点是否为null，而非node.next !
 3. 构建dummyHead作用head的前面结点，作为保留

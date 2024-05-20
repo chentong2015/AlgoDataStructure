@@ -2,50 +2,14 @@ package data_structure.array;
 
 public class LearnArray2 {
 
-    // Valid Mountain Array
-    // Given an array of integers arr, return true if and only if it is a valid mountain array
-    // 山峰数组特点: arr.length >= 3, 数组两端的数小, 中间的数字大, 必须是严格的上升或者下降, 必须有升有降
-    // arr = [0,3,2,1]       -> true
-    // arr = [0,1,2,3,4,5]   -> false
-    public boolean validMountainArray(int[] arr) {
-        // 测试理解：1. 从两边往中间读取，直到左边到达山峰点，右边到达山峰点，最后这两个山峰点必须是同一个位置
-        //            O(n) O(1)
-        if (arr.length < 3) return false;
-        int left = 0;
-        int right = arr.length - 1;
-        while (left < arr.length - 1) {
-            if (arr[left] >= arr[left + 1]) break;
-            left++;
-        }
-        while (right > 0) {
-            if (arr[right - 1] <= arr[right]) break;
-            right--;
-        }
-        return left > 0 && right < arr.length - 1 && left == right; // 左右两边必须出发至少一步
-    }
-
-    // 测试理解：2. 使用一个index从左往右，判断具有上升和下降
-    public boolean validMountainArray2(int[] arr) {
-        if (arr.length < 3) return false;
-        int index = 0;
-        while (arr[index] < arr[index + 1]) {
-            index++;
-        }
-        if (index == 0 || index == arr.length - 1) { // index > 0 必须至少上升一步
-            return false;
-        }
-        while (arr[index] > arr[index + 1]) {
-            index++;
-        }
-        return index == arr.length - 1; // 必须下降直到结尾
-    }
-
+    // TODO. 使用变量保留index右侧的最大值信息(变量的历史信息)
     // Replace Elements with Greatest Element on Right Side
     // replace every element in that array with the greatest element among the elements to its right
     // replace the last element with -1
     // arr = [17,18,5,4,6,1] -> [18,6,6,6,1,-1]
+    //
+    // 从后往前，一遍读取，每次记录index后面所有值中的最大值
     public int[] replaceElements(int[] arr) {
-        // 测试理解：1. 从后往前，一遍读取，每次记录index后面所有值中的最大值
         int index = arr.length - 1;
         int maxRight = -1;
         while (index >= 0) {

@@ -5,7 +5,7 @@ import java.util.*;
 // TODO. 探索在什么条件下优先考虑使用Arrays.sort()排序 ?
 // 1. 问题无法直接通过"常规的O(n)时间复杂度"来解决
 // 2. 排序后能够将问题答案的"特征信息(数值的相互计算和间隔)"完全展示出来
-// 3. 排序后能够通过一次遍历得出结果(在一次遍历中可以完成两个层面的逻辑)
+// 3. 排序后能够通过一次遍历得出结果(一次遍历可以完成两个层面的逻辑)
 public class DemoArraySorting {
 
     // Minimize "Maximum Pair Sum" in Array
@@ -81,20 +81,36 @@ public class DemoArraySorting {
     // Contains Duplicate
     // Return true if any value appears at least twice in the array
     // nums = [1,2,3,1] -> true
+    // 正确解法1: 使用HashSet<>保存出现过的值，Set中不包含重复的值
+    // O(n) 最差情况是读完全部的值 O(n)
     public boolean containsDuplicate(int[] nums) {
-        // 正确解法:
-        // 1. 先对数组进行排序，判断相邻两个值 Arrays.sort()    O(nlog(n)), O(1)
-        // 2. 使用HashSet<>保存出现过的值，Set中不包含重复的值   O(n) 最差情况是读完全部的值 O(n)
-        if (nums.length == 0) return false;
+        if (nums.length < 2) {
+            return false;
+        }
 
-        // 使用HashSet<> 用空间复杂度来换取时间复杂度
+        // 优化算法，在边读取的时候边判断，而不是读完后，再进行二次遍历
         Set<Integer> setNums = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            // 优化算法，在边读取的时候边判断，而不是读完后，再进行二次遍历 !!
-            if (setNums.contains(nums[i])) {
+        for (int num : nums) {
+            if (setNums.contains(num)) {
                 return true;
             }
-            setNums.add(nums[i]);
+            setNums.add(num);
+        }
+        return false;
+    }
+
+    // 正确解法2: 先对数组进行排序，判断相邻两个值 Arrays.sort()
+    // O(nlog(n))+O(n) O(1)
+    public boolean containsDuplicate2(int[] nums) {
+        if (nums.length < 2) {
+            return false;
+        }
+
+        Arrays.sort(nums);
+        for (int index=0; index<nums.length -1; index++) {
+            if (nums[index] == nums[index+1]) {
+                return true;
+            }
         }
         return false;
     }

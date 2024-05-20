@@ -7,7 +7,7 @@ import java.util.List;
 // TODO. 使用Collections.emptyList()来创建空list
 public class JavaCollectionsApi {
 
-    private List<String> list = new ArrayList<>();
+    private final List<String> list = new ArrayList<>();
 
     public void testCollectionApi(int index, int lastIndex) {
         Collections.sort(list);

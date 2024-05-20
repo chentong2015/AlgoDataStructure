@@ -8,13 +8,16 @@ public class BinarySearchTemplate2 {
     // 1. int right = nums.length; 初始范围在数组的下标范围之外，确保能取到最后一个值
     // 2. if(left != nums.length)  结束循环之后会做判断处理
     public int binarySearch(int[] nums, int target) {
-        if (nums == null || nums.length == 0) return -1;
-
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
         int left = 0;
         int right = nums.length;
         while (left < right) {
             int mid = left + (right - left) / 2;
-            if (nums[mid] == target) return mid;
+            if (nums[mid] == target) {
+                return mid;
+            }
             if (nums[mid] < target) {
                 left = mid + 1;
             } else {

@@ -10,7 +10,6 @@ import java.util.List;
 // 3. 在数据中间插入元素的速度比较慢，会影响插入位置后面的元素
 public class LearnArrayList1 {
 
-    // TODO. 不可变List
     public static void main(String[] args) {
         // List.of()构建的列表不可变, 不能对其修改
         List<Integer> needs = List.of(2,3);

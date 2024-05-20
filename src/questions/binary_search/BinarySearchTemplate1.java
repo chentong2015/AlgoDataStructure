@@ -13,7 +13,9 @@ public class BinarySearchTemplate1 {
         }
         int left = 0;
         int right = nums.length - 1;
-        // 注意这里的相等条件: 能确定到搜索同一个位置, 后面的left，right其中之一必须移动
+
+        // 注意这里的相等条件:
+        // 能确定到搜索同一个位置, 后面的left，right其中之一必须移动
         while (left <= right) {
             // TODO: 计算中间位置时，注意避免值的溢出overflow  ==> 固定写法
             int mid = left + (right - left) / 2;

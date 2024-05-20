@@ -21,6 +21,7 @@ public class QueueImplementation {
         return true;
     }
 
+    // 真正的出队操作，移除掉队首元素
     public boolean deQueue() {
         if (startIndex < data.size()) {
             startIndex++;
@@ -29,7 +30,7 @@ public class QueueImplementation {
         return false;
     }
 
-    // 拿到应该出栈的那个元素
+    // 拿到第一个出队的元素
     public int front() {
         return data.get(startIndex);
     }
