@@ -1,4 +1,4 @@
-package questions.greedy_dynamic_pro.subsequence;
+package questions.dp_algo.subsequence;
 
 public class LongestPalindromicSubsequence {
 

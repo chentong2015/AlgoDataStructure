@@ -1,4 +1,4 @@
-package questions.greedy_dynamic_pro;
+package questions.greedy;
 
 /**
  * Greedy Algorithm 贪婪(贪心)算法

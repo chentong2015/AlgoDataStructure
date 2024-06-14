@@ -1,4 +1,4 @@
-package questions.greedy_dynamic_pro;
+package questions.dp_algo.two_dimension;
 
 import java.util.Arrays;
 
@@ -24,8 +24,8 @@ public class DpTwoDimensionBottomUp {
         // 初始位置为0是为了(i - j * j)刚好整除的时候，取基础值
         dp[0] = 0;
         for (int i = 1; i <= n; i++) {
-            // 每一个index位置只有两种查分可能
-            // 1. 从它的前一个位置记录的值+1 组合而来
+            // 每一个index位置只有两种拆分可能
+            // 1. 从它的前一个位置记录的值+1组合而来
             // 2. 从它的前面平方根记录的位置+1
             for (int j = 1; j * j <= i; j++) {  // TODO. 找到第二层遍历坐标的方式
                 int beforeIndex = i - j * j;

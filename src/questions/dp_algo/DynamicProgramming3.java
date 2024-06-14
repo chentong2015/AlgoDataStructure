@@ -1,4 +1,4 @@
-package questions.greedy_dynamic_pro;
+package questions.dp_algo;
 
 import java.util.HashSet;
 import java.util.List;

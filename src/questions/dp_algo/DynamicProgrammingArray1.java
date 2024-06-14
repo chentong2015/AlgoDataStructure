@@ -1,4 +1,4 @@
-package questions.greedy_dynamic_pro.array;
+package questions.dp_algo;
 
 public class DynamicProgrammingArray1 {
 

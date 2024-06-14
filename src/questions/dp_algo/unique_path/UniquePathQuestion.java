@@ -1,4 +1,4 @@
-package questions.greedy_dynamic_pro.unique_path;
+package questions.dp_algo.unique_path;
 
 public class UniquePathQuestion {
 

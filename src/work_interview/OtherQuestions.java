@@ -28,8 +28,7 @@ public class OtherQuestions {
         return left > 0 && right < arr.length - 1 && left == right;
     }
 
-    // TODO. 注意Index是否存在OutOfIndex的问题
-    // 使用一个index从左往右，判断具有上升和下降
+    // TODO. 从左往后遍历时必须随时判断index是否越界
     public static boolean validMountainArray2(int[] arr) {
         if (arr.length < 3) {
             return false;
@@ -39,13 +38,15 @@ public class OtherQuestions {
         while (index < arr.length - 1 && arr[index] < arr[index + 1]) {
             index++;
         }
-        if (index == 0 || index == arr.length - 1) { // index > 0 必须至少上升一步
+        // 必须至少上升一步且不能上升到最后
+        if (index == 0 || index == arr.length - 1) {
             return false;
         }
         while (index < arr.length - 1 && arr[index] > arr[index + 1]) {
             index++;
         }
-        return index == arr.length - 1; // 必须下降直到结尾
+        // 必须下降直到结尾
+        return index == arr.length - 1;
     }
 
     public static void main(String[] args) {

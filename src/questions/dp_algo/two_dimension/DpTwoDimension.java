@@ -1,4 +1,4 @@
-package questions.greedy_dynamic_pro.two_dimension;
+package questions.dp_algo.two_dimension;
 
 public class DpTwoDimension {
 
