@@ -36,7 +36,8 @@ public class DpTwoDimensionBottomUp {
     }
 
     // Coin Change 只用最少的零钱数目来凑出指定的值, 假设每种零钱的数目是足够的
-    // An integer array coins representing coins, an integer amount representing a total amount of money
+    // An integer array coins representing coins
+    // An integer amount representing a total amount of money
     // Return the fewest number of coins that you need to make up that amount
     // coins = {2, 5}       target = 6   ->  Expected: 3 (2)
     //     1 2 3 4 5 6
@@ -57,9 +58,9 @@ public class DpTwoDimensionBottomUp {
         dp[0] = 0;
 
         for (int i = 1; i <= amount; i++) {
-            for (int j = 0; j < coins.length; j++) { // TODO. 找到第二层遍历坐标的方式
-                if (coins[j] <= i) {
-                    int beforeIndex = i - coins[j];
+            for (int coin : coins) { // TODO. 找到第二层遍历坐标的方式
+                if (coin <= i) {
+                    int beforeIndex = i - coin;
                     dp[i] = Math.min(dp[i], dp[beforeIndex] + 1);
                 }
             }

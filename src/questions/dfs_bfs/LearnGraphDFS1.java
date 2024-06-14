@@ -61,9 +61,11 @@ public class LearnGraphDFS1 {
         int col = grid[0].length;
 
         // 判断grid[i][j] != '1', 避免无限循环导致的栈溢出
+        // 如果不满足深度搜寻的条件，则退出当前Node
         if (i < 0 || j < 0 || i >= row || j >= col || grid[i][j] != '1') {
             return;
         }
+
         // 修改二维数组的元素值来避免DFS无限循环
         grid[i][j] = '0';
 
