@@ -1,4 +1,4 @@
-package questions.sorting_algo.heap_sort;
+package questions.sorting.heap_sort;
 
 // Heap Sort 堆排序，不是最佳解
 // 平均时间复杂度	O(nlog(n))

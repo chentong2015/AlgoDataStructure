@@ -1,4 +1,4 @@
-package questions.sorting_algo;
+package questions.sorting;
 
 import java.util.*;
 

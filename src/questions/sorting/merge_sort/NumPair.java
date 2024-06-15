@@ -1,4 +1,4 @@
-package questions.sorting_algo.merge_sort;
+package questions.sorting.merge_sort;
 
 public class NumPair {
 

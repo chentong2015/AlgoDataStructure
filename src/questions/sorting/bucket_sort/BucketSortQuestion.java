@@ -1,4 +1,4 @@
-package questions.sorting_algo.bucket_sort;
+package questions.sorting.bucket_sort;
 
 import java.util.ArrayList;
 import java.util.List;

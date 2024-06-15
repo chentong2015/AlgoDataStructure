@@ -1,4 +1,4 @@
-package questions.sorting_algo.quick_sort_select;
+package questions.sorting.quick_sort_select;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
