@@ -1,4 +1,4 @@
-package work_interview.amazon;
+package data_structure.array.team_form;
 
 import java.util.Arrays;
 
