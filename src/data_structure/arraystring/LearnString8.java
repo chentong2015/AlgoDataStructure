@@ -4,60 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BaseString {
-
-    // Reverse String
-    // Modifying the input array in-place with O(1) extra memory 必须之间修改源数组
-    public static void reverseChars(char[] s) {
-        // 测试理解：本质上是前后颠倒，交换各自位置上的值: 时间复杂度O(n) 空间复杂度O(1)
-
-        // 正确理解: 使用两个位置index：left / right精确定位，同时减少运算
-        int left = 0;
-        int right = s.length - 1;
-        while (left < right) {
-            char tmp = s[left];
-            s[left++] = s[right];
-            s[right--] = tmp;
-        }
-    }
-
-    // Valid Palindrome 判断字符串颠倒之后，是否和原来的字符串一致
-    public boolean isPalindrome(String s) {
-        // 正确理解: 1. 使用前后两个左边，逐个判断指定位置的字符: 时间复杂度O(n) 空间复杂度O(1)
-        int left = 0;
-        int right = s.length() - 1;
-        while (left < right) {
-            if (s.charAt(left) != s.charAt(right)) {
-                return false;
-            }
-            left++;
-            right--;
-        }
-        return true;
-    }
-
-    // Reverse integer
-    // return x with its digits reversed, return 0 if it's outside integer range
-    // input -120 -> -21
-    // -2^31 <= x <= 2^31 - 1
-    public static int reverseInteger(int x) {
-        // 测试理解：需要将int中包含的数字进行颠倒，形成新的值
-        // 1. int -> String -> StringBuilder reverse -> new int
-
-        // 正确理解:
-        // 1. 可以归结位数学问题，和公式计算 !!
-        // 2. 通过StringBuilder可以实现其中的reverse字符操作，复杂度取决于reverse方法
-        int value = x >= 0 ? x : -x;
-        StringBuilder stringBuilder = new StringBuilder(Integer.toString(value));
-        stringBuilder.reverse();
-        if (stringBuilder.length() == 0) {
-            return 0;
-        } else {
-            // 这里有可能因为值过大而无法发生转换 ? 使用更大的数据来承载 !!
-            int result = Integer.parseInt(stringBuilder.toString());
-            return x >= 0 ? result : -result;
-        }
-    }
+public class LearnString8 {
 
     // First Unique Character in a String
     // Return the first non-repeating character in it and return its index
