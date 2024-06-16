@@ -1,6 +1,6 @@
 package data_structure.collections.linkedlist;
 
-import core_model.ListNode;
+import beans.ListNode;
 
 public class LearnLinkedList1 {
 

@@ -1,6 +1,6 @@
 package data_structure.collections.linkedlist;
 
-import core_model.ListNode;
+import beans.ListNode;
 
 import java.util.LinkedList;
 
@@ -28,10 +28,9 @@ public class BaseLinkedList {
         if (head == null || head.next == null) {
             return head;
         }
+        // 递归往后进行交换
         ListNode nextNode = head.next;
         head.next = swapPairs(nextNode.next);
-
-        // 将两个一组的结点互换位置
         nextNode.next = head;
         return nextNode;
     }

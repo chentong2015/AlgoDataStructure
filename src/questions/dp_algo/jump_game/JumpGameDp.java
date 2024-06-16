@@ -1,6 +1,6 @@
 package questions.dp_algo.jump_game;
 
-import core_model.enum_model.IndexMark;
+import beans.IndexMark;
 
 import java.util.Arrays;
 

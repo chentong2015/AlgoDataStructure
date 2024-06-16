@@ -1,6 +1,6 @@
 package work_interview.murex;
 
-import core_model.TreeNode;
+import beans.TreeNode;
 import work_interview.murex.model.Word;
 
 import java.util.HashMap;

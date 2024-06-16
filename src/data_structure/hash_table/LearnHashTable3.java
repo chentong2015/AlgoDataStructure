@@ -1,6 +1,6 @@
 package data_structure.hash_table;
 
-import core_model.TreeNode;
+import beans.TreeNode;
 
 import java.util.*;
 

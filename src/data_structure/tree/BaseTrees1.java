@@ -1,6 +1,6 @@
 package data_structure.tree;
 
-import core_model.TreeNode;
+import beans.TreeNode;
 
 import java.util.*;
 
@@ -82,7 +82,7 @@ public class BaseTrees1 {
 
     // TODO: 非递归的"BFS - Template I"广度优先遍历
     //       5
-    //   3      9
+    //   3       9
     // 1   4   7   10
     // 使用queue队列"一层一层"遍历, 先入队列的先出来, 类似排队
     // O(n) O(n) 如果是完全二叉树，队列中对多存储的node是最下面一层，具有和O(n/2)相当的空间复杂度

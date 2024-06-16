@@ -1,6 +1,6 @@
 package questions.dp_algo;
 
-import core_model.enum_model.PatternResult;
+import beans.PatternResult;
 
 // Regular Expression Matching ==> Java底层正则表达式的实现
 // Implement regular expression matching with support for '.' 任意多个字符 and '*' 前字符重复0到n次

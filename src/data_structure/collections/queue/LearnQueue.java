@@ -28,7 +28,7 @@ public class LearnQueue {
 
     public void compareAddAndOffer() {
         // boolean offer(e) 返回入队列是否成功
-
+        //
         // public boolean add(E e) { 判断是否受到队列长度的限制，而造成入队列不成功
         //     if (offer(e))         会抛出队列已满的异常(多抛出一种异常)
         //         return true;

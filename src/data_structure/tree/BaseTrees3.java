@@ -1,6 +1,6 @@
 package data_structure.tree;
 
-import core_model.TreeNode;
+import beans.TreeNode;
 
 import java.util.Arrays;
 import java.util.HashMap;

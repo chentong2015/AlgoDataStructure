@@ -3,6 +3,7 @@ package data_structure.collections.arraylist;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.SortedMap;
 
 public class CollectionsList {
 
@@ -13,8 +14,7 @@ public class CollectionsList {
         Collections.sort(list);
         Collections.swap(list, 0, 1);
 
-        // 返回不可变的空list
-        // Collections.EMPTY_LIST
+        // Collections.EMPTY_LIST  返回不可变的空list
         List<String> emptyList = Collections.emptyList();
         emptyList.add("value");
 
