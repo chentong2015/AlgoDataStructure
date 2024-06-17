@@ -17,7 +17,7 @@ public class OtherQuestions {
     // 5 4 3 2 1
     // 1 2 3 4 5 = 15
     //
-    // O(n*logn) 排序算法便是最终的复杂度
+    // O(n*logn) 排序算法便是最终的复杂度  O(n)消耗空间复杂度
     public static int getMaximumRewardPoints(int k, List<Integer> reward_1, List<Integer> reward_2) {
         int maxResult = 0;
         int length = reward_1.size();
@@ -34,12 +34,15 @@ public class OtherQuestions {
         return maxResult;
     }
 
-    // TODO. 每次折扣最大价值的商品，最终得到的总价是最小值 ？
-    // Item Purchase
-    // 一共有m个折扣，可以使用其中x个在某个商品上，商品一旦被使用折扣，便会除以2
-    // 2 4 5, m = 2
-    // > 2 + 2 + 2 = 6
-    // > 2 + 4 + 1 = 7
+    // TODO. 本质上是求折扣后价的总和 != 所有的总价放在一起折扣
+    // Find Minimum Price
+    // 2 4, m = 2   -> 2 + 1 = 3     6/2
+    // 2 4 5, m = 2 -> 2 + 2 + 2 = 6   11/2
+    // 1 3 5 7, m = 2 -> 1 + 3 + 2 + 3 = 8  16/2
+    // 2 4 5 6, m = 3 -> 2 + 2 + 2 + 3 = 9  17/3
+    //
+    // 始终选择最大的价格进行折扣，最多折扣m次
+    // O(n*m) O(1) 约束约束m值较大，对时间复杂度(循环的限制)要求较高
     public static long findMinimumPrice(List<Integer> price, int m) {
         while (m > 0) {
             int maxIndex = 0;

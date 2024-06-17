@@ -35,7 +35,9 @@ public class CountingSort {
         }
         // 优化解法，压缩统计数组的大小，减少使用的空间复杂度
         int[] counts = new int[max - min + 1];
-        for (int num : nums) counts[num - min] += 1;
+        for (int num : nums) {
+            counts[num - min] += 1;
+        }
 
         // 将每个位置的index累加前面的index之和
         for (int i = 1; i < counts.length; ++i) {
@@ -52,7 +54,8 @@ public class CountingSort {
         return numsSorted;
     }
 
-    // TODO: Counting Sort的测试解法，通项公式条件citations[index] >= length(citations) - index
+    // TODO: Counting Sort的测试解法，通项公式条件
+    //  citations[index] >= length(citations) - index
     // H-Index
     // Given an array of integers citations
     // citations[i] is the number of citations a researcher received for their ith paper
@@ -100,7 +103,7 @@ public class CountingSort {
     }
 
     // TODO: 一般而言，具有排序的数据，都可以考虑使用二分法来查找一定的特征值(结果)
-    //       金典二分法的3种条件判断，确定唯一移动方向 O(log(n) O(1)
+    //   金典二分法的3种条件判断，确定唯一移动方向 O(log(n) O(1)
     // 0 1 2 3 4 5 6 7 8 9   length=10
     // l       m         r
     public int hIndexBinarySearch(int[] citations) {

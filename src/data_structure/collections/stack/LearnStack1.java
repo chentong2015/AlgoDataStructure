@@ -8,7 +8,7 @@ import java.util.Stack;
 // 3. Stack通过“入栈选择”和“出栈判断”来执行核心算法
 public class LearnStack1 {
 
-    // TODO. Stack栈能够存储“历史访问的有序数据”信息 => DP存储的历史信息可能不满足有序顺序
+    // TODO. Stack栈能够存储“历史访问的有序数据”信息, 暂存信息出栈后对后续的计算仍然是有用信息
     // Final Prices With a Special Discount in a Shop
     // You are given an integer array prices where prices[i] is the price of the ith item in a shop.
     //

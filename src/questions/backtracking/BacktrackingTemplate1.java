@@ -26,8 +26,7 @@ public class BacktrackingTemplate1 {
     //   2  /  3   /
     // 3   /      /
     private void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums, int start) {
-        // TODO. 将每次回溯的临时结果添加到最终结果中
-        // tempList中使用保留的是遍历过程中的有效值
+        // TODO. 将每次回溯的临时结果tempList添加到最终结果中
         result.add(new ArrayList<>(tempList));
 
         for (int i = start; i < nums.length; i++) {
@@ -35,13 +34,13 @@ public class BacktrackingTemplate1 {
             if (i > start && nums[i] == nums[i - 1]) {
                 continue;
             }
+            // 将有效数字添加到临时list中
             tempList.add(nums[i]);
 
-            // 递归到最后一个数字直到start=nums.length
+            // 移动到下一个index位置作为开头
             backtrack(result, tempList, nums, i + 1);
 
-            // TODO. 将最后添加的nums[i]回溯
-            //  通过撤销添加, 在For循环的作用下会排序出所有的可能组合
+            // 移除当前index添加的数字，以便排序出所有可能的组合
             int lastNumIndex = tempList.size() - 1;
             tempList.remove(lastNumIndex);
         }
