@@ -37,7 +37,7 @@ public class BananasEating {
                 maxNum = pile;
             }
         }
-        int low = 1; // min num take for one time
+        int low = 0; // min num take for one time
         int high = maxNum; // max num take for one time
         while (low <= high) { // the result is between min and max 这里可以取证
             int mid = low + (high-low)/2;

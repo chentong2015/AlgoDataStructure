@@ -1,6 +1,9 @@
 考虑检查通用算法，如遍历，分治，广度优先搜索与深度优先搜索，
 了解每种算法的权衡，不同类别算法的运行时刻，理论局限性和基本实现策略
 
-SDE开发主题和题目：侧重于跨平台+具体场景的测试
+SDE开发面试准备
+https://www.amazon.jobs/fr/software-development-interview-prep
 https://www.amazon.jobs/zh/landing_pages/in-software-development-topics
+
+Amazon测试题目
 https://leetcode.com/discuss/interview-question?tag=amazon
