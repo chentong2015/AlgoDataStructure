@@ -1,7 +1,7 @@
-package questions.search.eating_bananas;
+package questions.search;
 
 // https://leetcode.com/problems/koko-eating-bananas/description/
-public class BananasEating {
+public class TodoQuestion {
 
     // TODO. 在结果的范围区间中二分查找，在每一步判断是否是结果
     //  可能没有答案或者最后选择的答案并不不具有唯一性 ？！
