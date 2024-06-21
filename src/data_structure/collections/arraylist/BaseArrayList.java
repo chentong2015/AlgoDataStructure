@@ -52,14 +52,30 @@ public class BaseArrayList {
         }
     }
 
-    // TODO. 自定义从一个List拷贝数据到另外一个List
+    // TODO. 拷贝List数据到另外List
     // arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length)
+    // 1. 如果ReferenceType是不可变类型(String, Integer); 则体现为Deep Copy的效果
+    // 2. 如果ReferenceType是可变类型(自定义Class); 则体现为Shadow Copy的效果
+    // 3. 对原始的列表追加新的元素，则不属于拷贝的内容
     public void testCopyArrayList() {
         List<String> myList = new ArrayList<>();
-        // 使用list来构建新的list
         ArrayList<String> copyList1 = new ArrayList<>(myList);
-        // 直接将list中数据添加到新的list中 list.addAll()
         ArrayList<String> copyList2 = new ArrayList<>();
         copyList2.addAll(myList);
+    }
+
+    private void convertListToArray(List<String> myList) {
+        String[] myArray = new String[myList.size()];
+        myArray = myList.toArray(myArray); // 将要转换成的数组作为参数传递 !!!
+
+        String[] myArray02 = (String[]) myList.toArray(); // Object[] -> String[]
+    }
+
+    public void testInsertItemToArrayList() {
+        List<Integer> intList = new ArrayList<>();
+        intList.add(1);
+        intList.add(3);
+        intList.add(1, 2); // 导致index=1往后的值都会移动，以完成列表长度的自动扩充 !!
+        intList.remove(1); // 后面位置的值自全部向前一位填充
     }
 }

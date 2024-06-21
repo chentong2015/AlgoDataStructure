@@ -1,0 +1,5 @@
+ArrayList<> 底层使用数组的来存储
+当存储的数据达到一定的比例时，会自动为数组进行扩容并拷贝
+
+ transient Object[] elementData;
+ int DEFAULT_CAPACITY = 10;
