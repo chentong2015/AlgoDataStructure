@@ -38,7 +38,6 @@ public class BaseArray1 {
         }
     }
 
-    // TODO. 设计好的算法的一定要经过初步的测试
     // Remove duplicates from sorted array
     // The input array is passed in by reference
     // it doesn't matter what you leave beyond the returned length
