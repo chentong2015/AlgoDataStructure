@@ -1,4 +1,4 @@
-package data_structure.tree.bean;
+package data_structure.tree;
 
 public class NodeWithPointer {
 

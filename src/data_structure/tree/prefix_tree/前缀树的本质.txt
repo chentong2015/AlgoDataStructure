@@ -1,0 +1,21 @@
+Prefix Tree(Trie): 本质上是树的结构, 也可以看成是String集
+Store and retrieve keys in a dataset of strings / tree data structure
+
+Hash Table 区别:
+1. Hash Table 存储具有共同前缀的相同数量的key值，占的内存空间比较大
+2. Hash table 查找具有相同前缀的key不够高效
+3. Hash table 在按照词典顺序枚举字符串集时不够高效
+
+TODO: Prefix Tree有两种设计方法
+- 在prefix结尾处标记结束，不再往下查找
+- 在prefix结尾处标记prefix完整字符串 !!
+
+TODO. 为什么使用前缀树: 解决数据开头匹配的问题
+1. 优化数据的存储，减少存储空间
+2. 提高字符串的查找速度，使用tree具有更到的时间复杂度
+3. 运用来实战场景: 搜索，推荐
+   - Auto Complete Searching 搜索自动补全
+   - Spell Checker 拼写监测
+   - Solving word games
+   - Text on key9 predictive text 手机9宫格输入器预测单词
+   - Longest prefix matching algorithm in IP routing 最长前缀匹配算法

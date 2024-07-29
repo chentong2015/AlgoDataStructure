@@ -1,4 +1,4 @@
-package data_structure.tree.prefix_tree_trie.model;
+package data_structure.tree.prefix_tree.model;
 
 public class TrieNodeWithWord {
 

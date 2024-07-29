@@ -1,4 +1,4 @@
-package data_structure.tree.prefix_tree_trie;
+package data_structure.tree.prefix_tree;
 
 import java.util.HashMap;
 
@@ -12,12 +12,12 @@ import java.util.HashMap;
 // app    0+3+2    cod   0+1
 // appl   0+3      code  0+1
 // apple  0+3
-public class LearnPrefixTree2 {
+public class PrefixTreeHashmap {
 
     private HashMap<String, Integer> map;
     private HashMap<String, Integer> prefixTreeMap;
 
-    public LearnPrefixTree2() {
+    public PrefixTreeHashmap() {
         map = new HashMap<>();
         prefixTreeMap = new HashMap<>();
     }

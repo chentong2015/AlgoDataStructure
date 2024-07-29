@@ -1,6 +1,6 @@
 package questions.backtracking.dfs;
 
-import data_structure.tree.prefix_tree_trie.model.TrieNodeWithWord;
+import data_structure.tree.prefix_tree.model.TrieNodeWithWord;
 
 import java.util.ArrayList;
 import java.util.HashSet;

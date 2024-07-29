@@ -1,7 +1,7 @@
 1. N-Ary Tree           N叉任意树
 2. Binary Tree          二叉树
 3. Binary Search Tree   二叉搜索树
-     Balanced BST       保证树的高度最低
+     Balanced BST       保证树的高度最低 / 搜索复杂度O(mlog(n)) m为key的长度，n为key的数目
      Unbalanced BST     左右子树不平衡
 4. AVL Tree             完全自平衡二叉查找树(完全平衡)
      Red–black Tree     红黑树，平衡树(只保证黑色结点平衡)/ TreeMap的实现

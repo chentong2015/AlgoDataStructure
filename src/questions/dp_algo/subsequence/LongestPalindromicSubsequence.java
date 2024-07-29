@@ -9,12 +9,7 @@ public class LongestPalindromicSubsequence {
     // Longest Palindromic Substring
     // Given a string s, return the longest palindromic substring in s
     // s = "babad" -> "aba" 字符的位置满足什么样的条件是Palindrome, 中心对称分布
-    // aba
-    // xabax ?
-    // cabax ?
-    //
     public String longestPalindromeDP(String str) {
-
         return null;
     }
 
