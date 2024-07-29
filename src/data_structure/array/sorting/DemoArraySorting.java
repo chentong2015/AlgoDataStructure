@@ -77,41 +77,4 @@ public class DemoArraySorting {
         }
         return resultList;
     }
-
-    // Contains Duplicate
-    // Return true if any value appears at least twice in the array
-    // nums = [1,2,3,1] -> true
-    // 正确解法1: 使用HashSet<>保存出现过的值，Set中不包含重复的值
-    // O(n) 最差情况是读完全部的值 O(n)
-    public boolean containsDuplicate(int[] nums) {
-        if (nums.length < 2) {
-            return false;
-        }
-
-        // 优化算法，在边读取的时候边判断，而不是读完后，再进行二次遍历
-        Set<Integer> setNums = new HashSet<>();
-        for (int num : nums) {
-            if (setNums.contains(num)) {
-                return true;
-            }
-            setNums.add(num);
-        }
-        return false;
-    }
-
-    // 正确解法2: 先对数组进行排序，判断相邻两个值 Arrays.sort()
-    // O(nlog(n))+O(n) O(1)
-    public boolean containsDuplicate2(int[] nums) {
-        if (nums.length < 2) {
-            return false;
-        }
-
-        Arrays.sort(nums);
-        for (int index=0; index<nums.length -1; index++) {
-            if (nums[index] == nums[index+1]) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

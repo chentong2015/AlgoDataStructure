@@ -2,6 +2,7 @@ package data_structure.collections.map;
 
 import java.util.*;
 
+// TODO: Hash Table用于key键值(聚和，分组，统计，定位index位置)
 public class LearnHashTable1 {
 
     // TODO: HashSet<,>实战

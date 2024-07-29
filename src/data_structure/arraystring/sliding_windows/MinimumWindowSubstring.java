@@ -1,4 +1,4 @@
-package data_structure.arraystring.windows;
+package data_structure.arraystring.sliding_windows;
 
 // TODO. 滑动窗口加强版
 // - 需要根据条件，反复的变化窗口的大小

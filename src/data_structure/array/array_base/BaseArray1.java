@@ -38,31 +38,6 @@ public class BaseArray1 {
         }
     }
 
-    // Remove duplicates from sorted array
-    // The input array is passed in by reference
-    // it doesn't matter what you leave beyond the returned length
-    // For example: [0,0,1,1,1,2,2,3,3,4] ->  [0,1,2,3,4,2,2,3,3,4]
-    //              [0,1,2,3,4] -> [0,1,2,3,4]
-    // 排序好的数据，每次只需要检测新出现的值，直接利用数组本身来操作
-    public static int removeDuplicates(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        int left = 0;
-        for (int index = 1; index < nums.length; index++) {
-            if (nums[left] != nums[index]) {
-                // 当出现不同的值时，left位置一定会向后移动一位，判断是否处在相邻的位置
-                if (left + 1 == index) {
-                    left++;
-                } else {
-                    left++;
-                    nums[left] = nums[index];
-                }
-            }
-        }
-        return left + 1;
-    }
-
     // Rotate Array
     // Rotate the array to the right by k steps, where k is non-negative.
     // Input: nums = [1,2,3,4,5,6,7], k = 3 -> [5,6,7,1,2,3,4]

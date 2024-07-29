@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BacktrackingTemplate1 {
+public class BacktrackingPowerSet {
 
     // TODO. 标准回溯算法的模板：记录一组数据排列出来的所有可能 ！！
     // Given an integer array nums of unique elements, return all possible subsets (the power set)
@@ -41,8 +41,7 @@ public class BacktrackingTemplate1 {
             backtrack(result, tempList, nums, i + 1);
 
             // 移除当前index添加的数字，以便排序出所有可能的组合
-            int lastNumIndex = tempList.size() - 1;
-            tempList.remove(lastNumIndex);
+            tempList.remove(tempList.size() - 1);
         }
     }
 

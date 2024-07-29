@@ -1,4 +1,4 @@
-package data_structure.arraystring.windows;
+package data_structure.arraystring.sliding_windows;
 
 public class StringSlidingWindow {
 
