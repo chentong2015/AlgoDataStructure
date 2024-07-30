@@ -1,14 +1,15 @@
-package work_interview;
+package data_structure.array.peak_mountain;
 
-public class OtherQuestions {
+public class FoundMountainArray {
 
+    // TODO. 山峰数组特点: 整个数组只构成一个山峰，只有一个位置最高峰
+    // 数组两端的数小, 中间的数字大, 必须是严格的上升或者下降, 必须有升有降
+    // 从两边往中间读取，直到左边到达山峰点，右边到达山峰点，最后这两个山峰点必须是同一个位置
     // Valid Mountain Array
     // Given an array of integers arr, return true if and only if it is a valid mountain array
-    // 山峰数组特点: arr.length >= 3, 数组两端的数小, 中间的数字大, 必须是严格的上升或者下降, 必须有升有降
-    // arr = [0,3,2,1]       -> true
-    // arr = [0,1,2,3,4,5]   -> false
     //
-    // 从两边往中间读取，直到左边到达山峰点，右边到达山峰点，最后这两个山峰点必须是同一个位置
+    // arr = [0,3,2,1]     -> true
+    // arr = [0,1,2,3,4,5] -> false
     // O(n) O(1)
     public static boolean validMountainArray(int[] arr) {
         if (arr.length < 3) {
