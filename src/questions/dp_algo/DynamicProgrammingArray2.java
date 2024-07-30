@@ -1,6 +1,6 @@
-package questions.dp_algo.dp_array;
+package questions.dp_algo;
 
-public class DynamicProgrammingArray3 {
+public class DynamicProgrammingArray2 {
 
     // TODO. DP Programming 在遍历数组的每一步，都需要附加计算当前结果(且该结果依赖于前一步保存的计算结果)
     // 1. 数组中的最大值并不能决定划分的选择，以及值的取舍

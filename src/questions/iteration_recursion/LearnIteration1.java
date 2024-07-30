@@ -1,93 +1,48 @@
 package questions.iteration_recursion;
 
-import java.util.ArrayList;
-import java.util.List;
-
-// Java提供两个迭代的类型, 用于迭代访问集合中的数据
-// 1. Iterator<T> hasNext()
-// 2. Enumeration<E> hasMoreElements()
 public class LearnIteration1 {
 
-    // Pascal's Triangle "Recurrence 循环"
-    //     1  0  0  0  0 ...
-    //    1  1  0  0  0     level=2
-    //   1 1+1 1  0  0      level=3
-    //  1  3  3  1  0       level=4
-    // 1  4  6  4  1        level=5 表示要算到第几个index的位置
-    // Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle
-    // Use only O(rowIndex) extra space 额外的空间复杂的约束
-    public List<Integer> getRow(int level) {
-        // 正确理解：循环在[1, index]区间从后往前累计计算
-        //         避免先计算的值对后值的累加造成影响(避免保存前一个位置值的历史值) !!
-        List<Integer> results = new ArrayList<>();
-        results.add(0, 1);
-        for (int index = 1; index < level; index++) {
-            // TODO. 从右侧往左侧计算，当前位置的新值=它的前一个位置的旧值 + 当前位置的旧值
-            for (int j = index - 1; j >= 1; j--) {
-                int temp = results.get(j - 1) + results.get(j);
-                results.add(j, temp);
+    // TODO. 典型迭代思想：直接在原始数组上迭代计算
+    // 直接在原始的数组中更新每一步累计的历史值，无需创建DP数组
+    // Maximum Subarray
+    // Find the contiguous subarray (containing at least one number) which has the largest sum
+    // nums= [-2,1,-3,4,-1,2,1,-5,4] -> [4,-1,2,1] -> max = 6
+    //       [-2,1,-2,4,3, 5,6,1, 5]
+    public static int getMaxSubArray(int[] nums) {
+        int max = nums[0];
+        for (int index = 1; index < nums.length; index++){
+            // 只有当前面累计的是正值，才更新当前位置
+            if (nums[index-1] > 0) {
+                nums[index] += nums[index-1];
             }
-            // 每层循环结束，补充后侧末尾的值1
-            results.add(index, 1);
+            max = Math.max(max, nums[index]);
         }
-        return results;
+        return max;
     }
 
-    // TODO: 在数组或者矩阵循环过程中，如果反复的判断.length会对(空间)复杂度有一定的影响 !!
-    // Search a 2D Matrix II
-    // Searches for a target value in an m x n integer matrix 矩阵从左到右，从上到下数值逐渐增加
-    // [1,4,7,11,15],
-    // [2,5,8,12,19],
-    // [3,6,9,16,22],
-    // [10,13,14,17,24],
-    // [18,21,23,26,30]],
-    public boolean searchMatrix(int[][] matrix, int target) {
-        // 测试理解：1. 如果一个位置的值比target大，那么它的右边和下面都不需要再遍历
-        //            O(n*m) O(1)
-        if (matrix == null) return false;
-        int row = 0;
-        int lastCol = matrix[0].length - 1;
-        int length = matrix.length;
+    // TODO. 本质上是一个往后迭代判断结果的问题，无需开辟额外的空间
+    // House Robber
+    // 找到一组数中能够获得的最大值，不能取相邻的两个值
+    // [1,2,3,1] -> 1 + 3 = 4
+    // [2,1,1,2] -> 2 + 2 = 4 中间的间隔位置不一定
+    // [2,7,9,3,1] -> 2 + 9 + 1 = 12
+    public int robHouses(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        } else if (nums.length == 2) {
+            return Math.max(nums[0], nums[1]);
+        } else if (nums.length == 3) {
+            return Math.max(nums[1], nums[0] + nums[2]);
+        }
 
-        while (row < length) {
-            if (target < matrix[row][0]) {
-                return false; // 注意边界条件，减少不必要的循环和判断 !!
-            }
-            for (int index = 0; index <= lastCol; index++) {
-                if (target == matrix[row][index]) {
-                    return true;
-                }
-                if (target < matrix[row][index]) {
-                    lastCol = index; // 如果小于一行中的某个值，则后面的值都不用再比较
-                    break;
-                }
-            }
-            row++;
+        // 注意max值的初始化，只有两种值的可能
+        nums[2] += nums[0];
+        int maxSum = Math.max(nums[1], nums[2]);
+        for (int index = 3; index < nums.length; index++) {
+            int maxBefore = Math.max(nums[index - 3], nums[index - 2]);
+            nums[index] += maxBefore;
+            maxSum = Math.max(maxSum, nums[index]);
         }
-        return false;
-    }
-
-    // TODO：从矩阵或者二位数组的倾斜角度入手，唯一确定移动方向
-    // [1,4,7,11,15],     -> 从右上角开始入手，往左下角斜方向进行判断，在值的比较过程中(3种可能)，可以唯一判断行列移动的位置
-    // [2,5,8,12,19],     -> 或者从左下角往右上角，在倾斜的方向上面判断
-    // [3,6,9,16,22],
-    // [10,13,14,17,24],
-    // [18,21,23,26,30]], -> 从其他角度入手，每一步都没有办法准确判断移动方向
-    public boolean searchMatrix2(int[][] matrix, int target) {
-        if (matrix == null || matrix.length < 1 || matrix[0].length < 1) { // 边界条件(1 <= n, m <= 300)确定，并排除干净 !!
-            return false;
-        }
-        int row = 0;
-        int col = matrix[0].length - 1;
-        while (row <= matrix.length - 1 && col >= 0) {
-            if (target == matrix[row][col]) {
-                return true;
-            } else if (target < matrix[row][col]) {
-                col--;
-            } else if (target > matrix[row][col]) {
-                row++;
-            }
-        }
-        return false;
+        return maxSum;
     }
 }

@@ -1,8 +1,8 @@
 package questions.iteration_recursion;
 
-import questions.iteration_recursion.model.UndirectedGraphNode;
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 // Recursion递归法的本质是无法在一层方法中完整的实现逻辑
 // 因此将后续或者部分的逻辑通过"调用自身来再次处理"，最后合成解决最终问题
@@ -39,5 +39,26 @@ public class LearnRecursion2 {
             clone.neighbors.add(clone(neighbor));
         }
         return clone;
+    }
+
+
+    class UndirectedGraphNode {
+
+        public int val;
+        public List<UndirectedGraphNode> neighbors;
+
+        public UndirectedGraphNode() {
+            this(0);
+        }
+
+        public UndirectedGraphNode(int val) {
+            this.val = val;
+            neighbors = new ArrayList<UndirectedGraphNode>();
+        }
+
+        public UndirectedGraphNode(int val, ArrayList<UndirectedGraphNode> neighbors) {
+            this.val = val;
+            this.neighbors = neighbors;
+        }
     }
 }

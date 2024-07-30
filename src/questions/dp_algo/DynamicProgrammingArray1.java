@@ -1,17 +1,16 @@
-package questions.dp_algo.dp_array;
+package questions.dp_algo;
 
 public class DynamicProgrammingArray1 {
 
-    // TODO. 动态编程核心，一次遍历，在每一个位置保持之前历史有效数据
+    // TODO. 动态编程核心: 保存之前历史遍历的有效数据
     // 输入一个数组，可以在任意位置买入或者卖出，计算最大收益值 & 最少亏损值
     // - 只能买卖一次
     // - 数组中均为整数，且至少有两个数
-    // [3, 5, 4, 6, 3, 2, 9, 6, 9]  => 7
+    // [3, 5, 4, 6, 3, 2, 9, 6, 9]  => 7 直接计算每个位置能够获取的最大收益
     private static int calculateMaxGain(int[] nums) {
         int minBefore = nums[0];
         int maxGain = Integer.MIN_VALUE;
         for (int index = 1; index < nums.length; index++) {
-            // 统一计算，如果结果为负值，则表示为最小亏算
             maxGain = Math.max(maxGain, nums[index] - minBefore);
             if (nums[index] < minBefore) {
                 minBefore = nums[index];
@@ -38,5 +37,40 @@ public class DynamicProgrammingArray1 {
             }
         }
         return maxProfit;
+    }
+
+    // TODO. 问题的本质：动态编程，需要统计出格子中到达每一个位置的最短path值
+    // Minimum Path Sum
+    // Given a m x n grid filled with non-negative numbers,
+    // find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+    // Note: You can only move either down or right at any point in time.
+    //
+    // O(n & m) O(1)
+    // 1 3 1     1 4 5
+    // 1 5 1 =>  2 7 6
+    // 4 2 1     6 8 7
+    public static int minPathSum(int[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (i == 0 && j == 0) {
+                    // do nothing 起始位置没有必要做任何计算
+                } else if (i > 0 && j == 0) {
+                    grid[i][j] += grid[i-1][j];
+                } else if (i == 0) {
+                    grid[i][j] += grid[i][j-1];
+                } else {
+                    // 每一个位置只能从它的左边或者上面而来，每个位置都需要计算
+                    grid[i][j] += Math.min(grid[i-1][j], grid[i][j-1]);
+                }
+            }
+        }
+        return grid[rows-1][cols-1];
+    }
+
+    public static void main(String[] args) {
+        int[][] grid = {{1,3,1}, {1,5,1}, {4,2,1}};
+        System.out.println(minPathSum(grid));
     }
 }
