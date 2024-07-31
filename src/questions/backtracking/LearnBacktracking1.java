@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class LearnBacktracking3 {
+public class LearnBacktracking1 {
 
     // 使用"平衡法则"判断是否满足括号的原则: 确保第一个添加的符号是"("
     // ((()())()) 逐个判断的时候，左括号必须先出现，否则最后无法消除
