@@ -1,0 +1,7 @@
+Bit位运算：与，或，异或，位移动
+侧重底层实现的原理，数据存储形式以及计算方式
+测试时将java的int类型视为无符号的类型来处理
+
+Java基础类库位操作：
+Integer.bitCount(int i);
+Integer.toString(int i, 2)

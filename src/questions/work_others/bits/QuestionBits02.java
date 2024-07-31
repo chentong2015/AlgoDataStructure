@@ -2,6 +2,31 @@ package questions.work_others.bits;
 
 public class QuestionBits02 {
 
+    // TODO. 被三整除的二进制在bit位值上需要满足特定的条件
+    // Divide by 3
+    // Given the bit string, check whether it is divisible by 3.
+    // A binary number is divisible by 3 if sum of  odd bits is equal to sum of even bits
+    //
+    // 将字符串转换成char数组，转换成正数值进行判断
+    public static boolean isDivisibleBy3(String bitsStr) {
+        char[] bits = bitsStr.toCharArray();
+        int multiValue = 1;
+        int value = 0;
+        for (int index = bits.length - 1; index >= 0; index--) {
+            value += multiValue * bits[index];
+            multiValue = multiValue * 2;
+        }
+        return value % 3 == 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isDivisibleBy3("0000")); // true
+        System.out.println(isDivisibleBy3("1001")); // true
+        System.out.println(isDivisibleBy3("0011")); // true
+        System.out.println(isDivisibleBy3("1100")); // true
+        System.out.println(isDivisibleBy3("1101")); // false
+    }
+
     // JDK7 Hashmap源码之位运算
     // 找到小于等于一个int类型的数的"二的幂次方值": 17->16, 10->8, 4->4
     //
