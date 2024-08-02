@@ -1,6 +1,6 @@
 package questions.backtracking;
 
-public class BacktrackingTargetSum {
+public class BacktrackingSumTarget {
 
     // Target Sum
     // You are given an integer array nums and an integer target.

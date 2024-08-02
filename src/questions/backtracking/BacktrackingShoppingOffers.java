@@ -3,7 +3,7 @@ package questions.backtracking;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LearnBacktracking2 {
+public class BacktrackingShoppingOffers {
 
     // TODO. Backtracking本质上上回溯问题，需要选择一个special进行Tree树状递归
     // Shopping Offers

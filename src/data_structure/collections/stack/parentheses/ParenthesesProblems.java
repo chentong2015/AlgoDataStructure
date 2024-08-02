@@ -1,10 +1,8 @@
-package questions.backtracking;
+package data_structure.collections.stack.parentheses;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
-public class LearnBacktracking1 {
+public class ParenthesesProblems {
 
     // 使用"平衡法则"判断是否满足括号的原则: 确保第一个添加的符号是"("
     // ((()())()) 逐个判断的时候，左括号必须先出现，否则最后无法消除
@@ -56,34 +54,53 @@ public class LearnBacktracking1 {
         return stack.isEmpty();
     }
 
-    // Generate Parentheses
-    // Given n pairs of parentheses
-    // write a function to generate all combinations of well-formed parentheses
-    // n = 3 -> ["((()))","(()())","(())()","()(())","()()()"]
-    public List<String> generateParenthesis(int n) {
-        List<String> result = new ArrayList<>();
-        StringBuilder stringBuilder = new StringBuilder();
 
-        backtrack(result, stringBuilder, 0, 0, n);
-        return result;
+    // TODO. 找最长的连续有效的括号集合，有效的'(' ')'一定连续存在
+    // Longest Valid Parentheses
+    // Given a string containing just the characters '(' and ')',
+    // return the length of the longest valid (well-formed) parentheses substring
+    // "(()" -> 2
+    // ")()())" -> 4
+    // ")()())))()()()))()" -> 6
+    public static int longestValidParentheses(String s) {
+        int maxResult = 0;
+        int maxTemp = 0;
+        boolean isContinue = false;
+
+        char[] chars = s.toCharArray();
+        for (int index=0; index<chars.length; index++) {
+            if (chars[index] == '(') {
+                if (index == chars.length - 1) {
+                    continue;
+                }
+                if (chars[index+1] == ')') {
+                    if (isContinue) {
+                        maxTemp+=2;
+                    } else {
+                        maxTemp = 2;
+                    }
+                    maxResult = Math.max(maxResult, maxTemp);
+                    index++; // Jump two steps for valid ()
+                    isContinue = true; // Keep it continue
+                } else {
+                    maxTemp = 0;
+                    isContinue = false; // Restart the calculation
+                }
+            } else {
+                // Clean continue and move to next char
+                maxTemp = 0;
+                isContinue = false;
+            }
+        }
+        return maxResult;
     }
 
-    // 每种递归的方法中都有两种if可以执行，如此反复，穷举出所有的可能性
-    public void backtrack(List<String> result, StringBuilder currentStr, int open, int close, int max) {
-        if (currentStr.length() == max * 2) {
-            result.add(currentStr.toString());
-            return;
-        }
-
-        if (open < max) {   // 左侧括号
-            currentStr.append("(");
-            backtrack(result, currentStr, open + 1, close, max);
-            currentStr.deleteCharAt(currentStr.length() - 1); // 回溯的核心：递归完成之后，取出尾部的字符 !!
-        }
-        if (close < open) { // 右侧括号如果比左侧括号少，则可添加
-            currentStr.append(")");
-            backtrack(result, currentStr, open, close + 1, max);
-            currentStr.deleteCharAt(currentStr.length() - 1);
-        }
+    public static void main(String[] args) {
+        System.out.println(longestValidParentheses(""));
+        System.out.println(longestValidParentheses("(()"));
+        System.out.println(longestValidParentheses(")()())"));
+        System.out.println(longestValidParentheses("()(()"));
+        System.out.println(longestValidParentheses(")()())))()()()))()"));
     }
+
 }

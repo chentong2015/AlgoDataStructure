@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BacktrackingCombineSum {
+public class BacktrackingSumCombine {
 
     // TODO. 标准回溯算法的模板
     // Combination Sum
