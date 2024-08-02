@@ -4,6 +4,7 @@ import java.util.Stack;
 
 public class LearnStack1 {
 
+    // TODO. 典型Stack栈数据应用场景，利用栈的存取进行计算
     // Evaluate Reverse Polish Notation
     // Evaluate the value of an arithmetic expression in Reverse Polish Notation
     // Valid operators are +, -, *, and /. Each operand may be an integer or another expression
