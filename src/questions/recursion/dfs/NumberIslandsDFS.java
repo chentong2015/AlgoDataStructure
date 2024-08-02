@@ -1,4 +1,4 @@
-package questions.dfs_bfs.num_islands;
+package questions.recursion.dfs;
 
 // Number of Islands       以DFS深度优先遍历的方式对一个点进行展开
 // Input: grid = [         Output: 3
@@ -29,14 +29,14 @@ public class NumberIslandsDFS {
     // 判断grid[i][j] != '1', 避免无限循环导致的栈溢出
     // 如果不满足深度搜寻的条件，则退出当前Node
     private void searchIslandDFS(char[][] grid, int i, int j) {
-        int row = grid.length;
-        int col = grid[0].length;
-        if (i < 0 || j < 0 || i >= row || j >= col || grid[i][j] != '1') {
+        // 不处理边界以外的左边
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] != '1') {
             return;
         }
 
         // 修改二维数组的元素值来避免DFS无限循环
         grid[i][j] = '0';
+
         // 从一个点延申到四个不同的方向进行Deap Search
         searchIslandDFS(grid, i + 1, j);
         searchIslandDFS(grid, i - 1, j);

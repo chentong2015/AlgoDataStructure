@@ -1,4 +1,4 @@
-package questions.iteration_recursion;
+package questions.recursion;
 
 import java.util.ArrayList;
 import java.util.HashMap;

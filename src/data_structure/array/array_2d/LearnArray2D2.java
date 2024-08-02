@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LearnArray2D {
+public class LearnArray2D2 {
 
     // TODO: 经典降维问题01: 根据题目条件特征，从三维降到二维的复杂度
     //       确定一个Index位置的坐标，则另外两个index坐标和起来的遍历复杂度是O(n)

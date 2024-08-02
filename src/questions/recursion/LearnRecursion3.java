@@ -1,4 +1,4 @@
-package questions.iteration_recursion;
+package questions.recursion;
 
 public class LearnRecursion3 {
 

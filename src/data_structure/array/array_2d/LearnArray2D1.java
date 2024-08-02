@@ -5,7 +5,7 @@ package data_structure.array.array_2d;
 //    which contains M elements, each of which is an array of N integers.
 //    第一维M个元素，每个定位到第二维存储空间的起使点位置，通过M & N偏移定位到指定内存
 // 2. Dynamic 2D Array 同样具有二位的动态数组，类似二维列表
-public class BaseArray2D {
+public class LearnArray2D1 {
 
     // Rotate Image
     // You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees
