@@ -2,13 +2,12 @@ package data_structure.collections.stack.parentheses;
 
 import java.util.Stack;
 
-// TODO. 典型的Stack应用场景：带有"Open Close平衡逻辑"的判断
+// TODO. 典型的Stack应用场景："Open Close平衡逻辑"的判断
 public class ParenthesesProblems {
 
     // Valid Parentheses
     // ((()())()) -> true
     // ((()())(()) -> false
-    //
     // 使用"平衡法则"判断是否满足括号的原则: 确保第一个添加的符号是"("
     // 逐个判断的时候，左括号必须先出现，否则最后无法消除
     private boolean isValidParenthesis(char[] chars) {
@@ -53,7 +52,8 @@ public class ParenthesesProblems {
         return stack.isEmpty();
     }
 
-    // TODO. 使用Stack来存储char的位置，而非char字符本身
+    // TODO. Stack不仅可以存储char元素，还可以存储index位置用于计算距离
+    //  必须知道开闭区间才能计算长度，而在这个开闭区间中'(' ')'相互消耗 ！！
     // Longest Valid Parentheses String
     // Given a string containing just the characters '(' and ')',
     // return the length of the longest valid (well-formed) parentheses substring
@@ -62,22 +62,30 @@ public class ParenthesesProblems {
     // "()(()" -> 2
     // "()(())" -> 6
     // ")()())))()()()))()" -> 6
+    //
+    //    ) ( ) ( ) )
+    //    0 1 2 3 4 5
+    // -1   方便初始位置的计算
+    // 0    重新累计位置
+    // 0 1
+    // 0    2-0=2 当正常消耗时统计位置长度
+    // 0 3
+    // 0    4-0=4
+    // 5    重新累计位置
     public static int longestValidParentheses(String str) {
         Stack<Integer> stack = new Stack<>();
         stack.push(-1);
         int maxLen = 0;
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == '(') {
-                // Keep track of the every index opening Parentheses
-                stack.push(i);
+                stack.push(i); // 直接存储open开括号的index位置
             } else {
-                stack.pop();
+                stack.pop();   // 如果是close则直接出栈，消耗掉之前存储的open开括号
                 if (stack.isEmpty()) {
-                    // Pop之后如果栈为空，则重新入栈index位置
-                    stack.push(i);
+                    stack.push(i); // 如果stack栈消耗完，则刷新计算index起点
                 } else {
-                    // Pop之后如果栈非空，则计算当前位置和之前index位置差距
-                    maxLen = Math.max(maxLen, i - stack.peek());
+                    int lastIndexStart = stack.peek();
+                    maxLen = Math.max(maxLen, i - lastIndexStart);
                 }
             }
         }
@@ -94,5 +102,4 @@ public class ParenthesesProblems {
         System.out.println(longestValidParentheses("()(()"));
         System.out.println(longestValidParentheses(")()())))()()()))()"));
     }
-
 }
