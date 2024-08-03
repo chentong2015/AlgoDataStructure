@@ -1,0 +1,39 @@
+TODO. String 字符串问题算法本质
+1. String -> 将字符串的问题，转成字符数组的问题
+   char[] chars = str.toCharArray();
+   private void reverse(char[] a, int i, int j) {
+       while (i < j) {
+           char t = a[i];
+           a[i++] = a[j]; // 替换完值之后再移位置
+           a[j--] = t;
+       }
+   }
+
+2. 使用StringBuilder来拼接字符串，提高字符处理性能
+
+3. 将字符串char映射到int值, 利用有限的字符数组优化时间复杂度
+   int[] count = new int[26]; // 标准英文字符
+   int[] chars = new int[128];// ASCII基本字符集(最高位0)
+
+4. 关于字符串的字符统计
+   .charAt(index)-'0'  从char转换到int来计算
+   count[c - 'a']++;   从char直接映射index的坐标，26个小写字母从0开始
+
+5. 根据字符串的字符统计来创建String Key键值
+   char[] arr = new char[26];
+   for(char cur: str.toCharArray()) {
+       arr[cur-'a']++;
+   }
+   String key = String.valueOf(arr);
+
+TODO. 错误的生成键值的方式
+int[] counts = new int[26]; // only 26 lettres
+for(char c: str.toCharArray()) {
+    counts[c - 'a'] += 1;
+}
+StringBuilder stringBuilder = new StringBuilder();
+for(int i: counts) {
+    stringBuilder.append(i);
+    stringBuilder.append(',');
+}
+return stringBuilder.toString();
