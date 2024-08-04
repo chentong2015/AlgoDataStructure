@@ -2,8 +2,7 @@ package data_structure.arraystring.anagrams_group;
 
 import java.util.*;
 
-// TODO. 如果不使用Hashmap，则必须自定义分组的判断
-//  时间复杂度比较差，空间复杂度较好 !!
+// TODO. 如果不使用Hashmap则必须自定义分组的判断: 时间复杂度比较差，空间复杂度较好
 public class GroupAnagramsSolution1 {
 
     // Group Anagrams
