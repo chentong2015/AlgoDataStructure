@@ -1,0 +1,20 @@
+TODO. 根据String来生成Anagrams Key, 只生成一次
+通过字符的"offset偏移量"来创建String Key键值, 减少内存空间
+   char[] arr = new char[26];
+   for(char cur: str.toCharArray()) {
+       arr[cur-'a']++;
+   }
+   String key = String.valueOf(arr);
+
+TODO. 错误的生成键值的方式，生成的key超过26个字符
+通过字符"统计数字"来创建String Key键值, 必须添加额外字符来避免冲突
+   int[] counts = new int[26]; // only 26 lettres
+   for(char c: str.toCharArray()) {
+       counts[c - 'a'] += 1;
+   }
+   StringBuilder sb = new StringBuilder();
+   for(int i: counts) {
+       sb.append(i);
+       sb.append(',');
+   }
+   return sb.toString();

@@ -6,8 +6,8 @@ TODO. String 字符串问题算法本质
    int[] count = new int[26]; // 标准英文字符
    int[] chars = new int[128];// ASCII基本字符集(最高位0)
 
-   .charAt(index)-'0'  从char转换到int来计算统计字符
-   count[c - 'a']++;   从char直接映射index的坐标，26个小写字母从0开始
+   .charAt(index)-'a'  // 26个字符偏移量的计算
+   .charAt(index)-' '  // 128个字符集偏移量的计算，0为空格
 
 3. String Sliding Windows 截取子字符串区间
    int[] counts  添加字符和移除字符统计 => 通常更加高效 ！！

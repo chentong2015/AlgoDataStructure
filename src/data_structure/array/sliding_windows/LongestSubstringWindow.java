@@ -4,36 +4,33 @@ package data_structure.array.sliding_windows;
 public class LongestSubstringWindow {
 
     // Longest Substring
-    // Given a string s, find the length of the longest substring without repeating characters
+    // Given a string s, find the length of longest substring without repeating characters
     // s consists of English letters, digits, symbols and spaces.
     // s = "abcabcbb" -> "abc" -> 3
-    public int lengthOfLongestSubstring(String s) {
-        int left = 0;
-        int right = 0;
-        int result = 0;
+    //
+    // O(N)   N is length of chars
+    // O(1+N) N is number of chars
+    public int findLongestSubstring(String str) {
+        int[] counts = new int[128]; // All ASCII letters
+        int leftIndex = 0;
+        int maxLength = 0;
+        char[] chars = str.toCharArray();
 
-        // TODO. 将字符串中的char映射到int值，通过数组来统计指定char出现的次数
-        // int[256] for ASCII of 8 bits
-        int[] chars = new int[128];
-        while (right < s.length()) {
-            char r = s.charAt(right);
-            chars[r]++;
+        // 必须要使用index位置来计算长度
+        for (int index=0; index < chars.length; index++) {
 
-            // 如果指定的数组位置的值大于1, 说明之前有计算过，左边的lift坐标需要往右边移动
-            while (chars[r] > 1) {
-                char l = s.charAt(left);
-                chars[l]--;
-                left++;
+            // 滑动窗口：从头开始将统计移除，直到没有重复的统计
+            while (counts[chars[index] - ' '] > 0) {
+                counts[chars[leftIndex] - ' ']--;
+                leftIndex++;
             }
-
-            // 在while循环之后，统计当前截取位置的距离长度
-            result = Math.max(result, right - left + 1);
-            right++;
+            counts[chars[index] - ' ']++;
+            maxLength = Math.max(maxLength, index - leftIndex + 1);
         }
-        return result;
+        return maxLength;
     }
 
-    // TODO: 滑动窗口算法的优化版本, left坐标位置不需要逐步移动，而是一步跳跃式的移动到指定位置
+    // TODO: 滑动窗口算法的优化版本: left坐标位置不需逐步移动，而是一步跳跃到指定位置
     // "mabcdeafbdgcbb"
     // a: 6    字符始终记录出现的最后一个位置的index，每次更新位置     chars[r] = right;
     // b: 12   当发现字符出现，取出它的位置，并从它的下一个位置开始截断  left = index + 1;
