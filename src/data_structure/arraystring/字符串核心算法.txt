@@ -1,5 +1,5 @@
 TODO. String 字符串问题算法本质
-1. String 将字符串的问题，转成字符数组的问题
+1. String 将字符串问题转成字符数组问题
    char[] chars = str.toCharArray();
 
 2. 将字符串char映射到int值, 利用有限的字符数组优化时间复杂度
@@ -11,6 +11,6 @@ TODO. String 字符串问题算法本质
 
 3. String Sliding Windows 截取子字符串区间
    int[] counts  添加字符和移除字符统计 => 通常更加高效 ！！
-   StringBuilder 添加和移除
+   StringBuilder 添加和移除 => 会造成循环子字符串的长度 ！！
 
 4. 多字符串混合操作使用StringBuilder来拼接字符串，提高字符处理性能

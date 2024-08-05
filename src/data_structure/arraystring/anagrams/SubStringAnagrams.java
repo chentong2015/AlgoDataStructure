@@ -3,10 +3,10 @@ package data_structure.arraystring.anagrams;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO. 使用int[]数组类累计SubString判断要比使用StringBuilder来截取转换要更高效
 public class SubStringAnagrams {
 
-    // TODO. 本质上获取SubString时每次只变化两个字符，因此不需要用StringBuilder将所有字符再刷一遍 ！！
+    // TODO. KO 废弃算法
+    //  本质上获取SubString时每次只变化两个字符，使用StringBuilder会遍历所有字符
     // 判断一个字符串是否包含另一个字符串(字符)的所有排列
     // Contain Permutation of SubString
     // s1 and s2 consist of lowercase English letters
@@ -40,7 +40,7 @@ public class SubStringAnagrams {
         return false;
     }
 
-    // TODO. 每次生成key时都遍历str2.length()长度的字符并且将char[]转换成String，造成时间复杂度
+    // 每次生成key时都遍历str2.length()长度的字符并且将char[]转换成String，造成时间复杂度
     private static String generateAnagramsKey(String str) {
         char[] chars = new char[26]; // only 26 types of letters
         for (char c: str.toCharArray()) {
@@ -49,6 +49,8 @@ public class SubStringAnagrams {
         return new String(chars);
     }
 
+    // TODO. 判断所有排列: 构建判断标准的数组 + 使用数组来做Substring的截取 ！！
+    //  本质上是在处理子字符串，处理String的一个片段Windows
     // Find All Anagrams in a String
     // Given two strings s and p, return an array of all the start indices of p's anagrams in s.
     // You may return the answer in any order.
@@ -81,8 +83,8 @@ public class SubStringAnagrams {
             if (compareCharArray(strCounts, subStrCounts)) {
                 result.add(left);
             }
+            // TODO. 类似于滑动窗口的截取
             strCounts[chars[left] - 'a']--; // 从临时数组中移除左边位置坐标的统计
-
             left++;
             right++;
             if (right < str.length()) {  // 往后移动坐标，需要判断index位置是否处于溢出状态
