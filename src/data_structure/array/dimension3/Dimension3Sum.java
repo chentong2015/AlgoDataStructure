@@ -1,43 +1,47 @@
 package data_structure.array.dimension3;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Dimension3Sum {
 
-    // TODO: 经典降维问题: 确定一个Index位置的坐标，从三维降到二维的复杂度
+    // TODO: 经典降维问题: index + 双指针的移动构成“所有的排列组合”
     // 3Sum Question
     // return all the triplets [nums[i], nums[j], nums[k]]
     // Such that i!=j, i!=k, and j!=k, and nums[i]+nums[j]+nums[k] == 0
     // Solution set must not contain duplicate triplets
     // nums = [-1,0,1,2,-1,-4] -> [[-1,-1,2],[-1,0,1]]
-    //         -4 -1 -1 0 1 2
+    // sorted= -4 -1 -1 0 1 2
+    //            i  j      k
     //
-    public List<List<Integer>> threeSumZero(int[] nums) {
+    // 如何确保返回的结果组合不唯一 ？排除相同数据的判断
+    // Time complexity: O(n^2)
+    // Space complexity: O(n)
+    public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
-        List<List<Integer>> res = new LinkedList<>();
-        for (int i = 0; i < nums.length - 2; i++) {
-            // 如果index位置和index-1的位置相同，则说明该值已经被判断过了，无需重复
-            if (i == 0 || nums[i - 1] != nums[i]) {
-                int target = -nums[i];
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            // TODO. index每当移动到新值
+            //  基于该值在[index+1,length-1]区间中找出所有符合要求的排列组合
+            if (i > 0 && nums[i] == nums[i-1]) {
+                continue;
+            }
 
-                int jIndex = i + 1;
-                int kIndex = nums.length - 1;
-                while (jIndex < kIndex) {
-                    if (nums[jIndex] + nums[kIndex] == target) {
-                        res.add(Arrays.asList(nums[i], nums[jIndex], nums[kIndex]));
-                        // 如果是相同的值，在直接跳过，直到是不同的值
-                        while (jIndex < kIndex && nums[jIndex] == nums[jIndex + 1])
-                            jIndex++;
-                        while (jIndex < kIndex && nums[kIndex] == nums[kIndex - 1])
-                            kIndex--;
-                        jIndex++;
-                        kIndex--;
-                    } else if (nums[jIndex] + nums[kIndex] < target) {
-                        jIndex++;
-                    } else {
-                        kIndex--;
+            // 每次for循环，内层最多执行移动length长度，O(n)复杂度
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                int total = nums[i] + nums[j] + nums[k];
+                if (total > 0) {
+                    k--; // 总和值大，则减少最大值
+                } else if (total < 0) {
+                    j++; // 总和值小，则增加最小值
+                } else {
+                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
+
+                    // j移动到下一个不同的值，再进行组合j+k
+                    j++;
+                    while (nums[j] == nums[j-1] && j < k) {
+                        j++;
                     }
                 }
             }

@@ -44,13 +44,13 @@ public class Dimension3Target {
         if (array == null || array.length < 2) {
             return false;
         }
-        Set<Integer> integerSet = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
         for (int index = 0; index < length; index++) {
             // 在遍历时，同时完成对于结果的判断
-            if (integerSet.contains(target - array[index])) {
+            if (set.contains(target - array[index])) {
                 return true;
             }
-            integerSet.add(array[index]);
+            set.add(array[index]);
         }
         return false;
     }

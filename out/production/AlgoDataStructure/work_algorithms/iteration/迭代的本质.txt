@@ -1,0 +1,6 @@
+迭代的本质：
+将前一步计算好的结果放到后一步计算中，最后轮的出结果
+
+Java提供两个迭代的类型, 用于迭代访问集合中的数据
+1. Iterator<T> hasNext()
+2. Enumeration<E> hasMoreElements()
