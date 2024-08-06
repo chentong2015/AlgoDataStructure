@@ -6,41 +6,30 @@ import java.util.List;
 
 public class LearnArray2D2 {
 
-    // TODO: 经典降维问题01: 根据题目条件特征，从三维降到二维的复杂度
-    //       确定一个Index位置的坐标，则另外两个index坐标和起来的遍历复杂度是O(n)
-    // 3Sum: return all the triplets [nums[i], nums[j], nums[k]]
-    // Such that i!=j, i!=k, and j!=k, and nums[i]+nums[j]+nums[k] == 0
-    // Solution set must not contain duplicate triplets 不能出现重复的结果集
-    // nums = [-1,0,1,2,-1,-4] -> [[-1,-1,2],[-1,0,1]]
-    //         -4 -1 -1 0 1 2
-    public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
-        List<List<Integer>> res = new LinkedList<>();
-        for (int i = 0; i < nums.length - 2; i++) {
-            // 如果index位置和index-1的位置相同，则说明该值已经被判断过了，无需重复
-            if (i == 0 || nums[i - 1] != nums[i]) {
-                int jIndex = i + 1;
-                int kIndex = nums.length - 1;
-                int sum = -nums[i];
-                while (jIndex < kIndex) {
-                    if (nums[jIndex] + nums[kIndex] == sum) {
-                        res.add(Arrays.asList(nums[i], nums[jIndex], nums[kIndex]));
-                        // 如果是相同的值，在直接跳过，直到是不同的值
-                        while (jIndex < kIndex && nums[jIndex] == nums[jIndex + 1])
-                            jIndex++;
-                        while (jIndex < kIndex && nums[kIndex] == nums[kIndex - 1])
-                            kIndex--;
-                        jIndex++;
-                        kIndex--;
-                    } else if (nums[jIndex] + nums[kIndex] < sum) {
-                        jIndex++;
-                    } else {
-                        kIndex--;
-                    }
-                }
+    // TODO：二位数组/矩阵的倾斜角度遍历，每一步比较都能确定移动方向
+    // Search a 2D Matrix II
+    // Searches for a target value in an m x n integer matrix
+    // [1,4,7,11,15],     -> 从右上角开始入手，往左下角斜方向进行判断，在值的比较时唯一判断行列移动
+    // [2,5,8,12,19],     -> 或者从左下角往右上角，在倾斜的方向上面判断
+    // [3,6,9,16,22],
+    // [10,13,14,17,24],
+    // [18,21,23,26,30]], -> 从其他角度入手，每一步都没有办法准确判断移动方向
+    public boolean searchMatrix2(int[][] matrix, int target) {
+        if (matrix == null || matrix.length < 1 || matrix[0].length < 1) {
+            return false;
+        }
+        int row = 0;
+        int col = matrix[0].length - 1;
+        while (row <= matrix.length - 1 && col >= 0) {
+            if (target == matrix[row][col]) {
+                return true;
+            } else if (target < matrix[row][col]) {
+                col--;
+            } else if (target > matrix[row][col]) {
+                row++;
             }
         }
-        return res;
+        return false;
     }
 
     // Set Matrix Zeroes
@@ -74,5 +63,4 @@ public class LearnArray2D2 {
             for (int i = 0; i < matrix.length; i++) matrix[i][0] = 0;
         }
     }
-
 }

@@ -3,8 +3,7 @@ package work_algorithms.search.k_sum;
 public class KSumProblem {
 
     // TODO. 二分位两侧可以直接使用公式求和，而无需一个值一个值的累加
-    //  等差数列请和公式 N*(N+1)/2
-    // Given an interger N
+    // Given an integer N
     // return the integer number K in a way that
     // the sum that goes from 1 to K-1 is equals to the sum that goes form k+1 to N (all inclusive),
     // if there is no number that met the condition return -1.
@@ -21,8 +20,8 @@ public class KSumProblem {
         int total = (n * (n + 1)) / 2;
         while (left < right) {
             int mid = left + (right - left)/2;
-            int sumLeft = (mid * (mid - 1))/2;    // mid-1 刚好是左边的数目
-            int sumRight = total - mid - sumLeft; // 右侧结果直接通过算数得出
+            int sumLeft = (mid * (mid - 1))/2; // 等差数列请和公式 N*(N+1)/2
+            int sumRight = total - mid - sumLeft;
             if (sumLeft == sumRight) {
                 return mid;
             } else if (sumLeft < sumRight) {
@@ -44,10 +43,10 @@ public class KSumProblem {
         while (leftIndex + 1 < rightindex) {
             if (leftSum < rightSum) {
                 leftIndex++;
-                leftSum+=leftIndex;
+                leftSum += leftIndex;
             } else if (leftSum > rightSum) {
                 rightindex--;
-                rightSum+=rightindex;
+                rightSum += rightindex;
             } else {
                 // 如果左右两边相等的时候，恰好间隔了一个值，则中间值为正确答案
                 if (leftIndex + 2 == rightindex) {

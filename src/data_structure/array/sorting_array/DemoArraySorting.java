@@ -8,7 +8,8 @@ import java.util.*;
 // 3. 排序后能够通过一次遍历得出结果(一次遍历可以完成两个层面的逻辑)
 public class DemoArraySorting {
 
-    // Minimize "Maximum Pair Sum" in Array
+    // 要求分组之后的pair数据库和和最小
+    // Minimize Maximum Pair Sum in Array
     // n == nums.length
     // 2 <= n <= 10^5
     // n is even 数量必须是偶数
