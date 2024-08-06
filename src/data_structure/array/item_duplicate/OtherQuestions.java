@@ -1,4 +1,4 @@
-package data_structure.array.duplicate_item;
+package data_structure.array.item_duplicate;
 
 // 对一组数据中的重复元素进行操作
 public class OtherQuestions {

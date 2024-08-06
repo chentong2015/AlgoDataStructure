@@ -1,4 +1,4 @@
-package data_structure.array.duplicate_item;
+package data_structure.array.item_duplicate;
 
 import java.util.ArrayList;
 import java.util.List;
