@@ -1,4 +1,4 @@
-package work_algorithms.work_others.kruskal;
+package other_algorithms.kruskal;
 
 import java.util.HashSet;
 

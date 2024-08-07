@@ -2,7 +2,7 @@ package work_algorithms.sorting;
 
 import java.util.*;
 
-public class SortingSearching2 {
+public class LearnSortingSearch {
 
     // TODO: 找一組数据中前K个数的算法
     // Top K Frequent Elements

@@ -1,11 +1,9 @@
-package data_structure.tree.segment_tree_BIT;
+package data_structure.tree.segment_tree_bit;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// 专门用于解决"Range query problems"区间搜索问题
-// TODO: Binary Indexed Tree: https://leetcode.com/tag/binary-indexed-tree/
 public class LearnBinaryIndexTree {
 
     // Count of Smaller Numbers After Self

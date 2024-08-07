@@ -1,4 +1,4 @@
-package work_algorithms.work_others.math;
+package other_algorithms.math;
 
 import java.util.Arrays;
 

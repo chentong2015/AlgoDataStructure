@@ -5,6 +5,9 @@ import java.util.*;
 // TODO: 标准图问题的解决算法
 // 1. Depth First Search 深度优先遍历，能够在满足前后约束条件下，遍历所有的节点
 // 2. Node InDegree 根据到结点的指向数目，依次从低到高，遍历节点之后更新相关节点的计数
+//
+// 使用Graph图(结构)来解决最短线路和路径问题
+// 最短的路径是构成图的levels中间的距离(在能够联通的情况下)
 public class LearnGraph {
 
     // Course Schedule II

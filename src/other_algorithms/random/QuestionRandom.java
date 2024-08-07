@@ -1,4 +1,4 @@
-package work_algorithms.work_others.random;
+package other_algorithms.random;
 
 import java.util.ArrayList;
 import java.util.HashMap;

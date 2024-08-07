@@ -1,4 +1,4 @@
-package work_algorithms.work_others.bits;
+package other_algorithms.bits;
 
 public class QuestionBits01 {
 

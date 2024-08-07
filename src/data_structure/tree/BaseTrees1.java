@@ -127,8 +127,8 @@ public class BaseTrees1 {
         return results;
     }
 
-    // TODO: Morris Traversal: Using No Stacks, O(n) Time & O(1) Space
-    // https://leetcode.com/problems/binary-tree-postorder-traversal/discuss/45648/three-ways-of-iterative-postorder-traversing-easy-explanation
+    // TODO: Morris Traversal:
+    //  Using No Stacks, O(n) Time & O(1) Space
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> out = new ArrayList<Integer>();
         if (root == null) return out;

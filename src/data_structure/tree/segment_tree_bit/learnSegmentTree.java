@@ -1,12 +1,9 @@
-package data_structure.tree.segment_tree_BIT;
+package data_structure.tree.segment_tree_bit;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-// 专门用于解决"Range query problems"区间搜索问题
-// Finding minimum, maximum, sum, greatest common divisor, least common denominator in array in logarithmic time.
-// TODO: Segment Tree : https://leetcode.com/tag/segment-tree/
 public class learnSegmentTree {
 
     // Build segment tree

@@ -1,11 +1,10 @@
-package work_algorithms.dp_algo.subsequence;
+package work_algorithms;
 
+// How can we reuse a previously computed palindrome to compute a larger palindrome ?
+// https://leetcode.com/problems/longest-palindromic-substring/description/
 public class LongestPalindromicSubsequence {
 
-    // TODO. 使用DP编程需要清楚：之前的计算结果对于后续的计算有何作用 ？
-    // How can we reuse a previously computed palindrome to compute a larger palindrome ?
-    // https://leetcode.com/problems/longest-palindromic-substring/description/
-    //
+    // TODO. 使用DP编程：之前的计算结果对于后续的计算有何作用 ？
     // Longest Palindromic Substring
     // Given a string s, return the longest palindromic substring in s
     // s = "babad" -> "aba" 字符的位置满足什么样的条件是Palindrome, 中心对称分布

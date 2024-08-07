@@ -1,4 +1,4 @@
-package work_algorithms.recursion.dfs;
+package work_algorithms.dfs;
 
 public class FloodFillDFS {
 

@@ -1,4 +1,4 @@
-package work_algorithms.recursion.dfs;
+package work_algorithms.dfs;
 
 // Number of Islands       以DFS深度优先遍历的方式对一个点进行展开
 // Input: grid = [         Output: 3
