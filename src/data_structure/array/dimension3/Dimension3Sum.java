@@ -2,9 +2,10 @@ package data_structure.array.dimension3;
 
 import java.util.*;
 
+// TODO: Sorted排序数据的降维问题: index + 双指针
+//  双指针的移动将找到所有“两两不重复的数据“且”它们和为target目标“
 public class Dimension3Sum {
 
-    // TODO: 经典降维问题: index + 双指针的移动构成“所有的排列组合”
     // 3Sum Question
     // return all the triplets [nums[i], nums[j], nums[k]]
     // Such that i!=j, i!=k, and j!=k, and nums[i]+nums[j]+nums[k] == 0

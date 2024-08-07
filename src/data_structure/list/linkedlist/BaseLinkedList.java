@@ -5,14 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-// 链表的优缺点：
-// 1. 数据查询比较慢
-// 2. 增删中间节点的数据很快 (地址是非连续的存储，通过存储的地址动态的找到下一个的值) !!!
-//
-// 1. 一般有3种：单向链表，双向链表，循环链表
-// 2. 每一个元素(节点node)都存储当前的值 + 下一个元素的地址
-// 3. 增加的时候, 只需要改变前节点存储的地址，和新节点的地址(指向下一个元素的地址)
-// 4. 删除的时候, 将要删除的节点的前后节点链接起来
 public class BaseLinkedList {
 
     public static void main(String[] args) {
@@ -22,8 +14,14 @@ public class BaseLinkedList {
         myLinkedList.add("item 03");
         myLinkedList.add(1, "add item"); // 在指定的位置添加节点数据 !!
         printLinkedList(myLinkedList);
-        myLinkedList.remove(1);          // 移动指定位置的值
+        myLinkedList.remove(1);       // 移动指定位置的值
         String value = myLinkedList.get(1); // 取指定位置的值
+
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(1, 10);  // TODO: 插入在指定的index位置，后面的元素会因此移位
+        list.add(10);                  // 默认追加到末尾的位置
+        int item = list.get(1);        // 使用index位置来获取元素(和list操作一致)
+        int lastElement = list.get(list.size() - 1);
     }
 
     private static void printLinkedList(List<String> linkedList) {

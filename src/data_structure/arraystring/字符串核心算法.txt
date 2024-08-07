@@ -19,4 +19,4 @@ TODO. String 字符串问题算法本质
    int[] counts  添加字符和移除字符统计 => 通常更加高效 ！！
    StringBuilder 添加和移除 => 会造成循环子字符串的长度 ！！
 
-5. 多字符串混合操作使用StringBuilder来拼接字符串，提高字符处理性能
+5. 多字符串混合操作使用StringBuilder拼接，提高字符处理性能

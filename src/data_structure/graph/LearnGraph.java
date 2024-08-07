@@ -8,12 +8,13 @@ import java.util.*;
 public class LearnGraph {
 
     // Course Schedule II
-    // numCourses要上课的总数, prerequisites[i] = [ai, bi] 约束关系, bi必须先于ai
-    // Return the (any) ordering of courses you should take to finish all courses, return empty if it's impossible
+    // numCourses, prerequisites[i] = [ai, bi] 约束关系, bi必须先于ai
+    // Return the (any) ordering of courses you should take to finish all courses,
+    // return empty if it's impossible
     // numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]] -> [0,2,1,3]
-    // numCourses = 2, prerequisites = [[0,1],[1,0]]             -> 无解循环
-    // numCourses = 3, prerequisites = []                        -> [2, 1, 0] 直接输出没有约束的课程
-    // numCourses = 3, prerequisites = [[1,0]]                   -> [2, 0, 1] 先输出没有约束的课程，后输出有约束的
+    // numCourses = 2, prerequisites = [[0,1],[1,0]]  -> 无解循环
+    // numCourses = 3, prerequisites = []  -> [2, 1, 0] 直接输出没有约束的课程
+    // numCourses = 3, prerequisites = [[1,0]] -> [2, 0, 1] 先输出没有约束的课程，后输出有约束的
 
     private static final int WHITE = 1;
     private static final int GRAY = 2;

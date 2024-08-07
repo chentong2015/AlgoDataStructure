@@ -4,31 +4,68 @@ import beans.ListNode;
 
 public class LearnLinkedList1 {
 
+    // Swap Nodes in Pairs
+    // Swap every two adjacent nodes and return its head
+    // Solve the problem without modifying the values in the list's nodes
+    // head = [1,2,3,4] -> [2,1,4,3]
+    //
+    // 直接使用递归，每次递归都为它的调用函数返回Pair中的首节点
+    // O(n) 递归调用造成栈空间的开销
+    // O(1)
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode nextNode = head.next;
+        head.next = swapPairs(nextNode.next);
+        nextNode.next = head;
+        // 返回新的头部Node
+        return nextNode;
+    }
+
+    // Remove Duplicates from Sorted Linked List
+    // 保证升序排列的链表，其中的int类型的值可正可负
+    // head = [1,2,3,3,4,4,5] -> [1,2,3,4,5]
+    // O(n) 最多递归n-1次的造成的时间复杂度
+    // O(1)
+    public ListNode removeDuplicated(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode node = head.next;
+        while (node != null && head.value == node.value) {
+            node = node.next;
+        }
+        head.next = removeDuplicated(node);
+        return head;
+    }
+
+    // TODO. 在链表头部添加dummy节点，方便后续的移动操作
+    //  dummy -> head -> first -> second -> third -> ...
     // Remove Nth Node From End of List
     // Given the head of a linked list, remove the nth node from the end of the list and return its head.
     // head = [1,2,3,4,5], n = 2  ->  [1,2,3,5] 1位置就是head位置
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        // 正确理解: 1. 可以在head前面添加一个dummy的节点，用来方便操作head
-        //            dummy -> head -> first -> second -> third -> ...
         ListNode dummy = new ListNode(0);
         dummy.next = head;
 
-        // TODO. 需要通过node节点的移动来统计节点的数目，注意这里的节点数目会少统计一个
+        // TODO. 需要统计node节点数目才能确定正向移动的距离
         int length = 0;
         ListNode node = head;
         while (node != null) {
             length++;
             node = node.next;
         }
-
-        length = length - n;   // 这个是要删除节点的前一个位置, 正确的位置是(L - n + 1)
+        // 正确的位置是(L - n + 1)
+        length = length - n;
         node = dummy;
-        while (length > 0) {   // 从前往后移动，当length=0就移动到了要删除节点的前一个位置 !!
-            length--;
+        while (length > 0) {
             node = node.next;
+            length--;
         }
-        node.next = node.next.next; // 执行删除的操作，释放掉指定位置的节点
-        return dummy.next;   // 最后返回dummy节点的后一个，作为正式的结果
+        // 执行删除节点的操作，并返回正确的head头部节点
+        node.next = node.next.next;
+        return dummy.next;
     }
 
     // Reverse Linked List 两种算法：迭代法和递归法
