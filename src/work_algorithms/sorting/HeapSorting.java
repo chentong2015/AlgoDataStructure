@@ -1,11 +1,11 @@
-package work_algorithms.sorting.heap_sort;
+package work_algorithms.sorting;
 
 // Heap Sort 堆排序，不是最佳解
 // 平均时间复杂度	O(nlog(n))
 // 最坏时间复杂度	O(nlog(n))
 // 最优时间复杂度	O(nlog(n))
 // 空间复杂度	    O(n) total, O(1) auxiliary
-public class HeapSort {
+public class HeapSorting {
 
     // 第一步：将数组堆化
     // beginIndex = 第一个非叶子节点

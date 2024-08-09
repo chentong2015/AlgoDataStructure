@@ -6,9 +6,9 @@ import java.util.*;
 // 1. 问题无法直接通过"常规的O(n)时间复杂度"来解决
 // 2. 排序后能够将问题答案的"特征信息(数值的相互计算和间隔)"完全展示出来
 // 3. 排序后能够通过一次遍历得出结果(一次遍历可以完成两个层面的逻辑)
-public class DemoArraySorting {
+public class SortingArrayQuestion {
 
-    // 要求分组之后的pair数据库和和最小
+    // 要求分组之后的pair数据总和和最小
     // Minimize Maximum Pair Sum in Array
     // n == nums.length
     // 2 <= n <= 10^5
