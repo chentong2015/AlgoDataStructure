@@ -1,4 +1,4 @@
-package data_structure.tree.segment_tree_bit;
+package data_structure.tree.segment_tree;
 
 import java.util.ArrayList;
 import java.util.Collections;
