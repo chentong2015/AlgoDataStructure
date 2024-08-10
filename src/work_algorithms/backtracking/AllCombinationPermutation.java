@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Full Combination and Permutation 返回数据的全排列，通过回溯算法DFS进行排序组合 !!
-public class AllCombinationAndPermutation {
+public class AllCombinationPermutation {
 
     public static void main(String[] args) {
         List<String> result = findFullPermutation("abcd");

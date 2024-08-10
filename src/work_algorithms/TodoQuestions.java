@@ -64,8 +64,10 @@ public class TodoQuestions {
     }
 
     private void backtracking(List<String> wordList, int steps, int currentIndex, String endWord) {
+        // 判断临界条件后需要返回，避免继续递归
         if (wordList.get(currentIndex) == endWord) {
             minLength = Math.min(steps + 1, minLength);
+            return;
         }
 
         for (int index=0; index < wordList.size(); index++) {
