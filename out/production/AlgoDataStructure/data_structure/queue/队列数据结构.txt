@@ -2,9 +2,13 @@ Queue队列
 - FIFO 保证元素先进先出的原则
 - 通常运用BFS广度优先遍历场景
 
+PriorityQueue优先队列/排序
+- 根据定义的Comparator比较器进行排序
+- 根据特征优先排序能够找Top K特征的数据结果 ！
+
 Interface Queue<E>
   Interface Deque<E>            双端队列
     class LinkedList<E>         实现了Queue接口的链表
     class ArrayDeque<E>         默认初始状态下存16个元素
-    class PriorityQueue<E>      基于优先级堆，根据队列元素进行自然排序(或在初始时自定义Comparator)
-    class ArrayBlockingQueue<E> 有界(capacity容量固定)阻塞队列，使用ReentrantLock支持多线程并发操作
+    class PriorityQueue<E>      基于优先级的堆Heap
+    class ArrayBlockingQueue<E> 有界(capacity容量固定)阻塞队列

@@ -1,7 +1,0 @@
-TODO. 专门用于解决"Range query problems"区间搜索问题
-Finding minimum, maximum, sum, greatest common divisor,
-the least common denominator in array in logarithmic time.
-
-Segment Tree : https://leetcode.com/tag/segment-tree/
-
-Binary Indexed Tree: https://leetcode.com/tag/binary-indexed-tree/
