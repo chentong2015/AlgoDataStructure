@@ -16,7 +16,21 @@ TODO. String 字符串问题算法本质
    }
 
 4. String Sliding Windows 截取子字符串区间
-   int[] counts  添加字符和移除字符统计 => 通常更加高效 ！！
-   StringBuilder 添加和移除 => 会造成循环子字符串的长度 ！！
+   int[] counts  添加字符和移除字符统计 => 通常更加高效
+   StringBuilder 添加和移除 => 会造成循环子字符串的长度
 
 5. 多字符串混合操作使用StringBuilder拼接，提高字符处理性能
+
+6. 快速比较两个字符串之间是相差一个字符
+   int leftCount = 0;
+   for (char c: startStr.toCharArray()) {
+       counts[c - 'a']++;
+       leftCount++;
+   }
+   for (char c: endStr.toCharArray()) {
+       if (counts[c - 'a'] > 0) {
+           counts[c - 'a']--;
+           leftCount--;
+       }
+   }
+   return leftCount==1;

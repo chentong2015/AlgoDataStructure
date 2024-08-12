@@ -1,4 +1,4 @@
-package work_algorithms.dfs;
+package work_algorithms.dfs.word_search;
 
 import data_structure.tree.prefix_tree.model.TrieNodeWithWord;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class BacktrackingDFS {
+public class WordSearch2 {
 
     // Word Search II
     // Given an m x n board of characters and a list of strings words, return all words on the board

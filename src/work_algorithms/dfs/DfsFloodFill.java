@@ -1,6 +1,6 @@
 package work_algorithms.dfs;
 
-public class FloodFillDFS {
+public class DfsFloodFill {
 
     // Flood Fill
     // An image is represented by an m x n integer grid image,
@@ -13,22 +13,20 @@ public class FloodFillDFS {
     //         [1,1,0],  newColor = 2                 [2,2,0]
     //         [1,0,1]                                [2,0,1]
     // 从指定的像素位置点出发，将所有相连的同种像素颜色的位置点，全部设置成新的颜色
+    //
+    // O(n*m)  最差情况所有位置都会遍历，递归调用n*m次方法
+    // O(1)    不需要开辟额外的空间
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-        // Test: 从指定的位置，沿着四个方向展开，形成DFS深度优先遍历
-        //       可以使用Stack栈来替换递归法，空间复杂度基本一致
-        //       1. stack存储4个的方向的位置(坐标) Stack<int[]> stack;
-        //       2. 同时使用set来记录已经存储过的数据 !!
         resetColor(image, sr, sc, image[sr][sc], newColor);
         return image;
     }
 
-    // O(n*m) O(0) 最差情况所有位置都会遍历，递归调用n*m次方法
+    // 从指定的位置，沿着四个方向展开，形成DFS深度优先遍历
     private void resetColor(int[][] image, int row, int col, int sourceColor, int newColor) {
         if (row >= image.length || row < 0 || col >= image[0].length || col < 0) {
             return;
         }
-
-        // TODO. 一定要排除对已经修改过的颜色再次修改
+        // TODO. 排除对修改过的颜色再次修改, 避免StackOverflow
         if (image[row][col] != sourceColor || image[row][col] == newColor) {
             return;
         }

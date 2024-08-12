@@ -1,45 +1,31 @@
-package work_algorithms.dfs;
+package work_algorithms.dfs.work_ladder;
 
 import java.util.*;
 
-// TODO. DFS + Backtracking的综合解法
-public class BacktrackingDFS3 {
+// TODO. DFS + Backtracking综合解法: 自顶到底找到最短长度
+public class WordLadderDFS {
 
-    // TODO. 本质上是一个recursion的DFS算法，从顶到底找到最短长度
     // Word Ladder 字符梯子
     // Given two words, beginWord and endWord, and a dictionary wordList,
     // Every adjacent pair of words differs by a single letter.
     // return the number of words in the shortest transformation sequence from beginWord to endWord,
     // return 0 if no such sequence exists
     //
-    // Constraints:
-    //   1 <= beginWord.length <= 10
-    //   endWord.length == beginWord.length
-    //   1 <= wordList.length <= 5000
-    //   wordList[i].length == beginWord.length
-    //   beginWord, endWord, and wordList[i] consist of lowercase English letters.
-    //   beginWord != endWord
-    //   All the words in wordList are unique.
-    //
-    // beginWord = "hit", endWord = "cog",
-    // wordList = ["hot","dot","dog","lot","log","cog"] -> boolean
-    //
-    // TODO. 深度计算时间复杂度 ?
-    //                  hit
-    // n                hot
-    // n-1          dot          lot
-    // n-2      dog    lot     dot  log
-    // ...    cog log  ...
-    //
-    // 自顶向下，树的高度为n，每个节点的复杂度累加
-    // 空间复杂度O(n)，用于回溯时判断str是否被遍历过
+    // Constraints: 约束部分是值得讨论的话题
+    //  1 <= beginWord.length <= 10
+    //  endWord.length == beginWord.length
+    //  1 <= wordList.length <= 5000
+    //  wordList[i].length == beginWord.length
+    //  beginWord, endWord, and wordList[i] consist of lowercase English letters.
+    //  beginWord != endWord
+    //  All the words in wordList are unique.
 
     private int minLength = Integer.MAX_VALUE;
 
-    // 进入backtracking回溯前需要先判断第一个移动字符串
+    // 进入backtracking回溯前需要先判断第一个能够到达的字符串
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         int[] visited = new int[wordList.size()];
-        for (int index=0; index<wordList.size(); index++) {
+        for (int index=0; index < wordList.size(); index++) {
             if (canTransform(beginWord, wordList.get(index))) {
                 visited[index] = 1;
                 backtracking(wordList, visited, 1, index, endWord);
@@ -49,14 +35,12 @@ public class BacktrackingDFS3 {
         return minLength == Integer.MAX_VALUE ? 0: minLength;
     }
 
-    // 判断DFS终点后需要return返回
     // 每一层的时间复杂度: 剩余的str数目 * str的字符数目
-    private void backtracking(List<String> wordList, int[] visited,
-                              int steps, int visitedIndex, String endWord) {
+    private void backtracking(List<String> wordList, int[] visited, int steps, int visitedIndex, String endWord) {
         String visitedString = wordList.get(visitedIndex);
         if (Objects.equals(visitedString, endWord)) {
             minLength = Math.min(steps + 1, minLength);
-            return;
+            return; // 判断DFS终点后需要return返回
         }
         for (int index=0; index < wordList.size(); index++) {
             if (visited[index] == 0 && canTransform(visitedString, wordList.get(index))) {
@@ -87,9 +71,8 @@ public class BacktrackingDFS3 {
         return leftCount==1;
     }
 
-    // TODO. 检测特殊的test case ?
     public static void main(String[] args) {
-        BacktrackingDFS3 todoQuestions = new BacktrackingDFS3();
+        WordLadderDFS todoQuestions = new WordLadderDFS();
         List<String> list = List.of("lest","leet","lose","code","lode","robe","lost");
         System.out.println(todoQuestions.ladderLength("leet", "code", list));
     }
