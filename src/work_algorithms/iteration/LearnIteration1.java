@@ -8,7 +8,6 @@ public class LearnIteration1 {
     // Find the contiguous subarray (containing at least one number) which has the largest sum
     // nums= [-2,1,-3,4,-1,2,1,-5,4] -> [4,-1,2,1] -> max = 6
     //       [-2,1,-2,4,3, 5,6,1, 5]
-    //
     public static int getMaxSubArray(int[] nums) {
         int max = nums[0];
         for (int index = 1; index < nums.length; index++){

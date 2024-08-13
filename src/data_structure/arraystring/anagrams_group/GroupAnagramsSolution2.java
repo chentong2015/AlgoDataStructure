@@ -34,7 +34,7 @@ public class GroupAnagramsSolution2 {
         return results;
     }
 
-    // TODO. 通过字符串字符统计创建唯一的基于char的键值key
+    // TODO. 基于char[] arr数组为字符串生成唯一的键值key
     private String generateAnagramsKey(String str) {
         char[] arr = new char[26];
         for(char cur: str.toCharArray()) {

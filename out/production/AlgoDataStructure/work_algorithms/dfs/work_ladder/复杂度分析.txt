@@ -1,0 +1,34 @@
+Time: O(?)
+Space: O(n) 用于记录在一次DFS中被遍历过的字符
+
+TODO: 深度分析时间复杂度: 自顶向下Tree树结构
+1. Tree结构为M-Ary任意树
+2. Tree树结构最大高度为n
+3. 每次节点判断都需要loop字符串所有字符
+
+                  Root
+                {X1,,Xm}         m
+       {X1,,Xm}  ...  {X1,,Xm}   m*m  每层节点成m倍增加
+  {X1,,Xm} {X1,,Xm} ...          m*m*m
+ {X1,,Xm} ...
+...                              m^n
+
+TODO. Test Case 1
+beginWord = "hit", endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+           hit
+           hot ... 第一层节点的最大数目为m
+       dot          lot  ...  第二次节点的最大数目为m*m
+   dog    lot     dot   log  ...
+ cog=5
+ 形成5个字符串
+
+TODO. Test Case 2
+beginWord = "leet", endWord = "code",
+wordList = ["lest","leet","lose","code","lode","robe","lost"]
+     leet
+     lest
+ lost     lose  ...
+ lose     lode  ...
+ lode     code=5 最短形成5个字符串
+ code=6

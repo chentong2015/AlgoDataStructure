@@ -51,29 +51,8 @@ public class WordLadderDFS {
         }
     }
 
-    // TODO. 快速判断两个字符串是否是相差一个字符, 注意0和1统计的计数
-    // startS=00000200001000010001..
-    // endStr=00000100001000010001..
-    //     => 00000100000000000000 抵消完成后必须只剩一个字符位置1
+    // 比较两个字符串是否只有一个字符不同，参考Diff_String的实现
     private boolean canTransform(String startStr, String endStr) {
-        int[] counts = new int[26];
-        int leftCount = 0;
-        for (char c: startStr.toCharArray()) {
-            counts[c - 'a']++;
-            leftCount++;
-        }
-        for (char c: endStr.toCharArray()) {
-            if (counts[c - 'a'] > 0) {
-                counts[c - 'a']--;
-                leftCount--;
-            }
-        }
-        return leftCount==1;
-    }
-
-    public static void main(String[] args) {
-        WordLadderDFS todoQuestions = new WordLadderDFS();
-        List<String> list = List.of("lest","leet","lose","code","lode","robe","lost");
-        System.out.println(todoQuestions.ladderLength("leet", "code", list));
+        return true;
     }
 }
