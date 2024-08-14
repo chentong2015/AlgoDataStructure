@@ -1,7 +1,5 @@
 package work_algorithms.search;
 
-import work_algorithms.search.model.ItemDoubleBS;
-
 // Median of Two Sorted Arrays
 // Given two sorted arrays nums1 and nums2, return the median of the two sorted arrays
 // nums1=[1,2], nums2=[3,4] -> 2.50000
@@ -70,6 +68,20 @@ public class LearnBinarySearch2 {
             return ((double) leftValue + rightValue) / 2;
         } else {
             return Math.max(resultIndex1.leftValue, resultIndex2.leftValue);
+        }
+    }
+
+    class ItemDoubleBS {
+
+        public int leftValue;
+        public int middleIndex;
+        public int middleValue;
+
+        public ItemDoubleBS() {
+        }
+
+        public ItemDoubleBS(int middleIndex) {
+            this.middleIndex = middleIndex;
         }
     }
 }

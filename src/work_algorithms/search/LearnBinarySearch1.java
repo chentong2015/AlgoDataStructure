@@ -1,9 +1,8 @@
 package work_algorithms.search;
 
-import java.util.Arrays;
-
 public class LearnBinarySearch1 {
 
+    // TODO. 对于非纯排序的数据也可以使用二分查找，在每个index位置判断前后移动
     // Peak Index in a Mountain Array
     // arr.length >= 3
     // An array arr is a mountain if the following properties hold
@@ -11,71 +10,24 @@ public class LearnBinarySearch1 {
     // return the index i in O(log(arr.length)) time complexity.
     //
     // Input: arr = [0,10,5,2] -> 1
+    //            left=1  2=right
     public int peakIndexInMountainArray(int[] arr) {
         int left = 1;
         int right = arr.length - 2;
         while (left < right) {
             int middle = left + (right - left) / 2;
-            if (arr[middle] > arr[middle-1] && arr[middle] > arr[middle+1]) {
+            if (arr[middle-1] < arr[middle] && arr[middle] > arr[middle+1]) {
                 return middle;
-            } else if (arr[middle] > arr[middle-1]) {
-                left = middle + 1; // 这里一定要往后移动一位，否则会造成无限循环，middle的值不会改变
+            } else if (arr[middle-1] < arr[middle]) {
+                // Peak位置在右侧，left必须后移一位，避免无限循环
+                left = middle + 1;
             } else {
                 right = middle;
             }
         }
+        // while退出条件left==right,聚焦到唯一的index位置，也就是山峰点的位置
         return left;
     }
-
-    // TODO: Binary Search + Sliding Windows 在0和最大距离之间使用二分法，和元素本身的值没有关系 !!
-    // Find K-th Smallest Pair Distance
-    // Given an integer array nums and an integer k
-    // The distance of a pair of integers a and b is defined as the absolute difference between a and b
-    // Return the kth smallest distance among all the pairs nums[i] and nums[j] where 0 <= i < j < nums.length
-    // nums = [1,3,1], k = 1  -> {0,2,2}         -> 0 第k个最小距离
-    // nums = [1,3,5,6,9,10]  -> (0->9) 距离范围   -> 1 第3个最小距离
-    //                            0' 1 1 2 2 3 3 4 4 4 5 5 6 7 8 9 基础算法O(n^2)可以将所有的距离穷举出来
-    public int smallestDistancePair(int[] nums, int k) {
-        // O(nlog(n) + nlog(m)) n为数组的长度，m为最大的差值距离
-
-        // 排序是为了方便在使用Sliding Windows的时候计算方便
-        Arrays.sort(nums);
-        int low = 0;
-        int high = nums[nums.length - 1] - nums[0];
-        while (low < high) {
-            int mid = low + (high - low) / 2;
-            int count = countDistanceLessThanMid(nums, mid);
-            if (count >= k) {
-                high = mid;
-            } else {
-                low = mid + 1;
-            }
-        }
-        // 这里的low值刚好是要找的距离值，它的前面有(k-1)个更小的距离
-        return low; // End condition: low = high;
-    }
-
-
-    // number of pairs with distance <= mid 统计所有小于等于mid值的pairs对
-    // 滑动时，右侧每增加一个数，产生的首位距离值是在上升的，从左侧拿掉一个值，首尾的距离值会降低 !!
-    // [1,3,5,6,9,10]
-    // 0         9
-    //   (2) 4
-    // l
-    //    r
-    private int countDistanceLessThanMid(int[] nums, int mid) {
-        int count = 0;
-        int left = 0;
-        for (int right = 0; right < nums.length; right++) {
-            while (nums[right] - nums[left] > mid) {
-                left++;            // 滑动窗口从左侧出数据
-            }
-            count += right - left; // index的距离有多少，就有多少个更小的距离数 !!
-        }
-        return count;
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // TODO: Binary Search 在最大值和总值之间使用二分法, 结果一定是其中的一个sum值
     // Split Array Largest Sum
