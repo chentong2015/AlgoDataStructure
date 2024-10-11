@@ -15,16 +15,15 @@ public class LearnArrayList1 {
     // input: 0 1 1 1 5, max = 10
     // output: 2 4  6 9
     //
-    // 1. 如果输入乱序数据 ? 使用别的数据结构进行排序 ?
-    // 2. 如果输入数据中包含重复Num ? 在遍历的时候进行过滤
-    //
     // O(n*log(n) + n)  O(n) 极限情况下结构区间数据和Nums数据在一个数量级
     public static List<Integer> buildInternalNumbers(List<Integer> excludedNumbers, int maxNum) {
         List<Integer> remainingNums = new ArrayList<>();
         excludedNumbers.add(maxNum);
+
+        // TODO. 通过排序来将"可取值区间"展现出来
         Collections.sort(excludedNumbers);
 
-        // TODO. 在遍历时同时取前后两个数字，如果不同，则判断是否计算区间
+        // TODO. 规避重复ID的影响: 同时遍历前后两个数据，存在间隔则存在取值区间
         for (int index=0; index < excludedNumbers.size() - 1; index++) {
             int currentNum = excludedNumbers.get(index);
             int nextNum = excludedNumbers.get(index + 1);
